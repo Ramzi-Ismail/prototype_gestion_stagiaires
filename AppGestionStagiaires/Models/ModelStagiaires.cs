@@ -12,6 +12,7 @@
         }
          public virtual DbSet<Stagiaire> Stagiaires { get; set; }
          public virtual DbSet<Groupe> Groupes { get; set; }
+        public virtual DbSet<Filiere> Filieres { get; set; }
     }
 
 }

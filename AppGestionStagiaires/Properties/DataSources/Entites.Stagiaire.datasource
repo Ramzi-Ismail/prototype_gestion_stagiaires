@@ -5,16 +5,13 @@
     Renaming the file extension or editing the content of this file may   
     cause the file to be unrecognizable by the program.
 -->
-<GenericObjectDataSource DisplayName="ModelStagiaires" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+<GenericObjectDataSource DisplayName="Stagiaire" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
    <Children>
-      <GenericObjectDataSource DisplayName="Stagiaires" Version="1.0">
-         <TypeInfo>Entites.Stagiaire, AppGestionStagiaires, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
-      </GenericObjectDataSource>
-      <GenericObjectDataSource DisplayName="Groupes" Version="1.0">
+      <GenericObjectDataSource DisplayName="Groupe" Version="1.0">
          <TypeInfo>Entites.Groupe, AppGestionStagiaires, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
          <TypeUISetting>
             <PropertyUISettings>
-               <PropertyUISetting Name="ModelStagiaires.Stagiaires.Groupe">
+               <PropertyUISetting Name="Stagiaire.Groupe">
                   <ControlSettings>
                      <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
                         <BindableControlInfo Name="[Aucun]" Type="Microsoft.VSDesigner.Data.BindManager.NoneControlPlaceHolder" />
@@ -28,7 +25,7 @@
          <TypeInfo>Entites.Filiere, AppGestionStagiaires, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
          <TypeUISetting>
             <PropertyUISettings>
-               <PropertyUISetting Name="ModelStagiaires.Stagiaires.Filiere">
+               <PropertyUISetting Name="Stagiaire.Filiere">
                   <ControlSettings>
                      <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
                         <BindableControlInfo Name="[Aucun]" Type="Microsoft.VSDesigner.Data.BindManager.NoneControlPlaceHolder" />
@@ -39,5 +36,5 @@
          </TypeUISetting>
       </GenericObjectDataSource>
    </Children>
-   <TypeInfo>AppGestionStagiaires.ModelStagiaires, AppGestionStagiaires, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
+   <TypeInfo>Entites.Stagiaire, AppGestionStagiaires, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
 </GenericObjectDataSource>

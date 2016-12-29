@@ -44,8 +44,14 @@ namespace AppGestionStagiaires.GestionGroupes
               ) .ToList<Groupe>();
             return groupes;
         }
-       
-       
-        
+
+        public List<Groupe> Liste()
+        {
+            var query = from s in db.Groupes select s;
+            return query.ToList<Groupe>();
+
+        }
+
+
     }
 }

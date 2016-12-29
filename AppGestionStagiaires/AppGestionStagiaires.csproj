@@ -57,8 +57,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entites\Filiere.cs" />
     <Compile Include="Entites\Groupe.cs" />
     <Compile Include="Entites\Stagiaire.cs" />
+    <Compile Include="GestionFilieres\FilieresService.cs" />
     <Compile Include="GestionGroupes\GroupesService.cs" />
     <Compile Include="GestionStagiaires\FormBinfingNavigator.cs">
       <SubType>Form</SubType>
@@ -121,6 +123,9 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Entites.Filiere.datasource" />
+    <None Include="Properties\DataSources\Entites.Groupe.datasource" />
+    <None Include="Properties\DataSources\Entites.Stagiaire.datasource" />
     <None Include="Properties\DataSources\ModelStagiaires.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

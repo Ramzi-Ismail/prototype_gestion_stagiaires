@@ -39,7 +39,7 @@
             // bt_Ajouter
             // 
             this.bt_Ajouter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bt_Ajouter.Location = new System.Drawing.Point(958, 12);
+            this.bt_Ajouter.Location = new System.Drawing.Point(888, 12);
             this.bt_Ajouter.Name = "bt_Ajouter";
             this.bt_Ajouter.Size = new System.Drawing.Size(120, 23);
             this.bt_Ajouter.TabIndex = 11;
@@ -55,12 +55,12 @@
             this.tabControlStagiaires.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabControlStagiaires.HotTrack = true;
             this.tabControlStagiaires.ItemSize = new System.Drawing.Size(60, 18);
-            this.tabControlStagiaires.Location = new System.Drawing.Point(9, 64);
+            this.tabControlStagiaires.Location = new System.Drawing.Point(9, 48);
             this.tabControlStagiaires.Margin = new System.Windows.Forms.Padding(10);
             this.tabControlStagiaires.Name = "tabControlStagiaires";
             this.tabControlStagiaires.SelectedIndex = 0;
             this.tabControlStagiaires.ShowToolTips = true;
-            this.tabControlStagiaires.Size = new System.Drawing.Size(1069, 360);
+            this.tabControlStagiaires.Size = new System.Drawing.Size(999, 423);
             this.tabControlStagiaires.TabIndex = 12;
             // 
             // tabPageStagiaires
@@ -70,7 +70,7 @@
             this.tabPageStagiaires.Location = new System.Drawing.Point(4, 22);
             this.tabPageStagiaires.Name = "tabPageStagiaires";
             this.tabPageStagiaires.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageStagiaires.Size = new System.Drawing.Size(1061, 334);
+            this.tabPageStagiaires.Size = new System.Drawing.Size(991, 397);
             this.tabPageStagiaires.TabIndex = 0;
             this.tabPageStagiaires.Text = "Stagiaires";
             this.tabPageStagiaires.UseVisualStyleBackColor = true;
@@ -80,7 +80,7 @@
             this.gridStagiaire.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridStagiaire.Location = new System.Drawing.Point(3, 3);
             this.gridStagiaire.Name = "gridStagiaire";
-            this.gridStagiaire.Size = new System.Drawing.Size(1055, 328);
+            this.gridStagiaire.Size = new System.Drawing.Size(985, 391);
             this.gridStagiaire.TabIndex = 0;
             this.gridStagiaire.Load += new System.EventHandler(this.gridStagiaire_Load);
             // 
@@ -88,7 +88,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1090, 443);
+            this.ClientSize = new System.Drawing.Size(1020, 490);
             this.Controls.Add(this.tabControlStagiaires);
             this.Controls.Add(this.bt_Ajouter);
             this.Name = "FormGestionStagiaires";
