@@ -15,7 +15,7 @@ namespace AppGestionStagiaires.GestionStagiaires
 {
     public partial class FormBinfingNavigator : Form
     {
-        ModelStagiaires context = new ModelStagiaires();
+        StagiairesService service = new StagiairesService();
 
         public FormBinfingNavigator()
         {
@@ -24,9 +24,8 @@ namespace AppGestionStagiaires.GestionStagiaires
 
         private void FormBinfingNavigator_Load(object sender, EventArgs e)
         {
-            // context.Stagiaires.Load();
-            stagiaireBindingSource.DataSource = new BindingList<Stagiaire> (context.Stagiaires.ToList());
-                //context.Stagiaires.Local.ToBindingList();
+            stagiaireBindingSource.DataSource = service.ToBindingList();
+
         }
 
         private void stagiaireBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -37,27 +36,21 @@ namespace AppGestionStagiaires.GestionStagiaires
         private void stagiaireBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
         {
             this.Validate();
-            foreach (var s in context.Stagiaires.Local.ToList())
-            {
-              
-                
-                    MessageBox.Show(context.Entry(s).State.ToString());
-                   
-                
-            }
-
-            context.SaveChanges();
+            service.SaveChanges();
         }
 
         private void FormBinfingNavigator_FormClosed(object sender, FormClosedEventArgs e)
         {
-            context.Dispose();
+            service.Dispose();
         }
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
-            Stagiaire s = new Stagiaire();
-            context.Stagiaires.Add();
+        }
+
+        private void stagiaireDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

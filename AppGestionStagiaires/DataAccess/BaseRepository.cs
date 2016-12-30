@@ -6,6 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Entites;
+using System.ComponentModel;
 
 namespace AppGestionStagiaires
 {
@@ -83,33 +84,47 @@ namespace AppGestionStagiaires
             return DbSet.Find(id);
         }
 
-        public virtual void Delete(T item)
+        public virtual int Delete(T item)
         {
-            this.DbSet.Remove(item);
-            this.Context.SaveChanges();
+            var original = DbSet.Find(item.Id);
+            DbSet.Remove(original);
+            return Context.SaveChanges()  ;
+
         }
 
-        private void Insert(T item)
+        private int Insert(T item)
         {
             this.DbSet.Add(item);
-            this.Context.SaveChanges();
+            return this.Context.SaveChanges();
         }
 
-        private void Update(T item)
+        //private int Update(T item)
+        //{
+        //    this.Context.Entry(item).State = EntityState.Modified;
+        //    return this.Context.SaveChanges();
+        //}
+        public int Update(T item)
         {
-            this.Context.Entry(item).State = EntityState.Modified;
-            this.Context.SaveChanges();
+            var original = DbSet.Find(item.Id);
+
+            if (original != null)
+            {
+                Context.Entry(original).CurrentValues.SetValues(item);
+                return Context.SaveChanges();
+            }
+            return 0;
         }
 
-        public virtual void Save(T item)
+
+        public virtual int Save(T item)
         {
             if (item.Id <= 0)
             {
-                Insert(item);
+                return Insert(item);
             }
             else
             {
-                Update(item);
+                return Update(item);
             }
         }
 
@@ -123,6 +138,13 @@ namespace AppGestionStagiaires
         public int SaveChanges()
         {
             return this.Context.SaveChanges();
+        }
+
+        public BindingList<T> ToBindingList()
+        {
+            DbSet.Load();
+            return DbSet.Local.ToBindingList();
+
         }
     }
 }

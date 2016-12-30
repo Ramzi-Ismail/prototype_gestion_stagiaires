@@ -18,6 +18,13 @@ namespace AppGestionStagiaires.GestionStagiaires
         public FormStagiaireUC()
         {
             InitializeComponent();
+            // ces deux linge ont provoquer une erreur lors de l'insertion 
+            // de user controler depuis la boite d'outils 
+            // si il sont dans la méthode Load
+            // Impossible de cérer le composant 
+            //la chîne de connexion est introuvable dans le fichier de configuration de l'application
+            filiereBindingSource.DataSource = new FilieresService().GetAll();
+            groupeBindingSource.DataSource = new GroupesService().GetAll();
         }
 
 
@@ -33,8 +40,7 @@ namespace AppGestionStagiaires.GestionStagiaires
 
         private void FormStagiaireUC_Load(object sender, EventArgs e)
         {
-            filiereBindingSource.DataSource = new FilieresService().Liste();
-            groupeBindingSource.DataSource = new GroupesService().Liste();
+           
         }
 
         /// <summary>
@@ -69,6 +75,8 @@ namespace AppGestionStagiaires.GestionStagiaires
         // Enregistrer ou Modifier un Stagiaire
         private void br_enregistrer_Click(object sender, EventArgs e)
         {
+            bool validation = true;
+
             // Création d'un stagiaire en cas d'un nouvelle enregistrement
             if (this.Stagiaire == null) Stagiaire = new Stagiaire();
 
@@ -78,6 +86,8 @@ namespace AppGestionStagiaires.GestionStagiaires
             Stagiaire.Cin = cinTextBox.Text;
             Stagiaire.Sexe = radioButtonHomme.Checked;
             Stagiaire.DateNaissance = dateNaissanceDateTimePicker.Value;
+
+            
 
             //Coordonnées
             Stagiaire.Telephone = telephoneTextBox.Text;
@@ -90,7 +100,17 @@ namespace AppGestionStagiaires.GestionStagiaires
 
             if (Combo_Filiere.SelectedItem != null)
                 Stagiaire.Filiere = (Filiere)Combo_Filiere.SelectedItem;
-            EnregistrerClick(this, e);
+
+            //Identification
+            Stagiaire.Login = txt_login.Text;
+            Stagiaire.Password = txt_password.Text;
+            if (txt_password.Text != txt_password2.Text) validation = false;
+
+            // Lancement de l'événement Clic si la validation est correct
+            if (validation)
+                EnregistrerClick(this, e);
+            else
+                MessageBox.Show("Le mote de passe n'est pas correct");
         }
 
         private void bt_annuler_Click(object sender, EventArgs e)
@@ -101,6 +121,11 @@ namespace AppGestionStagiaires.GestionStagiaires
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void nomTextBox_TextChanged(object sender, EventArgs e)
+        {
+        
         }
     }
 }

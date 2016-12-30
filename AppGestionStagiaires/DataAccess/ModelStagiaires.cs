@@ -10,22 +10,27 @@
 
     public class ModelStagiaires : DbContext
     {
-         public ModelStagiaires() : base("name=ModelStagiaires")
+         public ModelStagiaires() : base("name = ModelStagiaires")
         {
             //Database.SetInitializer<SchoolDBContext>(new CreateDatabaseIfNotExists<SchoolDBContext>());
             //Database.SetInitializer<SchoolDBContext>(new DropCreateDatabaseIfModelChanges<SchoolDBContext>());
             //Database.SetInitializer<SchoolDBContext>(new DropCreateDatabaseAlways<SchoolDBContext>());
             //Database.SetInitializer<SchoolDBContext>(new SchoolDBInitializer());
         }
+
+        // Gestion des stagiaires
         public virtual DbSet<Stagiaire> Stagiaires { get; set; }
+        public virtual DbSet<Formateur> Formateur { get; set; }
         public virtual DbSet<Groupe> Groupes { get; set; }
         public virtual DbSet<Filiere> Filieres { get; set; }
+
+
 
         // Gestion des projets
         public virtual DbSet<Projet> Projets { get; set; }
         public virtual DbSet<Tache> Taches { get; set; }
         public virtual DbSet<MiniGroupe> MiniGroupes { get; set; }
-        public object Logger { get; private set; }
+   
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

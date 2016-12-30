@@ -68,7 +68,7 @@ namespace AppGestionStagiaires
             string tabEditerName = "TabEditer-" + stagiaire.Id;
             TabPage tabEditer = this.tabControlStagiaires.TabPages[tabEditerName];
 
-            if(new StagiairesService().Update(stagiaire))
+            if(new StagiairesService().Save(stagiaire) > 0)
             {
                 MessageBox.Show("Le Stagiaire :" + stagiaire.ToString() + " a été bien enregistrer");
             }
@@ -126,7 +126,7 @@ namespace AppGestionStagiaires
             FormStagiaireUC form = (FormStagiaireUC)tabAjouter.Controls
                 .Find("stagiaireForm", false).First();
 
-            if (new StagiairesService().Ajouter(form.Stagiaire))
+            if (new StagiairesService().Save(form.Stagiaire) > 0)
             {
                 MessageBox.Show("Le Stagiaire :" + form.Stagiaire.ToString() + " a été bien enregistrer");
             }

@@ -22,15 +22,18 @@ namespace AppGestionStagiaires.Migrations
             //  to avoid creating duplicate seed data. E.g.
             //
             context.Filieres.AddOrUpdate(
-              f => f.Code
+              f => f.Id
               ,
-              new Filiere { Code = "TDI" },
-              new Filiere { Code = "TRI" },
-              new Filiere { Code = "TDM" },
-              new Filiere { Code = "Info Graphie" },
-              new Filiere { Code = "TMSIR" },
-              new Filiere { Code = "CCP" }
+              new Filiere { Id = 1, Code = "TDI" },
+              new Filiere { Id = 2, Code = "TRI" },
+              new Filiere { Id = 3, Code = "TDM" },
+              new Filiere { Id = 4, Code = "Info Graphie" },
+              new Filiere { Id = 5, Code = "TMSIR" },
+              new Filiere { Id = 6, Code = "CCP" }
             );
+
+            context.Formateur.AddOrUpdate(f => f.Id, 
+               new Formateur { Id = 1,Login = "admin", Password = "admin" ,role="ADMIN"});
             //
         }
     }

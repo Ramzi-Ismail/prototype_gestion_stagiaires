@@ -30,11 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGestionProjets));
-            System.Windows.Forms.Label dateCreationLabel;
-            System.Windows.Forms.Label dateModificationLabel;
-            System.Windows.Forms.Label descriptionLabel;
-            System.Windows.Forms.Label idLabel;
-            System.Windows.Forms.Label titreLabel;
             this.projetBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
@@ -49,22 +44,12 @@
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.projetBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.projetDataGridView = new System.Windows.Forms.DataGridView();
-            this.dateCreationDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.dateModificationDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.descriptionTextBox = new System.Windows.Forms.TextBox();
-            this.idTextBox = new System.Windows.Forms.TextBox();
-            this.titreTextBox = new System.Windows.Forms.TextBox();
-            this.projetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            dateCreationLabel = new System.Windows.Forms.Label();
-            dateModificationLabel = new System.Windows.Forms.Label();
-            descriptionLabel = new System.Windows.Forms.Label();
-            idLabel = new System.Windows.Forms.Label();
-            titreLabel = new System.Windows.Forms.Label();
+            this.projetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.projetBindingNavigator)).BeginInit();
             this.projetBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.projetDataGridView)).BeginInit();
@@ -97,7 +82,7 @@
             this.projetBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.projetBindingNavigator.Name = "projetBindingNavigator";
             this.projetBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.projetBindingNavigator.Size = new System.Drawing.Size(1082, 25);
+            this.projetBindingNavigator.Size = new System.Drawing.Size(697, 25);
             this.projetBindingNavigator.TabIndex = 0;
             this.projetBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -176,7 +161,6 @@
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Ajouter nouveau";
-            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
             // 
             // bindingNavigatorDeleteItem
             // 
@@ -207,99 +191,12 @@
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5});
             this.projetDataGridView.DataSource = this.projetBindingSource;
-            this.projetDataGridView.Location = new System.Drawing.Point(12, 47);
+            this.projetDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.projetDataGridView.Location = new System.Drawing.Point(0, 25);
             this.projetDataGridView.Name = "projetDataGridView";
-            this.projetDataGridView.Size = new System.Drawing.Size(551, 220);
+            this.projetDataGridView.Size = new System.Drawing.Size(697, 378);
             this.projetDataGridView.TabIndex = 1;
-            // 
-            // dateCreationLabel
-            // 
-            dateCreationLabel.AutoSize = true;
-            dateCreationLabel.Location = new System.Drawing.Point(663, 71);
-            dateCreationLabel.Name = "dateCreationLabel";
-            dateCreationLabel.Size = new System.Drawing.Size(75, 13);
-            dateCreationLabel.TabIndex = 2;
-            dateCreationLabel.Text = "Date Creation:";
-            // 
-            // dateCreationDateTimePicker
-            // 
-            this.dateCreationDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.projetBindingSource, "DateCreation", true));
-            this.dateCreationDateTimePicker.Location = new System.Drawing.Point(762, 67);
-            this.dateCreationDateTimePicker.Name = "dateCreationDateTimePicker";
-            this.dateCreationDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.dateCreationDateTimePicker.TabIndex = 3;
-            // 
-            // dateModificationLabel
-            // 
-            dateModificationLabel.AutoSize = true;
-            dateModificationLabel.Location = new System.Drawing.Point(663, 97);
-            dateModificationLabel.Name = "dateModificationLabel";
-            dateModificationLabel.Size = new System.Drawing.Size(93, 13);
-            dateModificationLabel.TabIndex = 4;
-            dateModificationLabel.Text = "Date Modification:";
-            // 
-            // dateModificationDateTimePicker
-            // 
-            this.dateModificationDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.projetBindingSource, "DateModification", true));
-            this.dateModificationDateTimePicker.Location = new System.Drawing.Point(762, 93);
-            this.dateModificationDateTimePicker.Name = "dateModificationDateTimePicker";
-            this.dateModificationDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.dateModificationDateTimePicker.TabIndex = 5;
-            // 
-            // descriptionLabel
-            // 
-            descriptionLabel.AutoSize = true;
-            descriptionLabel.Location = new System.Drawing.Point(663, 122);
-            descriptionLabel.Name = "descriptionLabel";
-            descriptionLabel.Size = new System.Drawing.Size(63, 13);
-            descriptionLabel.TabIndex = 6;
-            descriptionLabel.Text = "Description:";
-            // 
-            // descriptionTextBox
-            // 
-            this.descriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.projetBindingSource, "Description", true));
-            this.descriptionTextBox.Location = new System.Drawing.Point(762, 119);
-            this.descriptionTextBox.Name = "descriptionTextBox";
-            this.descriptionTextBox.Size = new System.Drawing.Size(200, 20);
-            this.descriptionTextBox.TabIndex = 7;
-            // 
-            // idLabel
-            // 
-            idLabel.AutoSize = true;
-            idLabel.Location = new System.Drawing.Point(663, 148);
-            idLabel.Name = "idLabel";
-            idLabel.Size = new System.Drawing.Size(19, 13);
-            idLabel.TabIndex = 8;
-            idLabel.Text = "Id:";
-            // 
-            // idTextBox
-            // 
-            this.idTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.projetBindingSource, "Id", true));
-            this.idTextBox.Location = new System.Drawing.Point(762, 145);
-            this.idTextBox.Name = "idTextBox";
-            this.idTextBox.Size = new System.Drawing.Size(200, 20);
-            this.idTextBox.TabIndex = 9;
-            // 
-            // titreLabel
-            // 
-            titreLabel.AutoSize = true;
-            titreLabel.Location = new System.Drawing.Point(663, 174);
-            titreLabel.Name = "titreLabel";
-            titreLabel.Size = new System.Drawing.Size(31, 13);
-            titreLabel.TabIndex = 10;
-            titreLabel.Text = "Titre:";
-            // 
-            // titreTextBox
-            // 
-            this.titreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.projetBindingSource, "Titre", true));
-            this.titreTextBox.Location = new System.Drawing.Point(762, 171);
-            this.titreTextBox.Name = "titreTextBox";
-            this.titreTextBox.Size = new System.Drawing.Size(200, 20);
-            this.titreTextBox.TabIndex = 11;
-            // 
-            // projetBindingSource
-            // 
-            this.projetBindingSource.DataSource = typeof(Entites.Projet);
+            this.projetDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.projetDataGridView_CellContentClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -331,21 +228,15 @@
             this.dataGridViewTextBoxColumn5.HeaderText = "DateModification";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             // 
+            // projetBindingSource
+            // 
+            this.projetBindingSource.DataSource = typeof(Entites.Projet);
+            // 
             // FormGestionProjets
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1082, 374);
-            this.Controls.Add(dateCreationLabel);
-            this.Controls.Add(this.dateCreationDateTimePicker);
-            this.Controls.Add(dateModificationLabel);
-            this.Controls.Add(this.dateModificationDateTimePicker);
-            this.Controls.Add(descriptionLabel);
-            this.Controls.Add(this.descriptionTextBox);
-            this.Controls.Add(idLabel);
-            this.Controls.Add(this.idTextBox);
-            this.Controls.Add(titreLabel);
-            this.Controls.Add(this.titreTextBox);
+            this.ClientSize = new System.Drawing.Size(697, 403);
             this.Controls.Add(this.projetDataGridView);
             this.Controls.Add(this.projetBindingNavigator);
             this.Name = "FormGestionProjets";
@@ -383,10 +274,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DateTimePicker dateCreationDateTimePicker;
-        private System.Windows.Forms.DateTimePicker dateModificationDateTimePicker;
-        private System.Windows.Forms.TextBox descriptionTextBox;
-        private System.Windows.Forms.TextBox idTextBox;
-        private System.Windows.Forms.TextBox titreTextBox;
     }
 }

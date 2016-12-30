@@ -57,16 +57,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authentification\Authentification.cs" />
+    <Compile Include="FormMenuStagiaire.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMenuStagiaire.Designer.cs">
+      <DependentUpon>FormMenuStagiaire.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionFormateurs\FormateursService.cs" />
+    <Compile Include="Authentification\FormAuthentification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Authentification\FormAuthentification.Designer.cs">
+      <DependentUpon>FormAuthentification.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataAccess\BaseRepository.cs" />
     <Compile Include="DataAccess\UnitOfWork.cs" />
     <Compile Include="Entites\AbstractEntity.cs" />
     <Compile Include="DataAccess\BaseEntity.cs" />
+    <Compile Include="Entites\Formateur.cs" />
     <Compile Include="Entites\GestionStagiaires\Filiere.cs" />
     <Compile Include="Entites\GestionStagiaires\Groupe.cs" />
     <Compile Include="Entites\GestionProjets\Projet.cs" />
     <Compile Include="Entites\GestionStagiaires\Stagiaire.cs" />
     <Compile Include="Entites\GestionProjets\Tache.cs" />
     <Compile Include="Entites\GestionStagiaires\MiniGroupe.cs" />
+    <Compile Include="Entites\Utilisateur.cs" />
     <Compile Include="GestionFilieres\FilieresService.cs" />
     <Compile Include="GestionGroupes\GroupesService.cs" />
     <Compile Include="GestionProjets\FormGestionProjets.cs">
@@ -94,6 +110,12 @@
     <Compile Include="FormMenu.Designer.cs">
       <DependentUpon>FormMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Authentification\FormInscription.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Authentification\FormInscription.Designer.cs">
+      <DependentUpon>FormInscription.cs</DependentUpon>
+    </Compile>
     <Compile Include="GestionStagiaires\FormStagiaireUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -111,6 +133,12 @@
     <Compile Include="DataAccess\ModelStagiaires.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Authentification\FormAuthentification.resx">
+      <DependentUpon>FormAuthentification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMenuStagiaire.resx">
+      <DependentUpon>FormMenuStagiaire.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GestionProjets\FormGestionProjets.resx">
       <DependentUpon>FormGestionProjets.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMenu.resx">
       <DependentUpon>FormMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Authentification\FormInscription.resx">
+      <DependentUpon>FormInscription.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GestionStagiaires\FormStagiaireUC.resx">
       <DependentUpon>FormStagiaireUC.cs</DependentUpon>

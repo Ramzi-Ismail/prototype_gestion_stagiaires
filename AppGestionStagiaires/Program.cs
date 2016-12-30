@@ -1,4 +1,5 @@
-﻿using AppGestionStagiaires.Migrations;
+﻿using AppGestionStagiaires.Authentification;
+using AppGestionStagiaires.Migrations;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -32,7 +33,7 @@ namespace AppGestionStagiaires
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMenu());
+            Application.Run(new FormAuthentification());
         }
     }
 }

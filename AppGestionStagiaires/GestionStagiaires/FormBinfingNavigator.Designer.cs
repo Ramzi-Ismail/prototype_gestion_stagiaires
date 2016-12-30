@@ -29,11 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label nomLabel;
-            System.Windows.Forms.Label prenomLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBinfingNavigator));
             this.stagiaireBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.stagiaireBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -46,36 +45,13 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.stagiaireBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.stagiaireDataGridView = new System.Windows.Forms.DataGridView();
-            this.nomTextBox = new System.Windows.Forms.TextBox();
-            this.prenomTextBox = new System.Windows.Forms.TextBox();
-            this.stagiaireBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            nomLabel = new System.Windows.Forms.Label();
-            prenomLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.stagiaireBindingNavigator)).BeginInit();
             this.stagiaireBindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.stagiaireDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stagiaireBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stagiaireDataGridView)).BeginInit();
             this.SuspendLayout();
-            // 
-            // nomLabel
-            // 
-            nomLabel.AutoSize = true;
-            nomLabel.Location = new System.Drawing.Point(479, 209);
-            nomLabel.Name = "nomLabel";
-            nomLabel.Size = new System.Drawing.Size(32, 13);
-            nomLabel.TabIndex = 14;
-            nomLabel.Text = "Nom:";
-            // 
-            // prenomLabel
-            // 
-            prenomLabel.AutoSize = true;
-            prenomLabel.Location = new System.Drawing.Point(479, 235);
-            prenomLabel.Name = "prenomLabel";
-            prenomLabel.Size = new System.Drawing.Size(46, 13);
-            prenomLabel.TabIndex = 16;
-            prenomLabel.Text = "Prenom:";
             // 
             // stagiaireBindingNavigator
             // 
@@ -116,6 +92,10 @@
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Ajouter nouveau";
             this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
+            // 
+            // stagiaireBindingSource
+            // 
+            this.stagiaireBindingSource.DataSource = typeof(Entites.Stagiaire);
             // 
             // bindingNavigatorCountItem
             // 
@@ -210,30 +190,12 @@
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5});
             this.stagiaireDataGridView.DataSource = this.stagiaireBindingSource;
-            this.stagiaireDataGridView.Location = new System.Drawing.Point(21, 63);
+            this.stagiaireDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.stagiaireDataGridView.Location = new System.Drawing.Point(0, 25);
             this.stagiaireDataGridView.Name = "stagiaireDataGridView";
-            this.stagiaireDataGridView.Size = new System.Drawing.Size(300, 220);
+            this.stagiaireDataGridView.Size = new System.Drawing.Size(955, 383);
             this.stagiaireDataGridView.TabIndex = 1;
-            // 
-            // nomTextBox
-            // 
-            this.nomTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.stagiaireBindingSource, "Nom", true));
-            this.nomTextBox.Location = new System.Drawing.Point(571, 206);
-            this.nomTextBox.Name = "nomTextBox";
-            this.nomTextBox.Size = new System.Drawing.Size(200, 20);
-            this.nomTextBox.TabIndex = 15;
-            // 
-            // prenomTextBox
-            // 
-            this.prenomTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.stagiaireBindingSource, "Prenom", true));
-            this.prenomTextBox.Location = new System.Drawing.Point(571, 232);
-            this.prenomTextBox.Name = "prenomTextBox";
-            this.prenomTextBox.Size = new System.Drawing.Size(200, 20);
-            this.prenomTextBox.TabIndex = 17;
-            // 
-            // stagiaireBindingSource
-            // 
-            this.stagiaireBindingSource.DataSource = typeof(Entites.Stagiaire);
+            this.stagiaireDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.stagiaireDataGridView_CellContentClick);
             // 
             // dataGridViewTextBoxColumn4
             // 
@@ -252,10 +214,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(955, 408);
-            this.Controls.Add(nomLabel);
-            this.Controls.Add(this.nomTextBox);
-            this.Controls.Add(prenomLabel);
-            this.Controls.Add(this.prenomTextBox);
             this.Controls.Add(this.stagiaireDataGridView);
             this.Controls.Add(this.stagiaireBindingNavigator);
             this.Name = "FormBinfingNavigator";
@@ -265,8 +223,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.stagiaireBindingNavigator)).EndInit();
             this.stagiaireBindingNavigator.ResumeLayout(false);
             this.stagiaireBindingNavigator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.stagiaireDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stagiaireBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stagiaireDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -289,8 +247,6 @@
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton stagiaireBindingNavigatorSaveItem;
         private System.Windows.Forms.DataGridView stagiaireDataGridView;
-        private System.Windows.Forms.TextBox nomTextBox;
-        private System.Windows.Forms.TextBox prenomTextBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
     }

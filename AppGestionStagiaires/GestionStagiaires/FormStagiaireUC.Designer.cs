@@ -37,26 +37,33 @@
             System.Windows.Forms.Label prenomLabel;
             System.Windows.Forms.Label telephoneLabel;
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.bt_annuler = new System.Windows.Forms.Button();
-            this.Combo_groupe = new System.Windows.Forms.ComboBox();
-            this.br_enregistrer = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.adressTextBox = new System.Windows.Forms.TextBox();
-            this.cinTextBox = new System.Windows.Forms.TextBox();
-            this.dateNaissanceDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.emailTextBox = new System.Windows.Forms.TextBox();
-            this.nomTextBox = new System.Windows.Forms.TextBox();
-            this.prenomTextBox = new System.Windows.Forms.TextBox();
-            this.telephoneTextBox = new System.Windows.Forms.TextBox();
-            this.Combo_Filiere = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.radioButtonFamme = new System.Windows.Forms.RadioButton();
             this.radioButtonHomme = new System.Windows.Forms.RadioButton();
-            this.filiereBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cinTextBox = new System.Windows.Forms.TextBox();
+            this.dateNaissanceDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.nomTextBox = new System.Windows.Forms.TextBox();
+            this.prenomTextBox = new System.Windows.Forms.TextBox();
+            this.bt_annuler = new System.Windows.Forms.Button();
+            this.Combo_groupe = new System.Windows.Forms.ComboBox();
             this.groupeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.br_enregistrer = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.adressTextBox = new System.Windows.Forms.TextBox();
+            this.emailTextBox = new System.Windows.Forms.TextBox();
+            this.telephoneTextBox = new System.Windows.Forms.TextBox();
+            this.Combo_Filiere = new System.Windows.Forms.ComboBox();
+            this.filiereBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txt_password = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txt_login = new System.Windows.Forms.TextBox();
+            this.txt_password2 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             adressLabel = new System.Windows.Forms.Label();
             cinLabel = new System.Windows.Forms.Label();
             dateNaissanceLabel = new System.Windows.Forms.Label();
@@ -65,12 +72,76 @@
             prenomLabel = new System.Windows.Forms.Label();
             telephoneLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filiereBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.filiereBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupeBindingSource)).BeginInit();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // adressLabel
+            // 
+            adressLabel.AutoSize = true;
+            adressLabel.Location = new System.Drawing.Point(6, 83);
+            adressLabel.Name = "adressLabel";
+            adressLabel.Size = new System.Drawing.Size(42, 13);
+            adressLabel.TabIndex = 8;
+            adressLabel.Text = "Adress:";
+            // 
+            // cinLabel
+            // 
+            cinLabel.AutoSize = true;
+            cinLabel.Location = new System.Drawing.Point(6, 85);
+            cinLabel.Name = "cinLabel";
+            cinLabel.Size = new System.Drawing.Size(25, 13);
+            cinLabel.TabIndex = 10;
+            cinLabel.Text = "Cin:";
+            // 
+            // dateNaissanceLabel
+            // 
+            dateNaissanceLabel.AutoSize = true;
+            dateNaissanceLabel.Location = new System.Drawing.Point(6, 112);
+            dateNaissanceLabel.Name = "dateNaissanceLabel";
+            dateNaissanceLabel.Size = new System.Drawing.Size(86, 13);
+            dateNaissanceLabel.TabIndex = 12;
+            dateNaissanceLabel.Text = "Date Naissance:";
+            // 
+            // emailLabel
+            // 
+            emailLabel.AutoSize = true;
+            emailLabel.Location = new System.Drawing.Point(6, 57);
+            emailLabel.Name = "emailLabel";
+            emailLabel.Size = new System.Drawing.Size(35, 13);
+            emailLabel.TabIndex = 14;
+            emailLabel.Text = "Email:";
+            // 
+            // nomLabel
+            // 
+            nomLabel.AutoSize = true;
+            nomLabel.Location = new System.Drawing.Point(6, 30);
+            nomLabel.Name = "nomLabel";
+            nomLabel.Size = new System.Drawing.Size(32, 13);
+            nomLabel.TabIndex = 20;
+            nomLabel.Text = "Nom:";
+            // 
+            // prenomLabel
+            // 
+            prenomLabel.AutoSize = true;
+            prenomLabel.Location = new System.Drawing.Point(6, 56);
+            prenomLabel.Name = "prenomLabel";
+            prenomLabel.Size = new System.Drawing.Size(46, 13);
+            prenomLabel.TabIndex = 22;
+            prenomLabel.Text = "Prenom:";
+            // 
+            // telephoneLabel
+            // 
+            telephoneLabel.AutoSize = true;
+            telephoneLabel.Location = new System.Drawing.Point(6, 31);
+            telephoneLabel.Name = "telephoneLabel";
+            telephoneLabel.Size = new System.Drawing.Size(61, 13);
+            telephoneLabel.TabIndex = 28;
+            telephoneLabel.Text = "Telephone:";
             // 
             // groupBox1
             // 
@@ -85,15 +156,77 @@
             this.groupBox1.Controls.Add(this.prenomTextBox);
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(322, 352);
+            this.groupBox1.Size = new System.Drawing.Size(322, 214);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Etat civil";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.radioButtonFamme);
+            this.groupBox4.Controls.Add(this.radioButtonHomme);
+            this.groupBox4.Location = new System.Drawing.Point(98, 138);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(200, 54);
+            this.groupBox4.TabIndex = 13;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Sexe";
+            // 
+            // radioButtonFamme
+            // 
+            this.radioButtonFamme.AutoSize = true;
+            this.radioButtonFamme.Location = new System.Drawing.Point(73, 19);
+            this.radioButtonFamme.Name = "radioButtonFamme";
+            this.radioButtonFamme.Size = new System.Drawing.Size(59, 17);
+            this.radioButtonFamme.TabIndex = 31;
+            this.radioButtonFamme.TabStop = true;
+            this.radioButtonFamme.Text = "Femme";
+            this.radioButtonFamme.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonHomme
+            // 
+            this.radioButtonHomme.AutoSize = true;
+            this.radioButtonHomme.Location = new System.Drawing.Point(6, 19);
+            this.radioButtonHomme.Name = "radioButtonHomme";
+            this.radioButtonHomme.Size = new System.Drawing.Size(61, 17);
+            this.radioButtonHomme.TabIndex = 30;
+            this.radioButtonHomme.TabStop = true;
+            this.radioButtonHomme.Text = "Homme";
+            this.radioButtonHomme.UseVisualStyleBackColor = true;
+            // 
+            // cinTextBox
+            // 
+            this.cinTextBox.Location = new System.Drawing.Point(98, 82);
+            this.cinTextBox.Name = "cinTextBox";
+            this.cinTextBox.Size = new System.Drawing.Size(200, 20);
+            this.cinTextBox.TabIndex = 11;
+            // 
+            // dateNaissanceDateTimePicker
+            // 
+            this.dateNaissanceDateTimePicker.Location = new System.Drawing.Point(98, 108);
+            this.dateNaissanceDateTimePicker.Name = "dateNaissanceDateTimePicker";
+            this.dateNaissanceDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.dateNaissanceDateTimePicker.TabIndex = 13;
+            // 
+            // nomTextBox
+            // 
+            this.nomTextBox.Location = new System.Drawing.Point(98, 27);
+            this.nomTextBox.Name = "nomTextBox";
+            this.nomTextBox.Size = new System.Drawing.Size(200, 20);
+            this.nomTextBox.TabIndex = 21;
+            this.nomTextBox.TextChanged += new System.EventHandler(this.nomTextBox_TextChanged);
+            // 
+            // prenomTextBox
+            // 
+            this.prenomTextBox.Location = new System.Drawing.Point(98, 53);
+            this.prenomTextBox.Name = "prenomTextBox";
+            this.prenomTextBox.Size = new System.Drawing.Size(200, 20);
+            this.prenomTextBox.TabIndex = 23;
+            // 
             // bt_annuler
             // 
-            this.bt_annuler.Location = new System.Drawing.Point(84, 361);
+            this.bt_annuler.Location = new System.Drawing.Point(86, 386);
             this.bt_annuler.Name = "bt_annuler";
             this.bt_annuler.Size = new System.Drawing.Size(75, 23);
             this.bt_annuler.TabIndex = 8;
@@ -112,9 +245,13 @@
             this.Combo_groupe.TabIndex = 0;
             this.Combo_groupe.ValueMember = "Id";
             // 
+            // groupeBindingSource
+            // 
+            this.groupeBindingSource.DataSource = typeof(Entites.Groupe);
+            // 
             // br_enregistrer
             // 
-            this.br_enregistrer.Location = new System.Drawing.Point(3, 361);
+            this.br_enregistrer.Location = new System.Drawing.Point(5, 386);
             this.br_enregistrer.Name = "br_enregistrer";
             this.br_enregistrer.Size = new System.Drawing.Size(75, 23);
             this.br_enregistrer.TabIndex = 7;
@@ -131,15 +268,6 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Groupe";
             // 
-            // adressLabel
-            // 
-            adressLabel.AutoSize = true;
-            adressLabel.Location = new System.Drawing.Point(6, 83);
-            adressLabel.Name = "adressLabel";
-            adressLabel.Size = new System.Drawing.Size(42, 13);
-            adressLabel.TabIndex = 8;
-            adressLabel.Text = "Adress:";
-            // 
             // adressTextBox
             // 
             this.adressTextBox.Location = new System.Drawing.Point(98, 80);
@@ -148,94 +276,12 @@
             this.adressTextBox.Size = new System.Drawing.Size(200, 148);
             this.adressTextBox.TabIndex = 9;
             // 
-            // cinLabel
-            // 
-            cinLabel.AutoSize = true;
-            cinLabel.Location = new System.Drawing.Point(6, 85);
-            cinLabel.Name = "cinLabel";
-            cinLabel.Size = new System.Drawing.Size(25, 13);
-            cinLabel.TabIndex = 10;
-            cinLabel.Text = "Cin:";
-            // 
-            // cinTextBox
-            // 
-            this.cinTextBox.Location = new System.Drawing.Point(98, 82);
-            this.cinTextBox.Name = "cinTextBox";
-            this.cinTextBox.Size = new System.Drawing.Size(200, 20);
-            this.cinTextBox.TabIndex = 11;
-            // 
-            // dateNaissanceLabel
-            // 
-            dateNaissanceLabel.AutoSize = true;
-            dateNaissanceLabel.Location = new System.Drawing.Point(6, 112);
-            dateNaissanceLabel.Name = "dateNaissanceLabel";
-            dateNaissanceLabel.Size = new System.Drawing.Size(86, 13);
-            dateNaissanceLabel.TabIndex = 12;
-            dateNaissanceLabel.Text = "Date Naissance:";
-            // 
-            // dateNaissanceDateTimePicker
-            // 
-            this.dateNaissanceDateTimePicker.Location = new System.Drawing.Point(98, 108);
-            this.dateNaissanceDateTimePicker.Name = "dateNaissanceDateTimePicker";
-            this.dateNaissanceDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.dateNaissanceDateTimePicker.TabIndex = 13;
-            // 
-            // emailLabel
-            // 
-            emailLabel.AutoSize = true;
-            emailLabel.Location = new System.Drawing.Point(6, 57);
-            emailLabel.Name = "emailLabel";
-            emailLabel.Size = new System.Drawing.Size(35, 13);
-            emailLabel.TabIndex = 14;
-            emailLabel.Text = "Email:";
-            // 
             // emailTextBox
             // 
             this.emailTextBox.Location = new System.Drawing.Point(98, 54);
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(200, 20);
             this.emailTextBox.TabIndex = 15;
-            // 
-            // nomLabel
-            // 
-            nomLabel.AutoSize = true;
-            nomLabel.Location = new System.Drawing.Point(6, 30);
-            nomLabel.Name = "nomLabel";
-            nomLabel.Size = new System.Drawing.Size(32, 13);
-            nomLabel.TabIndex = 20;
-            nomLabel.Text = "Nom:";
-            // 
-            // nomTextBox
-            // 
-            this.nomTextBox.Location = new System.Drawing.Point(98, 27);
-            this.nomTextBox.Name = "nomTextBox";
-            this.nomTextBox.Size = new System.Drawing.Size(200, 20);
-            this.nomTextBox.TabIndex = 21;
-            // 
-            // prenomLabel
-            // 
-            prenomLabel.AutoSize = true;
-            prenomLabel.Location = new System.Drawing.Point(6, 56);
-            prenomLabel.Name = "prenomLabel";
-            prenomLabel.Size = new System.Drawing.Size(46, 13);
-            prenomLabel.TabIndex = 22;
-            prenomLabel.Text = "Prenom:";
-            // 
-            // prenomTextBox
-            // 
-            this.prenomTextBox.Location = new System.Drawing.Point(98, 53);
-            this.prenomTextBox.Name = "prenomTextBox";
-            this.prenomTextBox.Size = new System.Drawing.Size(200, 20);
-            this.prenomTextBox.TabIndex = 23;
-            // 
-            // telephoneLabel
-            // 
-            telephoneLabel.AutoSize = true;
-            telephoneLabel.Location = new System.Drawing.Point(6, 31);
-            telephoneLabel.Name = "telephoneLabel";
-            telephoneLabel.Size = new System.Drawing.Size(61, 13);
-            telephoneLabel.TabIndex = 28;
-            telephoneLabel.Text = "Telephone:";
             // 
             // telephoneTextBox
             // 
@@ -254,6 +300,10 @@
             this.Combo_Filiere.Size = new System.Drawing.Size(200, 21);
             this.Combo_Filiere.TabIndex = 30;
             this.Combo_Filiere.ValueMember = "Id";
+            // 
+            // filiereBindingSource
+            // 
+            this.filiereBindingSource.DataSource = typeof(Entites.Filiere);
             // 
             // label1
             // 
@@ -292,69 +342,94 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Coordonnées";
             // 
-            // groupBox4
+            // groupBox5
             // 
-            this.groupBox4.Controls.Add(this.radioButtonFamme);
-            this.groupBox4.Controls.Add(this.radioButtonHomme);
-            this.groupBox4.Location = new System.Drawing.Point(98, 138);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(200, 54);
-            this.groupBox4.TabIndex = 13;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Sexe";
+            this.groupBox5.Controls.Add(this.label5);
+            this.groupBox5.Controls.Add(this.txt_password2);
+            this.groupBox5.Controls.Add(this.label2);
+            this.groupBox5.Controls.Add(this.txt_password);
+            this.groupBox5.Controls.Add(this.label4);
+            this.groupBox5.Controls.Add(this.txt_login);
+            this.groupBox5.Location = new System.Drawing.Point(3, 223);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(322, 157);
+            this.groupBox5.TabIndex = 13;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Votre Identité";
             // 
-            // radioButtonFamme
+            // label2
             // 
-            this.radioButtonFamme.AutoSize = true;
-            this.radioButtonFamme.Location = new System.Drawing.Point(73, 19);
-            this.radioButtonFamme.Name = "radioButtonFamme";
-            this.radioButtonFamme.Size = new System.Drawing.Size(59, 17);
-            this.radioButtonFamme.TabIndex = 31;
-            this.radioButtonFamme.TabStop = true;
-            this.radioButtonFamme.Text = "Femme";
-            this.radioButtonFamme.UseVisualStyleBackColor = true;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(33, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Login";
             // 
-            // radioButtonHomme
+            // txt_password
             // 
-            this.radioButtonHomme.AutoSize = true;
-            this.radioButtonHomme.Location = new System.Drawing.Point(6, 19);
-            this.radioButtonHomme.Name = "radioButtonHomme";
-            this.radioButtonHomme.Size = new System.Drawing.Size(61, 17);
-            this.radioButtonHomme.TabIndex = 30;
-            this.radioButtonHomme.TabStop = true;
-            this.radioButtonHomme.Text = "Homme";
-            this.radioButtonHomme.UseVisualStyleBackColor = true;
+            this.txt_password.Location = new System.Drawing.Point(134, 62);
+            this.txt_password.Name = "txt_password";
+            this.txt_password.Size = new System.Drawing.Size(164, 20);
+            this.txt_password.TabIndex = 3;
             // 
-            // filiereBindingSource
+            // label4
             // 
-            this.filiereBindingSource.DataSource = typeof(Entites.Filiere);
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 65);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(71, 13);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Mot de passe";
             // 
-            // groupeBindingSource
+            // txt_login
             // 
-            this.groupeBindingSource.DataSource = typeof(Entites.Groupe);
+            this.txt_login.Location = new System.Drawing.Point(134, 25);
+            this.txt_login.Name = "txt_login";
+            this.txt_login.Size = new System.Drawing.Size(164, 20);
+            this.txt_login.TabIndex = 2;
+            // 
+            // txt_password2
+            // 
+            this.txt_password2.Location = new System.Drawing.Point(134, 88);
+            this.txt_password2.Name = "txt_password2";
+            this.txt_password2.Size = new System.Drawing.Size(164, 20);
+            this.txt_password2.TabIndex = 4;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 95);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(122, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Répéter le mot de passe";
             // 
             // FormStagiaireUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.bt_annuler);
             this.Controls.Add(this.br_enregistrer);
             this.Name = "FormStagiaireUC";
-            this.Size = new System.Drawing.Size(659, 408);
+            this.Size = new System.Drawing.Size(659, 444);
             this.Load += new System.EventHandler(this.FormStagiaireUC_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filiereBindingSource)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.filiereBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupeBindingSource)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -382,5 +457,12 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.BindingSource groupeBindingSource;
         private System.Windows.Forms.BindingSource filiereBindingSource;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txt_password2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txt_password;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txt_login;
     }
 }

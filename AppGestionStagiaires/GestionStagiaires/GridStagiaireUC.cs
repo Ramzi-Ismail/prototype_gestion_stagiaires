@@ -35,7 +35,7 @@ namespace AppGestionStagiaires.GestionStagiaires
         public void Actualiser()
         {
             stagiaireBindingSource.Clear();
-            stagiaireBindingSource.DataSource = new StagiairesService().ListStagiaires();
+            stagiaireBindingSource.DataSource = new StagiairesService().GetAll();
 
         }
         private void GridStagiaireUC_Load(object sender, EventArgs e)
@@ -54,7 +54,7 @@ namespace AppGestionStagiaires.GestionStagiaires
                     "Confirmation de supprision", MessageBoxButtons.YesNo))
                 {
                     Stagiaire s = (Stagiaire)stagiaireBindingSource.Current;
-                    new StagiairesService().Supprimer(s.Id);
+                    new StagiairesService().Delete(s);
                     this.Actualiser();
                 }
 

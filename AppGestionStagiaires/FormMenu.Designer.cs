@@ -82,7 +82,7 @@
             // projetsToolStripMenuItem
             // 
             this.projetsToolStripMenuItem.Name = "projetsToolStripMenuItem";
-            this.projetsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.projetsToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.projetsToolStripMenuItem.Text = "Projets";
             this.projetsToolStripMenuItem.Click += new System.EventHandler(this.projetsToolStripMenuItem_Click);
             // 
@@ -98,6 +98,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Application de gestion des stagiaires";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMenu_FormClosed);
+            this.Load += new System.EventHandler(this.FormMenu_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
