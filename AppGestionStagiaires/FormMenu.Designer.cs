@@ -32,13 +32,16 @@
             this.stagiairesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionStagiaires = new System.Windows.Forms.ToolStripMenuItem();
             this.binfingNavigatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestionDesProjetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.projetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.stagiairesToolStripMenuItem});
+            this.stagiairesToolStripMenuItem,
+            this.gestionDesProjetsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(657, 24);
@@ -68,6 +71,21 @@
             this.binfingNavigatorToolStripMenuItem.Text = "Binfing Navigator";
             this.binfingNavigatorToolStripMenuItem.Click += new System.EventHandler(this.binfingNavigatorToolStripMenuItem_Click);
             // 
+            // gestionDesProjetsToolStripMenuItem
+            // 
+            this.gestionDesProjetsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.projetsToolStripMenuItem});
+            this.gestionDesProjetsToolStripMenuItem.Name = "gestionDesProjetsToolStripMenuItem";
+            this.gestionDesProjetsToolStripMenuItem.Size = new System.Drawing.Size(119, 20);
+            this.gestionDesProjetsToolStripMenuItem.Text = "Gestion des projets";
+            // 
+            // projetsToolStripMenuItem
+            // 
+            this.projetsToolStripMenuItem.Name = "projetsToolStripMenuItem";
+            this.projetsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.projetsToolStripMenuItem.Text = "Projets";
+            this.projetsToolStripMenuItem.Click += new System.EventHandler(this.projetsToolStripMenuItem_Click);
+            // 
             // FormMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -93,5 +111,7 @@
         private System.Windows.Forms.ToolStripMenuItem stagiairesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionStagiaires;
         private System.Windows.Forms.ToolStripMenuItem binfingNavigatorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gestionDesProjetsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem projetsToolStripMenuItem;
     }
 }

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.Label nomLabel;
+            System.Windows.Forms.Label prenomLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBinfingNavigator));
             this.stagiaireBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
@@ -44,16 +46,36 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.stagiaireBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.stagiaireDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomTextBox = new System.Windows.Forms.TextBox();
+            this.prenomTextBox = new System.Windows.Forms.TextBox();
             this.stagiaireBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            nomLabel = new System.Windows.Forms.Label();
+            prenomLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.stagiaireBindingNavigator)).BeginInit();
             this.stagiaireBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stagiaireDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stagiaireBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // nomLabel
+            // 
+            nomLabel.AutoSize = true;
+            nomLabel.Location = new System.Drawing.Point(479, 209);
+            nomLabel.Name = "nomLabel";
+            nomLabel.Size = new System.Drawing.Size(32, 13);
+            nomLabel.TabIndex = 14;
+            nomLabel.Text = "Nom:";
+            // 
+            // prenomLabel
+            // 
+            prenomLabel.AutoSize = true;
+            prenomLabel.Location = new System.Drawing.Point(479, 235);
+            prenomLabel.Name = "prenomLabel";
+            prenomLabel.Size = new System.Drawing.Size(46, 13);
+            prenomLabel.TabIndex = 16;
+            prenomLabel.Text = "Prenom:";
             // 
             // stagiaireBindingNavigator
             // 
@@ -81,7 +103,7 @@
             this.stagiaireBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.stagiaireBindingNavigator.Name = "stagiaireBindingNavigator";
             this.stagiaireBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.stagiaireBindingNavigator.Size = new System.Drawing.Size(717, 25);
+            this.stagiaireBindingNavigator.Size = new System.Drawing.Size(955, 25);
             this.stagiaireBindingNavigator.TabIndex = 0;
             this.stagiaireBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -93,6 +115,7 @@
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Ajouter nouveau";
+            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
             // 
             // bindingNavigatorCountItem
             // 
@@ -177,60 +200,67 @@
             this.stagiaireBindingNavigatorSaveItem.Name = "stagiaireBindingNavigatorSaveItem";
             this.stagiaireBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
             this.stagiaireBindingNavigatorSaveItem.Text = "Enregistrer les données";
-            this.stagiaireBindingNavigatorSaveItem.Click += new System.EventHandler(this.stagiaireBindingNavigatorSaveItem_Click);
+            this.stagiaireBindingNavigatorSaveItem.Click += new System.EventHandler(this.stagiaireBindingNavigatorSaveItem_Click_1);
             // 
             // stagiaireDataGridView
             // 
             this.stagiaireDataGridView.AutoGenerateColumns = false;
             this.stagiaireDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.stagiaireDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn5});
             this.stagiaireDataGridView.DataSource = this.stagiaireBindingSource;
-            this.stagiaireDataGridView.Location = new System.Drawing.Point(0, 28);
+            this.stagiaireDataGridView.Location = new System.Drawing.Point(21, 63);
             this.stagiaireDataGridView.Name = "stagiaireDataGridView";
-            this.stagiaireDataGridView.Size = new System.Drawing.Size(649, 337);
+            this.stagiaireDataGridView.Size = new System.Drawing.Size(300, 220);
             this.stagiaireDataGridView.TabIndex = 1;
             // 
-            // dataGridViewTextBoxColumn3
+            // nomTextBox
             // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Nom";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Nom";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.nomTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.stagiaireBindingSource, "Nom", true));
+            this.nomTextBox.Location = new System.Drawing.Point(571, 206);
+            this.nomTextBox.Name = "nomTextBox";
+            this.nomTextBox.Size = new System.Drawing.Size(200, 20);
+            this.nomTextBox.TabIndex = 15;
             // 
-            // dataGridViewTextBoxColumn4
+            // prenomTextBox
             // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Prenom";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Prenom";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "DateNaissance";
-            this.dataGridViewTextBoxColumn2.HeaderText = "DateNaissance";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Groupe";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Groupe";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.prenomTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.stagiaireBindingSource, "Prenom", true));
+            this.prenomTextBox.Location = new System.Drawing.Point(571, 232);
+            this.prenomTextBox.Name = "prenomTextBox";
+            this.prenomTextBox.Size = new System.Drawing.Size(200, 20);
+            this.prenomTextBox.TabIndex = 17;
             // 
             // stagiaireBindingSource
             // 
             this.stagiaireBindingSource.DataSource = typeof(Entites.Stagiaire);
             // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Nom";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Nom";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Prenom";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Prenom";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
             // FormBinfingNavigator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(717, 377);
+            this.ClientSize = new System.Drawing.Size(955, 408);
+            this.Controls.Add(nomLabel);
+            this.Controls.Add(this.nomTextBox);
+            this.Controls.Add(prenomLabel);
+            this.Controls.Add(this.prenomTextBox);
             this.Controls.Add(this.stagiaireDataGridView);
             this.Controls.Add(this.stagiaireBindingNavigator);
             this.Name = "FormBinfingNavigator";
             this.Text = "FormBinfingNavigator";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormBinfingNavigator_FormClosed);
             this.Load += new System.EventHandler(this.FormBinfingNavigator_Load);
             ((System.ComponentModel.ISupportInitialize)(this.stagiaireBindingNavigator)).EndInit();
             this.stagiaireBindingNavigator.ResumeLayout(false);
@@ -259,9 +289,9 @@
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton stagiaireBindingNavigatorSaveItem;
         private System.Windows.Forms.DataGridView stagiaireDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.TextBox nomTextBox;
+        private System.Windows.Forms.TextBox prenomTextBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
     }
 }

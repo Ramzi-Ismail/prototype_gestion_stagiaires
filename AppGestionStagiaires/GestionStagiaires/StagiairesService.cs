@@ -63,6 +63,11 @@ namespace AppGestionStagiaires.GestionStagiaires
             db.SaveChanges();
         }
 
+        public ModelStagiaires conrext()
+        {
+            return db;
+        }
+
 
 
 

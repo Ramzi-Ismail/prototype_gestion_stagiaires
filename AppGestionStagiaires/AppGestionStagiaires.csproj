@@ -57,11 +57,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entites\Filiere.cs" />
-    <Compile Include="Entites\Groupe.cs" />
-    <Compile Include="Entites\Stagiaire.cs" />
+    <Compile Include="DataAccess\BaseRepository.cs" />
+    <Compile Include="DataAccess\UnitOfWork.cs" />
+    <Compile Include="Entites\AbstractEntity.cs" />
+    <Compile Include="DataAccess\BaseEntity.cs" />
+    <Compile Include="Entites\GestionStagiaires\Filiere.cs" />
+    <Compile Include="Entites\GestionStagiaires\Groupe.cs" />
+    <Compile Include="Entites\GestionProjets\Projet.cs" />
+    <Compile Include="Entites\GestionStagiaires\Stagiaire.cs" />
+    <Compile Include="Entites\GestionProjets\Tache.cs" />
+    <Compile Include="Entites\GestionStagiaires\MiniGroupe.cs" />
     <Compile Include="GestionFilieres\FilieresService.cs" />
     <Compile Include="GestionGroupes\GroupesService.cs" />
+    <Compile Include="GestionProjets\FormGestionProjets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionProjets\FormGestionProjets.Designer.cs">
+      <DependentUpon>FormGestionProjets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionProjets\ProjetsService.cs" />
     <Compile Include="GestionStagiaires\FormBinfingNavigator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,9 +108,12 @@
     </Compile>
     <Compile Include="GestionStagiaires\StagiairesService.cs" />
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\ModelStagiaires.cs" />
+    <Compile Include="DataAccess\ModelStagiaires.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GestionProjets\FormGestionProjets.resx">
+      <DependentUpon>FormGestionProjets.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GestionStagiaires\FormBinfingNavigator.resx">
       <DependentUpon>FormBinfingNavigator.cs</DependentUpon>
     </EmbeddedResource>
@@ -125,7 +142,9 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Entites.Filiere.datasource" />
     <None Include="Properties\DataSources\Entites.Groupe.datasource" />
+    <None Include="Properties\DataSources\Entites.Projet.datasource" />
     <None Include="Properties\DataSources\Entites.Stagiaire.datasource" />
+    <None Include="Properties\DataSources\Entites.Tache.datasource" />
     <None Include="Properties\DataSources\ModelStagiaires.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -148,6 +167,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\edit_bleu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

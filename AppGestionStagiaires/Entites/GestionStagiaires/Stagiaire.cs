@@ -21,9 +21,10 @@ namespace Entites
 
 
         public virtual Groupe Groupe { set; get; }
+        public virtual List<MiniGroupe> MiniGroupes { set; get; }
         public virtual Filiere Filiere { set; get; }
 
-       
+        public virtual List<Tache> Taches { set; get; }
 
 
         public int Id

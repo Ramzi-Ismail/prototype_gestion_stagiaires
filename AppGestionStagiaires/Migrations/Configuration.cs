@@ -1,5 +1,6 @@
 namespace AppGestionStagiaires.Migrations
 {
+    using Entites;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -20,12 +21,16 @@ namespace AppGestionStagiaires.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
+            context.Filieres.AddOrUpdate(
+              f => f.Code
+              ,
+              new Filiere { Code = "TDI" },
+              new Filiere { Code = "TRI" },
+              new Filiere { Code = "TDM" },
+              new Filiere { Code = "Info Graphie" },
+              new Filiere { Code = "TMSIR" },
+              new Filiere { Code = "CCP" }
+            );
             //
         }
     }
