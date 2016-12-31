@@ -37,5 +37,10 @@ namespace AppGestionStagiaires.GestionStagiaires
             this.Hide();
             new FormAuthentification().ShowMenu(Authentification.Authentification.user,this);
         }
+
+        private void FormInscription_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

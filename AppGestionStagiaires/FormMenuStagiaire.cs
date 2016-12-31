@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppGestionStagiaires.GestionStagiaires;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,8 +29,14 @@ namespace AppGestionStagiaires
         }
 
         private void modifierToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        { 
 
+            Cursor.Current = Cursors.WaitCursor;
+            FormUpdateProfile f = new FormUpdateProfile();
+            f.MdiParent = this;
+            f.StartPosition = FormStartPosition.CenterScreen;
+            f.Show();
+            Cursor.Current = Cursors.Default;
         }
     }
 }

@@ -122,6 +122,12 @@
     <Compile Include="GestionStagiaires\FormStagiaireUC.Designer.cs">
       <DependentUpon>FormStagiaireUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="GestionStagiaires\FormUpdateProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionStagiaires\FormUpdateProfile.Designer.cs">
+      <DependentUpon>FormUpdateProfile.cs</DependentUpon>
+    </Compile>
     <Compile Include="GestionStagiaires\GridStagiaireUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -156,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GestionStagiaires\FormStagiaireUC.resx">
       <DependentUpon>FormStagiaireUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionStagiaires\FormUpdateProfile.resx">
+      <DependentUpon>FormUpdateProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GestionStagiaires\GridStagiaireUC.resx">
       <DependentUpon>GridStagiaireUC.cs</DependentUpon>

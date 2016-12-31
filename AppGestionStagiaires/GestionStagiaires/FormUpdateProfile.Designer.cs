@@ -1,6 +1,6 @@
 ﻿namespace AppGestionStagiaires.GestionStagiaires
 {
-    partial class FormInscription
+    partial class FormUpdateProfile
     {
         /// <summary>
         /// Required designer variable.
@@ -30,21 +30,18 @@
         {
             this.SuspendLayout();
             // 
-            // FormInscription
+            // FormUpdateProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(677, 429);
-            this.Name = "FormInscription";
-            this.Text = "Inscription d\'un stagiaire";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormInscription_FormClosed);
-            this.Load += new System.EventHandler(this.FormInscription_Load);
+            this.ClientSize = new System.Drawing.Size(697, 498);
+            this.Name = "FormUpdateProfile";
+            this.Text = "Mise à jour de votre profil";
+            this.Load += new System.EventHandler(this.FormUpdateProfile_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-   
     }
 }
