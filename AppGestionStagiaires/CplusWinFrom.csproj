@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B035060E-7DE1-4FB0-B4F9-AB8410BEA497}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Cplus</RootNamespace>
+    <AssemblyName>Cplus</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Authentification\Authentification.cs" />
+    <Compile Include="Data\Abstracts\IBaseRepository.cs" />
+    <Compile Include="GestionStagiaires\FormGestionFilieres.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionStagiaires\FormGestionFilieres.Designer.cs">
+      <DependentUpon>FormGestionFilieres.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionStagiaires\FormGestionGroupes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionStagiaires\FormGestionGroupes.Designer.cs">
+      <DependentUpon>FormGestionGroupes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\FormBindingNabigatorHelper.cs" />
+    <Compile Include="Menu\FormMenuStagiaire.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu\FormMenuStagiaire.Designer.cs">
+      <DependentUpon>FormMenuStagiaire.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionStagiaires\Formateurs\FormateursService.cs" />
+    <Compile Include="Authentification\FormAuthentification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Authentification\FormAuthentification.Designer.cs">
+      <DependentUpon>FormAuthentification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Abstracts\BaseRepository.cs" />
+    <Compile Include="Data\Abstracts\BaseEntity.cs" />
+    <Compile Include="Entites\GestionStagiaires\Formateur.cs" />
+    <Compile Include="Entites\GestionStagiaires\Filiere.cs" />
+    <Compile Include="Entites\GestionStagiaires\Groupe.cs" />
+    <Compile Include="Entites\GestionProjets\Projet.cs" />
+    <Compile Include="Entites\GestionStagiaires\Stagiaire.cs" />
+    <Compile Include="Entites\GestionProjets\Tache.cs" />
+    <Compile Include="Entites\GestionStagiaires\MiniGroupe.cs" />
+    <Compile Include="Entites\Authentification\Utilisateur.cs" />
+    <Compile Include="GestionStagiaires\Filieres\FilieresService.cs" />
+    <Compile Include="GestionStagiaires\Groupes\GroupesService.cs" />
+    <Compile Include="GestionProjets\Projets\FormGestionProjets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionProjets\Projets\FormGestionProjets.Designer.cs">
+      <DependentUpon>FormGestionProjets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionProjets\Projets\ProjetsService.cs" />
+    <Compile Include="GestionStagiaires\Stagiaires\FormBinfingNavigator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionStagiaires\Stagiaires\FormBinfingNavigator.Designer.cs">
+      <DependentUpon>FormBinfingNavigator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionStagiaires\Stagiaires\FormGestionStagiaires.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionStagiaires\Stagiaires\FormGestionStagiaires.Designer.cs">
+      <DependentUpon>FormGestionStagiaires.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\FormMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu\FormMenu.Designer.cs">
+      <DependentUpon>FormMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Authentification\FormInscription.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Authentification\FormInscription.Designer.cs">
+      <DependentUpon>FormInscription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionStagiaires\Stagiaires\FormStagiaireUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GestionStagiaires\Stagiaires\FormStagiaireUC.Designer.cs">
+      <DependentUpon>FormStagiaireUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionStagiaires\Stagiaires\GridStagiaireUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GestionStagiaires\Stagiaires\GridStagiaireUC.Designer.cs">
+      <DependentUpon>GridStagiaireUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionStagiaires\Stagiaires\StagiairesService.cs" />
+    <Compile Include="Data\Migrations\Configuration.cs" />
+    <Compile Include="Data\ModelStagiaires.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Authentification\FormAuthentification.resx">
+      <DependentUpon>FormAuthentification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionStagiaires\FormGestionFilieres.resx">
+      <DependentUpon>FormGestionFilieres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionStagiaires\FormGestionGroupes.resx">
+      <DependentUpon>FormGestionGroupes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu\FormMenuStagiaire.resx">
+      <DependentUpon>FormMenuStagiaire.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionProjets\Projets\FormGestionProjets.resx">
+      <DependentUpon>FormGestionProjets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionStagiaires\Stagiaires\FormBinfingNavigator.resx">
+      <DependentUpon>FormBinfingNavigator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionStagiaires\Stagiaires\FormGestionStagiaires.resx">
+      <DependentUpon>FormGestionStagiaires.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu\FormMenu.resx">
+      <DependentUpon>FormMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Authentification\FormInscription.resx">
+      <DependentUpon>FormInscription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionStagiaires\Stagiaires\FormStagiaireUC.resx">
+      <DependentUpon>FormStagiaireUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionStagiaires\Stagiaires\GridStagiaireUC.resx">
+      <DependentUpon>GridStagiaireUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\Cplus.Entites.Filiere.datasource" />
+    <None Include="Properties\DataSources\Cplus.Entites.Formateur.datasource" />
+    <None Include="Properties\DataSources\Cplus.Entites.Groupe.datasource" />
+    <None Include="Properties\DataSources\Cplus.Entites.MiniGroupe.datasource" />
+    <None Include="Properties\DataSources\Cplus.Entites.Projet.datasource" />
+    <None Include="Properties\DataSources\Cplus.Entites.Tache.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_bleu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="GestionProjets\Taches\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo C+.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

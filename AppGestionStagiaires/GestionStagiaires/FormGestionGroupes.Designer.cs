@@ -1,6 +1,6 @@
 ﻿namespace Cplus.GestionStagiaires
 {
-    partial class FormInscription
+    partial class FormGestionGroupes
     {
         /// <summary>
         /// Required designer variable.
@@ -30,20 +30,17 @@
         {
             this.SuspendLayout();
             // 
-            // FormInscription
+            // FormGestionGroupes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(677, 429);
-            this.Name = "FormInscription";
-            this.Text = "Inscription d\'un stagiaire";
-            this.Load += new System.EventHandler(this.FormInscription_Load);
+            this.ClientSize = new System.Drawing.Size(504, 343);
+            this.Name = "FormGestionGroupes";
+            this.Text = "Gestion des groupes";
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-
     }
 }

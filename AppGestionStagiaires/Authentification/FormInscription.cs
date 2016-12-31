@@ -1,16 +1,9 @@
-﻿using AppGestionStagiaires.Authentification;
-using Entites;
+﻿using Cplus.Authentification;
+using Cplus.Entites;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AppGestionStagiaires.GestionStagiaires
+namespace Cplus.GestionStagiaires
 {
     public partial class FormInscription : Form
     {
