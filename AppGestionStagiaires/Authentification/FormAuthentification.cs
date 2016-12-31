@@ -1,5 +1,5 @@
-﻿using AppGestionStagiaires.GestionStagiaires;
-using Entites;
+﻿using Cplus.GestionStagiaires;
+using Cplus.Entites;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AppGestionStagiaires.Authentification
+namespace Cplus.Authentification
 {
     public partial class FormAuthentification : Form
     {

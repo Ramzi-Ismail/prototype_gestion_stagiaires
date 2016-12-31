@@ -1,4 +1,4 @@
-﻿namespace AppGestionStagiaires.Authentification
+﻿namespace Cplus.Authentification
 {
     partial class FormAuthentification
     {
@@ -43,14 +43,14 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 13);
+            this.label1.Size = new System.Drawing.Size(84, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Login";
+            this.label1.Text = "Nom d\'utilisateur";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 65);
+            this.label2.Location = new System.Drawing.Point(6, 54);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 13);
             this.label2.TabIndex = 1;
@@ -60,18 +60,20 @@
             // 
             this.txt_login.Location = new System.Drawing.Point(94, 25);
             this.txt_login.Name = "txt_login";
-            this.txt_login.Size = new System.Drawing.Size(100, 20);
+            this.txt_login.Size = new System.Drawing.Size(176, 20);
             this.txt_login.TabIndex = 2;
             // 
             // txt_password
             // 
-            this.txt_password.Location = new System.Drawing.Point(94, 62);
+            this.txt_password.Location = new System.Drawing.Point(94, 51);
             this.txt_password.Name = "txt_password";
-            this.txt_password.Size = new System.Drawing.Size(100, 20);
+            this.txt_password.Size = new System.Drawing.Size(176, 20);
             this.txt_password.TabIndex = 3;
+            this.txt_password.UseSystemPasswordChar = true;
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.Connexion);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txt_password);
@@ -79,16 +81,16 @@
             this.groupBox1.Controls.Add(this.txt_login);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 125);
+            this.groupBox1.Size = new System.Drawing.Size(333, 113);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Votre Identité";
+            this.groupBox1.Text = "Authentification";
             // 
             // Connexion
             // 
-            this.Connexion.Location = new System.Drawing.Point(94, 89);
+            this.Connexion.Location = new System.Drawing.Point(94, 77);
             this.Connexion.Name = "Connexion";
-            this.Connexion.Size = new System.Drawing.Size(75, 23);
+            this.Connexion.Size = new System.Drawing.Size(108, 30);
             this.Connexion.TabIndex = 4;
             this.Connexion.Text = "Connexion";
             this.Connexion.UseVisualStyleBackColor = true;
@@ -97,7 +99,7 @@
             // linkLabel_Inscription
             // 
             this.linkLabel_Inscription.AutoSize = true;
-            this.linkLabel_Inscription.Location = new System.Drawing.Point(18, 140);
+            this.linkLabel_Inscription.Location = new System.Drawing.Point(12, 128);
             this.linkLabel_Inscription.Name = "linkLabel_Inscription";
             this.linkLabel_Inscription.Size = new System.Drawing.Size(55, 13);
             this.linkLabel_Inscription.TabIndex = 5;
@@ -107,13 +109,21 @@
             // 
             // FormAuthentification
             // 
+            this.AcceptButton = this.Connexion;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(223, 178);
+            this.BackgroundImage = global::Cplus.Properties.Resources.Logo_C_;
+            this.CancelButton = this.linkLabel_Inscription;
+            this.ClientSize = new System.Drawing.Size(389, 148);
             this.Controls.Add(this.linkLabel_Inscription);
             this.Controls.Add(this.groupBox1);
+            this.DoubleBuffered = true;
+            this.HelpButton = true;
             this.Name = "FormAuthentification";
-            this.Text = "Authentification ..";
+            this.Opacity = 0.95D;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Compétence plus";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.FormAuthentification_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

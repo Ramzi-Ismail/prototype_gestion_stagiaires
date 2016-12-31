@@ -1,13 +1,13 @@
-﻿using AppGestionStagiaires.GestionFormateurs;
-using AppGestionStagiaires.GestionStagiaires;
-using Entites;
+﻿using Cplus.Entites;
+using Cplus.GestionFormateurs;
+using Cplus.GestionStagiaires;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AppGestionStagiaires.Authentification
+namespace Cplus.Authentification
 {
     public class Authentification
     {

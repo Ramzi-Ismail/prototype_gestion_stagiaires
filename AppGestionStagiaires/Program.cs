@@ -1,5 +1,5 @@
-﻿using AppGestionStagiaires.Authentification;
-using AppGestionStagiaires.Migrations;
+﻿using Cplus.Authentification;
+using Cplus.Migrations;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AppGestionStagiaires
+namespace Cplus
 {
     static class Program
     {
@@ -33,7 +33,7 @@ namespace AppGestionStagiaires
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormAuthentification());
+            Application.Run(new FormMenu());
         }
     }
 }
