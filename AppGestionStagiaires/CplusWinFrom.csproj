@@ -71,6 +71,13 @@
     <Compile Include="GestionStagiaires\FormGestionGroupes.Designer.cs">
       <DependentUpon>FormGestionGroupes.cs</DependentUpon>
     </Compile>
+    <Compile Include="GestionStagiaires\Stagiaires\GridStagiaireUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GestionStagiaires\Stagiaires\GridStagiaireUC.Designer.cs">
+      <DependentUpon>GridStagiaireUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionStagiaires\Stagiaires\StagiairesService.cs" />
     <Compile Include="Helpers\FormBindingNabigatorHelper.cs" />
     <Compile Include="Menu\FormMenuStagiaire.cs">
       <SubType>Form</SubType>
@@ -134,23 +141,13 @@
     <Compile Include="GestionStagiaires\Stagiaires\FormStagiaireUC.Designer.cs">
       <DependentUpon>FormStagiaireUC.cs</DependentUpon>
     </Compile>
-<<<<<<< HEAD:AppGestionStagiaires/AppGestionStagiaires.csproj
     <Compile Include="GestionStagiaires\FormUpdateProfile.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GestionStagiaires\FormUpdateProfile.Designer.cs">
       <DependentUpon>FormUpdateProfile.cs</DependentUpon>
     </Compile>
-    <Compile Include="GestionStagiaires\GridStagiaireUC.cs">
-=======
-    <Compile Include="GestionStagiaires\Stagiaires\GridStagiaireUC.cs">
->>>>>>> origin/master:AppGestionStagiaires/CplusWinFrom.csproj
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GestionStagiaires\Stagiaires\GridStagiaireUC.Designer.cs">
-      <DependentUpon>GridStagiaireUC.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GestionStagiaires\Stagiaires\StagiairesService.cs" />
+
     <Compile Include="Data\Migrations\Configuration.cs" />
     <Compile Include="Data\ModelStagiaires.cs" />
     <Compile Include="Program.cs" />
@@ -163,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GestionStagiaires\FormGestionGroupes.resx">
       <DependentUpon>FormGestionGroupes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionStagiaires\Stagiaires\GridStagiaireUC.resx">
+      <DependentUpon>GridStagiaireUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu\FormMenuStagiaire.resx">
       <DependentUpon>FormMenuStagiaire.cs</DependentUpon>
@@ -185,15 +185,8 @@
     <EmbeddedResource Include="GestionStagiaires\Stagiaires\FormStagiaireUC.resx">
       <DependentUpon>FormStagiaireUC.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< HEAD:AppGestionStagiaires/AppGestionStagiaires.csproj
     <EmbeddedResource Include="GestionStagiaires\FormUpdateProfile.resx">
       <DependentUpon>FormUpdateProfile.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GestionStagiaires\GridStagiaireUC.resx">
-=======
-    <EmbeddedResource Include="GestionStagiaires\Stagiaires\GridStagiaireUC.resx">
->>>>>>> origin/master:AppGestionStagiaires/CplusWinFrom.csproj
-      <DependentUpon>GridStagiaireUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -241,11 +234,8 @@
     <None Include="Resources\Logo C+.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
   <Target Name="AfterBuild">
   </Target>
-  -->
 </Project>

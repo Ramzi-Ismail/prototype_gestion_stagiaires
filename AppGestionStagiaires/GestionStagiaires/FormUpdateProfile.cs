@@ -1,4 +1,6 @@
-﻿using Entites;
+﻿using Cplus.Authentification;
+using Cplus.Entites;
+using Cplus.GestionStagiaires;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,7 +25,7 @@ namespace AppGestionStagiaires.GestionStagiaires
         private void FormUpdateProfile_Load(object sender, EventArgs e)
         {
             this.Controls.Add(formStagiaire);
-            formStagiaire.Stagiaire =(Stagiaire) Authentification.Authentification.user;
+            formStagiaire.Stagiaire =(Stagiaire) Authentification.user;
             formStagiaire.AfficherStagiaire();
             formStagiaire.EnregistrerClick += FormStagiaire_EnregistrerClick;
             formStagiaire.AnnulerClick += FormStagiaire_AnnulerClick;
