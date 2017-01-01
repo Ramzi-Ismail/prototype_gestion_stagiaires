@@ -59,6 +59,19 @@
   <ItemGroup>
     <Compile Include="Authentification\Authentification.cs" />
     <Compile Include="Data\Abstracts\IBaseRepository.cs" />
+    <Compile Include="Entites\GestionStagiaires\Individu.cs" />
+    <Compile Include="GestionStagiaires\Formateurs\FormateurFormUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GestionStagiaires\Formateurs\FormateurFormUC.Designer.cs">
+      <DependentUpon>FormateurFormUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionStagiaires\Formateurs\FormateurGrideUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GestionStagiaires\Formateurs\FormateurGrideUC.Designer.cs">
+      <DependentUpon>FormateurGrideUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="GestionStagiaires\FormGestionFilieres.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +91,18 @@
       <DependentUpon>GridStagiaireUC.cs</DependentUpon>
     </Compile>
     <Compile Include="GestionStagiaires\Stagiaires\StagiairesService.cs" />
+    <Compile Include="Gestion\BaseFormUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gestion\BaseGridUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gestion\FormGestion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gestion\FormGestion.Designer.cs">
+      <DependentUpon>FormGestion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\FormBindingNabigatorHelper.cs" />
     <Compile Include="Menu\FormMenuStagiaire.cs">
       <SubType>Form</SubType>
@@ -147,13 +172,18 @@
     <Compile Include="GestionStagiaires\FormUpdateProfile.Designer.cs">
       <DependentUpon>FormUpdateProfile.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Data\Migrations\Configuration.cs" />
     <Compile Include="Data\ModelStagiaires.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Authentification\FormAuthentification.resx">
       <DependentUpon>FormAuthentification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionStagiaires\Formateurs\FormateurFormUC.resx">
+      <DependentUpon>FormateurFormUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionStagiaires\Formateurs\FormateurGrideUC.resx">
+      <DependentUpon>FormateurGrideUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GestionStagiaires\FormGestionFilieres.resx">
       <DependentUpon>FormGestionFilieres.cs</DependentUpon>
@@ -163,6 +193,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GestionStagiaires\Stagiaires\GridStagiaireUC.resx">
       <DependentUpon>GridStagiaireUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gestion\BaseFormUC.resx">
+      <DependentUpon>BaseFormUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gestion\FormGestion.resx">
+      <DependentUpon>FormGestion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu\FormMenuStagiaire.resx">
       <DependentUpon>FormMenuStagiaire.cs</DependentUpon>

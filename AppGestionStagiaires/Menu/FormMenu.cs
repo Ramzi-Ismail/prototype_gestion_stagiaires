@@ -1,5 +1,7 @@
-﻿using Cplus.GestionProjets;
+﻿using Cplus.Gestion;
+using Cplus.GestionProjets;
 using Cplus.GestionStagiaires;
+using Cplus.GestionStagiaires.Formateurs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -60,6 +62,19 @@ namespace Cplus
         private void gérerLesFilieresToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.AfficherForm(new FormGestionFilieres());
+        }
+
+        private void editerGénériqueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormGestion<FormStagiaireUC> f = new FormGestion<FormStagiaireUC>("Stagiaires", new GridStagiaireUC());
+            this.AfficherForm(f);
+
+        }
+
+        private void formateursToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormGestion<FormateurFormUC> f = new FormGestion<FormateurFormUC>("Formateurs", new FormateurGrideUC());
+            this.AfficherForm(f);
         }
     }
 }

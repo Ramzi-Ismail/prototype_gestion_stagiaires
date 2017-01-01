@@ -8,6 +8,6 @@ namespace Cplus.Entites
 {
     public class Formateur: Utilisateur
     {
-
+        public virtual Filiere Filiere { set; get; }
     }
 }

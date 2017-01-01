@@ -6,18 +6,7 @@ namespace Cplus.Entites
 { 
    public class Stagiaire : Utilisateur {
 
-        // Etat Civil
-        public String Nom { set; get; }
-        public String Prenom { set; get; }
-        public DateTime DateNaissance { set; get; }
-        public bool Sexe { set; get; }
-        public String Cin { set; get; }
-        public String ProfilImage { set; get; }
-
-        // Coordonnées
-        public String Email { set; get; }
-        public String Telephone { set; get; }
-        public String Adress { set; get; }
+        
 
 
 

@@ -27,7 +27,7 @@ namespace Cplus
             this.gridStagiaire.Actualiser();
 
             // événement Supprimer et Editer sur la liste des stagiaires
-            gridStagiaire.EditerStagiaireEvent += GridStagiaire_EditerStagiaireEvent;
+            gridStagiaire.EditerEvent += GridStagiaire_EditerStagiaireEvent;
         }
        
 
@@ -38,7 +38,7 @@ namespace Cplus
 
         private void GridStagiaire_EditerStagiaireEvent(object sender, EventArgs e)
         {
-            Stagiaire stagiaire = gridStagiaire.Current;
+            Stagiaire stagiaire =(Stagiaire) gridStagiaire.Current();
             string tabEditerName = "TabEditer-" + stagiaire.Id;
 
             if (tabControlStagiaires.TabPages.IndexOfKey(tabEditerName) == -1)
@@ -53,8 +53,8 @@ namespace Cplus
                 // Insertion du formulaire 
                 FormStagiaireUC stagiaireForm = new FormStagiaireUC();
                 stagiaireForm.Name = "stagiaireForm";
-                stagiaireForm.Stagiaire = stagiaire;
-                stagiaireForm.AfficherStagiaire();
+                stagiaireForm.Entity = stagiaire;
+                stagiaireForm.Afficher();
                 this.tabControlStagiaires.TabPages[tabEditerName].Controls.Add(stagiaireForm);
                 stagiaireForm.EnregistrerClick += StagiaireForm_EditerClick;
                 stagiaireForm.AnnulerClick += StagiaireForm_AnnulerEditerClick;
@@ -64,19 +64,9 @@ namespace Cplus
         private void StagiaireForm_EditerClick(object sender, EventArgs e)
         {
             FormStagiaireUC formStagiaire = (FormStagiaireUC)sender;
-            Stagiaire stagiaire = formStagiaire.Stagiaire;
+            Stagiaire stagiaire =(Stagiaire) formStagiaire.Entity;
             string tabEditerName = "TabEditer-" + stagiaire.Id;
             TabPage tabEditer = this.tabControlStagiaires.TabPages[tabEditerName];
-
-            if(new StagiairesService().Save(stagiaire) > 0)
-            {
-                MessageBox.Show("Le Stagiaire :" + stagiaire.ToString() + " a été bien enregistrer");
-            }
-            else
-            {
-                MessageBox.Show("Le Stagiaire :" + stagiaire.ToString() + " n'est pas enregistrer car il n'y a pas des modifications");
-            }
-            
 
             // Suppression de la page Editer
             this.tabControlStagiaires.TabPages.Remove(tabEditer);
@@ -88,7 +78,7 @@ namespace Cplus
         private void StagiaireForm_AnnulerEditerClick(object sender, EventArgs e)
         {
             FormStagiaireUC formStagiaire = (FormStagiaireUC)sender;
-            Stagiaire stagiaire = formStagiaire.Stagiaire;
+            Stagiaire stagiaire =(Stagiaire) formStagiaire.Entity;
             string tabEditerName = "TabEditer-" + stagiaire.Id;
             TabPage tabEditer = this.tabControlStagiaires.TabPages[tabEditerName];
             tabControlStagiaires.TabPages.Remove(tabEditer);
@@ -125,16 +115,6 @@ namespace Cplus
             TabPage tabAjouter = this.tabControlStagiaires.TabPages["TabAjouter"];
             FormStagiaireUC form = (FormStagiaireUC)tabAjouter.Controls
                 .Find("stagiaireForm", false).First();
-
-            if (new StagiairesService().Save(form.Stagiaire) > 0)
-            {
-                MessageBox.Show("Le Stagiaire :" + form.Stagiaire.ToString() + " a été bien enregistrer");
-            }
-            else
-            {
-                MessageBox.Show("Le Stagiaire :" + form.Stagiaire.ToString() + " n'est pas enregistrer");
-            }
-
             this.tabControlStagiaires.TabPages.Remove(tabAjouter);
             this.gridStagiaire.Actualiser();
         }
