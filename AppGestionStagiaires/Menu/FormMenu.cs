@@ -61,5 +61,20 @@ namespace Cplus
         {
             this.AfficherForm(new FormGestionFilieres());
         }
+
+        private void gérerLesTâchesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.AfficherForm(new FormGestionTaches());
+        }
+
+        private void affecterTâcheÀUnStagiaireToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.AfficherForm(new FormAffecterTachesAuxStagiaires());
+        }
+
+        private void affecterTâcheÀUnMiniGroupeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.AfficherForm(new FormAffecterTachesAuMiniGroupe());
+        }
     }
 }

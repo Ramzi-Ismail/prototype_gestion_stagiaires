@@ -59,16 +59,40 @@
   <ItemGroup>
     <Compile Include="Authentification\Authentification.cs" />
     <Compile Include="Data\Abstracts\IBaseRepository.cs" />
-    <Compile Include="GestionStagiaires\FormGestionFilieres.cs">
+    <Compile Include="GestionProjets\FormAffecterTachesAuMiniGroupe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GestionStagiaires\FormGestionFilieres.Designer.cs">
+    <Compile Include="GestionProjets\FormAffecterTachesAuMiniGroupe.Designer.cs">
+      <DependentUpon>FormAffecterTachesAuMiniGroupe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionProjets\FormAffecterTachesAuxStagiaires.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionProjets\FormAffecterTachesAuxStagiaires.Designer.cs">
+      <DependentUpon>FormAffecterTachesAuxStagiaires.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionProjets\FormGestionTaches.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionProjets\FormGestionTaches.Designer.cs">
+      <DependentUpon>FormGestionTaches.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionStagiaires\MiniGroupes\FormAffecterStagiairesAuMiniGroupe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionStagiaires\MiniGroupes\FormAffecterStagiairesAuMiniGroupe.Designer.cs">
+      <DependentUpon>FormAffecterStagiairesAuMiniGroupe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionStagiaires\Filieres\FormGestionFilieres.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionStagiaires\Filieres\FormGestionFilieres.Designer.cs">
       <DependentUpon>FormGestionFilieres.cs</DependentUpon>
     </Compile>
-    <Compile Include="GestionStagiaires\FormGestionGroupes.cs">
+    <Compile Include="GestionStagiaires\Groupes\FormGestionGroupes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GestionStagiaires\FormGestionGroupes.Designer.cs">
+    <Compile Include="GestionStagiaires\Groupes\FormGestionGroupes.Designer.cs">
       <DependentUpon>FormGestionGroupes.cs</DependentUpon>
     </Compile>
     <Compile Include="GestionStagiaires\Stagiaires\GridStagiaireUC.cs">
@@ -141,13 +165,12 @@
     <Compile Include="GestionStagiaires\Stagiaires\FormStagiaireUC.Designer.cs">
       <DependentUpon>FormStagiaireUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="GestionStagiaires\FormUpdateProfile.cs">
+    <Compile Include="GestionStagiaires\Stagiaires\FormUpdateProfile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GestionStagiaires\FormUpdateProfile.Designer.cs">
+    <Compile Include="GestionStagiaires\Stagiaires\FormUpdateProfile.Designer.cs">
       <DependentUpon>FormUpdateProfile.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Data\Migrations\Configuration.cs" />
     <Compile Include="Data\ModelStagiaires.cs" />
     <Compile Include="Program.cs" />
@@ -155,10 +178,19 @@
     <EmbeddedResource Include="Authentification\FormAuthentification.resx">
       <DependentUpon>FormAuthentification.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GestionStagiaires\FormGestionFilieres.resx">
+    <EmbeddedResource Include="GestionProjets\FormAffecterTachesAuMiniGroupe.resx">
+      <DependentUpon>FormAffecterTachesAuMiniGroupe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionProjets\FormAffecterTachesAuxStagiaires.resx">
+      <DependentUpon>FormAffecterTachesAuxStagiaires.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionStagiaires\Filieres\FormGestionFilieres.resx">
       <DependentUpon>FormGestionFilieres.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GestionStagiaires\FormGestionGroupes.resx">
+    <EmbeddedResource Include="GestionStagiaires\MiniGroupes\FormAffecterStagiairesAuMiniGroupe.resx">
+      <DependentUpon>FormAffecterStagiairesAuMiniGroupe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionStagiaires\Groupes\FormGestionGroupes.resx">
       <DependentUpon>FormGestionGroupes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GestionStagiaires\Stagiaires\GridStagiaireUC.resx">
@@ -185,7 +217,7 @@
     <EmbeddedResource Include="GestionStagiaires\Stagiaires\FormStagiaireUC.resx">
       <DependentUpon>FormStagiaireUC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GestionStagiaires\FormUpdateProfile.resx">
+    <EmbeddedResource Include="GestionStagiaires\Stagiaires\FormUpdateProfile.resx">
       <DependentUpon>FormUpdateProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

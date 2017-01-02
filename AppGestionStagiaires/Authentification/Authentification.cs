@@ -12,6 +12,10 @@ namespace Cplus.Authentification
     public class Authentification
     {
         public static Utilisateur user;
+
+
+        public static Filiere filiere;
+        public static Groupe groupe;
         public Utilisateur Connexion(string login, string password)
         {
             Utilisateur user = new StagiairesService().GetAll(0, 0, (s => s.Login == login && s.Password == password)).SingleOrDefault();

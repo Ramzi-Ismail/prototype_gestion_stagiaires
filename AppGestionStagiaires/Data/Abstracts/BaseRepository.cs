@@ -104,7 +104,7 @@ namespace Cplus
         //    this.Context.Entry(item).State = EntityState.Modified;
         //    return this.Context.SaveChanges();
         //}
-        public int Update(T item)
+        private int Update(T item)
         {
             var original = DbSet.Find(item.Id);
 
