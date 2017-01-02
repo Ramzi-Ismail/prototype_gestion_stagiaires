@@ -8,31 +8,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Cplus.Entites;
+using Cplus.Gestion;
 
 namespace Cplus.GestionStagiaires
 {
-    public partial class GridStagiaireUC : UserControl
+    public partial class GridStagiaireUC : BaseGridUC
     {
         public GridStagiaireUC()
         {
             InitializeComponent();
+         
         }
 
-        //événements
-        public event EventHandler EditerStagiaireEvent;
+        
 
-        /// <summary>
-        /// Obient le stagiaire séléctionner
-        /// </summary>
-        public Stagiaire Current
+       
+        public override BaseEntity Current()
         {
-            get
-            {
-                return (Stagiaire)stagiaireBindingSource.Current;
-            }
+            return (Stagiaire) stagiaireBindingSource.Current;
         }
 
-        public void Actualiser()
+        public override void Actualiser()
         {
             stagiaireBindingSource.Clear();
             stagiaireBindingSource.DataSource = new StagiairesService().GetAll();
@@ -62,8 +58,7 @@ namespace Cplus.GestionStagiaires
             // Editer
             if (e.ColumnIndex == dataGridViewStagiaires.Columns["Editer"].Index && e.RowIndex >= 0)
             {
-
-                EditerStagiaireEvent(sender, e);
+                onEditerEvent(sender, e);
             }
         }
 

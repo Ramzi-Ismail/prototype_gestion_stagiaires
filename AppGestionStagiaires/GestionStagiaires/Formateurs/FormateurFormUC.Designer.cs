@@ -1,6 +1,6 @@
-﻿namespace Cplus.GestionStagiaires
+﻿namespace Cplus.GestionStagiaires.Formateurs
 {
-    partial class FormStagiaireUC
+    partial class FormateurFormUC
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label adressLabel;
             System.Windows.Forms.Label cinLabel;
             System.Windows.Forms.Label dateNaissanceLabel;
-            System.Windows.Forms.Label emailLabel;
             System.Windows.Forms.Label nomLabel;
             System.Windows.Forms.Label prenomLabel;
+            System.Windows.Forms.Label adressLabel;
             System.Windows.Forms.Label telephoneLabel;
+            System.Windows.Forms.Label emailLabel;
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.radioButtonFamme = new System.Windows.Forms.RadioButton();
@@ -44,19 +44,10 @@
             this.dateNaissanceDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.nomTextBox = new System.Windows.Forms.TextBox();
             this.prenomTextBox = new System.Windows.Forms.TextBox();
-            this.bt_annuler = new System.Windows.Forms.Button();
-            this.Combo_groupe = new System.Windows.Forms.ComboBox();
-            this.groupeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.br_enregistrer = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.adressTextBox = new System.Windows.Forms.TextBox();
-            this.emailTextBox = new System.Windows.Forms.TextBox();
-            this.telephoneTextBox = new System.Windows.Forms.TextBox();
-            this.Combo_Filiere = new System.Windows.Forms.ComboBox();
-            this.filiereBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label1 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.adressTextBox = new System.Windows.Forms.TextBox();
+            this.telephoneTextBox = new System.Windows.Forms.TextBox();
+            this.emailTextBox = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txt_password2 = new System.Windows.Forms.TextBox();
@@ -64,30 +55,26 @@
             this.txt_password = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txt_login = new System.Windows.Forms.TextBox();
-            adressLabel = new System.Windows.Forms.Label();
+            this.bt_annuler = new System.Windows.Forms.Button();
+            this.br_enregistrer = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.Combo_Filiere = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.filiereBindingSource = new System.Windows.Forms.BindingSource(this.components);
             cinLabel = new System.Windows.Forms.Label();
             dateNaissanceLabel = new System.Windows.Forms.Label();
-            emailLabel = new System.Windows.Forms.Label();
             nomLabel = new System.Windows.Forms.Label();
             prenomLabel = new System.Windows.Forms.Label();
+            adressLabel = new System.Windows.Forms.Label();
             telephoneLabel = new System.Windows.Forms.Label();
+            emailLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupeBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filiereBindingSource)).BeginInit();
-            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.filiereBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // adressLabel
-            // 
-            adressLabel.AutoSize = true;
-            adressLabel.Location = new System.Drawing.Point(6, 83);
-            adressLabel.Name = "adressLabel";
-            adressLabel.Size = new System.Drawing.Size(42, 13);
-            adressLabel.TabIndex = 8;
-            adressLabel.Text = "Adress:";
             // 
             // cinLabel
             // 
@@ -107,15 +94,6 @@
             dateNaissanceLabel.TabIndex = 12;
             dateNaissanceLabel.Text = "Date Naissance:";
             // 
-            // emailLabel
-            // 
-            emailLabel.AutoSize = true;
-            emailLabel.Location = new System.Drawing.Point(6, 57);
-            emailLabel.Name = "emailLabel";
-            emailLabel.Size = new System.Drawing.Size(35, 13);
-            emailLabel.TabIndex = 14;
-            emailLabel.Text = "Email:";
-            // 
             // nomLabel
             // 
             nomLabel.AutoSize = true;
@@ -134,6 +112,15 @@
             prenomLabel.TabIndex = 22;
             prenomLabel.Text = "Prenom:";
             // 
+            // adressLabel
+            // 
+            adressLabel.AutoSize = true;
+            adressLabel.Location = new System.Drawing.Point(6, 83);
+            adressLabel.Name = "adressLabel";
+            adressLabel.Size = new System.Drawing.Size(42, 13);
+            adressLabel.TabIndex = 8;
+            adressLabel.Text = "Adress:";
+            // 
             // telephoneLabel
             // 
             telephoneLabel.AutoSize = true;
@@ -142,6 +129,15 @@
             telephoneLabel.Size = new System.Drawing.Size(61, 13);
             telephoneLabel.TabIndex = 28;
             telephoneLabel.Text = "Telephone:";
+            // 
+            // emailLabel
+            // 
+            emailLabel.AutoSize = true;
+            emailLabel.Location = new System.Drawing.Point(6, 57);
+            emailLabel.Name = "emailLabel";
+            emailLabel.Size = new System.Drawing.Size(35, 13);
+            emailLabel.TabIndex = 14;
+            emailLabel.Text = "Email:";
             // 
             // groupBox1
             // 
@@ -157,10 +153,9 @@
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(322, 214);
-            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Etat civil";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // groupBox4
             // 
@@ -215,7 +210,6 @@
             this.nomTextBox.Name = "nomTextBox";
             this.nomTextBox.Size = new System.Drawing.Size(200, 20);
             this.nomTextBox.TabIndex = 21;
-            this.nomTextBox.TextChanged += new System.EventHandler(this.nomTextBox_TextChanged);
             // 
             // prenomTextBox
             // 
@@ -223,109 +217,6 @@
             this.prenomTextBox.Name = "prenomTextBox";
             this.prenomTextBox.Size = new System.Drawing.Size(200, 20);
             this.prenomTextBox.TabIndex = 23;
-            // 
-            // bt_annuler
-            // 
-            this.bt_annuler.Location = new System.Drawing.Point(86, 386);
-            this.bt_annuler.Name = "bt_annuler";
-            this.bt_annuler.Size = new System.Drawing.Size(75, 23);
-            this.bt_annuler.TabIndex = 8;
-            this.bt_annuler.Text = "Annuler";
-            this.bt_annuler.UseVisualStyleBackColor = true;
-            this.bt_annuler.Click += new System.EventHandler(this.bt_annuler_Click);
-            // 
-            // Combo_groupe
-            // 
-            this.Combo_groupe.DataSource = this.groupeBindingSource;
-            this.Combo_groupe.DisplayMember = "Nom";
-            this.Combo_groupe.FormattingEnabled = true;
-            this.Combo_groupe.Location = new System.Drawing.Point(98, 28);
-            this.Combo_groupe.Name = "Combo_groupe";
-            this.Combo_groupe.Size = new System.Drawing.Size(200, 21);
-            this.Combo_groupe.TabIndex = 0;
-            this.Combo_groupe.ValueMember = "Id";
-            // 
-            // groupeBindingSource
-            // 
-            this.groupeBindingSource.DataSource = typeof(Cplus.Entites.Groupe);
-            // 
-            // br_enregistrer
-            // 
-            this.br_enregistrer.Location = new System.Drawing.Point(5, 386);
-            this.br_enregistrer.Name = "br_enregistrer";
-            this.br_enregistrer.Size = new System.Drawing.Size(75, 23);
-            this.br_enregistrer.TabIndex = 7;
-            this.br_enregistrer.Text = "Enregistrer";
-            this.br_enregistrer.UseVisualStyleBackColor = true;
-            this.br_enregistrer.Click += new System.EventHandler(this.br_enregistrer_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 31);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Groupe";
-            // 
-            // adressTextBox
-            // 
-            this.adressTextBox.Location = new System.Drawing.Point(98, 80);
-            this.adressTextBox.Multiline = true;
-            this.adressTextBox.Name = "adressTextBox";
-            this.adressTextBox.Size = new System.Drawing.Size(200, 148);
-            this.adressTextBox.TabIndex = 9;
-            // 
-            // emailTextBox
-            // 
-            this.emailTextBox.Location = new System.Drawing.Point(98, 54);
-            this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(200, 20);
-            this.emailTextBox.TabIndex = 15;
-            // 
-            // telephoneTextBox
-            // 
-            this.telephoneTextBox.Location = new System.Drawing.Point(98, 28);
-            this.telephoneTextBox.Name = "telephoneTextBox";
-            this.telephoneTextBox.Size = new System.Drawing.Size(200, 20);
-            this.telephoneTextBox.TabIndex = 29;
-            // 
-            // Combo_Filiere
-            // 
-            this.Combo_Filiere.DataSource = this.filiereBindingSource;
-            this.Combo_Filiere.DisplayMember = "Code";
-            this.Combo_Filiere.FormattingEnabled = true;
-            this.Combo_Filiere.Location = new System.Drawing.Point(98, 58);
-            this.Combo_Filiere.Name = "Combo_Filiere";
-            this.Combo_Filiere.Size = new System.Drawing.Size(200, 21);
-            this.Combo_Filiere.TabIndex = 30;
-            this.Combo_Filiere.ValueMember = "Id";
-            // 
-            // filiereBindingSource
-            // 
-            this.filiereBindingSource.DataSource = typeof(Cplus.Entites.Filiere);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 58);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 13);
-            this.label1.TabIndex = 31;
-            this.label1.Text = "Filiere";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.Combo_Filiere);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.Combo_groupe);
-            this.groupBox2.Location = new System.Drawing.Point(331, 3);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(321, 112);
-            this.groupBox2.TabIndex = 11;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Affectations";
             // 
             // groupBox3
             // 
@@ -335,12 +226,34 @@
             this.groupBox3.Controls.Add(this.telephoneTextBox);
             this.groupBox3.Controls.Add(this.emailTextBox);
             this.groupBox3.Controls.Add(emailLabel);
-            this.groupBox3.Location = new System.Drawing.Point(331, 121);
+            this.groupBox3.Location = new System.Drawing.Point(331, 3);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(321, 234);
-            this.groupBox3.TabIndex = 12;
+            this.groupBox3.TabIndex = 24;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Coordonnées";
+            // 
+            // adressTextBox
+            // 
+            this.adressTextBox.Location = new System.Drawing.Point(98, 80);
+            this.adressTextBox.Multiline = true;
+            this.adressTextBox.Name = "adressTextBox";
+            this.adressTextBox.Size = new System.Drawing.Size(200, 148);
+            this.adressTextBox.TabIndex = 9;
+            // 
+            // telephoneTextBox
+            // 
+            this.telephoneTextBox.Location = new System.Drawing.Point(98, 28);
+            this.telephoneTextBox.Name = "telephoneTextBox";
+            this.telephoneTextBox.Size = new System.Drawing.Size(200, 20);
+            this.telephoneTextBox.TabIndex = 29;
+            // 
+            // emailTextBox
+            // 
+            this.emailTextBox.Location = new System.Drawing.Point(98, 54);
+            this.emailTextBox.Name = "emailTextBox";
+            this.emailTextBox.Size = new System.Drawing.Size(200, 20);
+            this.emailTextBox.TabIndex = 15;
             // 
             // groupBox5
             // 
@@ -350,10 +263,10 @@
             this.groupBox5.Controls.Add(this.txt_password);
             this.groupBox5.Controls.Add(this.label4);
             this.groupBox5.Controls.Add(this.txt_login);
-            this.groupBox5.Location = new System.Drawing.Point(3, 223);
+            this.groupBox5.Location = new System.Drawing.Point(0, 223);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(322, 157);
-            this.groupBox5.TabIndex = 13;
+            this.groupBox5.Size = new System.Drawing.Size(325, 157);
+            this.groupBox5.TabIndex = 25;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Votre Identité";
             // 
@@ -405,31 +318,85 @@
             this.txt_login.Size = new System.Drawing.Size(164, 20);
             this.txt_login.TabIndex = 2;
             // 
-            // FormStagiaireUC
+            // bt_annuler
+            // 
+            this.bt_annuler.Location = new System.Drawing.Point(84, 386);
+            this.bt_annuler.Name = "bt_annuler";
+            this.bt_annuler.Size = new System.Drawing.Size(75, 23);
+            this.bt_annuler.TabIndex = 27;
+            this.bt_annuler.Text = "Annuler";
+            this.bt_annuler.UseVisualStyleBackColor = true;
+            this.bt_annuler.Click += new System.EventHandler(this.bt_annuler_Click);
+            // 
+            // br_enregistrer
+            // 
+            this.br_enregistrer.Location = new System.Drawing.Point(3, 386);
+            this.br_enregistrer.Name = "br_enregistrer";
+            this.br_enregistrer.Size = new System.Drawing.Size(75, 23);
+            this.br_enregistrer.TabIndex = 26;
+            this.br_enregistrer.Text = "Enregistrer";
+            this.br_enregistrer.UseVisualStyleBackColor = true;
+            this.br_enregistrer.Click += new System.EventHandler(this.br_enregistrer_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.Combo_Filiere);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Location = new System.Drawing.Point(340, 248);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(321, 112);
+            this.groupBox2.TabIndex = 28;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Affectations";
+            // 
+            // Combo_Filiere
+            // 
+            this.Combo_Filiere.DataSource = this.filiereBindingSource;
+            this.Combo_Filiere.DisplayMember = "Code";
+            this.Combo_Filiere.FormattingEnabled = true;
+            this.Combo_Filiere.Location = new System.Drawing.Point(89, 26);
+            this.Combo_Filiere.Name = "Combo_Filiere";
+            this.Combo_Filiere.Size = new System.Drawing.Size(200, 21);
+            this.Combo_Filiere.TabIndex = 30;
+            this.Combo_Filiere.ValueMember = "Id";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(34, 13);
+            this.label1.TabIndex = 31;
+            this.label1.Text = "Filiere";
+            // 
+            // filiereBindingSource
+            // 
+            this.filiereBindingSource.DataSource = typeof(Cplus.Entites.Filiere);
+            // 
+            // FormateurFormUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.bt_annuler);
             this.Controls.Add(this.br_enregistrer);
-            this.Name = "FormStagiaireUC";
-            this.Size = new System.Drawing.Size(659, 444);
-            this.Load += new System.EventHandler(this.FormStagiaireUC_Load);
+            this.Controls.Add(this.groupBox5);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox1);
+            this.Name = "FormateurFormUC";
+            this.Size = new System.Drawing.Size(693, 423);
+            this.Load += new System.EventHandler(this.FormateurFormUC_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupeBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filiereBindingSource)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.filiereBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -437,26 +404,17 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox Combo_groupe;
-        private System.Windows.Forms.Button br_enregistrer;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button bt_annuler;
-        private System.Windows.Forms.TextBox adressTextBox;
-        private System.Windows.Forms.TextBox cinTextBox;
-        private System.Windows.Forms.DateTimePicker dateNaissanceDateTimePicker;
-        private System.Windows.Forms.TextBox emailTextBox;
-        private System.Windows.Forms.TextBox nomTextBox;
-        private System.Windows.Forms.TextBox prenomTextBox;
-        private System.Windows.Forms.TextBox telephoneTextBox;
-        private System.Windows.Forms.ComboBox Combo_Filiere;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.RadioButton radioButtonFamme;
         private System.Windows.Forms.RadioButton radioButtonHomme;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox cinTextBox;
+        private System.Windows.Forms.DateTimePicker dateNaissanceDateTimePicker;
+        private System.Windows.Forms.TextBox nomTextBox;
+        private System.Windows.Forms.TextBox prenomTextBox;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.BindingSource groupeBindingSource;
-        private System.Windows.Forms.BindingSource filiereBindingSource;
+        private System.Windows.Forms.TextBox adressTextBox;
+        private System.Windows.Forms.TextBox telephoneTextBox;
+        private System.Windows.Forms.TextBox emailTextBox;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txt_password2;
@@ -464,5 +422,11 @@
         private System.Windows.Forms.TextBox txt_password;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txt_login;
+        private System.Windows.Forms.Button bt_annuler;
+        private System.Windows.Forms.Button br_enregistrer;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ComboBox Combo_Filiere;
+        private System.Windows.Forms.BindingSource filiereBindingSource;
+        private System.Windows.Forms.Label label1;
     }
 }

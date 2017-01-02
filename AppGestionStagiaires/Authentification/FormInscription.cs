@@ -24,7 +24,7 @@ namespace Cplus.GestionStagiaires
         private void StagiaireForm_EnregistrerClick(object sender, EventArgs e)
         {
             // Inscription d'un Stagiaire
-            Stagiaire s = StagiaireForm.Stagiaire;
+            Stagiaire s =(Stagiaire) StagiaireForm.Entity;
             new StagiairesService().Save(s);
             Authentification.Authentification.user = s;
             this.Hide();

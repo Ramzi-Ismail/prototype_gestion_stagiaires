@@ -31,19 +31,30 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.stagiairesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionStagiaires = new System.Windows.Forms.ToolStripMenuItem();
+
             this.miniGroupesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionDesProjetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tâchesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.affecterTâcheÀUnStagiaireToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.affecterTâcheÀUnMiniGroupeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+
+            this.editerGénériqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestionDesProjetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.affectationDesTâchesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.miniGroupesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tâchesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+
             this.projetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.etablissementDeFormationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gérerLesGroupesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.annéesDeFormationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.formateursToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gérerLesFilieresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+
             this.gérerLesProjetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gérerLesTâchesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+
+
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,7 +74,11 @@
             // 
             this.stagiairesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gestionStagiaires,
+
             this.miniGroupesToolStripMenuItem1});
+
+            this.editerGénériqueToolStripMenuItem});
+
             this.stagiairesToolStripMenuItem.Name = "stagiairesToolStripMenuItem";
             this.stagiairesToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.stagiairesToolStripMenuItem.Text = "Stagiaires";
@@ -71,6 +86,7 @@
             // gestionStagiaires
             // 
             this.gestionStagiaires.Name = "gestionStagiaires";
+
             this.gestionStagiaires.Size = new System.Drawing.Size(190, 22);
             this.gestionStagiaires.Text = "Gérer les Stagiaires";
             this.gestionStagiaires.Click += new System.EventHandler(this.gestionStagiaires_Click);
@@ -80,6 +96,18 @@
             this.miniGroupesToolStripMenuItem1.Name = "miniGroupesToolStripMenuItem1";
             this.miniGroupesToolStripMenuItem1.Size = new System.Drawing.Size(190, 22);
             this.miniGroupesToolStripMenuItem1.Text = "Gérer les MiniGroupes";
+
+            this.gestionStagiaires.Size = new System.Drawing.Size(173, 22);
+            this.gestionStagiaires.Text = "Editer les stagiaires";
+            this.gestionStagiaires.Click += new System.EventHandler(this.gestionStagiaires_Click);
+            // 
+            // editerGénériqueToolStripMenuItem
+            // 
+            this.editerGénériqueToolStripMenuItem.Name = "editerGénériqueToolStripMenuItem";
+            this.editerGénériqueToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.editerGénériqueToolStripMenuItem.Text = "Editer Générique";
+            this.editerGénériqueToolStripMenuItem.Click += new System.EventHandler(this.editerGénériqueToolStripMenuItem_Click);
+
             // 
             // gestionDesProjetsToolStripMenuItem
             // 
@@ -98,6 +126,12 @@
             this.tâchesToolStripMenuItem.Name = "tâchesToolStripMenuItem";
             this.tâchesToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.tâchesToolStripMenuItem.Text = "Affectation des tâches";
+
+            // affectationDesTâchesToolStripMenuItem
+            // 
+            this.affectationDesTâchesToolStripMenuItem.Name = "affectationDesTâchesToolStripMenuItem";
+            this.affectationDesTâchesToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.affectationDesTâchesToolStripMenuItem.Text = "Affectation des tâches";
             // 
             // affecterTâcheÀUnStagiaireToolStripMenuItem
             // 
@@ -106,6 +140,7 @@
             this.affecterTâcheÀUnStagiaireToolStripMenuItem.Text = "Affecter les tâches à un Stagiaire";
             this.affecterTâcheÀUnStagiaireToolStripMenuItem.Click += new System.EventHandler(this.affecterTâcheÀUnStagiaireToolStripMenuItem_Click);
             // 
+
             // affecterTâcheÀUnMiniGroupeToolStripMenuItem
             // 
             this.affecterTâcheÀUnMiniGroupeToolStripMenuItem.Name = "affecterTâcheÀUnMiniGroupeToolStripMenuItem";
@@ -121,6 +156,17 @@
             this.projetsToolStripMenuItem.Name = "projetsToolStripMenuItem";
             this.projetsToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.projetsToolStripMenuItem.Text = "Projets et Tâches";
+            // tâchesToolStripMenuItem
+            // 
+            this.tâchesToolStripMenuItem.Name = "tâchesToolStripMenuItem";
+            this.tâchesToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.tâchesToolStripMenuItem.Text = "Tâches";
+            // 
+            // projetsToolStripMenuItem
+            // 
+            this.projetsToolStripMenuItem.Name = "projetsToolStripMenuItem";
+            this.projetsToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.projetsToolStripMenuItem.Text = "Projets";
             this.projetsToolStripMenuItem.Click += new System.EventHandler(this.projetsToolStripMenuItem_Click);
             // 
             // etablissementDeFormationToolStripMenuItem
@@ -151,6 +197,14 @@
             this.formateursToolStripMenuItem.Name = "formateursToolStripMenuItem";
             this.formateursToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.formateursToolStripMenuItem.Text = "Formateurs";
+            this.formateursToolStripMenuItem.Click += new System.EventHandler(this.formateursToolStripMenuItem_Click);
+            // 
+            // gérerLesFilieresToolStripMenuItem
+            // 
+            this.gérerLesFilieresToolStripMenuItem.Name = "gérerLesFilieresToolStripMenuItem";
+            this.gérerLesFilieresToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.gérerLesFilieresToolStripMenuItem.Text = "Filieres";
+            this.gérerLesFilieresToolStripMenuItem.Click += new System.EventHandler(this.gérerLesFilieresToolStripMenuItem_Click);
             // 
             // gérerLesFilieresToolStripMenuItem
             // 
@@ -211,5 +265,6 @@
         private System.Windows.Forms.ToolStripMenuItem affecterTâcheÀUnMiniGroupeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gérerLesProjetsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gérerLesTâchesToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem editerGénériqueToolStripMenuItem;
     }
 }

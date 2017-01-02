@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Cplus.Entites
 {
-    public class Utilisateur: BaseEntity
+    public class Utilisateur: Individu
     {
         public static string ROLE_STAGIAIRE = "STAGIAIRE";
         public static string ROLE_ADMIN = "ADMIN";

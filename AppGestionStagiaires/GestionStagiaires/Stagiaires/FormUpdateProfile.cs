@@ -25,8 +25,8 @@ namespace AppGestionStagiaires.GestionStagiaires
         private void FormUpdateProfile_Load(object sender, EventArgs e)
         {
             this.Controls.Add(formStagiaire);
-            formStagiaire.Stagiaire =(Stagiaire) Authentification.user;
-            formStagiaire.AfficherStagiaire();
+            formStagiaire.Entity =(Stagiaire) Authentification.user;
+            formStagiaire.Afficher();
             formStagiaire.EnregistrerClick += FormStagiaire_EnregistrerClick;
             formStagiaire.AnnulerClick += FormStagiaire_AnnulerClick;
 
@@ -39,7 +39,7 @@ namespace AppGestionStagiaires.GestionStagiaires
 
         private void FormStagiaire_EnregistrerClick(object sender, EventArgs e)
         {
-            new StagiairesService().Save(formStagiaire.Stagiaire);
+            new StagiairesService().Save((Stagiaire) formStagiaire.Entity);
             this.Close();
         }
     }

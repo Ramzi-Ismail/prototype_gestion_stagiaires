@@ -7,72 +7,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Cplus.Entites;
-using Cplus.GestionGroupes;
 using Cplus.Gestion;
+using Cplus.Entites;
+using Cplus.GestionFormateurs;
 
-namespace Cplus.GestionStagiaires
+namespace Cplus.GestionStagiaires.Formateurs
 {
-    public partial class FormStagiaireUC : BaseFormUC
+    public partial class FormateurFormUC : BaseFormUC
     {
-        public FormStagiaireUC()
+        public FormateurFormUC()
         {
             InitializeComponent();
+        }
+
+        private void FormateurFormUC_Load(object sender, EventArgs e)
+        {
             // ces deux linge ont provoquer une erreur lors de l'insertion 
             // de user controler depuis la boite d'outils 
             // si il sont dans la méthode Load
             // Impossible de cérer le composant 
             //la chîne de connexion est introuvable dans le fichier de configuration de l'application
             filiereBindingSource.DataSource = new FilieresService().GetAll();
-            groupeBindingSource.DataSource = new GroupesService().GetAll();
+
         }
 
-
-
-
-        private void FormStagiaireUC_Load(object sender, EventArgs e)
-        {
-           
-        }
-
-        /// <summary>
-        /// Afficher l'objet stagiaire dans l'interface
-        /// </summary>
-        public override void Afficher()
-        {
-            Stagiaire Stagiaire = (Stagiaire)this.Entity;
-            // Etat civil
-            nomTextBox.Text = Stagiaire.Nom;
-            prenomTextBox.Text = Stagiaire.Prenom;
-            cinTextBox.Text = Stagiaire.Cin;
-            if (Stagiaire.Sexe)
-            {
-                radioButtonHomme.Checked = true;
-            }
-            else
-            {
-                  radioButtonFamme.Checked = true;
-            }
-            dateNaissanceDateTimePicker.Value = Stagiaire.DateNaissance;
-
-            // Coordonnées
-            telephoneTextBox.Text = Stagiaire.Telephone;
-            adressTextBox.Text = Stagiaire.Adress;
-            emailTextBox.Text = Stagiaire.Email;
-
-            // Affectation
-            Combo_Filiere.SelectedItem = Stagiaire.Filiere;
-            Combo_groupe.SelectedItem = Stagiaire.Groupe;
-        }
-
-        // Enregistrer ou Modifier un Stagiaire
         private void br_enregistrer_Click(object sender, EventArgs e)
         {
-            Stagiaire Stagiaire = (Stagiaire)this.Entity;
+            Formateur Stagiaire = (Formateur)this.Entity;
             bool validation = true;
 
             // Création d'un stagiaire en cas d'un nouvelle enregistrement
-            if (Stagiaire == null) Stagiaire = new Stagiaire();
+            if (Stagiaire == null) Stagiaire = new Formateur();
 
             // etat Civil
             Stagiaire.Nom = nomTextBox.Text;
@@ -81,7 +46,7 @@ namespace Cplus.GestionStagiaires
             Stagiaire.Sexe = radioButtonHomme.Checked;
             Stagiaire.DateNaissance = dateNaissanceDateTimePicker.Value;
 
-            
+
 
             //Coordonnées
             Stagiaire.Telephone = telephoneTextBox.Text;
@@ -89,8 +54,7 @@ namespace Cplus.GestionStagiaires
             Stagiaire.Email = emailTextBox.Text;
 
             //Affectation
-            if (Combo_groupe.SelectedItem != null)
-                Stagiaire.Groupe = (Groupe)Combo_groupe.SelectedItem;
+            
 
             if (Combo_Filiere.SelectedItem != null)
                 Stagiaire.Filiere = (Filiere)Combo_Filiere.SelectedItem;
@@ -103,7 +67,7 @@ namespace Cplus.GestionStagiaires
             // Lancement de l'événement Clic si la validation est correct
             if (validation)
             {
-                if (new StagiairesService().Save(Stagiaire) > 0)
+                if (new FormateursService().Save(Stagiaire) > 0)
                 {
                     MessageBox.Show("Le Stagiaire :" + Stagiaire.ToString() + " a été bien enregistrer");
                 }
@@ -121,15 +85,33 @@ namespace Cplus.GestionStagiaires
         {
             onAnnulerClick(this, e);
         }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
+        /// <summary>
+        /// Afficher l'objet formateur dans l'interface
+        /// </summary>
+        public override void Afficher()
         {
+            Formateur formateur = (Formateur)this.Entity;
+            // Etat civil
+            nomTextBox.Text = formateur.Nom;
+            prenomTextBox.Text = formateur.Prenom;
+            cinTextBox.Text = formateur.Cin;
+            if (formateur.Sexe)
+            {
+                radioButtonHomme.Checked = true;
+            }
+            else
+            {
+                radioButtonFamme.Checked = true;
+            }
+            dateNaissanceDateTimePicker.Value = formateur.DateNaissance;
 
-        }
+            // Coordonnées
+            telephoneTextBox.Text = formateur.Telephone;
+            adressTextBox.Text = formateur.Adress;
+            emailTextBox.Text = formateur.Email;
 
-        private void nomTextBox_TextChanged(object sender, EventArgs e)
-        {
-        
+            // Affectation
+            Combo_Filiere.SelectedItem = formateur.Filiere;
         }
     }
 }
