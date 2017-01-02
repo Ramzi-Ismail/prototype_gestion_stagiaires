@@ -1,4 +1,6 @@
-﻿namespace Cplus
+﻿using System.Windows.Forms;
+
+namespace Cplus
 {
     partial class FormMenu
     {
@@ -28,60 +30,79 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.stagiairesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gestionStagiaires = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1 = new MenuStrip();
+            this.stagiairesToolStripMenuItem = new ToolStripMenuItem();
+            this.gestionStagiaires = new ToolStripMenuItem();
 
-            this.miniGroupesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.gestionDesProjetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tâchesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.affecterTâcheÀUnStagiaireToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.affecterTâcheÀUnMiniGroupeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.miniGroupesToolStripMenuItem1 = new ToolStripMenuItem();
+            this.gestionDesProjetsToolStripMenuItem = new ToolStripMenuItem();
+            this.tâchesToolStripMenuItem = new ToolStripMenuItem();
+            this.affecterTâcheÀUnStagiaireToolStripMenuItem = new ToolStripMenuItem();
+            this.affecterTâcheÀUnMiniGroupeToolStripMenuItem = new ToolStripMenuItem();
 
-            this.editerGénériqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gestionDesProjetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.affectationDesTâchesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.miniGroupesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tâchesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editerGénériqueToolStripMenuItem = new ToolStripMenuItem();
 
-            this.projetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.etablissementDeFormationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gérerLesGroupesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.annéesDeFormationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.formateursToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gérerLesFilieresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.projetsToolStripMenuItem = new ToolStripMenuItem();
+            this.etablissementDeFormationToolStripMenuItem = new ToolStripMenuItem();
+            this.gérerLesGroupesToolStripMenuItem = new ToolStripMenuItem();
+            this.annéesDeFormationToolStripMenuItem = new ToolStripMenuItem();
+            this.formateursToolStripMenuItem = new ToolStripMenuItem();
+            this.gérerLesFilieresToolStripMenuItem = new ToolStripMenuItem();
 
-            this.gérerLesProjetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gérerLesTâchesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.gérerLesProjetsToolStripMenuItem = new ToolStripMenuItem();
+            this.gérerLesTâchesToolStripMenuItem1 = new ToolStripMenuItem();
 
-
+            // 
+            // FormMenu
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(657, 402);
+            this.Controls.Add(this.menuStrip1);
+            this.IsMdiContainer = true;
+            this.MainMenuStrip = this.menuStrip1;
+            this.Name = "FormMenu";
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.Text = "Application de gestion des stagiaires";
+            this.WindowState = FormWindowState.Maximized;
+            this.FormClosed += new FormClosedEventHandler(this.FormMenu_FormClosed);
+            this.Load += new System.EventHandler(this.FormMenu_Load);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
+
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStrip1.Items.AddRange(new ToolStripItem[] {
             this.stagiairesToolStripMenuItem,
             this.gestionDesProjetsToolStripMenuItem,
             this.etablissementDeFormationToolStripMenuItem});
+
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(657, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+
             // 
             // stagiairesToolStripMenuItem
             // 
-            this.stagiairesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stagiairesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] {
             this.gestionStagiaires,
 
             this.miniGroupesToolStripMenuItem1});
 
-            this.editerGénériqueToolStripMenuItem});
+         
 
             this.stagiairesToolStripMenuItem.Name = "stagiairesToolStripMenuItem";
             this.stagiairesToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.stagiairesToolStripMenuItem.Text = "Stagiaires";
+
+
             // 
             // gestionStagiaires
             // 
@@ -111,7 +132,7 @@
             // 
             // gestionDesProjetsToolStripMenuItem
             // 
-            this.gestionDesProjetsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gestionDesProjetsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] {
             this.tâchesToolStripMenuItem,
             this.projetsToolStripMenuItem});
             this.gestionDesProjetsToolStripMenuItem.Name = "gestionDesProjetsToolStripMenuItem";
@@ -120,18 +141,13 @@
             // 
             // tâchesToolStripMenuItem
             // 
-            this.tâchesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tâchesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] {
             this.affecterTâcheÀUnStagiaireToolStripMenuItem,
             this.affecterTâcheÀUnMiniGroupeToolStripMenuItem});
             this.tâchesToolStripMenuItem.Name = "tâchesToolStripMenuItem";
             this.tâchesToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.tâchesToolStripMenuItem.Text = "Affectation des tâches";
 
-            // affectationDesTâchesToolStripMenuItem
-            // 
-            this.affectationDesTâchesToolStripMenuItem.Name = "affectationDesTâchesToolStripMenuItem";
-            this.affectationDesTâchesToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.affectationDesTâchesToolStripMenuItem.Text = "Affectation des tâches";
             // 
             // affecterTâcheÀUnStagiaireToolStripMenuItem
             // 
@@ -150,7 +166,7 @@
             // 
             // projetsToolStripMenuItem
             // 
-            this.projetsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.projetsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] {
             this.gérerLesProjetsToolStripMenuItem,
             this.gérerLesTâchesToolStripMenuItem1});
             this.projetsToolStripMenuItem.Name = "projetsToolStripMenuItem";
@@ -171,7 +187,7 @@
             // 
             // etablissementDeFormationToolStripMenuItem
             // 
-            this.etablissementDeFormationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.etablissementDeFormationToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] {
             this.gérerLesGroupesToolStripMenuItem,
             this.annéesDeFormationToolStripMenuItem,
             this.formateursToolStripMenuItem,
@@ -225,46 +241,28 @@
             this.gérerLesTâchesToolStripMenuItem1.Size = new System.Drawing.Size(158, 22);
             this.gérerLesTâchesToolStripMenuItem1.Text = "Gérer les tâches";
             this.gérerLesTâchesToolStripMenuItem1.Click += new System.EventHandler(this.gérerLesTâchesToolStripMenuItem1_Click);
-            // 
-            // FormMenu
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(657, 402);
-            this.Controls.Add(this.menuStrip1);
-            this.IsMdiContainer = true;
-            this.MainMenuStrip = this.menuStrip1;
-            this.Name = "FormMenu";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Application de gestion des stagiaires";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMenu_FormClosed);
-            this.Load += new System.EventHandler(this.FormMenu_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+
 
         }
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem stagiairesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gestionStagiaires;
-        private System.Windows.Forms.ToolStripMenuItem gestionDesProjetsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem projetsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tâchesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem etablissementDeFormationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gérerLesGroupesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem annéesDeFormationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem formateursToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gérerLesFilieresToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem miniGroupesToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem affecterTâcheÀUnStagiaireToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem affecterTâcheÀUnMiniGroupeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gérerLesProjetsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gérerLesTâchesToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem editerGénériqueToolStripMenuItem;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem stagiairesToolStripMenuItem;
+        private ToolStripMenuItem gestionStagiaires;
+        private ToolStripMenuItem gestionDesProjetsToolStripMenuItem;
+        private ToolStripMenuItem projetsToolStripMenuItem;
+        private ToolStripMenuItem tâchesToolStripMenuItem;
+        private ToolStripMenuItem etablissementDeFormationToolStripMenuItem;
+        private ToolStripMenuItem gérerLesGroupesToolStripMenuItem;
+        private ToolStripMenuItem annéesDeFormationToolStripMenuItem;
+        private ToolStripMenuItem formateursToolStripMenuItem;
+        private ToolStripMenuItem gérerLesFilieresToolStripMenuItem;
+        private ToolStripMenuItem miniGroupesToolStripMenuItem1;
+        private ToolStripMenuItem affecterTâcheÀUnStagiaireToolStripMenuItem;
+        private ToolStripMenuItem affecterTâcheÀUnMiniGroupeToolStripMenuItem;
+        private ToolStripMenuItem gérerLesProjetsToolStripMenuItem;
+        private ToolStripMenuItem gérerLesTâchesToolStripMenuItem1;
+        private ToolStripMenuItem editerGénériqueToolStripMenuItem;
     }
 }

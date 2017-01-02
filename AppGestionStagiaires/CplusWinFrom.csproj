@@ -59,22 +59,8 @@
   <ItemGroup>
     <Compile Include="Authentification\Authentification.cs" />
     <Compile Include="Data\Abstracts\IBaseRepository.cs" />
-
-    <Compile Include="GestionProjets\FormAffecterTachesAuMiniGroupe.cs">
     <Compile Include="Entites\GestionStagiaires\Individu.cs" />
-    <Compile Include="GestionStagiaires\Formateurs\FormateurFormUC.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GestionStagiaires\Formateurs\FormateurFormUC.Designer.cs">
-      <DependentUpon>FormateurFormUC.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GestionStagiaires\Formateurs\FormateurGrideUC.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GestionStagiaires\Formateurs\FormateurGrideUC.Designer.cs">
-      <DependentUpon>FormateurGrideUC.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GestionStagiaires\FormGestionFilieres.cs">
+    <Compile Include="GestionProjets\FormAffecterTachesAuMiniGroupe.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GestionProjets\FormAffecterTachesAuMiniGroupe.Designer.cs">
@@ -91,6 +77,25 @@
     </Compile>
     <Compile Include="GestionProjets\FormGestionTaches.Designer.cs">
       <DependentUpon>FormGestionTaches.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionProjets\Projets\FormGestionProjets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionProjets\Projets\FormGestionProjets.Designer.cs">
+      <DependentUpon>FormGestionProjets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionProjets\Projets\ProjetsService.cs" />
+    <Compile Include="GestionStagiaires\Formateurs\FormateurFormUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GestionStagiaires\Formateurs\FormateurFormUC.Designer.cs">
+      <DependentUpon>FormateurFormUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionStagiaires\Formateurs\FormateurGrideUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GestionStagiaires\Formateurs\FormateurGrideUC.Designer.cs">
+      <DependentUpon>FormateurGrideUC.cs</DependentUpon>
     </Compile>
     <Compile Include="GestionStagiaires\MiniGroupes\FormAffecterStagiairesAuMiniGroupe.cs">
       <SubType>Form</SubType>
@@ -155,13 +160,6 @@
     <Compile Include="Entites\Authentification\Utilisateur.cs" />
     <Compile Include="GestionStagiaires\Filieres\FilieresService.cs" />
     <Compile Include="GestionStagiaires\Groupes\GroupesService.cs" />
-    <Compile Include="GestionProjets\Projets\FormGestionProjets.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GestionProjets\Projets\FormGestionProjets.Designer.cs">
-      <DependentUpon>FormGestionProjets.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GestionProjets\Projets\ProjetsService.cs" />
     <Compile Include="GestionStagiaires\Stagiaires\FormBinfingNavigator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,24 +203,20 @@
     <EmbeddedResource Include="Authentification\FormAuthentification.resx">
       <DependentUpon>FormAuthentification.cs</DependentUpon>
     </EmbeddedResource>
-
     <EmbeddedResource Include="GestionProjets\FormAffecterTachesAuMiniGroupe.resx">
       <DependentUpon>FormAffecterTachesAuMiniGroupe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GestionProjets\FormAffecterTachesAuxStagiaires.resx">
       <DependentUpon>FormAffecterTachesAuxStagiaires.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GestionStagiaires\Filieres\FormGestionFilieres.resx">
-
+    <EmbeddedResource Include="GestionProjets\Projets\FormGestionProjets.resx">
+      <DependentUpon>FormGestionProjets.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GestionStagiaires\Formateurs\FormateurFormUC.resx">
       <DependentUpon>FormateurFormUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GestionStagiaires\Formateurs\FormateurGrideUC.resx">
       <DependentUpon>FormateurGrideUC.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GestionStagiaires\FormGestionFilieres.resx">
-
-      <DependentUpon>FormGestionFilieres.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GestionStagiaires\MiniGroupes\FormAffecterStagiairesAuMiniGroupe.resx">
       <DependentUpon>FormAffecterStagiairesAuMiniGroupe.cs</DependentUpon>
@@ -241,9 +235,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Menu\FormMenuStagiaire.resx">
       <DependentUpon>FormMenuStagiaire.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GestionProjets\Projets\FormGestionProjets.resx">
-      <DependentUpon>FormGestionProjets.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GestionStagiaires\Stagiaires\FormBinfingNavigator.resx">
       <DependentUpon>FormBinfingNavigator.cs</DependentUpon>
@@ -304,6 +295,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="GestionProjets\Taches\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Logo C+.png" />
