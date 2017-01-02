@@ -1,5 +1,5 @@
-﻿using Cplus.GestionStagiaires;
-using Cplus.Entites;
+﻿using App.GestionStagiaires;
+using App.Entites;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Cplus.Authentification
+namespace App.Authentification
 {
     public partial class FormAuthentification : Form
     {
@@ -31,7 +31,7 @@ namespace Cplus.Authentification
 
             if (user != null)
             {
-                Authentification.user = user;
+                Session.user = user;
                 this.ShowMenu(user,this);
 
             }

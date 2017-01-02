@@ -1,4 +1,4 @@
-﻿namespace Cplus.Authentification
+﻿namespace App.Authentification
 {
     partial class FormAuthentification
     {
@@ -112,7 +112,6 @@
             this.AcceptButton = this.Connexion;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Cplus.Properties.Resources.Logo_C_;
             this.CancelButton = this.linkLabel_Inscription;
             this.ClientSize = new System.Drawing.Size(389, 148);
             this.Controls.Add(this.linkLabel_Inscription);

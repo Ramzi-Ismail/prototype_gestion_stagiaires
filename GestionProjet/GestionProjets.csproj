@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{83FFC91C-54EB-4165-BC91-860FD976B59A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>App.WinFrom.GestionProjet</RootNamespace>
+    <AssemblyName>GestionProjet</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="FormAffecterTachesAuMiniGroupe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAffecterTachesAuMiniGroupe.Designer.cs">
+      <DependentUpon>FormAffecterTachesAuMiniGroupe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAffecterTachesAuMiniGroupe1.Designer.cs">
+      <DependentUpon>FormAffecterTachesAuMiniGroupe.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="FormAffecterTachesAuxStagiaires.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAffecterTachesAuxStagiaires.Designer.cs">
+      <DependentUpon>FormAffecterTachesAuxStagiaires.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAffecterTachesAuxStagiaires1.Designer.cs">
+      <DependentUpon>FormAffecterTachesAuxStagiaires.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="FormGestionTaches.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGestionTaches.Designer.cs">
+      <DependentUpon>FormGestionTaches.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Projets\FormGestionProjets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Projets\FormGestionProjets.Designer.cs">
+      <DependentUpon>FormGestionProjets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Projets\FormGestionProjets1.Designer.cs">
+      <DependentUpon>FormGestionProjets.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Projets\ProjetsService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FormAffecterTachesAuMiniGroupe.resx">
+      <DependentUpon>FormAffecterTachesAuMiniGroupe.cs</DependentUpon>
+      <LastGenOutput>FormAffecterTachesAuMiniGroupe1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAffecterTachesAuxStagiaires.resx">
+      <DependentUpon>FormAffecterTachesAuxStagiaires.cs</DependentUpon>
+      <LastGenOutput>FormAffecterTachesAuxStagiaires1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Projets\FormGestionProjets.resx">
+      <DependentUpon>FormGestionProjets.cs</DependentUpon>
+      <LastGenOutput>FormGestionProjets1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_bleu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo C+.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Taches\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{4a48623b-27f0-4c2d-a7db-616139090ea7}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EFLib\EFLib.csproj">
+      <Project>{72ec0427-9a3f-41ad-befb-18626ccbbabb}</Project>
+      <Name>EFLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WinFormLib\WinFormLib.csproj">
+      <Project>{da3cd8ab-fbb8-4ed5-b881-51eda0268daa}</Project>
+      <Name>WinFormLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

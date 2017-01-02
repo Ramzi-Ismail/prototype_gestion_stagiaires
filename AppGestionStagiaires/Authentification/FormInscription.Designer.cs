@@ -1,4 +1,4 @@
-﻿namespace Cplus.GestionStagiaires
+﻿namespace App.GestionStagiaires
 {
     partial class FormInscription
     {

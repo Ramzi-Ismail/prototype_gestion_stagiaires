@@ -1,17 +1,17 @@
-﻿using Cplus.Entites;
-using Cplus.GestionFormateurs;
-using Cplus.GestionStagiaires;
+﻿using App.Entites;
+using App.GestionFormateurs;
+using App.GestionStagiaires;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cplus.Authentification
+namespace App.Authentification
 {
     public class Authentification
     {
-        public static Utilisateur user;
+        
 
 
         public static Filiere filiere;

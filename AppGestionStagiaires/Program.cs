@@ -1,5 +1,5 @@
-﻿using Cplus.Authentification;
-using Cplus.Migrations;
+﻿using App.Authentification;
+using App.Migrations;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Cplus
+namespace App
 {
     static class Program
     {

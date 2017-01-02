@@ -1,9 +1,9 @@
-﻿using Cplus.Authentification;
-using Cplus.Entites;
+﻿using App.Authentification;
+using App.Entites;
 using System;
 using System.Windows.Forms;
 
-namespace Cplus.GestionStagiaires
+namespace App.GestionStagiaires
 {
     public partial class FormInscription : Form
     {
@@ -26,9 +26,9 @@ namespace Cplus.GestionStagiaires
             // Inscription d'un Stagiaire
             Stagiaire s =(Stagiaire) StagiaireForm.Entity;
             new StagiairesService().Save(s);
-            Authentification.Authentification.user = s;
+            Session.user = s;
             this.Hide();
-            new FormAuthentification().ShowMenu(Authentification.Authentification.user,this);
+            new FormAuthentification().ShowMenu(Session.user,this);
         }
 
         private void FormInscription_FormClosed(object sender, FormClosedEventArgs e)
