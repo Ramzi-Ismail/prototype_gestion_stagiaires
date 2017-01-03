@@ -4,12 +4,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CplusWinFrom", "AppGestionStagiaires\CplusWinFrom.csproj", "{B035060E-7DE1-4FB0-B4F9-AB8410BEA497}"
+	ProjectSection(ProjectDependencies) = postProject
+		{83FFC91C-54EB-4165-BC91-860FD976B59A} = {83FFC91C-54EB-4165-BC91-860FD976B59A}
+		{0E9BC4AF-A96C-45DF-B621-0DE6415762F5} = {0E9BC4AF-A96C-45DF-B621-0DE6415762F5}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{4A48623B-27F0-4C2D-A7DB-616139090EA7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormLib", "WinFormLib\WinFormLib.csproj", "{DA3CD8AB-FBB8-4ED5-B881-51EDA0268DAA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFLib", "EFLib\EFLib.csproj", "{72EC0427-9A3F-41AD-BEFB-18626CCBBABB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4A48623B-27F0-4C2D-A7DB-616139090EA7} = {4A48623B-27F0-4C2D-A7DB-616139090EA7}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionStagiaires", "GestionStagiaire\GestionStagiaires.csproj", "{0E9BC4AF-A96C-45DF-B621-0DE6415762F5}"
 EndProject

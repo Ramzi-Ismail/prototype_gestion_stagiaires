@@ -1,5 +1,4 @@
 ﻿using EFlib.Entites;
-using System.Data.Entity;
 
 namespace EFlib
 {
