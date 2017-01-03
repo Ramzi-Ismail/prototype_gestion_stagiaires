@@ -116,6 +116,7 @@ namespace App.GestionStagiaires
                     if (new StagiairesService().Save(Stagiaire) > 0)
                     {
                         MessageBox.Show("Le Stagiaire :" + Stagiaire.ToString() + " a été bien enregistrer");
+                    this.Entity = Stagiaire;
                     }
                     else
                     {
@@ -142,26 +143,26 @@ namespace App.GestionStagiaires
 
         private void nomTextBox_TextChanged(object sender, EventArgs e)
         {
-            // Determine if the TextBox has a digit character.
-            string text = nomTextBox.Text;
-            bool hasDigit = false;
-            foreach (char letter in text)
-            {
-                if (char.IsDigit(letter))
-                {
-                    hasDigit = true;
-                    break;
-                }
-            }
-            // Call SetError or Clear on the ErrorProvider.
-            if (!hasDigit)
-            {
-                errorProvider1.SetError(nomTextBox, "Needs to contain a digit");
-            }
-            else
-            {
-                errorProvider1.Clear();
-            }
+            //// Determine if the TextBox has a digit character.
+            //string text = nomTextBox.Text;
+            //bool hasDigit = false;
+            //foreach (char letter in text)
+            //{
+            //    if (char.IsDigit(letter))
+            //    {
+            //        hasDigit = true;
+            //        break;
+            //    }
+            //}
+            //// Call SetError or Clear on the ErrorProvider.
+            //if (!hasDigit)
+            //{
+            //    errorProvider1.SetError(nomTextBox, "Needs to contain a digit");
+            //}
+            //else
+            //{
+            //    errorProvider1.Clear();
+            //}
         }
 
       
@@ -183,6 +184,8 @@ namespace App.GestionStagiaires
 
         private void txt_login_Validating(object sender, CancelEventArgs e)
         {
+            //Le login doit être unique 
+
             this.ValiderTextBox(sender, e, errorProvider1);
         }
 
@@ -214,6 +217,11 @@ namespace App.GestionStagiaires
         private void emailTextBox_Validating(object sender, CancelEventArgs e)
         {
             this.ValiderTextBox(sender, e, errorProvider1);
+        }
+
+        private void txt_login_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

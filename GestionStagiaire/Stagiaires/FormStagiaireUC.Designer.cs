@@ -413,6 +413,7 @@
             this.txt_login.Name = "txt_login";
             this.txt_login.Size = new System.Drawing.Size(164, 20);
             this.txt_login.TabIndex = 2;
+            this.txt_login.TextChanged += new System.EventHandler(this.txt_login_TextChanged);
             this.txt_login.Validating += new System.ComponentModel.CancelEventHandler(this.txt_login_Validating);
             // 
             // errorProvider1

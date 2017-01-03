@@ -25,7 +25,6 @@ namespace App.GestionStagiaires
         {
             // Inscription d'un Stagiaire
             Stagiaire s =(Stagiaire) StagiaireForm.Entity;
-            new StagiairesService().Save(s);
             Session.user = s;
             this.Hide();
             new FormAuthentification().ShowMenu(Session.user,this);

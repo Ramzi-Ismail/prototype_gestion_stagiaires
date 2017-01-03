@@ -10,8 +10,13 @@
 
     public class ModelContext : DbContext
     {
-         public ModelContext() : base("name = ModelStagiaires")
+        // public ModelContext() : base("name = ModelStagiaires")
+         public ModelContext() : base(@"data source =192.168.1.7\SQLEXPRESS; initial catalog = AppGestionStagiaires.ModelStagiaires; user = sa; password = admintp4; MultipleActiveResultSets = True; App = EntityFramework")
+   
+       // public ModelContext()
         {
+         
+            
             //Database.SetInitializer<SchoolDBContext>(new CreateDatabaseIfNotExists<SchoolDBContext>());
             //Database.SetInitializer<SchoolDBContext>(new DropCreateDatabaseIfModelChanges<SchoolDBContext>());
             //Database.SetInitializer<SchoolDBContext>(new DropCreateDatabaseAlways<SchoolDBContext>());
