@@ -2,7 +2,7 @@
 
 namespace EFlib.Entites
 {
-   public abstract class BaseEntity
+   public  class BaseEntity
     {
 
         public BaseEntity()

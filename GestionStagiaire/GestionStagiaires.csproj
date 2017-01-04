@@ -87,11 +87,6 @@
     <Compile Include="Groupes\FormGestionGroupes.Designer.cs">
       <DependentUpon>FormGestionGroupes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Groupes\FormGestionGroupes1.Designer.cs">
-      <DependentUpon>FormGestionGroupes.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Groupes\GroupesService.cs" />
     <Compile Include="MiniGroupes\FormAffecterStagiairesAuMiniGroupe.cs">
       <SubType>Form</SubType>
@@ -168,6 +163,9 @@
     <Compile Include="Stagiaires\StagiairesService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Filieres\FormGestionFilieres.resx">
+      <DependentUpon>FormGestionFilieres.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -181,7 +179,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Groupes\FormGestionGroupes.resx">
       <DependentUpon>FormGestionGroupes.cs</DependentUpon>
-      <LastGenOutput>FormGestionGroupes1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="MiniGroupes\FormAffecterStagiairesAuMiniGroupe.resx">
       <DependentUpon>FormAffecterStagiairesAuMiniGroupe.cs</DependentUpon>
@@ -213,6 +210,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\DataSources\App.Entites.Groupe.datasource" />
     <None Include="Properties\DataSources\Cplus.Entites.Filiere.datasource" />
     <None Include="Resources\delete.png" />
   </ItemGroup>
@@ -230,13 +228,11 @@
       <Project>{4a48623b-27f0-4c2d-a7db-616139090ea7}</Project>
       <Name>Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EFLib\EFLib.csproj">
-      <Project>{72EC0427-9A3F-41AD-BEFB-18626CCBBABB}</Project>
-      <Name>EFLib</Name>
-    </ProjectReference>
     <ProjectReference Include="..\WinFormLib\WinFormLib.csproj">
       <Project>{da3cd8ab-fbb8-4ed5-b881-51eda0268daa}</Project>
       <Name>WinFormLib</Name>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

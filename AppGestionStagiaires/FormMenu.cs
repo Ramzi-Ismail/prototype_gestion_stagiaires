@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GestionStagiaires;
+using App.GestionStagiaires;
+using App.GestionStagiaires.Groupes;
 
 namespace App
 {
@@ -89,6 +91,11 @@ namespace App
             Gestion.FormGestion<GestionStagiaires.Formateurs.FormateurFormUC> f = new Gestion.FormGestion<GestionStagiaires.Formateurs.FormateurFormUC>("Formateurs", new GestionStagiaires.Formateurs.FormateurGrideUC());
             this.AfficherForm(f);
 
+        }
+
+        private void gérerLesGroupesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.AfficherForm(new FormGestionGroupes());
         }
     }
 }

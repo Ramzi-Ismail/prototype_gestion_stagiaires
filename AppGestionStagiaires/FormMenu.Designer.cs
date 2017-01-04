@@ -133,6 +133,7 @@
             this.gérerLesGroupesToolStripMenuItem.Name = "gérerLesGroupesToolStripMenuItem";
             this.gérerLesGroupesToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.gérerLesGroupesToolStripMenuItem.Text = "Groupes";
+            this.gérerLesGroupesToolStripMenuItem.Click += new System.EventHandler(this.gérerLesGroupesToolStripMenuItem_Click);
             // 
             // annéesDeFormationToolStripMenuItem
             // 

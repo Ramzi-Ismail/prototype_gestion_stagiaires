@@ -119,10 +119,6 @@
       <Project>{4a48623b-27f0-4c2d-a7db-616139090ea7}</Project>
       <Name>Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EFLib\EFLib.csproj">
-      <Project>{72ec0427-9a3f-41ad-befb-18626ccbbabb}</Project>
-      <Name>EFLib</Name>
-    </ProjectReference>
     <ProjectReference Include="..\WinFormLib\WinFormLib.csproj">
       <Project>{da3cd8ab-fbb8-4ed5-b881-51eda0268daa}</Project>
       <Name>WinFormLib</Name>
