@@ -10,16 +10,20 @@ using System.Windows.Forms;
 using App.Gestion;
 using App.Entites;
 using App.GestionFormateurs;
+using App.WinFromLib.FormUC;
+using EFlib;
+using EFlib.Entites;
 
 namespace App.GestionStagiaires.Formateurs
 {
-    public partial class FormateurFormUC : BaseFormUC
+    public partial class FormateurFormUC : BaseFormUserControl
     {
-        public FormateurFormUC()
+        public FormateurFormUC(IBaseRepository service) :base()
         {
             InitializeComponent();
+            this.Service = service;
         }
-
+     
         private void FormateurFormUC_Load(object sender, EventArgs e)
         {
             // ces deux linge ont provoquer une erreur lors de l'insertion 
@@ -31,7 +35,8 @@ namespace App.GestionStagiaires.Formateurs
 
         }
 
-        private void br_enregistrer_Click(object sender, EventArgs e)
+
+        public override void Afficher()
         {
             Formateur Stagiaire = (Formateur)this.Entity;
             bool validation = true;
@@ -39,6 +44,36 @@ namespace App.GestionStagiaires.Formateurs
             // Création d'un stagiaire en cas d'un nouvelle enregistrement
             if (Stagiaire == null) Stagiaire = new Formateur();
 
+            // Etat civil
+            nomTextBox.Text = Stagiaire.Nom;
+            prenomTextBox.Text = Stagiaire.Prenom;
+            cinTextBox.Text = Stagiaire.Cin;
+            if (Stagiaire.Sexe)
+            {
+                radioButtonHomme.Checked = true;
+            }
+            else
+            {
+                radioButtonFamme.Checked = true;
+            }
+            dateNaissanceDateTimePicker.Value = Stagiaire.DateNaissance;
+
+            // Coordonnées
+            telephoneTextBox.Text = Stagiaire.Telephone;
+            adressTextBox.Text = Stagiaire.Adress;
+            emailTextBox.Text = Stagiaire.Email;
+
+            // Affectation
+            Combo_Filiere.SelectedItem = Stagiaire.Filiere;
+           
+
+ 
+
+        }
+        protected override void Lire()
+        {
+            Formateur Stagiaire = (Formateur)this.Entity;
+            bool validation = true;
             // etat Civil
             Stagiaire.Nom = nomTextBox.Text;
             Stagiaire.Prenom = prenomTextBox.Text;
@@ -53,7 +88,6 @@ namespace App.GestionStagiaires.Formateurs
             Stagiaire.Adress = adressTextBox.Text;
             Stagiaire.Email = emailTextBox.Text;
 
-            //Affectation
             
 
             if (Combo_Filiere.SelectedItem != null)
@@ -64,54 +98,17 @@ namespace App.GestionStagiaires.Formateurs
             Stagiaire.Password = txt_password.Text;
             if (txt_password.Text != txt_password2.Text) validation = false;
 
-            // Lancement de l'événement Clic si la validation est correct
-            if (validation)
-            {
-                if (new FormateursService().Save(Stagiaire) > 0)
-                {
-                    MessageBox.Show("Le Stagiaire :" + Stagiaire.ToString() + " a été bien enregistrer");
-                }
-                else
-                {
-                    MessageBox.Show("Le Stagiaire :" + Stagiaire.ToString() + " n'est pas enregistrer car il n'y a pas des modifications");
-                }
-                onEnregistrerClick(this, e);
-            }
-            else
-                MessageBox.Show("Le mote de passe n'est pas correct");
+
+            
         }
 
-        private void bt_annuler_Click(object sender, EventArgs e)
+        public override BaseFormUserControl CreateInstance(IBaseRepository service)
         {
-            onAnnulerClick(this, e);
+            return new FormateurFormUC(service);
         }
-        /// <summary>
-        /// Afficher l'objet formateur dans l'interface
-        /// </summary>
-        public override void Afficher()
+        public override BaseEntity CreateObjetInstance()
         {
-            Formateur formateur = (Formateur)this.Entity;
-            // Etat civil
-            nomTextBox.Text = formateur.Nom;
-            prenomTextBox.Text = formateur.Prenom;
-            cinTextBox.Text = formateur.Cin;
-            if (formateur.Sexe)
-            {
-                radioButtonHomme.Checked = true;
-            }
-            else
-            {
-                radioButtonFamme.Checked = true;
-            }
-            dateNaissanceDateTimePicker.Value = formateur.DateNaissance;
-
-            // Coordonnées
-            telephoneTextBox.Text = formateur.Telephone;
-            adressTextBox.Text = formateur.Adress;
-            emailTextBox.Text = formateur.Email;
-
-            // Affectation
-            Combo_Filiere.SelectedItem = formateur.Filiere;
+            return new Formateur();
         }
     }
 }

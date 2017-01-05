@@ -55,12 +55,10 @@
             this.txt_password = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txt_login = new System.Windows.Forms.TextBox();
-            this.bt_annuler = new System.Windows.Forms.Button();
-            this.br_enregistrer = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Combo_Filiere = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.filiereBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label1 = new System.Windows.Forms.Label();
             cinLabel = new System.Windows.Forms.Label();
             dateNaissanceLabel = new System.Windows.Forms.Label();
             nomLabel = new System.Windows.Forms.Label();
@@ -150,7 +148,7 @@
             this.groupBox1.Controls.Add(this.nomTextBox);
             this.groupBox1.Controls.Add(prenomLabel);
             this.groupBox1.Controls.Add(this.prenomTextBox);
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Location = new System.Drawing.Point(6, 47);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(322, 214);
             this.groupBox1.TabIndex = 11;
@@ -263,7 +261,7 @@
             this.groupBox5.Controls.Add(this.txt_password);
             this.groupBox5.Controls.Add(this.label4);
             this.groupBox5.Controls.Add(this.txt_login);
-            this.groupBox5.Location = new System.Drawing.Point(0, 223);
+            this.groupBox5.Location = new System.Drawing.Point(3, 267);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(325, 157);
             this.groupBox5.TabIndex = 25;
@@ -318,26 +316,6 @@
             this.txt_login.Size = new System.Drawing.Size(164, 20);
             this.txt_login.TabIndex = 2;
             // 
-            // bt_annuler
-            // 
-            this.bt_annuler.Location = new System.Drawing.Point(84, 386);
-            this.bt_annuler.Name = "bt_annuler";
-            this.bt_annuler.Size = new System.Drawing.Size(75, 23);
-            this.bt_annuler.TabIndex = 27;
-            this.bt_annuler.Text = "Annuler";
-            this.bt_annuler.UseVisualStyleBackColor = true;
-            this.bt_annuler.Click += new System.EventHandler(this.bt_annuler_Click);
-            // 
-            // br_enregistrer
-            // 
-            this.br_enregistrer.Location = new System.Drawing.Point(3, 386);
-            this.br_enregistrer.Name = "br_enregistrer";
-            this.br_enregistrer.Size = new System.Drawing.Size(75, 23);
-            this.br_enregistrer.TabIndex = 26;
-            this.br_enregistrer.Text = "Enregistrer";
-            this.br_enregistrer.UseVisualStyleBackColor = true;
-            this.br_enregistrer.Click += new System.EventHandler(this.br_enregistrer_Click);
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.Combo_Filiere);
@@ -360,6 +338,10 @@
             this.Combo_Filiere.TabIndex = 30;
             this.Combo_Filiere.ValueMember = "Id";
             // 
+            // filiereBindingSource
+            // 
+            this.filiereBindingSource.DataSource = typeof(App.Entites.Filiere);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -369,23 +351,21 @@
             this.label1.TabIndex = 31;
             this.label1.Text = "Filiere";
             // 
-            // filiereBindingSource
-            // 
-            this.filiereBindingSource.DataSource = typeof(App.Entites.Filiere);
-            // 
             // FormateurFormUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.bt_annuler);
-            this.Controls.Add(this.br_enregistrer);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormateurFormUC";
-            this.Size = new System.Drawing.Size(693, 423);
+            this.Size = new System.Drawing.Size(693, 425);
             this.Load += new System.EventHandler(this.FormateurFormUC_Load);
+            this.Controls.SetChildIndex(this.groupBox1, 0);
+            this.Controls.SetChildIndex(this.groupBox3, 0);
+            this.Controls.SetChildIndex(this.groupBox5, 0);
+            this.Controls.SetChildIndex(this.groupBox2, 0);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -422,8 +402,6 @@
         private System.Windows.Forms.TextBox txt_password;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txt_login;
-        private System.Windows.Forms.Button bt_annuler;
-        private System.Windows.Forms.Button br_enregistrer;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox Combo_Filiere;
         private System.Windows.Forms.BindingSource filiereBindingSource;

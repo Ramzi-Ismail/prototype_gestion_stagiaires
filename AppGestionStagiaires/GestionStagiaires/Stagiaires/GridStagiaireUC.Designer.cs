@@ -71,7 +71,7 @@
             // Editer
             // 
             this.Editer.HeaderText = "";
-            this.Editer.Image = global::App.WinFrom.Properties.Resources.edit_bleu;
+            this.Editer.Image = global::App.Properties.Resources.edit_bleu;
             this.Editer.Name = "Editer";
             this.Editer.ReadOnly = true;
             this.Editer.Width = 50;
@@ -107,7 +107,7 @@
             // Supprimer
             // 
             this.Supprimer.HeaderText = "";
-            this.Supprimer.Image = global::App.WinFrom.Properties.Resources.delete;
+            this.Supprimer.Image = global::App.Properties.Resources.delete;
             this.Supprimer.Name = "Supprimer";
             this.Supprimer.ReadOnly = true;
             this.Supprimer.Width = 50;

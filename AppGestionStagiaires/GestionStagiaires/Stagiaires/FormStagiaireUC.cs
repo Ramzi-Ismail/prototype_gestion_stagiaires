@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using App.Entites;
 using App.GestionGroupes;
 using App.Gestion;
+using App.GestionFormateurs;
 
 namespace App.GestionStagiaires
 {
@@ -24,7 +25,7 @@ namespace App.GestionStagiaires
             // Impossible de cérer le composant 
             //la chîne de connexion est introuvable dans le fichier de configuration de l'application
             filiereBindingSource.DataSource = new FilieresService().GetAll();
-            groupeBindingSource.DataSource = new GroupesService().GetAll();
+            groupeBindingSource.DataSource = new FormateursService().GetAll();
         }
         private void Validation()
         {

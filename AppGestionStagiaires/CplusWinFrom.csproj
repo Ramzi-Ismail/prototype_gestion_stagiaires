@@ -7,7 +7,7 @@
     <ProjectGuid>{B035060E-7DE1-4FB0-B4F9-AB8410BEA497}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>App.WinFrom</RootNamespace>
+    <RootNamespace>App</RootNamespace>
     <AssemblyName>Cplus.ApplicationWinForm</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -43,7 +43,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -57,6 +59,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App.Designer.cs">
+      <DependentUpon>App.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\WinFromLib\FormUC\IBaseFormUserControl.cs" />
     <Compile Include="Authentification\Authentification.cs" />
     <Compile Include="Authentification\FormAuthentification.cs">
       <SubType>Form</SubType>
@@ -80,20 +89,45 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Data\EFLib\BaseEntity.cs" />
-    <Compile Include="Data\EFLib\BaseRepository.cs" />
-    <Compile Include="Data\Entites\Authentification\Utilisateur.cs" />
-    <Compile Include="Data\Entites\GestionProjets\Projet.cs" />
-    <Compile Include="Data\Entites\GestionProjets\Tache.cs" />
-    <Compile Include="Data\Entites\GestionStagiaires\Filiere.cs" />
-    <Compile Include="Data\Entites\GestionStagiaires\Formateur.cs" />
-    <Compile Include="Data\Entites\GestionStagiaires\Groupe.cs" />
-    <Compile Include="Data\Entites\GestionStagiaires\Individu.cs" />
-    <Compile Include="Data\Entites\GestionStagiaires\MiniGroupe.cs" />
-    <Compile Include="Data\Entites\GestionStagiaires\Stagiaire.cs" />
+    <Compile Include="EFlib\Entites\BaseEntity.cs" />
+    <Compile Include="EFlib\BaseRepository.cs" />
+    <Compile Include="EFlib\IBaseRepository.cs" />
+    <Compile Include="GestionStagiaires\Filieres\FiliereFromUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GestionStagiaires\Filieres\FiliereFromUC.Designer.cs">
+      <DependentUpon>FiliereFromUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionStagiaires\Groupes\FormGestionGroupe2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionStagiaires\Groupes\FormGestionGroupe2.Designer.cs">
+      <DependentUpon>FormGestionGroupe2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionStagiaires\Groupes\UserControlGroupeForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GestionStagiaires\Groupes\UserControlGroupeForm.Designer.cs">
+      <DependentUpon>UserControlGroupeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinFormLib\Entites\Utilisateur.cs" />
+    <Compile Include="Entites\GestionProjets\Projet.cs" />
+    <Compile Include="Entites\GestionProjets\Tache.cs" />
+    <Compile Include="Entites\GestionStagiaires\Filiere.cs" />
+    <Compile Include="Entites\GestionStagiaires\Formateur.cs" />
+    <Compile Include="Entites\GestionStagiaires\Groupe.cs" />
+    <Compile Include="WinFormLib\Entites\Individu.cs" />
+    <Compile Include="Entites\GestionStagiaires\MiniGroupe.cs" />
+    <Compile Include="Entites\GestionStagiaires\Stagiaire.cs" />
     <Compile Include="Data\Migrations\Configuration.cs" />
     <Compile Include="Data\ModelContext.cs" />
-    <Compile Include="Data\Session.cs" />
+    <Compile Include="GestionStagiaires\Installer1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GestionStagiaires\Installer1.Designer.cs">
+      <DependentUpon>Installer1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinFormLib\Comptes\Session.cs" />
     <Compile Include="FormMenuStagiaire.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,24 +198,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="GestionStagiaires\Formateurs\FormateurGrideUC.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GestionStagiaires\Formateurs\FormateurGrideUC.Designer.cs">
-      <DependentUpon>FormateurGrideUC.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GestionStagiaires\Formateurs\FormateurGrideUC1.Designer.cs">
-      <DependentUpon>FormateurGrideUC.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="GestionStagiaires\Formateurs\FormateursService.cs" />
-    <Compile Include="GestionStagiaires\Groupes\FormGestionGroupes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GestionStagiaires\Groupes\FormGestionGroupes.Designer.cs">
-      <DependentUpon>FormGestionGroupes.cs</DependentUpon>
-    </Compile>
     <Compile Include="GestionStagiaires\Groupes\GroupesService.cs" />
     <Compile Include="GestionStagiaires\MiniGroupes\FormAffecterStagiairesAuMiniGroupe.cs">
       <SubType>Form</SubType>
@@ -252,23 +269,45 @@
     <Compile Include="GestionStagiaires\Stagiaires\StagiairesService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WinFromLib\FormBindingNavigatorHelper.cs" />
-    <Compile Include="WinFromLib\Form\Validation.cs" />
-    <Compile Include="WinFromLib\GestionBinfingNavigator\GestionBindingNavigator.cs">
+    <Compile Include="WinFormLib\Forms\FormBindingNavigatorHelper.cs" />
+    <Compile Include="WinFormLib\Forms\Gestion\FormBindingNavigator.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WinFromLib\Gestion\BaseFormUC.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="WinFormLib\Forms\Gestion\FormBindingNavigator.Designer.cs">
+      <DependentUpon>FormBindingNavigator.cs</DependentUpon>
     </Compile>
-    <Compile Include="WinFromLib\Gestion\BaseGridUC.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="WinFromLib\Gestion\FormGestion.cs">
+    <Compile Include="WinFormLib\Forms\Gestion\FormGestionTabPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WinFromLib\Gestion\FormGestion.Designer.cs">
-      <DependentUpon>FormGestion.cs</DependentUpon>
+    <Compile Include="WinFormLib\Forms\Gestion\FormGestionTabPage.Designer.cs">
+      <DependentUpon>FormGestionTabPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinFormLib\Forms\Gestion\FormGestionTabPage.PageAjouter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormLib\Forms\Gestion\FormGestionTabPage.PageEditer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormLib\Forms\Gestion\FormGestionTabPage.PageGrid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormLib\FromsUC\BaseFormUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WinFormLib\FromsUC\BaseFormUserControl.Designer.cs">
+      <DependentUpon>BaseFormUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinFormLib\FromsUC\IBaseFormUC.cs" />
+    <Compile Include="WinFormLib\Validation\Validation.cs" />
+    <Compile Include="WinFormLib\FromsUC\BaseFormUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WinFormLib\FromsUC\BaseGridUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <EmbeddedResource Include="App.resx">
+      <DependentUpon>App.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Authentification\FormAuthentification.resx">
       <DependentUpon>FormAuthentification.cs</DependentUpon>
       <LastGenOutput>FormAuthentification1.Designer.cs</LastGenOutput>
@@ -295,6 +334,9 @@
       <DependentUpon>FormGestionProjets.cs</DependentUpon>
       <LastGenOutput>FormGestionProjets1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="GestionStagiaires\Filieres\FiliereFromUC.resx">
+      <DependentUpon>FiliereFromUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GestionStagiaires\Filieres\FormGestionFilieres.resx">
       <DependentUpon>FormGestionFilieres.cs</DependentUpon>
     </EmbeddedResource>
@@ -302,12 +344,11 @@
       <DependentUpon>FormateurFormUC.cs</DependentUpon>
       <LastGenOutput>FormateurFormUC1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="GestionStagiaires\Formateurs\FormateurGrideUC.resx">
-      <DependentUpon>FormateurGrideUC.cs</DependentUpon>
-      <LastGenOutput>FormateurGrideUC1.Designer.cs</LastGenOutput>
+    <EmbeddedResource Include="GestionStagiaires\Groupes\FormGestionGroupe2.resx">
+      <DependentUpon>FormGestionGroupe2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GestionStagiaires\Groupes\FormGestionGroupes.resx">
-      <DependentUpon>FormGestionGroupes.cs</DependentUpon>
+    <EmbeddedResource Include="GestionStagiaires\Groupes\UserControlGroupeForm.resx">
+      <DependentUpon>UserControlGroupeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GestionStagiaires\MiniGroupes\FormAffecterStagiairesAuMiniGroupe.resx">
       <DependentUpon>FormAffecterStagiairesAuMiniGroupe.cs</DependentUpon>
@@ -338,13 +379,21 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinFromLib\Gestion\BaseFormUC.resx">
+    <EmbeddedResource Include="WinFormLib\Forms\Gestion\FormBindingNavigator.resx">
+      <DependentUpon>FormBindingNavigator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinFormLib\Forms\Gestion\FormGestionTabPage.resx">
+      <DependentUpon>FormGestionTabPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinFormLib\FromsUC\BaseFormUC.resx">
       <DependentUpon>BaseFormUC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinFromLib\Gestion\FormGestion.resx">
-      <DependentUpon>FormGestion.cs</DependentUpon>
+    <EmbeddedResource Include="WinFormLib\FromsUC\BaseFormUserControl.resx">
+      <DependentUpon>BaseFormUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\App.Entites.Stagiaire.datasource" />
+    <None Include="Properties\DataSources\App.GestionStagiaires.FilieresService.datasource" />
     <None Include="Properties\DataSources\Cplus.Entites.Filiere.datasource" />
     <None Include="Properties\DataSources\Cplus.Entites.Formateur.datasource" />
     <None Include="Properties\DataSources\Cplus.Entites.Groupe.datasource" />
@@ -373,16 +422,6 @@
     <None Include="GestionProjets\Resources\delete.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GestionProjet\GestionProjets.csproj">
-      <Project>{83ffc91c-54eb-4165-bc91-860fd976b59a}</Project>
-      <Name>GestionProjets</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WinFormLib\WinFormLib.csproj">
-      <Project>{da3cd8ab-fbb8-4ed5-b881-51eda0268daa}</Project>
-      <Name>WinFormLib</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="GestionProjets\Resources\edit.png" />
   </ItemGroup>
   <ItemGroup>
@@ -392,8 +431,8 @@
     <None Include="GestionProjets\Resources\Logo C+.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Entites\Authentification\" />
     <Folder Include="GestionProjets\Taches\" />
-    <Folder Include="WinFromLib\Validation\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="BeforeBuild">

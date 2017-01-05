@@ -1,0 +1,17 @@
+C:\Users\ESSARRAJ\Documents\GitHub\prototype_gestion_stagiaires\WinFormLib\obj\Debug\WinFormLib.csprojResolveAssemblyReference.cache
+C:\Users\ESSARRAJ\Documents\GitHub\prototype_gestion_stagiaires\WinFormLib\obj\Debug\App.Gestion.BaseFormUC.resources
+C:\Users\ESSARRAJ\Documents\GitHub\prototype_gestion_stagiaires\WinFormLib\obj\Debug\App.Gestion.FormGestion.resources
+C:\Users\ESSARRAJ\Documents\GitHub\prototype_gestion_stagiaires\WinFormLib\obj\Debug\App.WinFrom.Properties.Resources.resources
+C:\Users\ESSARRAJ\Documents\GitHub\prototype_gestion_stagiaires\WinFormLib\obj\Debug\WinFormLib.csproj.GenerateResource.Cache
+C:\Users\ESSARRAJ\Documents\GitHub\prototype_gestion_stagiaires\WinFormLib\bin\Debug\WinFormLib.exe.config
+C:\Users\ESSARRAJ\Documents\GitHub\prototype_gestion_stagiaires\WinFormLib\bin\Debug\WinFormLib.exe
+C:\Users\ESSARRAJ\Documents\GitHub\prototype_gestion_stagiaires\WinFormLib\bin\Debug\WinFormLib.pdb
+C:\Users\ESSARRAJ\Documents\GitHub\prototype_gestion_stagiaires\WinFormLib\bin\Debug\Cplus.Data.dll
+C:\Users\ESSARRAJ\Documents\GitHub\prototype_gestion_stagiaires\WinFormLib\bin\Debug\EFLib.dll
+C:\Users\ESSARRAJ\Documents\GitHub\prototype_gestion_stagiaires\WinFormLib\bin\Debug\EntityFramework.dll
+C:\Users\ESSARRAJ\Documents\GitHub\prototype_gestion_stagiaires\WinFormLib\bin\Debug\Cplus.Data.pdb
+C:\Users\ESSARRAJ\Documents\GitHub\prototype_gestion_stagiaires\WinFormLib\bin\Debug\EFLib.pdb
+C:\Users\ESSARRAJ\Documents\GitHub\prototype_gestion_stagiaires\WinFormLib\bin\Debug\EntityFramework.xml
+C:\Users\ESSARRAJ\Documents\GitHub\prototype_gestion_stagiaires\WinFormLib\bin\Debug\fr\EntityFramework.resources.dll
+C:\Users\ESSARRAJ\Documents\GitHub\prototype_gestion_stagiaires\WinFormLib\obj\Debug\WinFormLib.exe
+C:\Users\ESSARRAJ\Documents\GitHub\prototype_gestion_stagiaires\WinFormLib\obj\Debug\WinFormLib.pdb

@@ -1,0 +1,12 @@
+C:\Users\ESSARRAJ\Documents\GitHub\prototype_gestion_stagiaires\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
+C:\Users\ESSARRAJ\Documents\GitHub\prototype_gestion_stagiaires\Data\bin\Debug\Cplus.Data.dll
+C:\Users\ESSARRAJ\Documents\GitHub\prototype_gestion_stagiaires\Data\bin\Debug\Cplus.Data.pdb
+C:\Users\ESSARRAJ\Documents\GitHub\prototype_gestion_stagiaires\Data\bin\Debug\EFLib.dll
+C:\Users\ESSARRAJ\Documents\GitHub\prototype_gestion_stagiaires\Data\bin\Debug\EntityFramework.dll
+C:\Users\ESSARRAJ\Documents\GitHub\prototype_gestion_stagiaires\Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ESSARRAJ\Documents\GitHub\prototype_gestion_stagiaires\Data\bin\Debug\EFLib.pdb
+C:\Users\ESSARRAJ\Documents\GitHub\prototype_gestion_stagiaires\Data\bin\Debug\EntityFramework.xml
+C:\Users\ESSARRAJ\Documents\GitHub\prototype_gestion_stagiaires\Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ESSARRAJ\Documents\GitHub\prototype_gestion_stagiaires\Data\bin\Debug\fr\EntityFramework.resources.dll
+C:\Users\ESSARRAJ\Documents\GitHub\prototype_gestion_stagiaires\Data\obj\Debug\Cplus.Data.dll
+C:\Users\ESSARRAJ\Documents\GitHub\prototype_gestion_stagiaires\Data\obj\Debug\Cplus.Data.pdb
