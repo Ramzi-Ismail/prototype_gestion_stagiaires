@@ -12,7 +12,7 @@ namespace App.GestionProjets
 {
     public partial class FormGestionProjets : Form
     {
-        ProjetsService service = new ProjetsService();
+        ProjetsService service = new ProjetsService(new ModelContext());
         public FormGestionProjets()
         {
             InitializeComponent();

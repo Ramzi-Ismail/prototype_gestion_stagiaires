@@ -1,5 +1,4 @@
-﻿using App.Entites;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +12,7 @@ namespace App.GestionStagiaires
 {
     public partial class FormGestionFilieres : Form
     {
-        FilieresService service = new FilieresService();
+        FilieresService service = new FilieresService(new ModelContext());
         public FormGestionFilieres()
         {
             InitializeComponent();

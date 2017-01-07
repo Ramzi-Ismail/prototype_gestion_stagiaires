@@ -6,11 +6,8 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
-using EFlib.Entites;
-using App;
-using App.GestionGroupes;
 
-namespace EFlib
+namespace App
 {
     public class BaseRepository<T> : IBaseRepository where T : BaseEntity   
     {
@@ -37,11 +34,11 @@ namespace EFlib
             this.Context = context;
             this.DbSet = this.Context.Set<T>();
         }
-        public BaseRepository()
-        {
-            this.Context = new ModelContext();
-            this.DbSet = this.Context.Set<T>();
-        }
+        //private BaseRepository()
+        //{
+        //    this.Context = new ModelContext();
+        //    this.DbSet = this.Context.Set<T>();
+        //}
 
         public virtual int Count(Expression<Func<T, bool>> filter = null)
         {
@@ -86,7 +83,7 @@ namespace EFlib
             return this.GetAll(0,0).ToList<Object>();
         }
 
-        public virtual T GetByID(int id)
+        public virtual T GetByID(Int64 id)
         {
             return DbSet.Find(id);
         }
@@ -108,6 +105,7 @@ namespace EFlib
         protected virtual int Update(T item)
         {
             this.Context.Entry(item).State = EntityState.Modified;
+            
             return this.Context.SaveChanges();
         }
         //private int Update(T item)

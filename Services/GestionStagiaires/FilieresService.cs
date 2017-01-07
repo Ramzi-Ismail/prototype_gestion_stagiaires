@@ -1,6 +1,4 @@
-﻿using App.Entites;
-using EFlib;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +8,10 @@ namespace App.GestionStagiaires
 {
     public class FilieresService : BaseRepository<Filiere>
     {
-       
+        
+
+        public FilieresService(ModelContext context) : base(context)
+        {
+        }
     }
 }

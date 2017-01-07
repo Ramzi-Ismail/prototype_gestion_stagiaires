@@ -1,5 +1,4 @@
-﻿using App.Entites;
-using App.GestionStagiaires;
+﻿using App.GestionStagiaires;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

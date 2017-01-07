@@ -8,17 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using App.Gestion;
-using App.Entites;
-using App.GestionFormateurs;
 using App.WinFromLib.FormUC;
-using EFlib;
-using EFlib.Entites;
+using App.GestionFormations;
 
 namespace App.GestionStagiaires.Formateurs
 {
     public partial class FormateurFormUC : BaseFormUserControl
     {
-        public FormateurFormUC(IBaseRepository service) :base()
+        public FormateurFormUC(IBaseRepository service, ModelContext context) :base(context)
         {
             InitializeComponent();
             this.Service = service;
@@ -31,7 +28,7 @@ namespace App.GestionStagiaires.Formateurs
             // si il sont dans la méthode Load
             // Impossible de cérer le composant 
             //la chîne de connexion est introuvable dans le fichier de configuration de l'application
-            filiereBindingSource.DataSource = new FilieresService().GetAll();
+            filiereBindingSource.DataSource = new FilieresService(this.context).GetAll();
 
         }
 

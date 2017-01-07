@@ -7,25 +7,23 @@ using System.Text;
 using System.Windows.Forms;
 using App.Gestion;
 using App.WinFromLib.FormUC;
-using App.Entites;
-using EFlib.Entites;
-using EFlib;
 
 namespace App.GestionStagiaires.Groupes
 {
     public partial class UserControlGroupeForm : BaseFormUserControl
     {
-        public UserControlGroupeForm(IBaseRepository service):base()
+        public UserControlGroupeForm(IBaseRepository service, ModelContext context):base(context)
         {
             InitializeComponent();
             this.Service = service;
+
 
 
         }
 
         public override BaseFormUserControl CreateInstance(IBaseRepository service)
         {
-            return new UserControlGroupeForm(service);
+            return new UserControlGroupeForm(service,this.context);
         }
         public override BaseEntity CreateObjetInstance()
         {
@@ -48,7 +46,10 @@ namespace App.GestionStagiaires.Groupes
         {
             Groupe groupe = (Groupe)this.Entity;
             groupe.Nom = nomTextBox.Text;
-            groupe.Filiere =(Filiere) comboBoxFiliere.SelectedItem;
+            groupe.Filiere = new FilieresService().
+                GetByID(((Filiere)comboBoxFiliere.SelectedItem).Id) ;
+
+
         }
 
 

@@ -1,5 +1,4 @@
-﻿using App.Entites;
-using App.GestionFormateurs;
+﻿using App.GestionFormations;
 using App.GestionStagiaires;
 using System;
 using System.Collections.Generic;
@@ -18,9 +17,9 @@ namespace App.Authentification
         public static Groupe groupe;
         public Utilisateur Connexion(string login, string password)
         {
-            Utilisateur user = new StagiairesService().GetAll(0, 0, (s => s.Login == login && s.Password == password)).SingleOrDefault();
+            Utilisateur user = new StagiairesService(new ModelContext()).GetAll(0, 0, (s => s.Login == login && s.Password == password)).SingleOrDefault();
             if(user == null)
-                 user = new FormateursService().GetAll(0, 0, (s => s.Login == login && s.Password == password)).SingleOrDefault();
+                 user = new FormateursService(new ModelContext()).GetAll(0, 0, (s => s.Login == login && s.Password == password)).SingleOrDefault();
             return user;
                  
         }

@@ -340,7 +340,7 @@
             // 
             // filiereBindingSource
             // 
-            this.filiereBindingSource.DataSource = typeof(App.Entites.Filiere);
+            this.filiereBindingSource.DataSource = typeof(App.GestionStagiaires.Filiere);
             // 
             // label1
             // 

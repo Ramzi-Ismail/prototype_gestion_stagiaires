@@ -1,6 +1,8 @@
 ﻿namespace App
 {
-    using Entites;
+    using GestionFormations;
+    using GestionProjets;
+    using GestionStagiaires;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
@@ -11,8 +13,8 @@
     public class ModelContext : DbContext
     {
         // public ModelContext() : base("name = ModelStagiaires")
-       // public ModelContext() : base(@"data source =localhost\SQLEXPRESS; initial catalog = AppGestionStagiaires.ModelStagiaires; user = sa; password = admintp4; MultipleActiveResultSets = True; App = EntityFramework")
-        public ModelContext() : base(@"data source =192.168.1.57\SQLEXPRESS; initial catalog = CplusESSARRAJ; user = sa; password = admintp41212; MultipleActiveResultSets = True; App = EntityFramework")
+        public ModelContext() : base(@"data source =localhost\SQLEXPRESS; initial catalog = AppGestionStagiaires.ModelStagiaires; user = sa; password = admintp41212; MultipleActiveResultSets = True; App = EntityFramework")
+       // public ModelContext() : base(@"data source =192.168.1.57\SQLEXPRESS; initial catalog = CplusESSARRAJ; user = sa; password = admintp41212; MultipleActiveResultSets = True; App = EntityFramework")
         // public ModelContext()
         {
           

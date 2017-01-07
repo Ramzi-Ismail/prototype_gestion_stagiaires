@@ -1,11 +1,11 @@
-﻿using System;
+﻿using App.GestionStagiaires;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using EFlib.Entites;
 
-namespace App.Entites
+namespace App.GestionFormations
 {
     public class Formateur: Utilisateur
     {

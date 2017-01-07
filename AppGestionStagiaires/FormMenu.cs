@@ -11,9 +11,8 @@ using GestionStagiaires;
 using App.GestionStagiaires;
 using App.GestionStagiaires.Groupes;
 using App.WinFormLib.Forms.Gestion;
-using App.GestionGroupes;
 using App.GestionStagiaires.Formateurs;
-using App.GestionFormateurs;
+using App.GestionFormations;
 
 namespace App
 {
@@ -92,7 +91,8 @@ namespace App
 
         private void formateursToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormateurFormUC FormObjet = new FormateurFormUC(new FormateursService());
+            ModelContext context = new ModelContext();
+            FormateurFormUC FormObjet = new FormateurFormUC(new FormateursService(context),context);
             List<FormGestionTabPage.ColonneDataGridView> ListeColonne = new List<FormGestionTabPage.ColonneDataGridView> {
                     new FormGestionTabPage.ColonneDataGridView("Matricule",FormGestionTabPage.ColonneDataGridView.TYPE_STRING,"Matricule"),
                     new FormGestionTabPage.ColonneDataGridView("Nom",FormGestionTabPage.ColonneDataGridView.TYPE_STRING,"Nom"),
@@ -107,8 +107,9 @@ namespace App
 
         private void gérerLesGroupesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ModelContext context = new ModelContext();
 
-            UserControlGroupeForm FormObjet = new UserControlGroupeForm(new GroupesService());
+            UserControlGroupeForm FormObjet = new UserControlGroupeForm(new GroupesService(context), context);
 
             List<FormGestionTabPage.ColonneDataGridView> ListeColonne = new List<FormGestionTabPage.ColonneDataGridView> {
                     new FormGestionTabPage.ColonneDataGridView("Nom",FormGestionTabPage.ColonneDataGridView.TYPE_STRING,"Nom"),

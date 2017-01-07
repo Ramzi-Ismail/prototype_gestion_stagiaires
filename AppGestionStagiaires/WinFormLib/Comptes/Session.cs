@@ -8,6 +8,6 @@ namespace App
 {
     public class Session
     {
-        public static Entites.Utilisateur user;
+        public static Utilisateur user;
     }
 }

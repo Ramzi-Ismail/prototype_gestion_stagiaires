@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using EFlib.Entites;
-namespace App.Entites
+namespace App.GestionStagiaires
 {
     public class Groupe : BaseEntity
     {

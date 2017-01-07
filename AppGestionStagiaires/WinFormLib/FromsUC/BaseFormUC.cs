@@ -3,13 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using App.Entites;
-using EFlib.Entites;
 using System.Windows.Forms;
 using System.ComponentModel;
 using App.WinFromLib.FromsUC;
 using App.WinFromLib.FormUC;
-using EFlib;
 
 namespace App.Gestion
 {

@@ -1,6 +1,7 @@
 namespace App.Migrations
 {
-    using Entites;
+    using GestionFormations;
+    using GestionStagiaires;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -10,7 +11,7 @@ namespace App.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
             ContextKey = "AppGestionStagiaires.ModelStagiaires";
         }
 

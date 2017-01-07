@@ -1,9 +1,5 @@
-﻿using App.Entites;
-using App.GestionFormateurs;
-using App.GestionGroupes;
+﻿using App.GestionFormations;
 using App.WinFromLib.Forms.Gestion;
-using EFlib;
-using EFlib.Entites;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

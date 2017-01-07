@@ -252,7 +252,7 @@
             // 
             // groupeBindingSource
             // 
-            this.groupeBindingSource.DataSource = typeof(App.Entites.Groupe);
+            this.groupeBindingSource.DataSource = typeof(App.GestionStagiaires.Groupe);
             // 
             // br_enregistrer
             // 
@@ -310,7 +310,7 @@
             // 
             // filiereBindingSource
             // 
-            this.filiereBindingSource.DataSource = typeof(App.Entites.Filiere);
+            this.filiereBindingSource.DataSource = typeof(Filiere);
             // 
             // label1
             // 

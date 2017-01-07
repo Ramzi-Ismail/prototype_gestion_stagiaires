@@ -1,5 +1,4 @@
-﻿using EFlib.Entites;
-
+﻿
 namespace App.WinFromLib.Forms.Gestion
 {
     partial class FormBindingNavigator 

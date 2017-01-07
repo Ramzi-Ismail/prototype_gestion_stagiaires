@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5831AE07-4D1E-449A-B8F8-F49194AA6F04}</ProjectGuid>
+    <ProjectGuid>{3940F5CA-C8C0-4A72-8A1C-0AD50E5D18CA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>App</RootNamespace>
-    <AssemblyName>Entites</AssemblyName>
+    <RootNamespace>Services</RootNamespace>
+    <AssemblyName>Services</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,10 +31,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\..\cases_prototype\Prototype3\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\..\cases_prototype\Prototype3\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,20 +46,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App\BaseEntity.cs" />
-    <Compile Include="GestionProjets\Projet.cs" />
-    <Compile Include="GestionProjets\Tache.cs" />
-    <Compile Include="GestionStagiaires\Filiere.cs" />
-    <Compile Include="GestionFormations\Formateur.cs" />
-    <Compile Include="GestionStagiaires\Groupe.cs" />
-    <Compile Include="GestionStagiaires\MiniGroupe.cs" />
-    <Compile Include="GestionStagiaires\Stagiaire.cs" />
-    <Compile Include="App\Individu.cs" />
+    <Compile Include="Base\BaseRepository.cs" />
+    <Compile Include="GestionProjets\ProjetsService.cs" />
+    <Compile Include="GestionStagiaires\FilieresService.cs" />
+    <Compile Include="GestionFormations\FormateursService.cs" />
+    <Compile Include="GestionStagiaires\GroupesService.cs" />
+    <Compile Include="GestionStagiaires\StagiairesService.cs" />
+    <Compile Include="Base\IBaseRepository.cs" />
+    <Compile Include="DataBase\Configuration.cs" />
+    <Compile Include="DataBase\ModelContext.cs" />
+    <Compile Include="Migrations\201701071548387_init.cs" />
+    <Compile Include="Migrations\201701071548387_init.Designer.cs">
+      <DependentUpon>201701071548387_init.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="App\Utilisateur.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Authentification\" />
+    <EmbeddedResource Include="Migrations\201701071548387_init.resx">
+      <DependentUpon>201701071548387_init.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entites\Entites.csproj">
+      <Project>{5831ae07-4d1e-449a-b8f8-f49194aa6f04}</Project>
+      <Name>Entites</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

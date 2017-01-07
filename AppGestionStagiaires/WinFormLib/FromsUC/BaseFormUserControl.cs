@@ -8,26 +8,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using App.WinFromLib.FromsUC;
-using EFlib.Entites;
-using EFlib;
 
 namespace App.WinFromLib.FormUC
 {
     public partial class BaseFormUserControl : UserControl, IBaseFormUC
     {
+        protected ModelContext context;
         /// <summary>
         /// Obtient ou définire l'entité qui représente 
         /// </summary>
         public BaseEntity Entity { get; set; }
         public IBaseRepository Service { get; set; }
-        public BaseFormUserControl()
+        public BaseFormUserControl(ModelContext context)
         {
             InitializeComponent();
+            this.context = context;
         }
-        public BaseFormUserControl(BaseEntity entity)
+        public BaseFormUserControl(BaseEntity entity, ModelContext context)
         {
             InitializeComponent();
             this.Entity = entity;
+            this.context = context;
         }
 
 

@@ -1,6 +1,4 @@
-﻿using EFlib;
-using EFlib.Entites;
-
+﻿
 namespace App.WinFromLib.FormUC
 {
     internal interface IBaseFormUserControl

@@ -1,4 +1,4 @@
-﻿using EFlib.Entites;
+﻿
 using System.Windows.Forms;
 
 namespace App.WinFormLib.Forms.Gestion

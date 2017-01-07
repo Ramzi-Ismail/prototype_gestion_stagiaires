@@ -1,8 +1,5 @@
-﻿using App.Entites;
-using App.Gestion;
+﻿using App.Gestion;
 using App.WinFromLib.FormUC;
-using EFlib;
-using EFlib.Entites;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

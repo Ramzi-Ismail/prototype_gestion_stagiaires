@@ -6,15 +6,12 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using App.WinFromLib.FormUC;
-using EFlib;
-using EFlib.Entites;
-using App.Entites;
 
 namespace App.GestionStagiaires.Filieres
 {
     public partial class FiliereFromUC : BaseFormUserControl, IBaseFormUserControl
     {
-        public FiliereFromUC()
+        public FiliereFromUC(ModelContext context):base(context)
         {
             InitializeComponent();
         }
@@ -29,7 +26,7 @@ namespace App.GestionStagiaires.Filieres
 
         public override BaseFormUserControl CreateInstance(IBaseRepository service)
         {
-           return new FiliereFromUC();
+           return new FiliereFromUC(this.context);
         }
 
         public override BaseEntity CreateObjetInstance()

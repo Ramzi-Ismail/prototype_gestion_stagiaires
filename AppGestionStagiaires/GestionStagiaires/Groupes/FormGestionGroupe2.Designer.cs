@@ -64,11 +64,11 @@
             // 
             // filiereBindingSource
             // 
-            this.filiereBindingSource.DataSource = typeof(App.Entites.Filiere);
+            this.filiereBindingSource.DataSource = typeof(App.GestionStagiaires.Filiere);
             // 
             // groupeBindingSource
             // 
-            this.groupeBindingSource.DataSource = typeof(App.Entites.Groupe);
+            this.groupeBindingSource.DataSource = typeof(App.GestionStagiaires.Groupe);
             // 
             // dataGridViewTextBoxColumn1
             // 

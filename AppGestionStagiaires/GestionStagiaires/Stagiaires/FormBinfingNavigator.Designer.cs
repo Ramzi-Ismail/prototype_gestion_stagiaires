@@ -95,7 +95,7 @@
             // 
             // stagiaireBindingSource
             // 
-            this.stagiaireBindingSource.DataSource = typeof(Entites.Stagiaire);
+            this.stagiaireBindingSource.DataSource = typeof(App.GestionStagiaires.Stagiaire);
             // 
             // bindingNavigatorCountItem
             // 

@@ -1,6 +1,5 @@
 ﻿using App.Gestion;
 using App.WinFromLib.FormUC;
-using EFlib;
 using System;
 using System.Collections.Generic;
 using System.Linq;

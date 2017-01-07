@@ -230,7 +230,7 @@
             // 
             // projetBindingSource
             // 
-            this.projetBindingSource.DataSource = typeof(Entites.Projet);
+            this.projetBindingSource.DataSource = typeof(Projet);
             // 
             // FormGestionProjets
             // 
