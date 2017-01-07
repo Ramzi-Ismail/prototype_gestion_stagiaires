@@ -34,7 +34,7 @@ namespace App.GestionStagiaires.Groupes
 
         private void UserControlGroupeForm_Load(object sender, EventArgs e)
         {
-            comboBoxFiliere.DataSource = new FilieresService().GetAll();
+            comboBoxFiliere.DataSource = new FilieresService().ToBindingList();
         }
 
 

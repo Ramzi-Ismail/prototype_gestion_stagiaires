@@ -24,8 +24,7 @@ namespace App.GestionStagiaires
             // si il sont dans la méthode Load
             // Impossible de cérer le composant 
             //la chîne de connexion est introuvable dans le fichier de configuration de l'application
-            filiereBindingSource.DataSource = new FilieresService().GetAll();
-            groupeBindingSource.DataSource = new FormateursService().GetAll();
+           
         }
         private void Validation()
         {
@@ -37,7 +36,8 @@ namespace App.GestionStagiaires
 
         private void FormStagiaireUC_Load(object sender, EventArgs e)
         {
-           
+            filiereBindingSource.DataSource = new FilieresService().GetAll();
+            groupeBindingSource.DataSource = new GroupesService().GetAll();
         }
 
         /// <summary>
@@ -64,6 +64,11 @@ namespace App.GestionStagiaires
             telephoneTextBox.Text = Stagiaire.Telephone;
             adressTextBox.Text = Stagiaire.Adress;
             emailTextBox.Text = Stagiaire.Email;
+
+            //Sécurité
+            txt_login.Text = Stagiaire.Login;
+            txt_password.Text = Stagiaire.Password;
+            txt_password2.Text = Stagiaire.Password;
 
             // Affectation
             Combo_Filiere.SelectedItem = Stagiaire.Filiere;
@@ -113,7 +118,10 @@ namespace App.GestionStagiaires
 
                 // Lancement de l'événement Clic si la validation est correct
                 if (validation)
+
                 {
+                     
+
                     if (new StagiairesService().Save(Stagiaire) > 0)
                     {
                         MessageBox.Show("Le Stagiaire :" + Stagiaire.ToString() + " a été bien enregistrer");

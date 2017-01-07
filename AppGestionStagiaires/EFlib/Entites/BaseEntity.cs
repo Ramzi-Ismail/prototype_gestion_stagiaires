@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace EFlib.Entites
 {
@@ -10,7 +11,7 @@ namespace EFlib.Entites
             this.DateCreation = DateTime.Now;
             this.DateModification = DateTime.Now;
         }
-
+        [Key]
         public Int64 Id { get; set; }
         public DateTime DateCreation { get; set; }
         public DateTime DateModification { get; set; }

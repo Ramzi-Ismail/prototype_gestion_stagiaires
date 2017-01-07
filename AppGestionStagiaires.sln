@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CplusWinFrom", "AppGestionS
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupCplus", "SetupCplus\SetupCplus.vdproj", "{64039226-3BCA-49B6-BC3F-33CA7697031D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entites", "Entites\Entites.csproj", "{5831AE07-4D1E-449A-B8F8-F49194AA6F04}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{B035060E-7DE1-4FB0-B4F9-AB8410BEA497}.Release|Any CPU.Build.0 = Release|Any CPU
 		{64039226-3BCA-49B6-BC3F-33CA7697031D}.Debug|Any CPU.ActiveCfg = Debug
 		{64039226-3BCA-49B6-BC3F-33CA7697031D}.Release|Any CPU.ActiveCfg = Release
+		{5831AE07-4D1E-449A-B8F8-F49194AA6F04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5831AE07-4D1E-449A-B8F8-F49194AA6F04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5831AE07-4D1E-449A-B8F8-F49194AA6F04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5831AE07-4D1E-449A-B8F8-F49194AA6F04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

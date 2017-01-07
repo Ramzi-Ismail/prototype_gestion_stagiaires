@@ -379,6 +379,7 @@
             this.txt_password2.Name = "txt_password2";
             this.txt_password2.Size = new System.Drawing.Size(164, 20);
             this.txt_password2.TabIndex = 4;
+            this.txt_password2.UseSystemPasswordChar = true;
             this.txt_password2.Validating += new System.ComponentModel.CancelEventHandler(this.txt_password2_Validating);
             // 
             // label2
@@ -396,6 +397,7 @@
             this.txt_password.Name = "txt_password";
             this.txt_password.Size = new System.Drawing.Size(164, 20);
             this.txt_password.TabIndex = 3;
+            this.txt_password.UseSystemPasswordChar = true;
             this.txt_password.Validating += new System.ComponentModel.CancelEventHandler(this.txt_password_Validating);
             // 
             // label4

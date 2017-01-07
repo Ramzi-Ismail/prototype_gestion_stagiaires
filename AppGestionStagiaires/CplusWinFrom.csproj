@@ -111,14 +111,7 @@
       <DependentUpon>UserControlGroupeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="WinFormLib\Entites\Utilisateur.cs" />
-    <Compile Include="Entites\GestionProjets\Projet.cs" />
-    <Compile Include="Entites\GestionProjets\Tache.cs" />
-    <Compile Include="Entites\GestionStagiaires\Filiere.cs" />
-    <Compile Include="Entites\GestionStagiaires\Formateur.cs" />
-    <Compile Include="Entites\GestionStagiaires\Groupe.cs" />
     <Compile Include="WinFormLib\Entites\Individu.cs" />
-    <Compile Include="Entites\GestionStagiaires\MiniGroupe.cs" />
-    <Compile Include="Entites\GestionStagiaires\Stagiaire.cs" />
     <Compile Include="Data\Migrations\Configuration.cs" />
     <Compile Include="Data\ModelContext.cs" />
     <Compile Include="GestionStagiaires\Installer1.cs">
@@ -431,7 +424,6 @@
     <None Include="GestionProjets\Resources\Logo C+.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Entites\Authentification\" />
     <Folder Include="GestionProjets\Taches\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

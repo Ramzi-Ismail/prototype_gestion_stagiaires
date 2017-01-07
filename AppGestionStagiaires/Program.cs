@@ -19,23 +19,35 @@ namespace App
         static void Main()
         {
 
-
-           // Migration automatique de la base de données
-           // il provoque un problème loras de l'initialisation
-           // de la base de donénes 
-          // Database.SetInitializer(new MigrateDatabaseToLatestVersion<ModelStagiaires, Configuration>());
-
-            //var configuration = new Configuration();
-            //var migrator = new DbMigrator(configuration);
-            //migrator.Update();
+            using (var context = new ModelContext())
+            {
 
 
+                //context.Database.CreateIfNotExists();
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-           // Application.Run(new FormAuthentification());
-            Application.Run(new FormMenu());
-            // Application.Run(new FormMenu());
+
+                // Migration automatique de la base de données
+                // il provoque un problème loras de l'initialisation
+                // de la base de donénes 
+                // Database.SetInitializer(new MigrateDatabaseToLatestVersion<ModelStagiaires, Configuration>());
+
+                //var configuration = new Configuration();
+                //var migrator = new DbMigrator(configuration);
+                //migrator.Update();
+
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                //  Application.Run(new FormAuthentification());
+                Application.Run(new FormMenu());
+                // Application.Run(new FormMenu());
+
+            }
+
+
+
+
+
+
         }
     }
 }

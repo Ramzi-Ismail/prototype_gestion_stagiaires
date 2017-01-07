@@ -99,28 +99,29 @@ namespace EFlib
 
         }
 
-        private int Insert(T item)
+        protected virtual int Insert(T item)
         {
             this.DbSet.Add(item);
             return this.Context.SaveChanges();
         }
 
+        protected virtual int Update(T item)
+        {
+            this.Context.Entry(item).State = EntityState.Modified;
+            return this.Context.SaveChanges();
+        }
         //private int Update(T item)
         //{
-        //    this.Context.Entry(item).State = EntityState.Modified;
-        //    return this.Context.SaveChanges();
-        //}
-        private int Update(T item)
-        {
-            var original = DbSet.Find(item.Id);
+        //    var original = DbSet.Find(item.Id);
 
-            if (original != null)
-            {
-                Context.Entry(original).CurrentValues.SetValues(item);
-                return Context.SaveChanges();
-            }
-            return 0;
-        }
+        //    if (original != null)
+        //    {
+        //        Context.Entry(original).CurrentValues.SetValues(item);
+        //        Context.Entry(original).State = EntityState.Modified;
+        //        return Context.SaveChanges();
+        //    }
+        //    return 0;
+        //}
 
 
         public virtual int Save(T item)
@@ -192,6 +193,7 @@ namespace EFlib
         
         public int Save(BaseEntity item)
         {
+            string state = this.Context.Entry(item).State.ToString();
             return this.Save((T)item);
         }
     }
