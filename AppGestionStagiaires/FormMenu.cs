@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using GestionStagiaires;
 using App.GestionStagiaires;
 using App.GestionStagiaires.Groupes;
-using App.WinFormLib.Forms.Gestion;
+using App.WinForm;
 using App.GestionStagiaires.Formateurs;
 using App.GestionFormations;
 
@@ -36,9 +36,32 @@ namespace App
             Cursor.Current = Cursors.Default;
         }
 
+        /// <summary>
+        /// Gestion des stagiaires
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gestionStagiaires_Click(object sender, EventArgs e)
         {
-            this.AfficherForm(new FormGestionStagiaires());
+            // Gestion des stagiaire
+            StagiairesService service = new StagiairesService();
+            FormStagiaireUC objetForm = new FormStagiaireUC(service);
+
+            List<ColonneDataGridView> ListeColonne = new List<ColonneDataGridView> {
+                    new ColonneDataGridView("Nom",ColonneDataGridView.TYPE_STRING,"Nom"),
+                    new ColonneDataGridView("Prenom",ColonneDataGridView.TYPE_STRING,"Prénom"),
+                    new ColonneDataGridView("Groupe",ColonneDataGridView.TYPE_STRING,"Groupe"),
+                    new ColonneDataGridView("Filiere",ColonneDataGridView.TYPE_STRING,"Filiere"),
+                    new ColonneDataGridView("DateModification",ColonneDataGridView.TYPE_DATATIME,"Date de modification"),
+            };
+
+            Dictionary<string, string> Params = new Dictionary<string, string>();
+            Params.Add("TitreGestion", "Gestion des stagiaires");
+            Params.Add("TitrePageGrid", "Stagiaires");
+            Params.Add("TitreButtonAjouter", "Ajouter un stagiaire");
+
+            FormGestionTabPage form = new FormGestionTabPage(service, objetForm, ListeColonne, Params);
+            this.AfficherForm(form);
         }
 
         private void projetsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -91,33 +114,24 @@ namespace App
 
         private void formateursToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ModelContext context = new ModelContext();
-            FormateurFormUC FormObjet = new FormateurFormUC(new FormateursService(context),context);
-            List<FormGestionTabPage.ColonneDataGridView> ListeColonne = new List<FormGestionTabPage.ColonneDataGridView> {
-                    new FormGestionTabPage.ColonneDataGridView("Matricule",FormGestionTabPage.ColonneDataGridView.TYPE_STRING,"Matricule"),
-                    new FormGestionTabPage.ColonneDataGridView("Nom",FormGestionTabPage.ColonneDataGridView.TYPE_STRING,"Nom"),
-                    new FormGestionTabPage.ColonneDataGridView("Prenom",FormGestionTabPage.ColonneDataGridView.TYPE_STRING,"Prénom"),
-                    new FormGestionTabPage.ColonneDataGridView("Filiere",FormGestionTabPage.ColonneDataGridView.TYPE_STRING,"Filiere"),
-                    new FormGestionTabPage.ColonneDataGridView("DateModification",FormGestionTabPage.ColonneDataGridView.TYPE_DATATIME,"Date de modification"),
-            };
-            FormGestionTabPage form = new FormGestionTabPage(FormObjet, ListeColonne);
-            this.AfficherForm(form);
+            //ModelContext context = new ModelContext();
+            //FormateurFormUC FormObjet = new FormateurFormUC(new FormateursService(context),context);
+            //List<FormGestionTabPage.ColonneDataGridView> ListeColonne = new List<FormGestionTabPage.ColonneDataGridView> {
+            //        new FormGestionTabPage.ColonneDataGridView("Matricule",FormGestionTabPage.ColonneDataGridView.TYPE_STRING,"Matricule"),
+            //        new FormGestionTabPage.ColonneDataGridView("Nom",FormGestionTabPage.ColonneDataGridView.TYPE_STRING,"Nom"),
+            //        new FormGestionTabPage.ColonneDataGridView("Prenom",FormGestionTabPage.ColonneDataGridView.TYPE_STRING,"Prénom"),
+            //        new FormGestionTabPage.ColonneDataGridView("Filiere",FormGestionTabPage.ColonneDataGridView.TYPE_STRING,"Filiere"),
+            //        new FormGestionTabPage.ColonneDataGridView("DateModification",FormGestionTabPage.ColonneDataGridView.TYPE_DATATIME,"Date de modification"),
+            //};
+            //FormGestionTabPage form = new FormGestionTabPage(FormObjet, ListeColonne);
+            //this.AfficherForm(form);
 
         }
 
         private void gérerLesGroupesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ModelContext context = new ModelContext();
-
-            UserControlGroupeForm FormObjet = new UserControlGroupeForm(new GroupesService(context), context);
-
-            List<FormGestionTabPage.ColonneDataGridView> ListeColonne = new List<FormGestionTabPage.ColonneDataGridView> {
-                    new FormGestionTabPage.ColonneDataGridView("Nom",FormGestionTabPage.ColonneDataGridView.TYPE_STRING,"Nom"),
-                    new FormGestionTabPage.ColonneDataGridView("Filiere",FormGestionTabPage.ColonneDataGridView.TYPE_STRING,"Filiere"),
-                    new FormGestionTabPage.ColonneDataGridView("DateModification",FormGestionTabPage.ColonneDataGridView.TYPE_DATATIME,"Date de modification"),
-            };
-            FormGestionTabPage form = new FormGestionTabPage(FormObjet, ListeColonne);
-            this.AfficherForm(form);
+            
+            this.AfficherForm(new FormGestionGroupes());
         }
     }
 }

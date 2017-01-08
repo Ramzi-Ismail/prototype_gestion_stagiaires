@@ -6,8 +6,17 @@ namespace App.GestionStagiaires
 {
     public class Groupe : BaseEntity
     {
+        
         public string Nom { set; get; }
-        public virtual Filiere Filiere { set; get; }
+
+        private Filiere filiere;
+        public virtual Filiere Filiere {
+            set { this.filiere = value; }
+            get
+            {
+                return filiere;
+            }
+        }
 
         public override string GetNomObjets()
         {

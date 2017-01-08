@@ -11,5 +11,8 @@ namespace App.GestionStagiaires
         public StagiairesService(ModelContext context) : base(context)
         {
         }
+        public StagiairesService() : base()
+        {
+        }
     }
 }

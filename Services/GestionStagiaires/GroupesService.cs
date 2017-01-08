@@ -12,30 +12,9 @@ namespace App.GestionStagiaires
         public GroupesService(ModelContext context) : base(context)
         {
         }
-
-        public override int Save(Groupe g)
+        public GroupesService() : base()
         {
-
-            //this.Context.Entry(g.Filiere).State = System.Data.Entity.EntityState.Unchanged;
-            
-            return base.Save(g);
-
-
         }
 
-
-
-        protected override int Update(Groupe item)
-        {
-            string state_filiere = this.Context.Entry(item.Filiere).State.ToString();
-            this.Context.Entry(item).State = EntityState.Modified;
-             state_filiere = this.Context.Entry(item.Filiere).State.ToString();
-
-
-          //  this.Context.Filieres.Attach(item.Filiere);
-            state_filiere = this.Context.Entry(item.Filiere).State.ToString();
-
-            return this.Context.SaveChanges();
-        }
     }
 }

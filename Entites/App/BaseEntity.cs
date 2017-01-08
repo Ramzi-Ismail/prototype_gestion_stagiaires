@@ -3,7 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace App
 {
-   public  class BaseEntity
+    
+    public  class BaseEntity : IBaseEntity
     {
       
         public BaseEntity()
@@ -11,10 +12,11 @@ namespace App
             this.DateCreation = DateTime.Now;
             this.DateModification = DateTime.Now;
         }
-       // [Key]
+        [Key]
         public Int64 Id { get; set; }
         public DateTime DateCreation { get; set; }
         public DateTime DateModification { get; set; }
+
 
 
         public virtual string GetNomObjet()
@@ -25,5 +27,18 @@ namespace App
         {
             return "Informations";
         }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == DBNull.Value) return false;
+            if (obj == null) return false;
+            BaseEntity objet = (BaseEntity)obj;
+            
+            if (this.Id == objet.Id) return true;
+            else return false;
+           
+        }
     }
+
+   
 }

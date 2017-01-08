@@ -11,5 +11,9 @@ namespace App.GestionStagiaires
       public  String Code { set; get; }
       public String Description { set; get; }
 
+        public override string ToString()
+        {
+            return this.Code;
+        }
     }
 }

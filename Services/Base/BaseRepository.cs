@@ -11,46 +11,27 @@ namespace App
 {
     public class BaseRepository<T> : IBaseRepository where T : BaseEntity   
     {
+        #region Variables
         public ModelContext Context { get; set; }
         protected IDbSet<T> DbSet { get; set; }
-  
-        //public UnitOfWork UnitOfWork { get; set; }
+        #endregion
 
-        //public BaseRepository(UnitOfWork unitOfWork)
-        //{
-        //    if (unitOfWork == null)
-        //    {
-        //        throw new ArgumentException("An instance of the unitOfWork is null", "unitOfWork");
-        //    }
 
-        //    this.Context = unitOfWork.Context;
-        //    this.DbSet = this.Context.Set<T>();
-
-        //    this.UnitOfWork = unitOfWork;
-        //}
-
+        #region construcreur
         public BaseRepository(ModelContext context)
         {
             this.Context = context;
             this.DbSet = this.Context.Set<T>();
         }
-        //private BaseRepository()
-        //{
-        //    this.Context = new ModelContext();
-        //    this.DbSet = this.Context.Set<T>();
-        //}
-
-        public virtual int Count(Expression<Func<T, bool>> filter = null)
+        public BaseRepository()
         {
-            IQueryable<T> query = DbSet;
-            if (filter != null)
-            {
-                query = query.Where(filter);
-            }
-
-            return query.Count();
+            this.Context = new ModelContext();
+            this.DbSet = this.Context.Set<T>();
         }
+        #endregion
 
+
+        #region Recherche
         public virtual List<T> GetAll(int startPage = 0, int itemsPerPage = 0, Expression<Func<T, bool>> filter = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> order = null, string includeProperties = "")
         {
@@ -76,24 +57,60 @@ namespace App
                 query = query.OrderByDescending(x => x.Id).Skip((startPage - 1) * itemsPerPage).Take(itemsPerPage);
             }
 
-            return query.ToList();
+            return query.ToList<T>();
         }
         public List<object> GetAll()
         {
             return this.GetAll(0,0).ToList<Object>();
+        }
+        public List<Object> GetAllSansProxy()
+        {
+            this.Context.Configuration.ProxyCreationEnabled = false;
+            List<Object> ls = this.DbSet.ToList<Object>();
+            this.Context.Configuration.ProxyCreationEnabled = true;
+            return ls;
+          
         }
 
         public virtual T GetByID(Int64 id)
         {
             return DbSet.Find(id);
         }
+        public object ToBindingList()
+        {
+            DbSet.Load();
+            return DbSet.Local.ToBindingList();
 
+        }
+        public virtual int Count(Expression<Func<T, bool>> filter = null)
+        {
+            IQueryable<T> query = DbSet;
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+
+            return query.Count();
+        }
+        #endregion
+
+        #region CRUD
         public virtual int Delete(T item)
         {
             var original = DbSet.Find(item.Id);
             DbSet.Remove(original);
             return Context.SaveChanges()  ;
 
+        }
+        /// <summary>
+        /// Supprimer par un objet de Type BaseEntity
+        /// Car delete n'est pas accissible depuis une interface non générique
+        /// </summary>
+        /// <param name="obj"></param>
+        public void Supprimer(BaseEntity obj)
+        {
+            T entity = (T)obj;
+            this.Delete(entity);
         }
 
         protected virtual int Insert(T item)
@@ -135,6 +152,14 @@ namespace App
         }
        
 
+
+        public int Save(BaseEntity item)
+        {
+            string state = this.Context.Entry(item).State.ToString();
+            return this.Save((T)item);
+        }
+        #endregion
+
         public virtual void Dispose()
         {
             if (this.Context != null)
@@ -142,17 +167,14 @@ namespace App
                 this.Context.Dispose();
             }
         }
+      
+
         public int SaveChanges()
         {
             return this.Context.SaveChanges();
         }
 
-        public object ToBindingList()
-        {
-            DbSet.Load();
-            return DbSet.Local.ToBindingList();
-
-        }
+      
         /// <summary>
         /// Ajouter un nouvelle objet avec l'état Added qui sera ajouté 
         /// à la base de données aprés l'appelle de SaveChange
@@ -178,21 +200,13 @@ namespace App
             return obj.GetNomObjets();
         }
 
-        /// <summary>
-        /// Supprimer par un objet de Type BaseEntity
-        /// </summary>
-        /// <param name="obj"></param>
-        public void Supprimer(BaseEntity obj)
+       
+
+        ModelContext IBaseRepository.Context()
         {
-            T entity =(T) obj;
-            this.Delete(entity);
+            return this.Context;
         }
 
         
-        public int Save(BaseEntity item)
-        {
-            string state = this.Context.Entry(item).State.ToString();
-            return this.Save((T)item);
-        }
     }
 }

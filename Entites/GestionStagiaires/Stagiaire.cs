@@ -6,11 +6,7 @@ using System.Text;
 namespace App.GestionStagiaires
 { 
    public class Stagiaire : Utilisateur {
-
-        
-
-
-
+ 
 
         public int Etat { set; get; }
 

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace App
 {
-    public interface IBaseRepository
+
+    public interface IBaseRepository 
     {
         int SaveChanges();
 
@@ -16,9 +17,16 @@ namespace App
         void AddElement();
 
         string GetNomObjet();
+        List<object> GetAllSansProxy();
         string GetNomObjets();
 
         List<Object> GetAll();
         void Supprimer(BaseEntity obj);
+
+        /// <summary>
+        /// Obtient le context 
+        /// </summary>
+        /// <returns></returns>
+        ModelContext Context();
     }
 }
