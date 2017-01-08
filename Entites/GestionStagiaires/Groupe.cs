@@ -9,14 +9,8 @@ namespace App.GestionStagiaires
         
         public string Nom { set; get; }
 
-        private Filiere filiere;
-        public virtual Filiere Filiere {
-            set { this.filiere = value; }
-            get
-            {
-                return filiere;
-            }
-        }
+        
+        public virtual Filiere Filiere { set; get; }
 
         public override string GetNomObjets()
         {

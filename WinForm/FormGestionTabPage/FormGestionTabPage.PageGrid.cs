@@ -12,7 +12,9 @@ namespace App.WinForm
         {
             Service.SaveChanges();
             ObjetBindingSource.Clear();
-            List<object> ls =  Service.GetAllSansProxy();
+            //  System.Type T = this.Formulaire.Entity.GetType();
+            var ls = Service.GetAll();
+
             ObjetBindingSource.DataSource = ls;
 
         }

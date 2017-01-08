@@ -13,6 +13,7 @@ using App.GestionStagiaires.Groupes;
 using App.WinForm;
 using App.GestionStagiaires.Formateurs;
 using App.GestionFormations;
+using App.GestionProjets;
 
 namespace App
 {
@@ -132,6 +133,11 @@ namespace App
         {
             
             this.AfficherForm(new FormGestionGroupes());
+        }
+
+        private void tâchesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.AfficherForm(new FormGestionTaches());
         }
     }
 }

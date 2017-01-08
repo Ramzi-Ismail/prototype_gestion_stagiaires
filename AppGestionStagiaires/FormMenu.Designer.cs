@@ -109,6 +109,7 @@
             this.tâchesToolStripMenuItem.Name = "tâchesToolStripMenuItem";
             this.tâchesToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.tâchesToolStripMenuItem.Text = "Tâches";
+            this.tâchesToolStripMenuItem.Click += new System.EventHandler(this.tâchesToolStripMenuItem_Click);
             // 
             // projetsToolStripMenuItem
             // 

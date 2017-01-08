@@ -7,7 +7,7 @@
     <ProjectGuid>{3940F5CA-C8C0-4A72-8A1C-0AD50E5D18CA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Services</RootNamespace>
+    <RootNamespace>App</RootNamespace>
     <AssemblyName>Services</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Base\BaseRepository.cs" />
     <Compile Include="GestionProjets\ProjetsService.cs" />
+    <Compile Include="GestionProjets\TachesService.cs" />
     <Compile Include="GestionStagiaires\FilieresService.cs" />
     <Compile Include="GestionFormations\FormateursService.cs" />
     <Compile Include="GestionStagiaires\GroupesService.cs" />

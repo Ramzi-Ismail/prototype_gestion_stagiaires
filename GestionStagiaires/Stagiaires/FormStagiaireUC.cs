@@ -76,8 +76,8 @@ namespace App.GestionStagiaires
                 Stagiaire Stagiaire = (Stagiaire)this.Entity;
                 bool validation = true;
 
-                // Création d'un stagiaire en cas d'un nouvelle enregistrement
-                if (Stagiaire == null) Stagiaire = new Stagiaire();
+            // Création d'un stagiaire avec proxy en cas d'un nouvelle enregistrement
+            if (Stagiaire == null) Stagiaire = this.context.Stagiaires.Create();
 
                 // etat Civil
                 Stagiaire.Nom = nomTextBox.Text;

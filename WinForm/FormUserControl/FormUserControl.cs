@@ -50,17 +50,17 @@ namespace App.WinForm
             this.Service = service;
         }
 
-        /// <summary>
-        /// à supprimer
-        /// </summary>
-        /// <param name="entity"></param>
-        /// <param name="context"></param>
-        public FormUserControl(BaseEntity entity, ModelContext context)
-        {
-            InitializeComponent();
-            this.Entity = entity;
-            this.context = context;
-        }
+        ///// <summary>
+        ///// à supprimer
+        ///// </summary>
+        ///// <param name="entity"></param>
+        ///// <param name="context"></param>
+        //public FormUserControl(BaseEntity entity, ModelContext context)
+        //{
+        //    InitializeComponent();
+        //    this.Entity = entity;
+        //    this.context = context;
+        //}
         public FormUserControl()
         {
             InitializeComponent();
@@ -111,8 +111,8 @@ namespace App.WinForm
         public virtual FormUserControl CreateInstance(IBaseRepository Service) {
             return (FormUserControl) Activator.CreateInstance (this.GetType(), Service);
            
-        } 
-         
+        }
+
 
         /// <summary>
         /// Créer une instance de l'objet du formulaire

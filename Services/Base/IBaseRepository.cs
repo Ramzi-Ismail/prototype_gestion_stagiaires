@@ -17,7 +17,7 @@ namespace App
         void AddElement();
 
         string GetNomObjet();
-        List<object> GetAllSansProxy();
+        List<object> GetAllDetached();
         string GetNomObjets();
 
         List<Object> GetAll();
@@ -28,5 +28,11 @@ namespace App
         /// </summary>
         /// <returns></returns>
         ModelContext Context();
+
+        /// <summary>
+        /// Création d'une instance de l'objet T
+        /// </summary>
+        /// <returns></returns>
+          object CreateInstanceObjet();
     }
 }

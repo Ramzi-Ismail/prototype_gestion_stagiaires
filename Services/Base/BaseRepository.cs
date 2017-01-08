@@ -61,13 +61,17 @@ namespace App
         }
         public List<object> GetAll()
         {
-            return this.GetAll(0,0).ToList<Object>();
+            List<T> ls = this.GetAll(0, 0).ToList<T>();
+            return ls.ToList<Object>();
         }
-        public List<Object> GetAllSansProxy()
+        public List<Object> GetAllDetached()
         {
-            this.Context.Configuration.ProxyCreationEnabled = false;
+             
             List<Object> ls = this.DbSet.ToList<Object>();
-            this.Context.Configuration.ProxyCreationEnabled = true;
+            foreach (var item in ls)
+            {
+                this.Context.Entry(item).State = EntityState.Detached;
+            }
             return ls;
           
         }
@@ -115,6 +119,7 @@ namespace App
 
         protected virtual int Insert(T item)
         {
+         
             this.DbSet.Add(item);
             return this.Context.SaveChanges();
         }
@@ -207,6 +212,10 @@ namespace App
             return this.Context;
         }
 
+        public object CreateInstanceObjet()
+        {
+           return  this.Context.Set<T>().Create();
+        }
         
     }
 }

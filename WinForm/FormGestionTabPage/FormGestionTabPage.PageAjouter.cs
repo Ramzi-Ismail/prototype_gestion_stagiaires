@@ -26,7 +26,8 @@ namespace App.WinForm
 
                 // Insertion du formulaire 
                 FormUserControl form = Formulaire.CreateInstance(Service);
-                form.Entity = Formulaire.CreateObjetInstance();
+                //form.Entity = Formulaire.CreateObjetInstance();
+                form.Entity = (BaseEntity) this.Service.CreateInstanceObjet();
                 form.Name = "Form";
                 this.tabControl.TabPages["TabAjouter"].Controls.Add(form);
                 form.EnregistrerClick += Form_EnregistrerClick;

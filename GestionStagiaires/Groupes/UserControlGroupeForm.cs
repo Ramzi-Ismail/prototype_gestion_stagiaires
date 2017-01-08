@@ -25,19 +25,9 @@ namespace App.GestionStagiaires.Groupes
 
         }
 
-        /// <summary>
-        /// Création d'une nouvelle instance de cette formulaire
-        /// #recherche : généralisation de la création des instances
-        /// </summary>
-        /// <param name="service"></param>
-        /// <returns></returns>
-        public override FormUserControl CreateInstance(IBaseRepository service)
-        {
-            return new UserControlGroupeForm(service);
-        }
         public override BaseEntity CreateObjetInstance()
         {
-            return new Groupe();
+            return this.Service.Context().Groupes.Create();
         }
 
         private void UserControlGroupeForm_Load(object sender, EventArgs e)
