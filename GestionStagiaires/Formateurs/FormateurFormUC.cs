@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using App.WinForm;
 using App.GestionFormations;
+using App.Formations;
 
 namespace App.GestionStagiaires.Formateurs
 {

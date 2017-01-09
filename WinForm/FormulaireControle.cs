@@ -26,29 +26,51 @@ namespace App.WinForm
         {
            PropertyInfo[] ls =  this.Service.CreateInstanceObjet().GetType().GetProperties();
 
-            int x = 10;
+
+            int y = 35;
             foreach (PropertyInfo item in ls)
             {
+                
                 string NomAtribute = item.Name;
                 Type type = item.PropertyType;
 
                 if(type.Name == "String")
                 {
-                    Label lbl = new Label();
-                    lbl.Text = NomAtribute;
-                    lbl.Location = new Point(x, 10);
-                    TextBox txt = new TextBox();
-                    txt.Name = NomAtribute;
-                    lbl.Location = new Point(x + 30, 10);
 
-                     this.formulaire.Controls.Add(lbl);
+                    // 
+                    // label
+                    // 
+                    Label lbl = new Label();
+                    lbl.AutoSize = true;
+                    lbl.Location = new System.Drawing.Point(6, y);
+                    lbl.Name = "label1";
+                    lbl.Size = new System.Drawing.Size(35, 13);
+                    lbl.TabIndex = 0;
+                    lbl.Text = NomAtribute;
+                    // 
+                    // textBox1
+                    // 
+                    TextBox txt = new TextBox();
+                    txt.Location = new System.Drawing.Point(66, y-3);
+                    txt.Name = NomAtribute;
+                    txt.Size = new System.Drawing.Size(100, 20);
+                    txt.TabIndex = 1;
+
+
+                    this.formulaire.Controls.Add(lbl);
                     this.formulaire.Controls.Add(txt);
 
-                    x += 70;
+                    y += 25;
 
                 }
 
             }
+        }
+
+
+        public  override void Lire()
+        {
+
         }
     }
 }
