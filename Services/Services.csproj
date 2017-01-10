@@ -76,6 +76,10 @@
     <Compile Include="Migrations\201701101230021_TableAnneFormation.Designer.cs">
       <DependentUpon>201701101230021_TableAnneFormation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701101736556_GestionLivre.cs" />
+    <Compile Include="Migrations\201701101736556_GestionLivre.Designer.cs">
+      <DependentUpon>201701101736556_GestionLivre.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -93,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701101230021_TableAnneFormation.resx">
       <DependentUpon>201701101230021_TableAnneFormation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701101736556_GestionLivre.resx">
+      <DependentUpon>201701101736556_GestionLivre.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

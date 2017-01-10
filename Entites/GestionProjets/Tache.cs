@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace App.GestionProjets
 {
-    [AffichageGestion (Titre="Gestion des tâches",
+    [AffichageDansFormGestion (Titre="Gestion des tâches",
         TitrePageGridView="Tâches",
         TitreButtonAjouter="Ajouter une tâche")]
     public class Tache : BaseEntity 
@@ -17,13 +17,13 @@ namespace App.GestionProjets
        
 
         [Required]
-        [AffichageFrom(Titre = "Titre",
+        [AffichagePropriete(Titre = "Titre",
             WidthColonne = 200,
             Ordre = 1,isGridView = true,isFormulaire=true)]
         public string Titre { set; get; }
 
 
-        [AffichageFrom(Titre = "Description", 
+        [AffichagePropriete(Titre = "Description", 
             Ordre = 3,
             WidthColonne = 200,
             isGridView = true, 
@@ -31,7 +31,7 @@ namespace App.GestionProjets
         public string Description { set; get; }
 
  
-        [AffichageFrom( Relation = "ManyToOne", 
+        [AffichagePropriete( Relation = "ManyToOne", 
             DisplayMember ="Titre",
             Titre = "Projet", 
             Ordre = 3, 

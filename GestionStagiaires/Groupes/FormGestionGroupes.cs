@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace App.GestionStagiaires.Groupes
 {
-    public partial class FormGestionGroupes : App.WinForm.FormGestionTabPage
+    public partial class FormGestionGroupes : App.WinForm.InterfaceGestion
     {
         public FormGestionGroupes():base()
         {

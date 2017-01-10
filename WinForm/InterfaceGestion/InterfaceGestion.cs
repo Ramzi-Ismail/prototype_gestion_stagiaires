@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace App.WinForm
 {
-    public partial class FormGestionTabPage : Form
+    public partial class InterfaceGestion : Form
     {
 
         /// <summary>
@@ -22,14 +22,14 @@ namespace App.WinForm
         /// <summary>
         /// Le formulaire de l'édition et d'insertion
         /// </summary>
-        protected FormUserControl Formulaire;
+        protected BaseFormulaire Formulaire;
 
       
         /// <summary>
         /// On ne pas Créer ce formulaire sans Paramétre
         /// ce Constructeur est ajouter seuelement pour supproer le mode désigne de Visual Studio 2015
         /// </summary>
-        public  FormGestionTabPage()
+        public  InterfaceGestion()
         {
             InitializeComponent();
         }
@@ -38,10 +38,10 @@ namespace App.WinForm
        /// Création d'une gestion générique 
        /// </summary>
        /// <param name="service"></param>
-        public FormGestionTabPage(IBaseRepository service)
+        public InterfaceGestion(IBaseRepository service)
         {
             InitializeComponent();
-            FormUserControl formulaire = new FormulaireControle(service);
+            BaseFormulaire formulaire = new FormulaireControle(service);
             initParams(service, formulaire);
         }
         /// <summary>
@@ -50,16 +50,17 @@ namespace App.WinForm
         /// <param name="formulaire">Une instance de formulaire de saisie, il est utilisr 
         /// pour la creation des autres instance en cas d'édition des objet
         /// </param>
-        public FormGestionTabPage(IBaseRepository service, FormUserControl formulaire)
+        public InterfaceGestion(IBaseRepository service, BaseFormulaire formulaire)
         {
             InitializeComponent();
             initParams(service, formulaire);
         }
 
-        protected void initParams(IBaseRepository service, FormUserControl formulaire)
+        protected void initParams(IBaseRepository service, BaseFormulaire formulaire)
         {
             this.Service = service;
             this.Formulaire = formulaire;
+            this.Name = "Interface_Gestion_" + service.TypeEntity.ToString();
             this.ConfigDataGridView();
             this.setTitre();
         }
@@ -69,11 +70,11 @@ namespace App.WinForm
         /// </summary>
         private void setTitre()
         {
-            AffichageGestionAttribute affichageGestion = this.Service.getAffichageGestionAttribute();
-            this.Text = affichageGestion.Titre;
-            this.bt_Ajouter.Text = affichageGestion.TitreButtonAjouter;
+            AffichageDansFormGestionAttribute AffichageDansFormGestion = this.Service.getAffichageDansFormGestionAttribute();
+            this.Text = AffichageDansFormGestion.Titre;
+            this.bt_Ajouter.Text = AffichageDansFormGestion.TitreButtonAjouter;
             TabPage tabGrid = this.tabControl.TabPages["TabGrid"];
-            tabGrid.Text = affichageGestion.TitrePageGridView;
+            tabGrid.Text = AffichageDansFormGestion.TitrePageGridView;
         }
         
         private void FormGestion_Load(object sender, EventArgs e)

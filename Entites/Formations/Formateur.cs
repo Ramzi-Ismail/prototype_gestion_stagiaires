@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace App.Formations
 {
-    [AffichageGestion(Titre = "Gestion des Formateurs",
+    [AffichageDansFormGestion(Titre = "Gestion des Formateurs",
 TitrePageGridView = "Formateurs",
 TitreButtonAjouter = "Ajouter un formateur")]
     public class Formateur: Utilisateur
     {
         public override string ToString() => base.ToString();
 
-        [AffichageFrom(Titre = "Spécialité",Relation ="ManyToOne", isGridView = true, isFormulaire = true, Ordre = 1, WidthColonne = 150)]
+        [AffichagePropriete(Titre = "Spécialité",Relation ="ManyToOne", isGridView = true, isFormulaire = true, Ordre = 1, WidthColonne = 150)]
         public virtual Filiere Filiere { set; get; }
  
     }

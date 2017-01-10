@@ -1,6 +1,6 @@
 ﻿namespace App.WinForm
 {
-    partial class FormUserControl
+    partial class BaseFormulaire
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -90,12 +90,12 @@
             this.btAnnuler.UseVisualStyleBackColor = true;
             this.btAnnuler.Click += new System.EventHandler(this.btAnnuler_Click);
             // 
-            // FormUserControl
+            // BaseFormulaire
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainer1);
-            this.Name = "FormUserControl";
+            this.Name = "BaseFormulaire";
             this.Size = new System.Drawing.Size(647, 296);
             this.panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

@@ -8,20 +8,20 @@ using System;
 
 namespace App.Formations
 {
-    [AffichageGestion(Titre = "Gestion des Années de formation",
+    [AffichageDansFormGestion(Titre = "Gestion des Années de formation",
    TitrePageGridView = "Années de formation",
    TitreButtonAjouter = "Ajouter une année de formation")]
     public class AnneeFormation : BaseEntity
    {
         public override string ToString() => this.Titre;
 
-        [AffichageFrom(Titre = "Titre", isGridView = true, isFormulaire = true, Ordre = 1, WidthColonne = 150)]
+        [AffichagePropriete(Titre = "Titre", isGridView = true, isFormulaire = true, Ordre = 1, WidthColonne = 150)]
         public String Titre { set; get; }
 
-        [AffichageFrom(Titre = "Début de la formation", isGridView = true, isFormulaire = true, Ordre = 2, WidthColonne = 150)]
+        [AffichagePropriete(Titre = "Début de la formation", isGridView = true, isFormulaire = true, Ordre = 2, WidthColonne = 150)]
         public DateTime DateDebut { set; get; }
 
-        [AffichageFrom(Titre = "Fin de la formation", isGridView = true, isFormulaire = true, Ordre = 3, WidthColonne = 150)]
+        [AffichagePropriete(Titre = "Fin de la formation", isGridView = true, isFormulaire = true, Ordre = 3, WidthColonne = 150)]
         public DateTime DateFin { set; get; }
 
     }

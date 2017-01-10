@@ -18,7 +18,7 @@ namespace App
         public Int64 Id { get; set; }
         public DateTime DateCreation { get; set; }
 
-        [AffichageFrom(DisplayMember = "Date de modification", 
+        [AffichagePropriete(DisplayMember = "Date de modification", 
             Titre = "Date de modification", 
             Ordre = 1000,
             WidthColonne = 150,

@@ -39,6 +39,6 @@ namespace App
         /// </summary>
         /// <returns></returns>
           object CreateInstanceObjet();
-       AffichageGestionAttribute getAffichageGestionAttribute();
+       AffichageDansFormGestionAttribute getAffichageDansFormGestionAttribute();
     }
 }

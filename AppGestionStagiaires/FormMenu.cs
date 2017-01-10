@@ -16,6 +16,7 @@ using App.GestionFormations;
 using App.GestionProjets;
 using App.Modules;
 using App.Formations;
+using App.Livres;
 
 namespace App
 {
@@ -30,12 +31,27 @@ namespace App
         {
            // new FormBinfingNavigator().Show();
         }
-        private void AfficherForm(Form f)
+
+        /// <summary>
+        /// Affichage d'une formulaire de Type : Form
+        /// </summary>
+        /// <param name="f">Le controle Form à afficher </param>
+        private void AfficherForm(Form addForm)
         {
             Cursor.Current = Cursors.WaitCursor;
-            f.MdiParent = this;
-            f.StartPosition = FormStartPosition.CenterScreen;
-            f.Show();
+            Form form = this.MdiChildren.Where(f => f.Name == addForm.Name).FirstOrDefault();
+            if (form == null) {
+                addForm.MdiParent = this;
+                addForm.StartPosition = FormStartPosition.CenterScreen;
+                addForm.WindowState = FormWindowState.Maximized;
+                addForm.Show();
+            }
+            else
+            {
+                form.WindowState = FormWindowState.Normal;
+
+            }
+
             Cursor.Current = Cursors.Default;
         }
 
@@ -49,7 +65,7 @@ namespace App
             // Gestion des stagiaire
             StagiairesService service = new StagiairesService();
             FormStagiaireUC objetForm = new FormStagiaireUC(service);
-            FormGestionTabPage form = new FormGestionTabPage(service, objetForm);
+            InterfaceGestion form = new InterfaceGestion(service, objetForm);
             this.AfficherForm(form);
         }
 
@@ -119,13 +135,13 @@ namespace App
 
         private void gestionDesModulesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            FormGestionTabPage form = new FormGestionTabPage(new BaseRepository<Module>());
+            InterfaceGestion form = new InterfaceGestion(new BaseRepository<Module>());
             this.AfficherForm(form);
         }
 
         private void gestionDesPrécisionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormGestionTabPage form = new FormGestionTabPage(new BaseRepository<Precision>());
+            InterfaceGestion form = new InterfaceGestion(new BaseRepository<Precision>());
             this.AfficherForm(form);
         }
 
@@ -136,8 +152,18 @@ namespace App
 
         private void AfficherUnGestion<T>() where T:BaseEntity
         {
-            FormGestionTabPage form = new FormGestionTabPage(new BaseRepository<T>());
+            InterfaceGestion form = new InterfaceGestion(new BaseRepository<T>());
             this.AfficherForm(form);
+        }
+
+        private void gestionMaisonDéditionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.AfficherUnGestion<MaisonEdition>();
+        }
+
+        private void gestionDesLivresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.AfficherUnGestion<Livre>();
         }
     }
 }

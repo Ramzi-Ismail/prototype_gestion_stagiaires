@@ -13,7 +13,7 @@ using App.Formations;
 
 namespace App.GestionStagiaires.Formateurs
 {
-    public partial class FormateurFormUC : FormUserControl
+    public partial class FormateurFormUC : BaseFormulaire
     {
         public FormateurFormUC(IBaseRepository service) :base(service)
         {
@@ -99,7 +99,7 @@ namespace App.GestionStagiaires.Formateurs
             
         }
 
-        public override FormUserControl CreateInstance(IBaseRepository service)
+        public override BaseFormulaire CreateInstance(IBaseRepository service)
         {
             return new FormateurFormUC(service);
         }

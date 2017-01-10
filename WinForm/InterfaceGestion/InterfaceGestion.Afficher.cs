@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace App.WinForm
 {
-    partial class FormGestionTabPage
+    partial class InterfaceGestion
     {
        
 
@@ -28,17 +28,17 @@ namespace App.WinForm
               
             // Obtien la liste des PropertyInfo par ordrer d'affichage
             var listeProprite = from i in Service.TypeEntity.GetProperties()
-                                where i.GetCustomAttribute(typeof(AffichageFromAttribute)) != null &&
-                                ((AffichageFromAttribute)i.GetCustomAttribute(typeof(AffichageFromAttribute))).isGridView
-                                orderby ((AffichageFromAttribute)i.GetCustomAttribute(typeof(AffichageFromAttribute))).Ordre
+                                where i.GetCustomAttribute(typeof(AffichageProprieteAttribute)) != null &&
+                                ((AffichageProprieteAttribute)i.GetCustomAttribute(typeof(AffichageProprieteAttribute))).isGridView
+                                orderby ((AffichageProprieteAttribute)i.GetCustomAttribute(typeof(AffichageProprieteAttribute))).Ordre
                                 select i;
 
             int index_colonne = 0;
             foreach (PropertyInfo propertyInfo in listeProprite)
             {
-                Attribute getAffichageFrom = propertyInfo.GetCustomAttribute(typeof(AffichageFromAttribute));
-                if (getAffichageFrom == null) continue;
-                AffichageFromAttribute AffichageFrom = (AffichageFromAttribute)getAffichageFrom;
+                Attribute getAffichagePropriete = propertyInfo.GetCustomAttribute(typeof(AffichageProprieteAttribute));
+                if (getAffichagePropriete == null) continue;
+                AffichageProprieteAttribute AffichagePropriete = (AffichageProprieteAttribute)getAffichagePropriete;
 
                 DataGridViewColumn colonne = new DataGridViewTextBoxColumn(); ;
                 index_colonne++;
@@ -53,11 +53,11 @@ namespace App.WinForm
                     colonne.ValueType = typeof(DateTime);
                 }
 
-                colonne.HeaderText = AffichageFrom.Titre;
+                colonne.HeaderText = AffichagePropriete.Titre;
                 colonne.DataPropertyName = propertyInfo.Name;
                 colonne.Name = propertyInfo.Name;
                 colonne.ReadOnly = true;
-                if(AffichageFrom.WidthColonne!= 0) colonne.Width = AffichageFrom.WidthColonne;
+                if(AffichagePropriete.WidthColonne!= 0) colonne.Width = AffichagePropriete.WidthColonne;
                 this.dataGridView.Columns.Insert(index_colonne, colonne);
             }
                

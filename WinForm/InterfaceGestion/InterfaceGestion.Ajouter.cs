@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace App.WinForm
 {
-    partial class FormGestionTabPage
+    partial class InterfaceGestion
     {
         private void bt_Ajouter_Click(object sender, EventArgs e)
         {
@@ -20,13 +20,13 @@ namespace App.WinForm
                 // Création de Tab
                 TabPage tabAjouter = new TabPage();
                 
-                tabAjouter.Text = this.Service.getAffichageGestionAttribute().TitreButtonAjouter;
+                tabAjouter.Text = this.Service.getAffichageDansFormGestionAttribute().TitreButtonAjouter;
                 tabAjouter.Name = "TabAjouter";
                 tabControl.TabPages.Add(tabAjouter);
                 tabControl.SelectedTab = tabAjouter;
 
                 // Insertion du formulaire 
-                FormUserControl form = Formulaire.CreateInstance(Service);
+                BaseFormulaire form = Formulaire.CreateInstance(Service);
                 //form.Entity = Formulaire.CreateObjetInstance();
                 form.Entity = (BaseEntity) this.Service.CreateInstanceObjet();
                 form.Name = "Form";
@@ -42,7 +42,7 @@ namespace App.WinForm
         private void Form_EnregistrerClick(object sender, EventArgs e)
         {
             TabPage tabAjouter = this.tabControl.TabPages["TabAjouter"];
-            FormUserControl form = (FormUserControl)tabAjouter.Controls
+            BaseFormulaire form = (BaseFormulaire)tabAjouter.Controls
                 .Find("Form", false).First();
             this.tabControl.TabPages.Remove(tabAjouter);
             this.Actualiser();

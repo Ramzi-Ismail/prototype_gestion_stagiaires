@@ -56,7 +56,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormGestionTabPage\ColonneDataGridView.cs" />
     <Compile Include="FormulaireControl\FormulaireControle.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -70,33 +69,26 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Comptes\Session.cs" />
-    <Compile Include="FormUserControl\FormUserControl.cs">
+    <Compile Include="BaseFormulaire\FormUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="FormUserControl\FormUserControl.Designer.cs">
+    <Compile Include="BaseFormulaire\FormUserControl.Designer.cs">
       <DependentUpon>FormUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormUserControl\IFormUserControl.cs" />
-    <Compile Include="FormBindingNavigator\FormBindingNavigator.cs">
+    <Compile Include="BaseFormulaire\IFormUserControl.cs" />
+    <Compile Include="InterfaceGestion\InterfaceGestion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormBindingNavigator\FormBindingNavigator.Designer.cs">
-      <DependentUpon>FormBindingNavigator.cs</DependentUpon>
+    <Compile Include="InterfaceGestion\InterfaceGestion.Designer.cs">
+      <DependentUpon>InterfaceGestion.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormBindingNavigator\FormBindingNavigatorHelper.cs" />
-    <Compile Include="FormGestionTabPage\FormGestionTabPage.cs">
+    <Compile Include="InterfaceGestion\InterfaceGestion.Ajouter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormGestionTabPage\FormGestionTabPage.Designer.cs">
-      <DependentUpon>FormGestionTabPage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormGestionTabPage\FormGestionTabPage.PageAjouter.cs">
+    <Compile Include="InterfaceGestion\InterfaceGestion.Editer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormGestionTabPage\FormGestionTabPage.PageEditer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormGestionTabPage\FormGestionTabPage.PageGrid.cs">
+    <Compile Include="InterfaceGestion\InterfaceGestion.Afficher.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Validation\Validation.cs" />
@@ -112,14 +104,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormUserControl\FormUserControl.resx">
+    <EmbeddedResource Include="BaseFormulaire\FormUserControl.resx">
       <DependentUpon>FormUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormBindingNavigator\FormBindingNavigator.resx">
-      <DependentUpon>FormBindingNavigator.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormGestionTabPage\FormGestionTabPage.resx">
-      <DependentUpon>FormGestionTabPage.cs</DependentUpon>
+    <EmbeddedResource Include="InterfaceGestion\InterfaceGestion.resx">
+      <DependentUpon>InterfaceGestion.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

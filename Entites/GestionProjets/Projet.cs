@@ -10,10 +10,10 @@ namespace App.GestionProjets
     public class Projet  :BaseEntity
     {
 
-        [AffichageFrom(Titre = "Titre", Ordre = 1)]
+        [AffichagePropriete(Titre = "Titre", Ordre = 1)]
         public string Titre { set; get; }
 
-        [AffichageFrom(Titre = "Description", Ordre = 2)]
+        [AffichagePropriete(Titre = "Description", Ordre = 2)]
         public string Description { set; get; }
 
         public virtual List<Tache> Taches { set; get; }

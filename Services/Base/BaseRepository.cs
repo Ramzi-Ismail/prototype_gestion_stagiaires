@@ -240,16 +240,16 @@ namespace App
            return  this.Context.Set<T>().Create();
         }
         /// <summary>
-        /// Obtien l'annotion 'AffichageGestion' de la classe Entity
+        /// Obtien l'annotion 'AffichageDansFormGestion' de la classe Entity
         /// pour le paramétrage des titre de l'interface de gestion
         /// </summary>
         /// <returns></returns>
-        public AffichageGestionAttribute getAffichageGestionAttribute()
+        public AffichageDansFormGestionAttribute getAffichageDansFormGestionAttribute()
         {
-            Object[] ls_attribut = this.TypeEntity.GetCustomAttributes(typeof(AffichageGestionAttribute), false);
-            if (ls_attribut == null || ls_attribut.Count() == 0) return new AffichageGestionAttribute();
-            AffichageGestionAttribute affichageGestion = (AffichageGestionAttribute)ls_attribut[0];
-            return affichageGestion;
+            Object[] ls_attribut = this.TypeEntity.GetCustomAttributes(typeof(AffichageDansFormGestionAttribute), false);
+            if (ls_attribut == null || ls_attribut.Count() == 0) return new AffichageDansFormGestionAttribute();
+            AffichageDansFormGestionAttribute AffichageDansFormGestion = (AffichageDansFormGestionAttribute)ls_attribut[0];
+            return AffichageDansFormGestion;
         }
     }
 }

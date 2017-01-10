@@ -11,7 +11,7 @@ using App.WinForm;
 
 namespace App.GestionStagiaires
 {
-    public partial class FormStagiaireUC : FormUserControl
+    public partial class FormStagiaireUC : BaseFormulaire
     {
         public FormStagiaireUC(IBaseRepository service) :base(service)
         {

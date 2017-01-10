@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace App.WinForm
 {
-    public partial class FormUserControl : UserControl, IFormUserControl
+    public partial class BaseFormulaire : UserControl, IBaseFormulaire
     {
         #region Variables
         /// <summary>
@@ -35,7 +35,7 @@ namespace App.WinForm
         /// à supprimer , il faut utiliser le service au lieux de context
         /// </summary>
         /// <param name="context"></param>
-        public FormUserControl(ModelContext context)
+        public BaseFormulaire(ModelContext context)
         {
             InitializeComponent();
             this.context = context;
@@ -45,7 +45,7 @@ namespace App.WinForm
         /// Créer du formuliare avec l'instance de service en cours d'utilisation
         /// </summary>
         /// <param name="service"></param>
-        public FormUserControl(IBaseRepository service)
+        public BaseFormulaire(IBaseRepository service)
         {
             InitializeComponent();
             this.Service = service;
@@ -57,13 +57,13 @@ namespace App.WinForm
         ///// </summary>
         ///// <param name="entity"></param>
         ///// <param name="context"></param>
-        //public FormUserControl(BaseEntity entity, ModelContext context)
+        //public BaseFormulaire(BaseEntity entity, ModelContext context)
         //{
         //    InitializeComponent();
         //    this.Entity = entity;
         //    this.context = context;
         //}
-        public FormUserControl()
+        public BaseFormulaire()
         {
             InitializeComponent();
         }
@@ -110,8 +110,8 @@ namespace App.WinForm
         /// Création d'une instance comme cette formulaire
         /// </summary>
         /// <returns></returns>
-        public virtual FormUserControl CreateInstance(IBaseRepository Service) {
-            return (FormUserControl) Activator.CreateInstance (this.GetType(), Service);
+        public virtual BaseFormulaire CreateInstance(IBaseRepository Service) {
+            return (BaseFormulaire) Activator.CreateInstance (this.GetType(), Service);
            
         }
 
@@ -162,7 +162,7 @@ namespace App.WinForm
             onAnnulerClick(this, e);
         }
 
-        void IFormUserControl.Lire()
+        void IBaseFormulaire.Lire()
         {
             throw new NotImplementedException();
         }

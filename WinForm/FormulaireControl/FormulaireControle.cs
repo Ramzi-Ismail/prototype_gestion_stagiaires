@@ -13,7 +13,7 @@ using App.WinForm.Annotation;
 
 namespace App.WinForm
 {
-    public partial class FormulaireControle : FormUserControl
+    public partial class FormulaireControle : BaseFormulaire
     {
         public FormulaireControle():base()
         {
@@ -37,7 +37,7 @@ namespace App.WinForm
             int index = 0;
             foreach (PropertyInfo item in ListeChampsFormulaire())
             {
-                AffichageFromAttribute affichageFrom = (AffichageFromAttribute) item.GetCustomAttribute(typeof(AffichageFromAttribute));
+                AffichageProprieteAttribute AffichagePropriete = (AffichageProprieteAttribute) item.GetCustomAttribute(typeof(AffichageProprieteAttribute));
                  
                   
                     // label
@@ -47,7 +47,7 @@ namespace App.WinForm
                     lbl.Name = "label1";
                     lbl.Size = new System.Drawing.Size(100, 13);
                     lbl.TabIndex = index++;
-                    lbl.Text = affichageFrom.Titre;
+                    lbl.Text = AffichagePropriete.Titre;
                     if (item.PropertyType.Name == "String")
                     {
                         // textBox1
@@ -56,7 +56,7 @@ namespace App.WinForm
                         txt.Name = item.Name;
                         
                         txt.TabIndex = index++;
-                        if (affichageFrom.MultiLine)
+                        if (AffichagePropriete.MultiLine)
                         {
                             txt.Multiline = true;
                             txt.Size = new System.Drawing.Size(400, 100);
@@ -89,7 +89,7 @@ namespace App.WinForm
                         dateTimePocker.TabIndex = index++;
                         this.formulaire.Controls.Add(dateTimePocker);
                     }
-                    if (affichageFrom.Relation == "ManyToOne")
+                    if (AffichagePropriete.Relation == "ManyToOne")
                     {
                         Type ServicesEntityType = typeof(BaseRepository<>).MakeGenericType(item.PropertyType);
                         IBaseRepository ServicesEntity = (IBaseRepository) Activator.CreateInstance(ServicesEntityType);
@@ -102,7 +102,7 @@ namespace App.WinForm
                         comboBox.Size = new System.Drawing.Size(200, 20);
                         comboBox.TabIndex = index++;
                         comboBox.ValueMember = "Id";
-                        comboBox.DisplayMember = affichageFrom.DisplayMember;
+                        comboBox.DisplayMember = AffichagePropriete.DisplayMember;
                         comboBox.DataSource = ls;
                         this.formulaire.Controls.Add(comboBox);
 
@@ -123,7 +123,7 @@ namespace App.WinForm
 
             foreach (PropertyInfo item in ListeChampsFormulaire())
             {
-                AffichageFromAttribute affichageFrom = (AffichageFromAttribute)item.GetCustomAttribute(typeof(AffichageFromAttribute));
+                AffichageProprieteAttribute AffichagePropriete = (AffichageProprieteAttribute)item.GetCustomAttribute(typeof(AffichageProprieteAttribute));
 
               
 
@@ -150,7 +150,7 @@ namespace App.WinForm
                         DateTimePicker dateTimePicker = (DateTimePicker)this.formulaire.Controls.Find(NomPropriete, true).First();
                         typeEntity.GetProperty(NomPropriete).SetValue(entity, dateTimePicker.Value);
                     }
-                    if (affichageFrom.Relation == "ManyToOne")
+                    if (AffichagePropriete.Relation == "ManyToOne")
                     {
                         ComboBox comboBox = (ComboBox)this.formulaire.Controls.Find(NomPropriete, true).First();
 
@@ -178,7 +178,7 @@ namespace App.WinForm
             int y = 35;
             foreach (PropertyInfo item in ListeChampsFormulaire())
             {
-                AffichageFromAttribute affichageFrom = (AffichageFromAttribute)item.GetCustomAttribute(typeof(AffichageFromAttribute));
+                AffichageProprieteAttribute AffichagePropriete = (AffichageProprieteAttribute)item.GetCustomAttribute(typeof(AffichageProprieteAttribute));
 
                 
                     Type typePropriete = item.PropertyType;
@@ -195,7 +195,7 @@ namespace App.WinForm
                         DateTimePicker dateTimePicker = (DateTimePicker)this.formulaire.Controls.Find(NomPropriete, true).First();
                         dateTimePicker.Value = valeur;
                     }
-                    if (affichageFrom.Relation == "ManyToOne")
+                    if (AffichagePropriete.Relation == "ManyToOne")
                     {
                         BaseEntity valeur = (BaseEntity)typeEntity.GetProperty(NomPropriete).GetValue(entity);
                         ComboBox comboBox = (ComboBox)this.formulaire.Controls.Find(NomPropriete, true).First();
@@ -216,9 +216,9 @@ namespace App.WinForm
         {
             // Obtien la liste des PropertyInfo par ordrer d'affichage
             var listeProprite = from i in this.Service.TypeEntity.GetProperties()
-                                where i.GetCustomAttribute(typeof(AffichageFromAttribute)) != null
-                                && ((AffichageFromAttribute)i.GetCustomAttribute(typeof(AffichageFromAttribute))).isFormulaire
-                                orderby ((AffichageFromAttribute)i.GetCustomAttribute(typeof(AffichageFromAttribute))).Ordre
+                                where i.GetCustomAttribute(typeof(AffichageProprieteAttribute)) != null
+                                && ((AffichageProprieteAttribute)i.GetCustomAttribute(typeof(AffichageProprieteAttribute))).isFormulaire
+                                orderby ((AffichageProprieteAttribute)i.GetCustomAttribute(typeof(AffichageProprieteAttribute))).Ordre
                                 select i;
             return listeProprite.ToList<PropertyInfo>();
         }

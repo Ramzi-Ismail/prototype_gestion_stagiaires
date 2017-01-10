@@ -48,18 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Filieres\FiliereFromUC.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Filieres\FiliereFromUC.Designer.cs">
-      <DependentUpon>FiliereFromUC.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Filieres\FormGestionFilieres.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Filieres\FormGestionFilieres.Designer.cs">
-      <DependentUpon>FormGestionFilieres.cs</DependentUpon>
-    </Compile>
     <Compile Include="Formateurs\FormateurFormUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -133,12 +121,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Filieres\FiliereFromUC.resx">
-      <DependentUpon>FiliereFromUC.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Filieres\FormGestionFilieres.resx">
-      <DependentUpon>FormGestionFilieres.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formateurs\FormateurFormUC.resx">
       <DependentUpon>FormateurFormUC.cs</DependentUpon>
       <LastGenOutput>FormateurFormUC1.Designer.cs</LastGenOutput>
@@ -158,6 +140,9 @@
       <DependentUpon>FormUpdateProfile.cs</DependentUpon>
       <LastGenOutput>FormUpdateProfile1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Filieres\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

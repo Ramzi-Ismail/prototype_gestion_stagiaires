@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace App.GestionProjets
          
 {
-    public partial class FormGestionTaches : App.WinForm.FormGestionTabPage
+    public partial class FormGestionTaches : App.WinForm.InterfaceGestion
     {
         public FormGestionTaches() : base()
         {

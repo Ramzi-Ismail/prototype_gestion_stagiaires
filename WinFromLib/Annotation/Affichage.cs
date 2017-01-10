@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace App.WinForm.Annotation
 {
-    public class AffichageFromAttribute : Attribute
+    public class AffichageProprieteAttribute : Attribute
     {
         
 

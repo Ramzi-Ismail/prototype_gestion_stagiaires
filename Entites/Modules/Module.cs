@@ -2,34 +2,35 @@ using App.GestionStagiaires;
 using App.WinForm.Annotation;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace App.Modules
 {
-    [AffichageGestion(Titre = "Gestion des modules",
-        TitrePageGridView = "Modules",
+    [AffichageDansFormGestion(Titre = "Gestion des modules",TitrePageGridView = "Modules",
         TitreButtonAjouter = "Ajouter un module")]
+    [AffichageClasse(Minuscule="Module", Majuscule = "Modules")]
     public class Module : BaseEntity
     {
-        [AffichageFrom(Titre = "Nom du module", isGridView = true, isFormulaire = true, Ordre = 1, WidthColonne = 200 )]
+        [AffichagePropriete(Titre = "Nom du module", isGridView = true, isFormulaire = true, Ordre = 1, WidthColonne = 200 )]
         public String Nom { set; get; }
 
         /// <summary>
         /// La duré en Nombre d'heure
         /// </summary>
-        [AffichageFrom(Titre = "Durée", isGridView = true, isFormulaire = true, Ordre = 2, WidthColonne = 40)]
+        [AffichagePropriete(Titre = "Durée", isGridView = true, isFormulaire = true, Ordre = 2, WidthColonne = 40)]
         public int Duree{ set; get; }
 
         // Affectation
-        [AffichageFrom(Titre = "Filiere", isGridView = true, isFormulaire = true,
+        [AffichagePropriete(Titre = "Filiere", isGridView = true, isFormulaire = true,
             Relation = "ManyToOne",
             WidthColonne = 100,
             Ordre = 3)]
         public virtual Filiere Filiere { set; get; }
 
-        [AffichageFrom(Titre = "Présentation", isFormulaire = true, Ordre = 5 , MultiLine =true)]
+        [AffichagePropriete(Titre = "Présentation", isFormulaire = true, Ordre = 5 , MultiLine =true)]
         public string Presentation { set; get; }
 
-        [AffichageFrom(Titre = "Remarque", isFormulaire = true, Ordre = 6, MultiLine = true)]
+        [AffichagePropriete(Titre = "Remarque", isFormulaire = true, Ordre = 6, MultiLine = true)]
         public string Description { set; get; }
 
       

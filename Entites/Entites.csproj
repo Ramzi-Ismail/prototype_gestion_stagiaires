@@ -62,6 +62,8 @@
     <Compile Include="Formations\Seance.cs" />
     <Compile Include="Formations\Sequences.cs" />
     <Compile Include="Formations\StrategiePedagogie.cs" />
+    <Compile Include="Livres\Livre.cs" />
+    <Compile Include="Livres\MaisonEdition.cs" />
     <Compile Include="Modules\ContenuePrecision.cs" />
     <Compile Include="Modules\Module.cs" />
     <Compile Include="Modules\Prealable.cs" />

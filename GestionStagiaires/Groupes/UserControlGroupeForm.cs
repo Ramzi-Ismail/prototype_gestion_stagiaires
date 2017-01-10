@@ -9,7 +9,7 @@ using App.WinForm;
 
 namespace App.GestionStagiaires.Groupes
 {
-    public partial class UserControlGroupeForm : FormUserControl
+    public partial class UserControlGroupeForm : BaseFormulaire
     {
         public UserControlGroupeForm(IBaseRepository service):base(service)
         {

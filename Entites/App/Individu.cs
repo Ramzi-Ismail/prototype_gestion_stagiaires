@@ -13,16 +13,16 @@ namespace App
         public override string ToString() =>  this.Nom + " " + this.Prenom;
 
         // Etat Civil
-        [AffichageFrom(Titre = "Nom", isGridView = true, isFormulaire = true, Ordre = 1, WidthColonne = 100)]
+        [AffichagePropriete(Titre = "Nom", isGridView = true, isFormulaire = true, Ordre = 1, WidthColonne = 100)]
         public String Nom { set; get; }
 
-        [AffichageFrom(Titre = "Prénom", isGridView = true, isFormulaire = true, Ordre = 2, WidthColonne = 100)]
+        [AffichagePropriete(Titre = "Prénom", isGridView = true, isFormulaire = true, Ordre = 2, WidthColonne = 100)]
         public String Prenom { set; get; }
 
-        [AffichageFrom(Titre = "CIN", isFormulaire = true, Ordre = 3)]
+        [AffichagePropriete(Titre = "CIN", isFormulaire = true, Ordre = 3)]
         public String Cin { set; get; }
 
-        [AffichageFrom(Titre = "Date de naissance", isFormulaire = true, Ordre = 3)]
+        [AffichagePropriete(Titre = "Date de naissance", isFormulaire = true, Ordre = 3)]
         public DateTime DateNaissance { set; get; }
 
     
@@ -31,13 +31,13 @@ namespace App
         public String ProfilImage { set; get; }
 
         // Coordonnées
-        [AffichageFrom(Titre = "E-mail", isFormulaire = true, Ordre = 10)]
+        [AffichagePropriete(Titre = "E-mail", isFormulaire = true, Ordre = 10)]
         public String Email { set; get; }
 
-        [AffichageFrom(Titre = "Téléphone", isFormulaire = true, Ordre = 11)]
+        [AffichagePropriete(Titre = "Téléphone", isFormulaire = true, Ordre = 11)]
         public String Telephone { set; get; }
 
-        [AffichageFrom(Titre = "Adress", isFormulaire = true, Ordre = 12,MultiLine = true)]
+        [AffichagePropriete(Titre = "Adress", isFormulaire = true, Ordre = 12,MultiLine = true)]
         public String Adress { set; get; }
 
         public Individu()

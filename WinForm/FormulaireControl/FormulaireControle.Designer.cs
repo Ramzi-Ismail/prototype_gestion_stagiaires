@@ -45,12 +45,14 @@
             // 
             // formulaire
             // 
-            this.formulaire.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.formulaire.Location = new System.Drawing.Point(0, 0);
+            this.formulaire.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.formulaire.Location = new System.Drawing.Point(10, 10);
             this.formulaire.Margin = new System.Windows.Forms.Padding(10);
             this.formulaire.Name = "formulaire";
             this.formulaire.Padding = new System.Windows.Forms.Padding(10);
-            this.formulaire.Size = new System.Drawing.Size(695, 321);
+            this.formulaire.Size = new System.Drawing.Size(675, 301);
             this.formulaire.TabIndex = 3;
             this.formulaire.TabStop = false;
             this.formulaire.Text = "Formulaire";

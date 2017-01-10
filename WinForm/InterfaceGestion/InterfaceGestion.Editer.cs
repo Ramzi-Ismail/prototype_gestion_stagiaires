@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace App.WinForm
 {
-    partial class FormGestionTabPage
+    partial class InterfaceGestion
     {
         /// <summary>
         /// Editer un objet séléctioné du DataGridView
@@ -25,7 +25,7 @@ namespace App.WinForm
              
 
                 // Insertion du formulaire 
-                FormUserControl form = Formulaire.CreateInstance(this.Service);
+                BaseFormulaire form = Formulaire.CreateInstance(this.Service);
                 form.Name = "EntityForm";
                 form.Entity = entity;
                 form.Dock = DockStyle.Fill;
@@ -43,7 +43,7 @@ namespace App.WinForm
         }
         private void Form_EditerClick(object sender, EventArgs e)
         {
-            FormUserControl form = (FormUserControl)sender;
+            BaseFormulaire form = (BaseFormulaire)sender;
             BaseEntity entity = form.Entity;
             string tabEditerName = "TabEditer-" + entity.Id;
             TabPage tabEditer = this.tabControl.TabPages[tabEditerName];
@@ -54,7 +54,7 @@ namespace App.WinForm
 
         private void Form_AnnulerEditerClick(object sender, EventArgs e)
         {
-            FormUserControl form = (FormUserControl)sender;
+            BaseFormulaire form = (BaseFormulaire)sender;
             BaseEntity entity = form.Entity;
             string tabEditerName = "TabEditer-" + entity.Id;
             TabPage tabEditer = this.tabControl.TabPages[tabEditerName];

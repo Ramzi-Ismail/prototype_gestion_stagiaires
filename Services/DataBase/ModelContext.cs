@@ -4,6 +4,7 @@
     using GestionFormations;
     using GestionProjets;
     using GestionStagiaires;
+    using Livres;
     using Modules;
     using System;
     using System.Data.Entity;
@@ -26,6 +27,11 @@
             //Database.SetInitializer<SchoolDBContext>(new DropCreateDatabaseAlways<SchoolDBContext>());
             //Database.SetInitializer<SchoolDBContext>(new SchoolDBInitializer());
         }
+
+        // Gestion Livre 
+        public virtual DbSet<Livre> Livres { get; set; }
+        public virtual DbSet<MaisonEdition> MaisonEditions { get; set; }
+
         // Gestion des formation
         public virtual DbSet<AnneeFormation> AnneeFormations { get; set; }
 
