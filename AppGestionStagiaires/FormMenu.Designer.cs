@@ -39,10 +39,12 @@
             this.tâchesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.projetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.etablissementDeFormationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gérerLesGroupesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.annéesDeFormationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.formateursToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gérerLesFilieresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestionDesModulesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestionDesModulesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestionDesPrécisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,7 +53,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.stagiairesToolStripMenuItem,
             this.gestionDesProjetsToolStripMenuItem,
-            this.etablissementDeFormationToolStripMenuItem});
+            this.etablissementDeFormationToolStripMenuItem,
+            this.gestionDesModulesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(657, 24);
@@ -121,7 +124,6 @@
             // etablissementDeFormationToolStripMenuItem
             // 
             this.etablissementDeFormationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gérerLesGroupesToolStripMenuItem,
             this.annéesDeFormationToolStripMenuItem,
             this.formateursToolStripMenuItem,
             this.gérerLesFilieresToolStripMenuItem});
@@ -129,18 +131,12 @@
             this.etablissementDeFormationToolStripMenuItem.Size = new System.Drawing.Size(164, 20);
             this.etablissementDeFormationToolStripMenuItem.Text = "Etablissement de formation";
             // 
-            // gérerLesGroupesToolStripMenuItem
-            // 
-            this.gérerLesGroupesToolStripMenuItem.Name = "gérerLesGroupesToolStripMenuItem";
-            this.gérerLesGroupesToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.gérerLesGroupesToolStripMenuItem.Text = "Groupes";
-            this.gérerLesGroupesToolStripMenuItem.Click += new System.EventHandler(this.gérerLesGroupesToolStripMenuItem_Click);
-            // 
             // annéesDeFormationToolStripMenuItem
             // 
             this.annéesDeFormationToolStripMenuItem.Name = "annéesDeFormationToolStripMenuItem";
             this.annéesDeFormationToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.annéesDeFormationToolStripMenuItem.Text = "Années de formation";
+            this.annéesDeFormationToolStripMenuItem.Click += new System.EventHandler(this.annéesDeFormationToolStripMenuItem_Click);
             // 
             // formateursToolStripMenuItem
             // 
@@ -155,6 +151,29 @@
             this.gérerLesFilieresToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.gérerLesFilieresToolStripMenuItem.Text = "Filieres";
             this.gérerLesFilieresToolStripMenuItem.Click += new System.EventHandler(this.gérerLesFilieresToolStripMenuItem_Click);
+            // 
+            // gestionDesModulesToolStripMenuItem
+            // 
+            this.gestionDesModulesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gestionDesModulesToolStripMenuItem1,
+            this.gestionDesPrécisionToolStripMenuItem});
+            this.gestionDesModulesToolStripMenuItem.Name = "gestionDesModulesToolStripMenuItem";
+            this.gestionDesModulesToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.gestionDesModulesToolStripMenuItem.Text = "Modules";
+            // 
+            // gestionDesModulesToolStripMenuItem1
+            // 
+            this.gestionDesModulesToolStripMenuItem1.Name = "gestionDesModulesToolStripMenuItem1";
+            this.gestionDesModulesToolStripMenuItem1.Size = new System.Drawing.Size(186, 22);
+            this.gestionDesModulesToolStripMenuItem1.Text = "Gestion des modules";
+            this.gestionDesModulesToolStripMenuItem1.Click += new System.EventHandler(this.gestionDesModulesToolStripMenuItem1_Click);
+            // 
+            // gestionDesPrécisionToolStripMenuItem
+            // 
+            this.gestionDesPrécisionToolStripMenuItem.Name = "gestionDesPrécisionToolStripMenuItem";
+            this.gestionDesPrécisionToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.gestionDesPrécisionToolStripMenuItem.Text = "Gestion des Précision";
+            this.gestionDesPrécisionToolStripMenuItem.Click += new System.EventHandler(this.gestionDesPrécisionToolStripMenuItem_Click);
             // 
             // FormMenu
             // 
@@ -189,10 +208,12 @@
         private System.Windows.Forms.ToolStripMenuItem miniGroupesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tâchesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem etablissementDeFormationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gérerLesGroupesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem annéesDeFormationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem formateursToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gérerLesFilieresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editerGénériqueToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gestionDesModulesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gestionDesModulesToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem gestionDesPrécisionToolStripMenuItem;
     }
 }

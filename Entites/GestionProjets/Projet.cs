@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App.WinForm.Annotation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +9,19 @@ namespace App.GestionProjets
 {
     public class Projet  :BaseEntity
     {
-         
+
+        [AffichageFrom(Titre = "Titre", Ordre = 1)]
         public string Titre { set; get; }
+
+        [AffichageFrom(Titre = "Description", Ordre = 2)]
         public string Description { set; get; }
 
         public virtual List<Tache> Taches { set; get; }
+
+        public override string ToString()
+        {
+            return Titre;
+        }
 
     }
 }

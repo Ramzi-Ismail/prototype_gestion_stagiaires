@@ -1,13 +1,17 @@
 using System;
 namespace App.Modules
 {
-   public class ContenuePrecision
+   public class ContenuePrecision :BaseEntity
    {
-      private int id;
-      private string nom;
-      private string description;
-      private int duree;
-      private int ordre;
-   
-   }
+
+      public  string Nom { set; get; }
+        public string Description { set; get; }
+        public int Duree { set; get; }
+        public int Ordre { set; get; }
+
+        public Precision Precision { set; get; }
+
+
+
+    }
 }

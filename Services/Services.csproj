@@ -60,17 +60,49 @@
     <Compile Include="Migrations\201701071548387_init.Designer.cs">
       <DependentUpon>201701071548387_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701091912004_Add_Required_To_Tache.cs" />
+    <Compile Include="Migrations\201701091912004_Add_Required_To_Tache.Designer.cs">
+      <DependentUpon>201701091912004_Add_Required_To_Tache.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701100935222_GestionModules.cs" />
+    <Compile Include="Migrations\201701100935222_GestionModules.Designer.cs">
+      <DependentUpon>201701100935222_GestionModules.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701101214211_AlterTablePrecision.cs" />
+    <Compile Include="Migrations\201701101214211_AlterTablePrecision.Designer.cs">
+      <DependentUpon>201701101214211_AlterTablePrecision.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701101230021_TableAnneFormation.cs" />
+    <Compile Include="Migrations\201701101230021_TableAnneFormation.Designer.cs">
+      <DependentUpon>201701101230021_TableAnneFormation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201701071548387_init.resx">
       <DependentUpon>201701071548387_init.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701091912004_Add_Required_To_Tache.resx">
+      <DependentUpon>201701091912004_Add_Required_To_Tache.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701100935222_GestionModules.resx">
+      <DependentUpon>201701100935222_GestionModules.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701101214211_AlterTablePrecision.resx">
+      <DependentUpon>201701101214211_AlterTablePrecision.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701101230021_TableAnneFormation.resx">
+      <DependentUpon>201701101230021_TableAnneFormation.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entites\Entites.csproj">
       <Project>{5831ae07-4d1e-449a-b8f8-f49194aa6f04}</Project>
       <Name>Entites</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WinFromLib\WinFromLib.csproj">
+      <Project>{7b89bd41-7117-4c2d-845f-45eeb252cc35}</Project>
+      <Name>WinFromLib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

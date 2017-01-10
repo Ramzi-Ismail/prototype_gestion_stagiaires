@@ -1,4 +1,5 @@
 ﻿using App.WinForm;
+using App.WinForm.Annotation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,7 @@ namespace App.WinForm
 {
     public partial class FormGestionTabPage : Form
     {
+
         /// <summary>
         /// Le Service de gestion  
         /// </summary>
@@ -22,56 +24,56 @@ namespace App.WinForm
         /// </summary>
         protected FormUserControl Formulaire;
 
-        /// <summary>
-        /// Liste des colonnes à afficher dans le DataGridView
-        /// </summary>
-        public List<ColonneDataGridView> ListColonnesDataGrid;
+      
         /// <summary>
         /// On ne pas Créer ce formulaire sans Paramétre
+        /// ce Constructeur est ajouter seuelement pour supproer le mode désigne de Visual Studio 2015
         /// </summary>
         public  FormGestionTabPage()
         {
             InitializeComponent();
         }
 
-
-        Dictionary<string, string> Params;
-
-       
-
+       /// <summary>
+       /// Création d'une gestion générique 
+       /// </summary>
+       /// <param name="service"></param>
+        public FormGestionTabPage(IBaseRepository service)
+        {
+            InitializeComponent();
+            FormUserControl formulaire = new FormulaireControle(service);
+            initParams(service, formulaire);
+        }
         /// <summary>
-        /// Creation du Formulaire de gestion des TabPages
+        /// Création d'une gestion avec une formulaire personalisé
         /// </summary>
         /// <param name="formulaire">Une instance de formulaire de saisie, il est utilisr 
         /// pour la creation des autres instance en cas d'édition des objet
         /// </param>
-        public FormGestionTabPage(IBaseRepository service,FormUserControl formulaire, List<ColonneDataGridView> listColonnesDataGrid, Dictionary<string, string> Params)
+        public FormGestionTabPage(IBaseRepository service, FormUserControl formulaire)
         {
             InitializeComponent();
-            initParams(service, formulaire, listColonnesDataGrid, Params);
+            initParams(service, formulaire);
         }
-        protected void initParams(IBaseRepository service, FormUserControl formulaire, List<ColonneDataGridView> listColonnesDataGrid, Dictionary<string, string> Params)
+
+        protected void initParams(IBaseRepository service, FormUserControl formulaire)
         {
-            this.Params = Params;
             this.Service = service;
             this.Formulaire = formulaire;
-            this.ListColonnesDataGrid = listColonnesDataGrid;
             this.ConfigDataGridView();
             this.setTitre();
         }
 
-       
         /// <summary>
         /// Configuration de Titre du formulaire et le titre de Page Grid
         /// </summary>
         private void setTitre()
         {
-            string NomObjets = Service.GetNomObjets();
-            string NomObjet = Service.GetNomObjet();
-            this.Text = Params["TitreGestion"];
-            this.bt_Ajouter.Text = Params["TitreButtonAjouter"];
+            AffichageGestionAttribute affichageGestion = this.Service.getAffichageGestionAttribute();
+            this.Text = affichageGestion.Titre;
+            this.bt_Ajouter.Text = affichageGestion.TitreButtonAjouter;
             TabPage tabGrid = this.tabControl.TabPages["TabGrid"];
-            tabGrid.Text = Params["TitrePageGrid"] ;
+            tabGrid.Text = affichageGestion.TitrePageGridView;
         }
         
         private void FormGestion_Load(object sender, EventArgs e)
@@ -83,5 +85,7 @@ namespace App.WinForm
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
         {
         }
+       
+      
     }
 }

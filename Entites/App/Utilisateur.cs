@@ -10,6 +10,8 @@ namespace App
 {
     public class Utilisateur: Individu
     {
+
+        public override string ToString() => base.ToString();
         public static string ROLE_STAGIAIRE = "STAGIAIRE";
         public static string ROLE_ADMIN = "ADMIN";
 

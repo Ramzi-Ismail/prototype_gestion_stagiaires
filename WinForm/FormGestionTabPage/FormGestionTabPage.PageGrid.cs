@@ -1,5 +1,9 @@
 ﻿
+using App.WinForm.Annotation;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace App.WinForm
@@ -21,28 +25,40 @@ namespace App.WinForm
 
         private void ConfigDataGridView()
         {
-            int index = 0;
-            foreach (ColonneDataGridView item in this.ListColonnesDataGrid)
+              
+            // Obtien la liste des PropertyInfo par ordrer d'affichage
+            var listeProprite = from i in Service.TypeEntity.GetProperties()
+                                where i.GetCustomAttribute(typeof(AffichageFromAttribute)) != null &&
+                                ((AffichageFromAttribute)i.GetCustomAttribute(typeof(AffichageFromAttribute))).isGridView
+                                orderby ((AffichageFromAttribute)i.GetCustomAttribute(typeof(AffichageFromAttribute))).Ordre
+                                select i;
+
+            int index_colonne = 0;
+            foreach (PropertyInfo propertyInfo in listeProprite)
             {
-                
-                DataGridViewColumn colonne;
-                index++;
-                if (item.Type == ColonneDataGridView.TYPE_STRING) { 
-                  colonne = new DataGridViewTextBoxColumn();
-                }else if (item.Type == ColonneDataGridView.TYPE_DATATIME)
+                Attribute getAffichageFrom = propertyInfo.GetCustomAttribute(typeof(AffichageFromAttribute));
+                if (getAffichageFrom == null) continue;
+                AffichageFromAttribute AffichageFrom = (AffichageFromAttribute)getAffichageFrom;
+
+                DataGridViewColumn colonne = new DataGridViewTextBoxColumn(); ;
+                index_colonne++;
+
+                if (propertyInfo.PropertyType.Name == "String" || propertyInfo.PropertyType.Name ==  "Integer") { 
+                  colonne.ValueType = typeof(String);
+                     
+                }
+                if (propertyInfo.PropertyType.Name == "DateTime")
                 {
                     colonne = new DataGridViewTextBoxColumn();
-                }
-                else
-                {
-                  colonne = new DataGridViewTextBoxColumn();
+                    colonne.ValueType = typeof(DateTime);
                 }
 
-                colonne.HeaderText =  item.Titre;
-                colonne.DataPropertyName = item.Code;
-                colonne.Name = item.Code;
+                colonne.HeaderText = AffichageFrom.Titre;
+                colonne.DataPropertyName = propertyInfo.Name;
+                colonne.Name = propertyInfo.Name;
                 colonne.ReadOnly = true;
-                this.dataGridView.Columns.Insert(index, colonne);
+                if(AffichageFrom.WidthColonne!= 0) colonne.Width = AffichageFrom.WidthColonne;
+                this.dataGridView.Columns.Insert(index_colonne, colonne);
             }
                
             

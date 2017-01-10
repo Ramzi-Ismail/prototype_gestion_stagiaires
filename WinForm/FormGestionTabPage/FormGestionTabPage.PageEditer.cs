@@ -28,6 +28,7 @@ namespace App.WinForm
                 FormUserControl form = Formulaire.CreateInstance(this.Service);
                 form.Name = "EntityForm";
                 form.Entity = entity;
+                form.Dock = DockStyle.Fill;
                 this.tabControl.TabPages[tabEditerName].Controls.Add(form);
                 form.Afficher();
                 form.EnregistrerClick += Form_EditerClick;

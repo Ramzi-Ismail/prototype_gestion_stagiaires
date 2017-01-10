@@ -48,7 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="FormAffecterTachesAuMiniGroupe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,14 +72,6 @@
     </Compile>
     <Compile Include="Projets\FormGestionProjets.cs">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Projets\FormGestionProjets.Designer.cs">
-      <DependentUpon>FormGestionProjets.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Projets\FormGestionProjets1.Designer.cs">
-      <DependentUpon>FormGestionProjets.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Taches\FormGestionTaches.cs">
@@ -109,10 +100,6 @@
     <EmbeddedResource Include="FormAffecterTachesAuxStagiaires.resx">
       <DependentUpon>FormAffecterTachesAuxStagiaires.cs</DependentUpon>
       <LastGenOutput>FormAffecterTachesAuxStagiaires1.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Projets\FormGestionProjets.resx">
-      <DependentUpon>FormGestionProjets.cs</DependentUpon>
-      <LastGenOutput>FormGestionProjets1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

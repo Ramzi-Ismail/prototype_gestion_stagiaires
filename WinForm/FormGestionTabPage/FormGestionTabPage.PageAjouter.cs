@@ -13,13 +13,14 @@ namespace App.WinForm
         private void bt_Ajouter_Click(object sender, EventArgs e)
         {
 
+
             // Insertion du formulaire Si la page TabAjouter n'existe pas
             if (tabControl.TabPages.IndexOfKey("TabAjouter") == -1)
             {
                 // Création de Tab
                 TabPage tabAjouter = new TabPage();
-                string NomObjet = Service.GetNomObjet();
-                tabAjouter.Text = "Ajouter :" + NomObjet;
+                
+                tabAjouter.Text = this.Service.getAffichageGestionAttribute().TitreButtonAjouter;
                 tabAjouter.Name = "TabAjouter";
                 tabControl.TabPages.Add(tabAjouter);
                 tabControl.SelectedTab = tabAjouter;
@@ -29,6 +30,7 @@ namespace App.WinForm
                 //form.Entity = Formulaire.CreateObjetInstance();
                 form.Entity = (BaseEntity) this.Service.CreateInstanceObjet();
                 form.Name = "Form";
+                form.Dock = DockStyle.Fill;
                 this.tabControl.TabPages["TabAjouter"].Controls.Add(form);
                 form.EnregistrerClick += Form_EnregistrerClick;
                 form.AnnulerClick += Form_AnnulerAjouterClick;

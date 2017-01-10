@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App.WinForm.Annotation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ namespace App
 
     public interface IBaseRepository 
     {
+          Type TypeEntity { set; get; } 
         int SaveChanges();
 
         int Save(BaseEntity item);
@@ -21,6 +23,9 @@ namespace App
         string GetNomObjets();
 
         List<Object> GetAll();
+
+        BaseEntity GetBaseEntityByID(Int64 id);
+
         void Supprimer(BaseEntity obj);
 
         /// <summary>
@@ -34,5 +39,6 @@ namespace App
         /// </summary>
         /// <returns></returns>
           object CreateInstanceObjet();
+       AffichageGestionAttribute getAffichageGestionAttribute();
     }
 }

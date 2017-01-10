@@ -14,6 +14,8 @@ using App.WinForm;
 using App.GestionStagiaires.Formateurs;
 using App.GestionFormations;
 using App.GestionProjets;
+using App.Modules;
+using App.Formations;
 
 namespace App
 {
@@ -47,27 +49,13 @@ namespace App
             // Gestion des stagiaire
             StagiairesService service = new StagiairesService();
             FormStagiaireUC objetForm = new FormStagiaireUC(service);
-
-            List<ColonneDataGridView> ListeColonne = new List<ColonneDataGridView> {
-                    new ColonneDataGridView("Nom",ColonneDataGridView.TYPE_STRING,"Nom"),
-                    new ColonneDataGridView("Prenom",ColonneDataGridView.TYPE_STRING,"Prénom"),
-                    new ColonneDataGridView("Groupe",ColonneDataGridView.TYPE_STRING,"Groupe"),
-                    new ColonneDataGridView("Filiere",ColonneDataGridView.TYPE_STRING,"Filiere"),
-                    new ColonneDataGridView("DateModification",ColonneDataGridView.TYPE_DATATIME,"Date de modification"),
-            };
-
-            Dictionary<string, string> Params = new Dictionary<string, string>();
-            Params.Add("TitreGestion", "Gestion des stagiaires");
-            Params.Add("TitrePageGrid", "Stagiaires");
-            Params.Add("TitreButtonAjouter", "Ajouter un stagiaire");
-
-            FormGestionTabPage form = new FormGestionTabPage(service, objetForm, ListeColonne, Params);
+            FormGestionTabPage form = new FormGestionTabPage(service, objetForm);
             this.AfficherForm(form);
         }
 
         private void projetsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.AfficherForm(new GestionProjets.FormGestionProjets());
+            this.AfficherForm(new GestionProjets.FormGestionProjet());
         }
 
         private void FormMenu_Load(object sender, EventArgs e)
@@ -87,7 +75,7 @@ namespace App
 
         private void gérerLesFilieresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.AfficherForm(new GestionStagiaires.FormGestionFilieres());
+            this.AfficherUnGestion<Filiere>();
         }
 
 
@@ -115,18 +103,7 @@ namespace App
 
         private void formateursToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //ModelContext context = new ModelContext();
-            //FormateurFormUC FormObjet = new FormateurFormUC(new FormateursService(context),context);
-            //List<FormGestionTabPage.ColonneDataGridView> ListeColonne = new List<FormGestionTabPage.ColonneDataGridView> {
-            //        new FormGestionTabPage.ColonneDataGridView("Matricule",FormGestionTabPage.ColonneDataGridView.TYPE_STRING,"Matricule"),
-            //        new FormGestionTabPage.ColonneDataGridView("Nom",FormGestionTabPage.ColonneDataGridView.TYPE_STRING,"Nom"),
-            //        new FormGestionTabPage.ColonneDataGridView("Prenom",FormGestionTabPage.ColonneDataGridView.TYPE_STRING,"Prénom"),
-            //        new FormGestionTabPage.ColonneDataGridView("Filiere",FormGestionTabPage.ColonneDataGridView.TYPE_STRING,"Filiere"),
-            //        new FormGestionTabPage.ColonneDataGridView("DateModification",FormGestionTabPage.ColonneDataGridView.TYPE_DATATIME,"Date de modification"),
-            //};
-            //FormGestionTabPage form = new FormGestionTabPage(FormObjet, ListeColonne);
-            //this.AfficherForm(form);
-
+            this.AfficherUnGestion<Formateur>();
         }
 
         private void gérerLesGroupesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -138,6 +115,29 @@ namespace App
         private void tâchesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.AfficherForm(new FormGestionTaches());
+        }
+
+        private void gestionDesModulesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FormGestionTabPage form = new FormGestionTabPage(new BaseRepository<Module>());
+            this.AfficherForm(form);
+        }
+
+        private void gestionDesPrécisionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormGestionTabPage form = new FormGestionTabPage(new BaseRepository<Precision>());
+            this.AfficherForm(form);
+        }
+
+        private void annéesDeFormationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.AfficherUnGestion<AnneeFormation>();
+        }
+
+        private void AfficherUnGestion<T>() where T:BaseEntity
+        {
+            FormGestionTabPage form = new FormGestionTabPage(new BaseRepository<T>());
+            this.AfficherForm(form);
         }
     }
 }

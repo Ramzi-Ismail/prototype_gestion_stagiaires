@@ -29,13 +29,28 @@
         private void InitializeComponent()
         {
             this.formulaire = new System.Windows.Forms.GroupBox();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // splitContainer1
+            // 
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.formulaire);
+            this.splitContainer1.Size = new System.Drawing.Size(695, 383);
+            this.splitContainer1.SplitterDistance = 321;
             // 
             // formulaire
             // 
-            this.formulaire.Location = new System.Drawing.Point(5, 69);
+            this.formulaire.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.formulaire.Location = new System.Drawing.Point(0, 0);
+            this.formulaire.Margin = new System.Windows.Forms.Padding(10);
             this.formulaire.Name = "formulaire";
-            this.formulaire.Size = new System.Drawing.Size(617, 222);
+            this.formulaire.Padding = new System.Windows.Forms.Padding(10);
+            this.formulaire.Size = new System.Drawing.Size(695, 321);
             this.formulaire.TabIndex = 3;
             this.formulaire.TabStop = false;
             this.formulaire.Text = "Formulaire";
@@ -44,9 +59,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.formulaire);
             this.Name = "FormulaireControle";
-            this.Controls.SetChildIndex(this.formulaire, 0);
+            this.Size = new System.Drawing.Size(695, 383);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

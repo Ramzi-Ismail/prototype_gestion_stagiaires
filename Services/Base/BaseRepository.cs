@@ -6,6 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using App.WinForm.Annotation;
 
 namespace App
 {
@@ -13,7 +14,22 @@ namespace App
     {
         #region Variables
         public ModelContext Context { get; set; }
+        private Type typeEntity;
+        
         protected IDbSet<T> DbSet { get; set; }
+
+        public Type  TypeEntity
+        {
+            get
+            {
+                return typeEntity;
+            }
+
+            set
+            {
+                typeEntity = value;
+            }
+        }
         #endregion
 
 
@@ -22,11 +38,13 @@ namespace App
         {
             this.Context = context;
             this.DbSet = this.Context.Set<T>();
+            this.TypeEntity = typeof(T);
         }
         public BaseRepository()
         {
             this.Context = new ModelContext();
             this.DbSet = this.Context.Set<T>();
+            this.TypeEntity = typeof(T);
         }
         #endregion
 
@@ -80,6 +98,10 @@ namespace App
         {
             return DbSet.Find(id);
         }
+        public virtual BaseEntity GetBaseEntityByID(Int64 id)
+        {
+            return DbSet.Find(id);
+        }
         public object ToBindingList()
         {
             DbSet.Load();
@@ -127,7 +149,7 @@ namespace App
         protected virtual int Update(T item)
         {
             this.Context.Entry(item).State = EntityState.Modified;
-            
+            item.DateModification = DateTime.Now;
             return this.Context.SaveChanges();
         }
         //private int Update(T item)
@@ -148,6 +170,7 @@ namespace App
         {
             if (item.Id <= 0)
             {
+                
                 return Insert(item);
             }
             else
@@ -216,6 +239,17 @@ namespace App
         {
            return  this.Context.Set<T>().Create();
         }
-        
+        /// <summary>
+        /// Obtien l'annotion 'AffichageGestion' de la classe Entity
+        /// pour le paramétrage des titre de l'interface de gestion
+        /// </summary>
+        /// <returns></returns>
+        public AffichageGestionAttribute getAffichageGestionAttribute()
+        {
+            Object[] ls_attribut = this.TypeEntity.GetCustomAttributes(typeof(AffichageGestionAttribute), false);
+            if (ls_attribut == null || ls_attribut.Count() == 0) return new AffichageGestionAttribute();
+            AffichageGestionAttribute affichageGestion = (AffichageGestionAttribute)ls_attribut[0];
+            return affichageGestion;
+        }
     }
 }

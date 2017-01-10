@@ -8,6 +8,10 @@ namespace App.GestionProjets
 {
     public class ProjetsService : BaseRepository<Projet>
     {
+        public ProjetsService()
+        {
+        }
+
         public ProjetsService(ModelContext context) : base(context)
         {
         }

@@ -1,4 +1,5 @@
 ﻿using App.GestionStagiaires;
+using App.WinForm.Annotation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,21 +8,15 @@ using System.Threading.Tasks;
 
 namespace App.Formations
 {
+    [AffichageGestion(Titre = "Gestion des Formateurs",
+TitrePageGridView = "Formateurs",
+TitreButtonAjouter = "Ajouter un formateur")]
     public class Formateur: Utilisateur
     {
-        public virtual Filiere Filiere { set; get; }
+        public override string ToString() => base.ToString();
 
-        public override string GetNomObjets()
-        {
-            return "Formateurs";
-        }
-        public override string GetNomObjet()
-        {
-            return "Formateur";
-        }
-        public override string ToString()
-        {
-            return this.Nom + " " + this.Prenom;
-        }
+        [AffichageFrom(Titre = "Spécialité",Relation ="ManyToOne", isGridView = true, isFormulaire = true, Ordre = 1, WidthColonne = 150)]
+        public virtual Filiere Filiere { set; get; }
+ 
     }
 }

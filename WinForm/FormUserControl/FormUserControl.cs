@@ -18,7 +18,7 @@ namespace App.WinForm
         /// </summary>
         protected ModelContext context;
         /// <summary>
-        /// Obtient ou définire l'entité qui représente 
+        /// Obtient ou définire l'entité représenté par cette formulaire
         /// </summary>
         public BaseEntity Entity { get; set; }
 
@@ -39,6 +39,7 @@ namespace App.WinForm
         {
             InitializeComponent();
             this.context = context;
+          
         }
         /// <summary>
         /// Créer du formuliare avec l'instance de service en cours d'utilisation
@@ -48,6 +49,7 @@ namespace App.WinForm
         {
             InitializeComponent();
             this.Service = service;
+        
         }
 
         ///// <summary>
@@ -145,11 +147,11 @@ namespace App.WinForm
             {
                 if (Service.Save(this.Entity) > 0)
                 {
-                    MessageBox.Show(this.Entity.ToString() + " a été bien enregistrer");
+                    MessageBox.Show(string.Format("'{0}' a été bien enregistrer", this.Entity.ToString()));
                 }
                 else
                 {
-                    MessageBox.Show(this.Entity.ToString() + " n'est pas enregistrer car il n'y a pas des modifications");
+                    MessageBox.Show(string.Format("'{0}' n'est pas enregistrer car il n'y a pas des modifications", this.Entity.ToString()));
                 }
                 onEnregistrerClick(this, e);
             }

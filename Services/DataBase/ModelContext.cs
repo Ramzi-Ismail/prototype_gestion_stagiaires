@@ -4,6 +4,7 @@
     using GestionFormations;
     using GestionProjets;
     using GestionStagiaires;
+    using Modules;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
@@ -14,7 +15,7 @@
     public class ModelContext : DbContext
     {
         // public ModelContext() : base("name = ModelStagiaires")
-        public ModelContext() : base(@"data source =localhost\SQLEXPRESS; initial catalog = AppGestionStagiaires.ModelStagiaires; user = sa; password = admintp41212; MultipleActiveResultSets = True; App = EntityFramework")
+        public ModelContext() : base(@"data source =localhost\SQLEXPRESS; initial catalog = AppGestionStagiaires.ModelStagiaires; user = sa; password = admintp4; MultipleActiveResultSets = True; App = EntityFramework")
        // public ModelContext() : base(@"data source =192.168.1.57\SQLEXPRESS; initial catalog = CplusESSARRAJ; user = sa; password = admintp41212; MultipleActiveResultSets = True; App = EntityFramework")
         // public ModelContext()
         {
@@ -25,6 +26,9 @@
             //Database.SetInitializer<SchoolDBContext>(new DropCreateDatabaseAlways<SchoolDBContext>());
             //Database.SetInitializer<SchoolDBContext>(new SchoolDBInitializer());
         }
+        // Gestion des formation
+        public virtual DbSet<AnneeFormation> AnneeFormations { get; set; }
+
 
         // Application de Gestion des stagiaires
         public virtual DbSet<Stagiaire> Stagiaires { get; set; }
@@ -36,7 +40,13 @@
         public virtual DbSet<Projet> Projets { get; set; }
         public virtual DbSet<Tache> Taches { get; set; }
         public virtual DbSet<MiniGroupe> MiniGroupes { get; set; }
-   
+
+        // Application de gestion des modules
+        public virtual DbSet<Module> Modules { get; set; }
+        public virtual DbSet<Precision> Precisions { get; set; }
+        public virtual DbSet<Prealable> Prealables { get; set; }
+        public virtual DbSet<ContenuePrecision> ContenuePrecisions { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
