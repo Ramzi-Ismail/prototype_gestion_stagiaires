@@ -8,11 +8,14 @@ namespace App
     
     public  class BaseEntity : IBaseEntity
     {
-      
+         
+
         public BaseEntity()
         {
             this.DateCreation = DateTime.Now;
             this.DateModification = DateTime.Now;
+            
+           
         }
         [Key]
         public Int64 Id { get; set; }

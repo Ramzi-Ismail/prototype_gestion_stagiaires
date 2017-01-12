@@ -9,6 +9,9 @@ using System.ComponentModel;
 using App.WinForm.Annotation;
 using LinqExtension;
 using System.Reflection;
+using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace App
 {
@@ -162,7 +165,41 @@ namespace App
         {
             var original = DbSet.Find(item.Id);
             DbSet.Remove(original);
-            return Context.SaveChanges()  ;
+
+
+
+            int return_value = 0;
+
+            try
+            {
+                return_value = Context.SaveChanges();
+                
+            }
+            catch (DbUpdateException e)
+            {
+                var sqlException = e.GetBaseException() as SqlException;
+                if (sqlException != null)
+                {
+                    if (sqlException.Errors.Count > 0)
+                    {
+                        switch (sqlException.Errors[0].Number)
+                        {
+                            case 547: // Foreign Key violation
+                               MessageBox.Show("Vous ne pauvez pas effacer cette information car il est encours d'utilisation");
+                                break;
+                            default:
+                                throw;
+                        }
+                    }
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return return_value;
+
 
         }
         /// <summary>

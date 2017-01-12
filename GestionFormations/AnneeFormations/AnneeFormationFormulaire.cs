@@ -14,6 +14,12 @@ namespace App
         {
             InitializeComponent();
         }
+        public AnneeFormationFormulaire(IBaseRepository service) : base(service)
+        {
+            InitializeComponent();
+        }
+
+
 
         private void dateDebutDateTimePicker_ValueChanged(object sender, EventArgs e)
         {

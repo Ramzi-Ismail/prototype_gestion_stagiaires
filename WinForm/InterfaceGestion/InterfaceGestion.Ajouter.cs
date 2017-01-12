@@ -10,31 +10,34 @@ namespace App.WinForm
 {
     partial class InterfaceGestion
     {
+        /// <summary>
+        /// Boutton Ajouter
+        /// </summary>
         private void bt_Ajouter_Click(object sender, EventArgs e)
         {
-
 
             // Insertion du formulaire Si la page TabAjouter n'existe pas
             if (tabControl.TabPages.IndexOfKey("TabAjouter") == -1)
             {
-                // Création de Tab
+                // 
+                // Création de TabPage - Ajouter 
+                //
                 TabPage tabAjouter = new TabPage();
-                
                 tabAjouter.Text = this.Service.getAffichageDansFormGestionAttribute().TitreButtonAjouter;
                 tabAjouter.Name = "TabAjouter";
                 tabControl.TabPages.Add(tabAjouter);
-                
                 tabControl.CausesValidation = false;
 
+                //
                 // Insertion du formulaire 
+                //
                 BaseFormulaire form = Formulaire.CreateInstance(Service);
-                //form.Entity = Formulaire.CreateObjetInstance();
                 form.Entity = (BaseEntity) this.Service.CreateInstanceObjet();
                 form.Name = "Form";
                 form.Dock = DockStyle.Fill;
-
-                form.Afficher();
-
+                form.Afficher(this.CritereRechercheFiltre()); // Affichage des valeur initial
+                form.InitValeurFromFiltre(this.CritereRechercheFiltre());
+                 
                 this.tabControl.TabPages["TabAjouter"].Controls.Add(form);
                 tabControl.SelectedTab = tabAjouter;
                 form.EnregistrerClick += Form_EnregistrerClick;

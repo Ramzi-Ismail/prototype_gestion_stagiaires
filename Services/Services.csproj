@@ -38,6 +38,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,6 +53,10 @@
     <Compile Include="Migrations\201701121004335_AddRelationGroupeAnneeFormation.cs" />
     <Compile Include="Migrations\201701121004335_AddRelationGroupeAnneeFormation.Designer.cs">
       <DependentUpon>201701121004335_AddRelationGroupeAnneeFormation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701121710243_AddColonneCodeToModule.cs" />
+    <Compile Include="Migrations\201701121710243_AddColonneCodeToModule.Designer.cs">
+      <DependentUpon>201701121710243_AddColonneCodeToModule.cs</DependentUpon>
     </Compile>
     <Compile Include="Stagiaires\FilieresService.cs" />
     <Compile Include="GestionFormations\FormateursService.cs" />
@@ -107,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701121004335_AddRelationGroupeAnneeFormation.resx">
       <DependentUpon>201701121004335_AddRelationGroupeAnneeFormation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701121710243_AddColonneCodeToModule.resx">
+      <DependentUpon>201701121710243_AddColonneCodeToModule.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

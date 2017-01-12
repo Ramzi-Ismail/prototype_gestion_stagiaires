@@ -11,10 +11,28 @@ TitreButtonAjouter = "Ajouter un filiere")]
     public class Filiere : BaseEntity 
    {
 
-     [AffichagePropriete(Titre = "Titre", isGridView = true, isFormulaire = true, Ordre = 1, WidthColonne = 150)]
+     [AffichagePropriete(Titre = "Titre", 
+            isGridView = true, 
+            isFormulaire = true,
+
+            Ordre = 1, 
+            WidthColonne = 150)]
       public String Titre { set; get; }
-      public  String Code { set; get; }
-      public String Description { set; get; }
+
+      [AffichagePropriete(Titre = "Code",
+             isGridView = true,
+             isFormulaire = true,
+             Filtre = true,
+             Ordre = 2,
+             WidthColonne = 150)]
+        public  String Code { set; get; }
+
+     [AffichagePropriete(Titre = "Description",
+           isGridView = true,
+           isFormulaire = true,
+           Ordre = 3,
+           WidthColonne = 150)]
+        public String Description { set; get; }
 
         public override string ToString()
         {

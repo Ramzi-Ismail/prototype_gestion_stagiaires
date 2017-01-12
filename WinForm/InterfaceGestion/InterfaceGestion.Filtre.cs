@@ -14,6 +14,9 @@ namespace App.WinForm
     /// </summary>
     partial class InterfaceGestion
     {
+        /// <summary>
+        /// Création et Initialisation de filtre
+        /// </summary>
         protected void initFiltre()
         {
             int x = 27;
@@ -59,8 +62,11 @@ namespace App.WinForm
                     comboBoxRelationManyToOne.ValueMember = "Id";
                     comboBoxRelationManyToOne.DisplayMember = AffichagePropriete.DisplayMember;
 
-                    if (AffichagePropriete.isValeurVide) ls.Insert(0, new { Id = 0 });
+                    //if (AffichagePropriete.isValeurVide) ls.Insert(0, new BaseEntity() { Id= 0});
                     comboBoxRelationManyToOne.DataSource = ls;
+
+                    if(AffichagePropriete.isValeurVide) comboBoxRelationManyToOne.SelectedIndex = -1;
+
                     //
                     // Evénement Change sur le ComboBox : Actualisation de DataGrid
                     //
@@ -91,7 +97,7 @@ namespace App.WinForm
         }
 
         /// <summary>
-        /// événement SelectValueChange de ComboBoxs des Propriétés avec Relation :MnayToOne
+        /// Evénement SelectValueChange de ComboBoxs des Propriétés avec Relation :MnayToOne
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -107,5 +113,60 @@ namespace App.WinForm
             }
             this.Actualiser();
         }
+
+        /// <summary>
+        /// Affichage des information dans DataGrid selon le filtre s'il exsiste
+        /// </summary> 
+        public void Actualiser()
+        {
+            ObjetBindingSource.Clear();
+            var ls = Service.Recherche(this.CritereRechercheFiltre());
+            ObjetBindingSource.DataSource = ls;
+        }
+
+        protected Dictionary<string, object> CritereRechercheFiltre()
+        {
+            // Application de filtre
+            Dictionary<string, object> RechercheInfos = new Dictionary<string, object>();
+            foreach (PropertyInfo propertyInfo in this.ListePropriete)
+            {
+                // Trouver l'objet AffichagePropriete depuis l'annotation avec Filtre = True
+                Attribute getAffichagePropriete = propertyInfo.GetCustomAttribute(typeof(AffichageProprieteAttribute));
+                if (getAffichagePropriete == null) continue;
+                AffichageProprieteAttribute AffichagePropriete = (AffichageProprieteAttribute)getAffichagePropriete;
+                if (AffichagePropriete.Filtre == false) continue;
+
+
+                switch (propertyInfo.PropertyType.Name)
+                {
+                    case "String":
+                        {
+                            TextBox textBoxString = (TextBox)this.groupBoxFiltrage.Controls.Find(propertyInfo.Name, true).First();
+                            if (textBoxString.Text != String.Empty)
+                                RechercheInfos[propertyInfo.Name] = textBoxString.Text;
+                        }
+                        break;
+                    default: // Dans le cas d'un objet de type BaseEntity
+                        {
+                            ComboBox ComboBoxEntity = (ComboBox)this.groupBoxFiltrage.Controls.Find(propertyInfo.Name, true).First();
+                            BaseEntity obj = (BaseEntity)ComboBoxEntity.SelectedItem;
+
+
+                            if (obj != null && Convert.ToInt32(obj.Id) != 0)
+                                RechercheInfos[propertyInfo.Name] = ComboBoxEntity.SelectedValue;
+                        }
+                        break;
+                }
+
+
+
+            }
+
+            return RechercheInfos;
+        }
+
+
+
+
     }
 }

@@ -57,5 +57,10 @@ namespace App.WinForm.Annotation
         /// </summary>
         public bool Filtre { get; set; }
         public bool isValeurVide { get; set; }
+
+        /// <summary>
+        /// Indique si la saisie de cette information est 
+        /// </summary>
+        public bool isOblegatoir { get; set; }
     }
 }

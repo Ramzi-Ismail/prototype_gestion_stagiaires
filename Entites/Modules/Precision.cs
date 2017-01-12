@@ -11,17 +11,30 @@ namespace App.Modules
    {
         public override string ToString() => this.Nom;
 
-        [AffichagePropriete(Titre = "Précision", isGridView = true, isFormulaire = true, Ordre = 1, WidthColonne = 200)]
+        //
+        // Nom
+        //
+        [AffichagePropriete(Titre = "Précision", isGridView = true, isFormulaire = true, Ordre = 1, 
+           isOblegatoir =true, WidthColonne = 200)]
         public string Nom { set; get; }
 
-        [AffichagePropriete(Titre = "Durée", isGridView = true, isFormulaire = true, Ordre = 2, WidthColonne = 100)]
+        //
+        // Duree
+        //
+        [AffichagePropriete(Titre = "Durée", isGridView = true, isFormulaire = true, Ordre = 2,
+           
+            WidthColonne = 100)]
         public int Duree { set; get; }
 
         [AffichagePropriete(Titre = "Description", isFormulaire = true, Ordre = 3,MultiLine = true)]
         public string Description { set; get; }
        
-
-        [AffichagePropriete(Titre = "Module",Relation = "ManyToOne", isGridView = true, isFormulaire = true, Ordre = 1, WidthColonne = 200)]
+        //
+        // Module
+        //
+        [AffichagePropriete(Titre = "Module",Relation = "ManyToOne", isGridView = true, isFormulaire = true,
+            isOblegatoir = true,
+            Ordre = 1,Filtre =true, WidthColonne = 200)]
         public virtual Module Module { set; get; }
 
 

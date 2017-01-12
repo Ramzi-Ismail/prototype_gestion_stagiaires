@@ -24,6 +24,7 @@ namespace App.WinForm {
         public FormulaireControle():base()
         {
             InitializeComponent();
+      
         }
         public FormulaireControle(IBaseRepository service) : base(service)
         {
@@ -69,7 +70,8 @@ namespace App.WinForm {
                     textBoxString.Location = new System.Drawing.Point(x_control, y-3);
                     textBoxString.Name = char.ToLower(item.Name[0]) + item.Name.Substring(1)   + "TextBox";
                     textBoxString.TabIndex = index++;
-                    textBoxString.Validating += textBoxString_Validating;
+                    if(AffichagePropriete.isOblegatoir)
+                        textBoxString.Validating += textBoxString_Validating;
                     if (AffichagePropriete.MultiLine)
                     {
                         textBoxString.Multiline = true;
@@ -91,7 +93,8 @@ namespace App.WinForm {
                     textBoxInt32.Name = char.ToLower(item.Name[0]) + item.Name.Substring(1) + "TextBox";
                     textBoxInt32.Size = new System.Drawing.Size(200, 20);
                     textBoxInt32.TabIndex = index++;
-                    textBoxInt32.Validating += TextBoxInt32_Validating;
+                    if (AffichagePropriete.isOblegatoir)
+                        textBoxInt32.Validating += TextBoxInt32_Validating;
 
                     this.formulaire.Controls.Add(textBoxInt32);
                 }
@@ -103,7 +106,8 @@ namespace App.WinForm {
                  
                     dateTimePicker.Size = new System.Drawing.Size(200, 20);
                     dateTimePicker.TabIndex = index++;
-                    dateTimePicker.Validating += DateTimePicker_Validating;
+                    if (AffichagePropriete.isOblegatoir)
+                        dateTimePicker.Validating += DateTimePicker_Validating;
 
                         this.formulaire.Controls.Add(dateTimePicker);
                     }
@@ -123,6 +127,9 @@ namespace App.WinForm {
                         comboBox.DataSource = ls;
                         this.formulaire.Controls.Add(comboBox);
 
+                       if (AffichagePropriete.isOblegatoir)
+                        comboBox.Validating += ComboBox_Validating;
+
                     }
 
                     this.formulaire.Controls.Add(lbl);
@@ -130,6 +137,11 @@ namespace App.WinForm {
                 y += 25;
 
             }
+        }
+
+        private void ComboBox_Validating(object sender, CancelEventArgs e)
+        {
+            // déja le combobox propose le premiere élément séléctioné
         }
 
         private void DateTimePicker_Validating(object sender, CancelEventArgs e)
@@ -148,8 +160,20 @@ namespace App.WinForm {
         }
         #endregion
 
-       
 
-       
+
+        /// <summary>
+        /// Initialisation des valeurs depuis le fitre
+        /// </summary>
+        /// <param name="dictionary"></param>
+        public override void InitValeurFromFiltre(Dictionary<string, object> dictionary)
+        {
+            foreach (var item in dictionary)
+            {
+
+            }
+        }
+
+
     }
 }

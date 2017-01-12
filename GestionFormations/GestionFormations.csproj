@@ -48,16 +48,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnneeFormationFormulaire.cs">
+    <Compile Include="AnneeFormations\AnneeFormationFormulaire.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AnneeFormationFormulaire.Designer.cs">
+    <Compile Include="AnneeFormations\AnneeFormationFormulaire.Designer.cs">
       <DependentUpon>AnneeFormationFormulaire.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AnneeFormations\" />
     <Folder Include="Formations\" />
     <Folder Include="Modules\" />
     <Folder Include="Seances\" />
@@ -81,7 +80,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AnneeFormationFormulaire.resx">
+    <EmbeddedResource Include="AnneeFormations\AnneeFormationFormulaire.resx">
       <DependentUpon>AnneeFormationFormulaire.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>

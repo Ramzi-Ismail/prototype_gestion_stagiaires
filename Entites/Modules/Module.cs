@@ -11,28 +11,38 @@ namespace App.Modules
     [AffichageClasse(Minuscule="Module", Majuscule = "Modules")]
     public class Module : BaseEntity
     {
-        [AffichagePropriete(Titre = "Nom du module", isGridView = true, isFormulaire = true, Ordre = 1, WidthColonne = 200 )]
+        [AffichagePropriete(Titre = "Nom du module", isGridView = true, isFormulaire = true,
+            isOblegatoir = true,   Ordre = 1, WidthColonne = 200 )]
         public String Nom { set; get; }
+
+        [AffichagePropriete(Titre = "Code", isGridView = true, isFormulaire = true,
+           isOblegatoir = true, Ordre = 2, WidthColonne = 80)]
+        public String Code { set; get; }
 
         /// <summary>
         /// La duré en Nombre d'heure
         /// </summary>
-        [AffichagePropriete(Titre = "Durée", isGridView = true, isFormulaire = true, Ordre = 2, WidthColonne = 40)]
+        [AffichagePropriete(Titre = "Durée", isGridView = true, isFormulaire = true,
+            isOblegatoir = true, Ordre = 3,  WidthColonne = 40)]
         public int Duree{ set; get; }
 
         // Affectation
         [AffichagePropriete(Titre = "Filiere", isGridView = true, isFormulaire = true,
-            Relation = "ManyToOne",
-            DisplayMember = "Code",
-            Filtre=true,
-            WidthColonne = 100,
-            Ordre = 3)]
+            isOblegatoir = true, Relation = "ManyToOne",DisplayMember = "Code",
+            Filtre=true, WidthColonne = 80, Ordre = 4)]
         public virtual Filiere Filiere { set; get; }
 
-        [AffichagePropriete(Titre = "Présentation", isFormulaire = true, Ordre = 5 , MultiLine =true)]
+
+        [AffichagePropriete(Titre = "Présentation", 
+            isFormulaire = true, 
+            Ordre = 5 , 
+            MultiLine =true)]
         public string Presentation { set; get; }
 
-        [AffichagePropriete(Titre = "Remarque", isFormulaire = true, Ordre = 6, MultiLine = true)]
+        [AffichagePropriete(Titre = "Remarque", 
+            isFormulaire = true,
+            Ordre = 6, 
+            MultiLine = true)]
         public string Description { set; get; }
 
       

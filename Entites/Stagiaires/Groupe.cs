@@ -11,7 +11,7 @@ namespace App.GestionStagiaires
     [AffichageClasse(Minuscule = "Groupe", Majuscule = "Groupes")]
     public class Groupe : BaseEntity
     {
-        [AffichagePropriete( Titre = "Nom du module", 
+        [AffichagePropriete( Titre = "Nom", 
             isGridView = true, isFormulaire = true, Ordre = 2,
             Filtre = true,
             WidthColonne = 150)]

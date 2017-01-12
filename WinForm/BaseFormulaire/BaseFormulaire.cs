@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using App.WinFrom.Validation;
 using System.Reflection;
 using App.WinForm.Annotation;
+using System.Data.Entity;
 
 namespace App.WinForm
 {
@@ -43,7 +44,16 @@ namespace App.WinForm
         /// <summary>
         /// Indique le controle qui contient la formulaire
         /// </summary>
-        protected Control ConteneurFormulaire { get; set; }
+        protected Control ConteneurFormulaire {
+            get;
+            set; }
+
+        public virtual void InitValeurFromFiltre(Dictionary<string, object> dictionary)
+        {
+             
+        }
+
+
 
         #endregion
 
@@ -125,8 +135,8 @@ namespace App.WinForm
         /// <returns></returns>
         public virtual BaseFormulaire CreateInstance(IBaseRepository Service) {
 
-            BaseFormulaire formilaire =(BaseFormulaire) Activator.CreateInstance(this.GetType());
-            formilaire.Service = Service;
+            BaseFormulaire formilaire =(BaseFormulaire) Activator.CreateInstance(this.GetType(), Service);
+           
             return formilaire;
 
 
@@ -146,11 +156,16 @@ namespace App.WinForm
 
         #region Lire et Afficher
 
+        public virtual void Afficher()
+        {
+            this.Afficher(null);
+        }
+
         /// <summary>
         /// Affiher l'objet dans le formulaire
         /// Utilisation de l'annotation de l'objet dans le cas d'un formilaire spécifique à l'objet
         /// </summary>
-        public virtual void Afficher()
+        public virtual void Afficher(Dictionary<string, object> CritereFiltre)
         {
 
             BaseEntity entity = this.Entity;
@@ -171,8 +186,12 @@ namespace App.WinForm
 
                     String NomControle = char.ToLower(item.Name[0]) + item.Name.Substring(1) + "TextBox";
                     string valeur = (string)typeEntity.GetProperty(NomPropriete).GetValue(entity);
-                TextBox txtBox = (TextBox)this.ConteneurFormulaire.Controls.Find(NomControle, true).First();
-                txtBox.Text = valeur;
+                    TextBox txtBox = (TextBox)this.ConteneurFormulaire.Controls.Find(NomControle, true).First();
+                    txtBox.Text = valeur;
+                    if (CritereFiltre != null && CritereFiltre.ContainsKey(item.Name))
+                    {
+                        txtBox.Text = CritereFiltre[item.Name].ToString();
+                    }
 
                 }
                 if (typePropriete.Name == "Int32")
@@ -182,30 +201,54 @@ namespace App.WinForm
                     int valeur = (int) typeEntity.GetProperty(NomPropriete).GetValue(entity);
                     TextBox txtBox = (TextBox)this.ConteneurFormulaire.Controls.Find(NomControle, true).First();
                     txtBox.Text = valeur.ToString();
+                    if (CritereFiltre != null && CritereFiltre.ContainsKey(item.Name))
+                    {
+                        txtBox.Text = CritereFiltre[item.Name].ToString(); 
+                    }
 
                 }
 
                 if (typePropriete.Name == "DateTime")
-            {
+                {
                     String NomControle = char.ToLower(item.Name[0]) + item.Name.Substring(1) + "DateTimePicker";
                     DateTime valeur = (DateTime)typeEntity.GetProperty(NomPropriete).GetValue(entity);
-                DateTimePicker dateTimePicker = (DateTimePicker)this.ConteneurFormulaire.Controls.Find(NomControle, true).First();
-                dateTimePicker.Value = valeur;
-            }
-            if (AffichagePropriete.Relation == "ManyToOne")
-            {
+                    DateTimePicker dateTimePicker = (DateTimePicker)this.ConteneurFormulaire.Controls.Find(NomControle, true).First();
+                    dateTimePicker.Value = valeur;
+                    if (CritereFiltre != null && CritereFiltre.ContainsKey(item.Name))
+                    {
+                        dateTimePicker.Value = Convert.ToDateTime( CritereFiltre[item.Name]);
+                    }
+                }
+                if (AffichagePropriete.Relation == "ManyToOne")
+                {
                     String NomControle = char.ToLower(item.Name[0]) + item.Name.Substring(1) + "ComboBox";
                     BaseEntity valeur = (BaseEntity)typeEntity.GetProperty(NomPropriete).GetValue(entity);
-                ComboBox comboBox = (ComboBox)this.ConteneurFormulaire.Controls.Find(NomControle, true).First();
-                if (valeur != null)
-                    comboBox.SelectedValue = valeur.Id;
+                    ComboBox comboBox = (ComboBox)this.ConteneurFormulaire.Controls.Find(NomControle, true).First();
+                    if (valeur != null)
+                         comboBox.SelectedValue = valeur.Id;
+                    if (CritereFiltre != null && CritereFiltre.ContainsKey(item.Name))
+                    {
+                        Int64 id = (Int64)CritereFiltre[item.Name];
+                        // Select Id dans Combo
+                        // comboBox.selectedvalue ne marche pas ici !!
+                        int index = 0;
+                        foreach (object obj in (List<object>) comboBox.DataSource)
+                        {
+                            BaseEntity o = (BaseEntity)obj;
+                            if (o.Id == id)
+                                comboBox.SelectedIndex = index;
 
-            }
+                            index++;
+                        }
+                        
+                        
+                    }
+                }
 
 
         }
     }
-        #endregion
+    
 
 
 
@@ -264,6 +307,10 @@ namespace App.WinForm
 
         }
 
+
+        #endregion
+
+
         #region Enregistrer et Annuler
         private void btEnregistrer_Click(object sender, EventArgs e)
         {
@@ -301,6 +348,9 @@ namespace App.WinForm
         #endregion
 
 
+
+    
+
         /// <summary>
         /// Obient la liste des Propriété à utliser dans la formulaire
         /// </summary>
@@ -315,5 +365,7 @@ namespace App.WinForm
                                 select i;
             return listeProprite.ToList<PropertyInfo>();
         }
+
+
     }
 }

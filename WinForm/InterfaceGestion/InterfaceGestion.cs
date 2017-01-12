@@ -116,51 +116,8 @@ namespace App.WinForm
             if(!DesignMode)
             this.Actualiser();
         }
-        /// <summary>
-        /// Affichage des information dans DataGrid selon le filtre s'il exsiste
-        /// </summary>
-        public void Actualiser()
-        {
-            //Service.SaveChanges();
-          // MessageBox.Show("Actualiser");
-            ObjetBindingSource.Clear();
 
-
-            Dictionary<string, object> RechercheInfos = new Dictionary<string, object>();
-            foreach (PropertyInfo propertyInfo in this.ListePropriete)
-            {
-                // Trouver l'objet AffichagePropriete depuis l'annotation avec Filtre = True
-                Attribute getAffichagePropriete = propertyInfo.GetCustomAttribute(typeof(AffichageProprieteAttribute));
-                if (getAffichagePropriete == null) continue;
-                AffichageProprieteAttribute AffichagePropriete = (AffichageProprieteAttribute)getAffichagePropriete;
-                if (AffichagePropriete.Filtre == false) continue;
-
-
-                switch (propertyInfo.PropertyType.Name)
-                {
-                    case "String":
-                        {
-                            TextBox textBoxString = (TextBox)this.groupBoxFiltrage.Controls.Find(propertyInfo.Name, true).First();
-                            if(textBoxString.Text != String.Empty)
-                            RechercheInfos[propertyInfo.Name] = textBoxString.Text;
-                        }
-                        break;
-                    default: // Dans le cas d'un objet de type BaseEntity
-                        {
-                            ComboBox ComboBoxEntity = (ComboBox)this.groupBoxFiltrage.Controls.Find(propertyInfo.Name, true).First();
-                            if (ComboBoxEntity.SelectedValue != null &&  Convert.ToInt32( ComboBoxEntity.SelectedValue) != 0)
-                                RechercheInfos[propertyInfo.Name] = ComboBoxEntity.SelectedValue;
-                        }
-                        break;
-                }
-
-               
-
-            }
-               
-            var ls = Service.Recherche(RechercheInfos);
-            ObjetBindingSource.DataSource = ls;
-        }
+       
 
 
 
