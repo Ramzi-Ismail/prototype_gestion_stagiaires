@@ -28,18 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.btEnregistrer = new System.Windows.Forms.Button();
             this.btAnnuler = new System.Windows.Forms.Button();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.CausesValidation = false;
             this.panel1.Controls.Add(this.btEnregistrer);
             this.panel1.Controls.Add(this.btAnnuler);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -48,22 +52,9 @@
             this.panel1.Size = new System.Drawing.Size(647, 48);
             this.panel1.TabIndex = 2;
             // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.panel1);
-            this.splitContainer1.Size = new System.Drawing.Size(647, 296);
-            this.splitContainer1.SplitterDistance = 244;
-            this.splitContainer1.TabIndex = 3;
-            // 
             // btEnregistrer
             // 
+            this.btEnregistrer.AccessibleDescription = "Enregistrement des informations";
             this.btEnregistrer.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btEnregistrer.Image = global::App.WinForm.Properties.Resources.save;
             this.btEnregistrer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -79,6 +70,7 @@
             // btAnnuler
             // 
             this.btAnnuler.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btAnnuler.CausesValidation = false;
             this.btAnnuler.Image = global::App.WinForm.Properties.Resources.fermer_noir;
             this.btAnnuler.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btAnnuler.Location = new System.Drawing.Point(574, 9);
@@ -89,6 +81,30 @@
             this.btAnnuler.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btAnnuler.UseVisualStyleBackColor = true;
             this.btAnnuler.Click += new System.EventHandler(this.btAnnuler_Click);
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.CausesValidation = false;
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.CausesValidation = false;
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.CausesValidation = false;
+            this.splitContainer1.Panel2.Controls.Add(this.panel1);
+            this.splitContainer1.Size = new System.Drawing.Size(647, 296);
+            this.splitContainer1.SplitterDistance = 244;
+            this.splitContainer1.TabIndex = 3;
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
             // 
             // BaseFormulaire
             // 
@@ -101,15 +117,16 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btEnregistrer;
         private System.Windows.Forms.Button btAnnuler;
         private System.Windows.Forms.Panel panel1;
-        protected System.Windows.Forms.SplitContainer splitContainer1;
+        protected System.Windows.Forms.ErrorProvider errorProvider;
+        public System.Windows.Forms.Button btEnregistrer;
+        public System.Windows.Forms.SplitContainer splitContainer1;
     }
 }

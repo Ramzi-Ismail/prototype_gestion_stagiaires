@@ -14,14 +14,19 @@ namespace App.WinForm
             BaseEntity entity = (BaseEntity)ObjetBindingSource.Current;
             string tabEditerName = "TabEditer-" + entity.Id;
 
-            if (tabControl.TabPages.IndexOfKey(tabEditerName) == -1)
+
+
+
+           if (tabControl.TabPages.IndexOfKey(tabEditerName) == -1)
             {
                 // Création de Tab
                 TabPage tabEditer = new TabPage();
                 tabEditer.Text = entity.ToString();
                 tabEditer.Name = tabEditerName;
                 tabControl.TabPages.Add(tabEditer);
-                tabControl.SelectedTab = tabEditer;
+                
+                tabControl.CausesValidation = false;
+
              
 
                 // Insertion du formulaire 
@@ -29,10 +34,14 @@ namespace App.WinForm
                 form.Name = "EntityForm";
                 form.Entity = entity;
                 form.Dock = DockStyle.Fill;
+                
                 this.tabControl.TabPages[tabEditerName].Controls.Add(form);
+                tabControl.SelectedTab = tabEditer;
+
                 form.Afficher();
                 form.EnregistrerClick += Form_EditerClick;
                 form.AnnulerClick += Form_AnnulerEditerClick;
+
             }else
             {
                 TabPage tabEditer = this.tabControl.TabPages[tabEditerName];
@@ -46,6 +55,8 @@ namespace App.WinForm
             BaseFormulaire form = (BaseFormulaire)sender;
             BaseEntity entity = form.Entity;
             string tabEditerName = "TabEditer-" + entity.Id;
+
+            
             TabPage tabEditer = this.tabControl.TabPages[tabEditerName];
             // Suppression de la page Editer
             this.tabControl.TabPages.Remove(tabEditer);
@@ -60,5 +71,7 @@ namespace App.WinForm
             TabPage tabEditer = this.tabControl.TabPages[tabEditerName];
             tabControl.TabPages.Remove(tabEditer);
         }
+
+      
     }
 }

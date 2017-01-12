@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,6 +15,7 @@ namespace App.WinForm
 {
     public partial class InterfaceGestion : Form
     {
+        #region Variables
 
         /// <summary>
         /// Le Service de gestion  
@@ -24,13 +26,22 @@ namespace App.WinForm
         /// </summary>
         protected BaseFormulaire Formulaire;
 
-      
+
+        /// <summary>
+        /// Obient ou définire la liste des propriété de l'entity en cours de gestion
+        /// </summary>
+        protected List<PropertyInfo> ListePropriete;
+
+        #endregion
+
+        #region Constructeur
         /// <summary>
         /// On ne pas Créer ce formulaire sans Paramétre
         /// ce Constructeur est ajouter seuelement pour supproer le mode désigne de Visual Studio 2015
         /// </summary>
-        public  InterfaceGestion()
+        public InterfaceGestion()
         {
+            
             InitializeComponent();
         }
 
@@ -56,13 +67,34 @@ namespace App.WinForm
             initParams(service, formulaire);
         }
 
+
+        /// <summary>
+        /// Applelet dans le construcreur , pour initialiser cette formulaire
+        /// </summary>
+        /// <param name="service"></param>
+        /// <param name="formulaire"></param>
         protected void initParams(IBaseRepository service, BaseFormulaire formulaire)
         {
             this.Service = service;
             this.Formulaire = formulaire;
             this.Name = "Interface_Gestion_" + service.TypeEntity.ToString();
-            this.ConfigDataGridView();
+            this.InitListePropriete();
+            this.initFiltre();
+            this.InitDataGridView();
             this.setTitre();
+        }
+
+        /// <summary>
+        /// Lecture de la liste des Propriété de l'entity à partire son annotation
+        /// </summary>
+        private void InitListePropriete()
+        {
+           var requete = from i in Service.TypeEntity.GetProperties()
+                                where i.GetCustomAttribute(typeof(AffichageProprieteAttribute)) != null &&
+                                ((AffichageProprieteAttribute)i.GetCustomAttribute(typeof(AffichageProprieteAttribute))).isGridView
+                                orderby ((AffichageProprieteAttribute)i.GetCustomAttribute(typeof(AffichageProprieteAttribute))).Ordre
+                                select i;
+            ListePropriete = requete.ToList<PropertyInfo>();
         }
 
         /// <summary>
@@ -76,17 +108,86 @@ namespace App.WinForm
             TabPage tabGrid = this.tabControl.TabPages["TabGrid"];
             tabGrid.Text = AffichageDansFormGestion.TitrePageGridView;
         }
-        
-        private void FormGestion_Load(object sender, EventArgs e)
+        #endregion
+
+        #region InterfaceGestion Actions
+        private void InterfaceGestion_Load(object sender, EventArgs e)
         {
             if(!DesignMode)
             this.Actualiser();
         }
-
-        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        /// <summary>
+        /// Affichage des information dans DataGrid selon le filtre s'il exsiste
+        /// </summary>
+        public void Actualiser()
         {
+            //Service.SaveChanges();
+          // MessageBox.Show("Actualiser");
+            ObjetBindingSource.Clear();
+
+
+            Dictionary<string, object> RechercheInfos = new Dictionary<string, object>();
+            foreach (PropertyInfo propertyInfo in this.ListePropriete)
+            {
+                // Trouver l'objet AffichagePropriete depuis l'annotation avec Filtre = True
+                Attribute getAffichagePropriete = propertyInfo.GetCustomAttribute(typeof(AffichageProprieteAttribute));
+                if (getAffichagePropriete == null) continue;
+                AffichageProprieteAttribute AffichagePropriete = (AffichageProprieteAttribute)getAffichagePropriete;
+                if (AffichagePropriete.Filtre == false) continue;
+
+
+                switch (propertyInfo.PropertyType.Name)
+                {
+                    case "String":
+                        {
+                            TextBox textBoxString = (TextBox)this.groupBoxFiltrage.Controls.Find(propertyInfo.Name, true).First();
+                            if(textBoxString.Text != String.Empty)
+                            RechercheInfos[propertyInfo.Name] = textBoxString.Text;
+                        }
+                        break;
+                    default: // Dans le cas d'un objet de type BaseEntity
+                        {
+                            ComboBox ComboBoxEntity = (ComboBox)this.groupBoxFiltrage.Controls.Find(propertyInfo.Name, true).First();
+                            if (ComboBoxEntity.SelectedValue != null &&  Convert.ToInt32( ComboBoxEntity.SelectedValue) != 0)
+                                RechercheInfos[propertyInfo.Name] = ComboBoxEntity.SelectedValue;
+                        }
+                        break;
+                }
+
+               
+
+            }
+               
+            var ls = Service.Recherche(RechercheInfos);
+            ObjetBindingSource.DataSource = ls;
         }
+
+
+
+        private void InterfaceGestion_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Solution de problème de fermiture de la forme en cas de validation
+            // car le formulaire ne veut pas se fermer si il y a des validation active dans 
+            // le formilaire
+            e.Cancel = false;
+        }
+        #endregion
+
        
-      
+
+        private void dataGridView_KeyUp(object sender, KeyEventArgs e)
+        {
+           
+        }
+
+        private void tabControl_Selected(object sender, TabControlEventArgs e)
+        {
+            IEnumerable<BaseFormulaire> ls = tabControl.SelectedTab.Controls.OfType<BaseFormulaire>();
+            if(ls.Count() == 1) {
+            BaseFormulaire baseFormulaire = ls.First();
+            this.AcceptButton = baseFormulaire.btEnregistrer;
+            }
+
+        }
     }
 }

@@ -13,10 +13,14 @@ namespace App
         public override string ToString() =>  this.Nom + " " + this.Prenom;
 
         // Etat Civil
-        [AffichagePropriete(Titre = "Nom", isGridView = true, isFormulaire = true, Ordre = 1, WidthColonne = 100)]
+        [AffichagePropriete(Titre = "Nom", isGridView = true, isFormulaire = true, Ordre = 1, 
+            Filtre = true,
+            WidthColonne = 100)]
         public String Nom { set; get; }
 
-        [AffichagePropriete(Titre = "Prénom", isGridView = true, isFormulaire = true, Ordre = 2, WidthColonne = 100)]
+        [AffichagePropriete(Titre = "Prénom", isGridView = true, isFormulaire = true, Ordre = 2,
+            Filtre = true,
+            WidthColonne = 100)]
         public String Prenom { set; get; }
 
         [AffichagePropriete(Titre = "CIN", isFormulaire = true, Ordre = 3)]

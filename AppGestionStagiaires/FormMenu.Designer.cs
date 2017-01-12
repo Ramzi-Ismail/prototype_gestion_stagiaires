@@ -85,6 +85,7 @@
             this.gestionDesGroupesToolStripMenuItem.Name = "gestionDesGroupesToolStripMenuItem";
             this.gestionDesGroupesToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.gestionDesGroupesToolStripMenuItem.Text = "Gestion des groupes";
+            this.gestionDesGroupesToolStripMenuItem.Click += new System.EventHandler(this.gestionDesGroupesToolStripMenuItem_Click);
             // 
             // gestionDesModulesToolStripMenuItem
             // 

@@ -49,10 +49,14 @@
     <Compile Include="Base\BaseRepository.cs" />
     <Compile Include="GestionProjets\ProjetsService.cs" />
     <Compile Include="GestionProjets\TachesService.cs" />
-    <Compile Include="GestionStagiaires\FilieresService.cs" />
+    <Compile Include="Migrations\201701121004335_AddRelationGroupeAnneeFormation.cs" />
+    <Compile Include="Migrations\201701121004335_AddRelationGroupeAnneeFormation.Designer.cs">
+      <DependentUpon>201701121004335_AddRelationGroupeAnneeFormation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Stagiaires\FilieresService.cs" />
     <Compile Include="GestionFormations\FormateursService.cs" />
-    <Compile Include="GestionStagiaires\GroupesService.cs" />
-    <Compile Include="GestionStagiaires\StagiairesService.cs" />
+    <Compile Include="Stagiaires\GroupesService.cs" />
+    <Compile Include="Stagiaires\StagiairesService.cs" />
     <Compile Include="Base\IBaseRepository.cs" />
     <Compile Include="DataBase\Configuration.cs" />
     <Compile Include="DataBase\ModelContext.cs" />
@@ -100,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701101736556_GestionLivre.resx">
       <DependentUpon>201701101736556_GestionLivre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701121004335_AddRelationGroupeAnneeFormation.resx">
+      <DependentUpon>201701121004335_AddRelationGroupeAnneeFormation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

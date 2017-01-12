@@ -147,12 +147,23 @@ namespace App
 
         private void annéesDeFormationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.AfficherUnGestion<AnneeFormation>();
+            this.AfficherUnGestion<AnneeFormation>(new AnneeFormationFormulaire());
         }
 
         private void AfficherUnGestion<T>() where T:BaseEntity
         {
             InterfaceGestion form = new InterfaceGestion(new BaseRepository<T>());
+            this.AfficherForm(form);
+        }
+
+        /// <summary>
+        /// Afficher une gestion avec une formulaire spécifique
+        /// </summary>
+        /// <typeparam name="T">L'objet à gérer</typeparam>
+        /// <param name="formulaire">Le Formulaire spécifique</param>
+        private void AfficherUnGestion<T>(BaseFormulaire formulaire) where T : BaseEntity
+        {
+            InterfaceGestion form = new InterfaceGestion(new BaseRepository<T>(), formulaire);
             this.AfficherForm(form);
         }
 
@@ -164,6 +175,11 @@ namespace App
         private void gestionDesLivresToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.AfficherUnGestion<Livre>();
+        }
+
+        private void gestionDesGroupesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.AfficherUnGestion<Groupe>();
         }
     }
 }

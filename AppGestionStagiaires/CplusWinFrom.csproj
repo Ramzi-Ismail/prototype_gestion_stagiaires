@@ -157,6 +157,10 @@
       <Project>{5831ae07-4d1e-449a-b8f8-f49194aa6f04}</Project>
       <Name>Entites</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GestionFormations\GestionFormations.csproj">
+      <Project>{ab95218a-0f8c-4810-a885-1ecab78ab589}</Project>
+      <Name>GestionFormations</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GestionPorjets\GestionPorjets.csproj">
       <Project>{9b92b218-cf6b-4d4b-9bd9-b9ae8e5f7898}</Project>
       <Name>GestionPorjets</Name>

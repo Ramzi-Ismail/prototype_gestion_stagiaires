@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using App.WinForm.Annotation;
+using LinqExtension;
+using System.Reflection;
 
 namespace App
 {
@@ -77,6 +79,41 @@ namespace App
 
             return query.ToList<T>();
         }
+
+
+        public List<object> Recherche(Dictionary<string, List<string>> dictionary,int startPage = 0, int itemsPerPage = 0 )
+        {
+            IQueryable<T> query = DbSet;
+           
+            List<object>  ls = query.CollectionToQuery(dictionary).ToList<object>();
+            return ls;
+        }
+        
+        public List<object> Recherche(Dictionary<string, object> rechercheInfos, int startPage = 0, int itemsPerPage = 0)
+        {
+            IQueryable<T> query = DbSet;
+
+            //ParameterExpression entity = Expression.Parameter(typeof(T), "entity");
+
+            foreach (var item in rechercheInfos)
+            {
+
+                //MemberExpression entity_string = Expression.PropertyOrField(entity, item.Key.Name);
+                //string valeur_string = (string)item.Value;
+                //valeur_string = "%" + valeur_string + "%";
+                //ConstantExpression valeur = Expression.Constant(item.Value, typeof(String));
+
+                //BinaryExpression EqualValeur = Expression.Equal(entity_string, valeur);
+                //var lambda = Expression.Lambda<Func<T, bool>>(EqualValeur, new ParameterExpression[] { entity });
+
+                var  lambda = Extensions.BuildPredicate<T>(item.Key, item.Value);
+                if(lambda != null)
+                query = query.Where(lambda);            }
+
+            List<object> ls = query.ToList<object>();
+            return ls;
+        }
+
         public List<object> GetAll()
         {
             List<T> ls = this.GetAll(0, 0).ToList<T>();

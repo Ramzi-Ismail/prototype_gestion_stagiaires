@@ -62,6 +62,9 @@
     <Compile Include="FormulaireControl\FormulaireControle.Designer.cs">
       <DependentUpon>FormulaireControle.cs</DependentUpon>
     </Compile>
+    <Compile Include="InterfaceGestion\InterfaceGestion.Filtre.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -69,13 +72,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Comptes\Session.cs" />
-    <Compile Include="BaseFormulaire\FormUserControl.cs">
+    <Compile Include="BaseFormulaire\BaseFormulaire.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="BaseFormulaire\FormUserControl.Designer.cs">
-      <DependentUpon>FormUserControl.cs</DependentUpon>
+    <Compile Include="BaseFormulaire\BaseFormulaire.Designer.cs">
+      <DependentUpon>BaseFormulaire.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFormulaire\IFormUserControl.cs" />
+    <Compile Include="BaseFormulaire\IBaseFormulaire.cs" />
     <Compile Include="InterfaceGestion\InterfaceGestion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,10 +91,9 @@
     <Compile Include="InterfaceGestion\InterfaceGestion.Editer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InterfaceGestion\InterfaceGestion.Afficher.cs">
+    <Compile Include="InterfaceGestion\InterfaceGestion.DataGrid.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Validation\Validation.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
@@ -104,8 +106,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaseFormulaire\FormUserControl.resx">
-      <DependentUpon>FormUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="BaseFormulaire\BaseFormulaire.resx">
+      <DependentUpon>BaseFormulaire.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InterfaceGestion\InterfaceGestion.resx">
       <DependentUpon>InterfaceGestion.cs</DependentUpon>

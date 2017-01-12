@@ -23,6 +23,8 @@ namespace App.Modules
         // Affectation
         [AffichagePropriete(Titre = "Filiere", isGridView = true, isFormulaire = true,
             Relation = "ManyToOne",
+            DisplayMember = "Code",
+            Filtre=true,
             WidthColonne = 100,
             Ordre = 3)]
         public virtual Filiere Filiere { set; get; }

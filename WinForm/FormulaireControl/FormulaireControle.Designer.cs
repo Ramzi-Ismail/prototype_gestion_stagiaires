@@ -32,6 +32,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -40,6 +41,10 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.formulaire);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.CausesValidation = false;
             this.splitContainer1.Size = new System.Drawing.Size(695, 383);
             this.splitContainer1.SplitterDistance = 321;
             // 
@@ -48,6 +53,7 @@
             this.formulaire.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.formulaire.CausesValidation = false;
             this.formulaire.Location = new System.Drawing.Point(10, 10);
             this.formulaire.Margin = new System.Windows.Forms.Padding(10);
             this.formulaire.Name = "formulaire";
@@ -66,6 +72,7 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }

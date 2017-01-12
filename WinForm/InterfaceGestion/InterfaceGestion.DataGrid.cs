@@ -10,32 +10,15 @@ namespace App.WinForm
 {
     partial class InterfaceGestion
     {
-       
-
-        public void Actualiser()
+        /// <summary>
+        /// Insertion des colonne selon les annotation des propriété de l'entité
+        /// </summary>
+        private void InitDataGridView()
         {
-            Service.SaveChanges();
-            ObjetBindingSource.Clear();
-            //  System.Type T = this.Formulaire.Entity.GetType();
-            var ls = Service.GetAll();
-
-            ObjetBindingSource.DataSource = ls;
-
-        }
-
-        private void ConfigDataGridView()
-        {
-              
-            // Obtien la liste des PropertyInfo par ordrer d'affichage
-            var listeProprite = from i in Service.TypeEntity.GetProperties()
-                                where i.GetCustomAttribute(typeof(AffichageProprieteAttribute)) != null &&
-                                ((AffichageProprieteAttribute)i.GetCustomAttribute(typeof(AffichageProprieteAttribute))).isGridView
-                                orderby ((AffichageProprieteAttribute)i.GetCustomAttribute(typeof(AffichageProprieteAttribute))).Ordre
-                                select i;
-
             int index_colonne = 0;
-            foreach (PropertyInfo propertyInfo in listeProprite)
+            foreach (PropertyInfo propertyInfo in this.ListePropriete)
             {
+                // Trouver l'objet AffichagePropriete depuis l'annotation
                 Attribute getAffichagePropriete = propertyInfo.GetCustomAttribute(typeof(AffichageProprieteAttribute));
                 if (getAffichagePropriete == null) continue;
                 AffichageProprieteAttribute AffichagePropriete = (AffichageProprieteAttribute)getAffichagePropriete;
@@ -52,7 +35,6 @@ namespace App.WinForm
                     colonne = new DataGridViewTextBoxColumn();
                     colonne.ValueType = typeof(DateTime);
                 }
-
                 colonne.HeaderText = AffichagePropriete.Titre;
                 colonne.DataPropertyName = propertyInfo.Name;
                 colonne.Name = propertyInfo.Name;
@@ -60,12 +42,7 @@ namespace App.WinForm
                 if(AffichagePropriete.WidthColonne!= 0) colonne.Width = AffichagePropriete.WidthColonne;
                 this.dataGridView.Columns.Insert(index_colonne, colonne);
             }
-               
-            
-
-           
         }
-
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             BaseEntity obj = (BaseEntity)ObjetBindingSource.Current;
@@ -86,6 +63,14 @@ namespace App.WinForm
                 EditerObjet();
             }
            
+        }
+
+        private void dataGridView_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                EditerObjet();
+            }
         }
     }
 }

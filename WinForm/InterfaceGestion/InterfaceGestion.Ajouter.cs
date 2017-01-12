@@ -23,7 +23,8 @@ namespace App.WinForm
                 tabAjouter.Text = this.Service.getAffichageDansFormGestionAttribute().TitreButtonAjouter;
                 tabAjouter.Name = "TabAjouter";
                 tabControl.TabPages.Add(tabAjouter);
-                tabControl.SelectedTab = tabAjouter;
+                
+                tabControl.CausesValidation = false;
 
                 // Insertion du formulaire 
                 BaseFormulaire form = Formulaire.CreateInstance(Service);
@@ -31,7 +32,11 @@ namespace App.WinForm
                 form.Entity = (BaseEntity) this.Service.CreateInstanceObjet();
                 form.Name = "Form";
                 form.Dock = DockStyle.Fill;
+
+                form.Afficher();
+
                 this.tabControl.TabPages["TabAjouter"].Controls.Add(form);
+                tabControl.SelectedTab = tabAjouter;
                 form.EnregistrerClick += Form_EnregistrerClick;
                 form.AnnulerClick += Form_AnnulerAjouterClick;
             }

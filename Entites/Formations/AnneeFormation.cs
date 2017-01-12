@@ -13,15 +13,33 @@ namespace App.Formations
    TitreButtonAjouter = "Ajouter une année de formation")]
     public class AnneeFormation : BaseEntity
    {
+
+        public AnneeFormation() : base()
+        {
+            this.DateDebut = DateTime.Now;
+            this.DateFin = DateTime.Now.AddYears(1);
+        }
+
+
         public override string ToString() => this.Titre;
 
-        [AffichagePropriete(Titre = "Titre", isGridView = true, isFormulaire = true, Ordre = 1, WidthColonne = 150)]
+        [AffichagePropriete(Titre = "Titre", 
+            isGridView = true, 
+            isFormulaire = true, 
+            Ordre = 1, 
+            WidthColonne = 150)]
         public String Titre { set; get; }
 
-        [AffichagePropriete(Titre = "Début de la formation", isGridView = true, isFormulaire = true, Ordre = 2, WidthColonne = 150)]
+        [AffichagePropriete(Titre = "Début de la formation", 
+            isGridView = true, 
+            isFormulaire = true, 
+            Ordre = 2, 
+            WidthColonne = 150)]
         public DateTime DateDebut { set; get; }
 
-        [AffichagePropriete(Titre = "Fin de la formation", isGridView = true, isFormulaire = true, Ordre = 3, WidthColonne = 150)]
+        [AffichagePropriete(Titre = "Fin de la formation", 
+            isGridView = true, 
+            isFormulaire = true, Ordre = 3, WidthColonne = 150)]
         public DateTime DateFin { set; get; }
 
     }

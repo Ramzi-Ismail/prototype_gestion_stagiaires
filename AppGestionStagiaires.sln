@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFromLib", "WinFromLib\Wi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionModules", "GestionModules\GestionModules.csproj", "{D4619CE3-F190-4CC1-B58E-C79E7C09D5FC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoFormation", "ConsoleApplicationTest\AutoFormation.csproj", "{7AEB698A-CDCD-4007-B916-7913C68AE740}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{D4619CE3-F190-4CC1-B58E-C79E7C09D5FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4619CE3-F190-4CC1-B58E-C79E7C09D5FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4619CE3-F190-4CC1-B58E-C79E7C09D5FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AEB698A-CDCD-4007-B916-7913C68AE740}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AEB698A-CDCD-4007-B916-7913C68AE740}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AEB698A-CDCD-4007-B916-7913C68AE740}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AEB698A-CDCD-4007-B916-7913C68AE740}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

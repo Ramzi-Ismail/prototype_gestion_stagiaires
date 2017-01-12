@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,6 +23,10 @@ namespace App
         string GetNomObjet();
         List<object> GetAllDetached();
         string GetNomObjets();
+
+        List<Object> Recherche(Dictionary<string, List<string>> dictionary,int startPage = 0, int itemsPerPage = 0);
+        List<Object> Recherche(Dictionary<string, object> rechercheInfos, int startPage = 0, int itemsPerPage = 0);
+        
 
         List<Object> GetAll();
 

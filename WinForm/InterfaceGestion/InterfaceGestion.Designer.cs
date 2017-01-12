@@ -37,6 +37,7 @@
             this.Supprimer = new System.Windows.Forms.DataGridViewImageColumn();
             this.ObjetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBoxFiltrage = new System.Windows.Forms.GroupBox();
             this.tabControl.SuspendLayout();
             this.TabGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -49,35 +50,41 @@
             // 
             // bt_Ajouter
             // 
+            this.bt_Ajouter.AccessibleDescription = "Ajouter";
             this.bt_Ajouter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_Ajouter.AutoEllipsis = true;
             this.bt_Ajouter.Image = global::App.WinForm.Properties.Resources.edit_bleu;
             this.bt_Ajouter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bt_Ajouter.Location = new System.Drawing.Point(747, 3);
+            this.bt_Ajouter.Location = new System.Drawing.Point(747, 22);
             this.bt_Ajouter.Name = "bt_Ajouter";
-            this.bt_Ajouter.Size = new System.Drawing.Size(132, 29);
+            this.bt_Ajouter.Size = new System.Drawing.Size(132, 37);
             this.bt_Ajouter.TabIndex = 12;
             this.bt_Ajouter.Text = "Ajouter";
+            this.bt_Ajouter.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.bt_Ajouter.UseVisualStyleBackColor = true;
             this.bt_Ajouter.Click += new System.EventHandler(this.bt_Ajouter_Click);
             // 
             // tabControl
             // 
+            this.tabControl.CausesValidation = false;
             this.tabControl.Controls.Add(this.TabGrid);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Margin = new System.Windows.Forms.Padding(0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(891, 528);
+            this.tabControl.Size = new System.Drawing.Size(891, 470);
             this.tabControl.TabIndex = 13;
+            this.tabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl_Selected);
             // 
             // TabGrid
             // 
+            this.TabGrid.CausesValidation = false;
             this.TabGrid.Controls.Add(this.dataGridView);
             this.TabGrid.Location = new System.Drawing.Point(4, 22);
             this.TabGrid.Name = "TabGrid";
             this.TabGrid.Padding = new System.Windows.Forms.Padding(3);
-            this.TabGrid.Size = new System.Drawing.Size(883, 502);
+            this.TabGrid.Size = new System.Drawing.Size(883, 444);
             this.TabGrid.TabIndex = 0;
             this.TabGrid.Text = "Informations";
             this.TabGrid.UseVisualStyleBackColor = true;
@@ -87,6 +94,7 @@
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
             this.dataGridView.AutoGenerateColumns = false;
+            this.dataGridView.CausesValidation = false;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Editer,
@@ -96,9 +104,11 @@
             this.dataGridView.Location = new System.Drawing.Point(3, 3);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
-            this.dataGridView.Size = new System.Drawing.Size(877, 496);
+            this.dataGridView.Size = new System.Drawing.Size(877, 438);
             this.dataGridView.TabIndex = 10;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
+            this.dataGridView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView_KeyDown);
+            this.dataGridView.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView_KeyUp);
             // 
             // Editer
             // 
@@ -119,6 +129,7 @@
             // 
             // splitContainer1
             // 
+            this.splitContainer1.CausesValidation = false;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
@@ -126,24 +137,37 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.groupBoxFiltrage);
             this.splitContainer1.Panel1.Controls.Add(this.bt_Ajouter);
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.CausesValidation = false;
             this.splitContainer1.Panel2.Controls.Add(this.tabControl);
             this.splitContainer1.Size = new System.Drawing.Size(891, 567);
-            this.splitContainer1.SplitterDistance = 35;
+            this.splitContainer1.SplitterDistance = 93;
             this.splitContainer1.TabIndex = 14;
+            // 
+            // groupBoxFiltrage
+            // 
+            this.groupBoxFiltrage.Location = new System.Drawing.Point(12, 12);
+            this.groupBoxFiltrage.Name = "groupBoxFiltrage";
+            this.groupBoxFiltrage.Size = new System.Drawing.Size(729, 66);
+            this.groupBoxFiltrage.TabIndex = 13;
+            this.groupBoxFiltrage.TabStop = false;
+            this.groupBoxFiltrage.Text = "Filtre";
             // 
             // InterfaceGestion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(891, 567);
             this.Controls.Add(this.splitContainer1);
             this.Name = "InterfaceGestion";
             this.Text = "FormGestion";
-            this.Load += new System.EventHandler(this.FormGestion_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.InterfaceGestion_FormClosing);
+            this.Load += new System.EventHandler(this.InterfaceGestion_Load);
             this.tabControl.ResumeLayout(false);
             this.TabGrid.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
@@ -166,5 +190,6 @@
         private System.Windows.Forms.DataGridViewImageColumn Editer;
         private System.Windows.Forms.DataGridViewImageColumn Supprimer;
         private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.GroupBox groupBoxFiltrage;
     }
 }
