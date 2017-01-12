@@ -232,6 +232,7 @@ namespace App.WinForm
                         // Select Id dans Combo
                         // comboBox.selectedvalue ne marche pas ici !!
                         int index = 0;
+                        comboBox.CreateControl();
                         foreach (object obj in (List<object>) comboBox.DataSource)
                         {
                             BaseEntity o = (BaseEntity)obj;
