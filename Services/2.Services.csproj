@@ -48,6 +48,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\BaseRepository.cs" />
+    <Compile Include="GestionFormations\PrevisionSeancesService.cs" />
+    <Compile Include="GestionFormations\SeancesService.cs" />
     <Compile Include="GestionProjets\ProjetsService.cs" />
     <Compile Include="GestionProjets\TachesService.cs" />
     <Compile Include="Migrations\201701121004335_AddRelationGroupeAnneeFormation.cs" />
@@ -57,6 +59,22 @@
     <Compile Include="Migrations\201701121710243_AddColonneCodeToModule.cs" />
     <Compile Include="Migrations\201701121710243_AddColonneCodeToModule.Designer.cs">
       <DependentUpon>201701121710243_AddColonneCodeToModule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701130945193_GestionFormations.cs" />
+    <Compile Include="Migrations\201701130945193_GestionFormations.Designer.cs">
+      <DependentUpon>201701130945193_GestionFormations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701131036518_AlterTableSeanceTypeColonneObjectf.cs" />
+    <Compile Include="Migrations\201701131036518_AlterTableSeanceTypeColonneObjectf.Designer.cs">
+      <DependentUpon>201701131036518_AlterTableSeanceTypeColonneObjectf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701131102162_RelatonPrevisionSanceEtModule.cs" />
+    <Compile Include="Migrations\201701131102162_RelatonPrevisionSanceEtModule.Designer.cs">
+      <DependentUpon>201701131102162_RelatonPrevisionSanceEtModule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701131148237_AddOrdreSance.cs" />
+    <Compile Include="Migrations\201701131148237_AddOrdreSance.Designer.cs">
+      <DependentUpon>201701131148237_AddOrdreSance.cs</DependentUpon>
     </Compile>
     <Compile Include="Stagiaires\FilieresService.cs" />
     <Compile Include="GestionFormations\FormateursService.cs" />
@@ -116,11 +134,23 @@
     <EmbeddedResource Include="Migrations\201701121710243_AddColonneCodeToModule.resx">
       <DependentUpon>201701121710243_AddColonneCodeToModule.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701130945193_GestionFormations.resx">
+      <DependentUpon>201701130945193_GestionFormations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701131036518_AlterTableSeanceTypeColonneObjectf.resx">
+      <DependentUpon>201701131036518_AlterTableSeanceTypeColonneObjectf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701131102162_RelatonPrevisionSanceEtModule.resx">
+      <DependentUpon>201701131102162_RelatonPrevisionSanceEtModule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701131148237_AddOrdreSance.resx">
+      <DependentUpon>201701131148237_AddOrdreSance.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Entites\Entites.csproj">
+    <ProjectReference Include="..\Entites\1.Entites.csproj">
       <Project>{5831ae07-4d1e-449a-b8f8-f49194aa6f04}</Project>
-      <Name>Entites</Name>
+      <Name>1.Entites</Name>
     </ProjectReference>
     <ProjectReference Include="..\WinFromLib\WinFromLib.csproj">
       <Project>{7b89bd41-7117-4c2d-845f-45eeb252cc35}</Project>

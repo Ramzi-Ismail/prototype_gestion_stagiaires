@@ -47,16 +47,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App\BaseEntity.cs" />
-    <Compile Include="App\IBaseEntity.cs" />
+    <Compile Include="Base\BaseEntity.cs" />
+    <Compile Include="Base\IBaseEntity.cs" />
     <Compile Include="Formations\Activite.cs" />
     <Compile Include="Formations\AnneeFormation.cs" />
     <Compile Include="Formations\CategogieActivite.cs" />
-    <Compile Include="Formations\EtablissementFormation\CategogiesSalleFormation.cs" />
+    <Compile Include="Formations\Etablissement\CategogiesSalleFormation.cs" />
     <Compile Include="Formations\Formateur.cs" />
     <Compile Include="Formations\Formation.cs" />
     <Compile Include="Formations\Planing\EmploisTemps.cs" />
-    <Compile Include="Formations\EtablissementFormation\Salle.cs" />
+    <Compile Include="Formations\Etablissement\Salle.cs" />
     <Compile Include="Formations\Planing\SeancePlanning.cs" />
     <Compile Include="Formations\PrevisionSeance.cs" />
     <Compile Include="Formations\Seance.cs" />
@@ -74,13 +74,11 @@
     <Compile Include="Stagiaires\Groupe.cs" />
     <Compile Include="Stagiaires\MiniGroupe.cs" />
     <Compile Include="Stagiaires\Stagiaire.cs" />
-    <Compile Include="App\Individu.cs" />
+    <Compile Include="Base\Individu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="App\Utilisateur.cs" />
+    <Compile Include="Base\Utilisateur.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Authentification\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\WinFromLib\WinFromLib.csproj">
       <Project>{7b89bd41-7117-4c2d-845f-45eeb252cc35}</Project>

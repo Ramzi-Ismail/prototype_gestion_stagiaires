@@ -33,7 +33,7 @@ namespace App.GestionStagiaires
            Relation = "ManyToOne",
            DisplayMember = "Code",
            Filtre = true,
-            isValeurVide = true,
+            isValeurFiltreVide = true,
            WidthColonne = 100,
            Ordre = 3)]
         public virtual Filiere Filiere { set; get; }

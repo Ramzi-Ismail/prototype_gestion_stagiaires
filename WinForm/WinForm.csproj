@@ -62,7 +62,7 @@
     <Compile Include="FormulaireControl\FormulaireControle.Designer.cs">
       <DependentUpon>FormulaireControle.cs</DependentUpon>
     </Compile>
-    <Compile Include="InterfaceGestion\InterfaceGestion.Filtre.cs">
+    <Compile Include="InterfaceGestion\Filtre.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -79,19 +79,19 @@
       <DependentUpon>BaseFormulaire.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseFormulaire\IBaseFormulaire.cs" />
-    <Compile Include="InterfaceGestion\InterfaceGestion.cs">
+    <Compile Include="InterfaceGestion\Variables_Constructeurs.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InterfaceGestion\InterfaceGestion.Designer.cs">
-      <DependentUpon>InterfaceGestion.cs</DependentUpon>
+    <Compile Include="InterfaceGestion\Variables_Constructeurs.Designer.cs">
+      <DependentUpon>Variables_Constructeurs.cs</DependentUpon>
     </Compile>
-    <Compile Include="InterfaceGestion\InterfaceGestion.Ajouter.cs">
+    <Compile Include="InterfaceGestion\Ajouter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InterfaceGestion\InterfaceGestion.Editer.cs">
+    <Compile Include="InterfaceGestion\Editer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InterfaceGestion\InterfaceGestion.DataGrid.cs">
+    <Compile Include="InterfaceGestion\DataGrid.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
@@ -109,8 +109,8 @@
     <EmbeddedResource Include="BaseFormulaire\BaseFormulaire.resx">
       <DependentUpon>BaseFormulaire.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InterfaceGestion\InterfaceGestion.resx">
-      <DependentUpon>InterfaceGestion.cs</DependentUpon>
+    <EmbeddedResource Include="InterfaceGestion\Variables_Constructeurs.resx">
+      <DependentUpon>Variables_Constructeurs.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -129,13 +129,13 @@
     <None Include="Resources\edit_bleu.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Entites\Entites.csproj">
+    <ProjectReference Include="..\Entites\1.Entites.csproj">
       <Project>{5831ae07-4d1e-449a-b8f8-f49194aa6f04}</Project>
-      <Name>Entites</Name>
+      <Name>1.Entites</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Services\Services.csproj">
+    <ProjectReference Include="..\Services\2.Services.csproj">
       <Project>{3940f5ca-c8c0-4a72-8a1c-0ad50e5d18ca}</Project>
-      <Name>Services</Name>
+      <Name>2.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\WinFromLib\WinFromLib.csproj">
       <Project>{7b89bd41-7117-4c2d-845f-45eeb252cc35}</Project>

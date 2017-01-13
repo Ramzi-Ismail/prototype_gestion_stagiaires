@@ -16,8 +16,8 @@
     public class ModelContext : DbContext
     {
         // public ModelContext() : base("name = ModelStagiaires")
-       // public ModelContext() : base(@"data source =localhost\SQLEXPRESS; initial catalog = AppGestionStagiaires.ModelStagiaires; user = sa; password = admintp4; MultipleActiveResultSets = True; App = EntityFramework")
-        public ModelContext() : base(@"data source =192.168.1.57\SQLEXPRESS; initial catalog = CplusESSARRAJ; user = sa; password = admintp4; MultipleActiveResultSets = True; App = EntityFramework")
+         public ModelContext() : base(@"data source =localhost\SQLEXPRESS; initial catalog = AppGestionStagiaires.ModelStagiaires; user = sa; password = admintp4; MultipleActiveResultSets = True; App = EntityFramework")
+       // public ModelContext() : base(@"data source =192.168.1.57\SQLEXPRESS; initial catalog = CplusESSARRAJ; user = sa; password = admintp4; MultipleActiveResultSets = True; App = EntityFramework")
         // public ModelContext()
         {
           
@@ -28,12 +28,31 @@
             //Database.SetInitializer<SchoolDBContext>(new SchoolDBInitializer());
         }
 
+        //
+        // Gestion des formations
+        //
+        public virtual DbSet<Seance> Seances { get; set; }
+        public virtual DbSet<Formation> Formations { get; set; }
+        public virtual DbSet<AnneeFormation> AnneeFormations { get; set; }
+        public virtual DbSet<PrevisionSeance> PrevisionSeances { get; set; }
+        public virtual DbSet<Salle> Salles { get; set; }
+        public virtual DbSet<Activite> Activites { get; set; }
+
+        public virtual DbSet<CategogieActivite> CategogieActivites { get; set; }
+
+        public virtual DbSet<StrategiePedagogie> StrategiePedagogies { get; set; }
+        
+        public virtual DbSet<CategogiesSalleFormation> CategogiesSalleFormations { get; set; }
+        
+        
+        
+
         // Gestion Livre 
         public virtual DbSet<Livre> Livres { get; set; }
         public virtual DbSet<MaisonEdition> MaisonEditions { get; set; }
 
         // Gestion des formation
-        public virtual DbSet<AnneeFormation> AnneeFormations { get; set; }
+ 
 
 
         // Application de Gestion des stagiaires

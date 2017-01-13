@@ -35,7 +35,7 @@ namespace App.WinForm
                 Label label_champ_filtre = new Label();
                 label_champ_filtre.Location = new System.Drawing.Point(x, 20);
                 label_champ_filtre.Name = "label_" + propertyInfo.Name;
-                label_champ_filtre.Size = new System.Drawing.Size(32, 13);
+                label_champ_filtre.Size = new System.Drawing.Size(145, 13);
                 label_champ_filtre.TabIndex = TabIndex++;
                 label_champ_filtre.Text = AffichagePropriete.Titre;
                 this.groupBoxFiltrage.Controls.Add(label_champ_filtre);
@@ -65,7 +65,7 @@ namespace App.WinForm
                     //if (AffichagePropriete.isValeurVide) ls.Insert(0, new BaseEntity() { Id= 0});
                     comboBoxRelationManyToOne.DataSource = ls;
 
-                    if(AffichagePropriete.isValeurVide) comboBoxRelationManyToOne.SelectedIndex = -1;
+                    if(AffichagePropriete.isValeurFiltreVide) comboBoxRelationManyToOne.SelectedIndex = -1;
 
                     //
                     // Evénement Change sur le ComboBox : Actualisation de DataGrid
@@ -89,6 +89,42 @@ namespace App.WinForm
                     // Evénement Change sur le ComboBox : Actualisation de DataGrid
                     //
                     textBoxString.TextChanged += Filtre_TextBox_SelectedValueChanged;
+
+                }
+                if (propertyInfo.PropertyType.Name == "Int32")
+                {
+                    // 
+                    // comboBoxRelationManyToOne
+                    // 
+                    TextBox textBoxString = new TextBox();
+                    textBoxString.Location = new System.Drawing.Point(x, 37);
+                    textBoxString.Name = propertyInfo.Name;
+                    textBoxString.Size = new System.Drawing.Size(145, 21);
+                    textBoxString.TabIndex = TabIndex++;
+                    this.groupBoxFiltrage.Controls.Add(textBoxString);
+
+                    //
+                    // Evénement Change sur le ComboBox : Actualisation de DataGrid
+                    //
+                    textBoxString.TextChanged += Filtre_TextBox_SelectedValueChanged;
+
+                }
+                if (propertyInfo.PropertyType.Name == "DateTime")
+                {
+                    // 
+                    // comboBoxRelationManyToOne
+                    // 
+                    DateTimePicker dateTimePicker = new DateTimePicker();
+                    dateTimePicker.Location = new System.Drawing.Point(x, 37);
+                    dateTimePicker.Name = propertyInfo.Name;
+                    dateTimePicker.Size = new System.Drawing.Size(145, 21);
+                    dateTimePicker.TabIndex = TabIndex++;
+                    this.groupBoxFiltrage.Controls.Add(dateTimePicker);
+
+                    //
+                    // Evénement Change sur le ComboBox : Actualisation de DataGrid
+                    //
+                    dateTimePicker.ValueChanged += Filtre_TextBox_SelectedValueChanged;
 
                 }
 
@@ -144,6 +180,20 @@ namespace App.WinForm
                             TextBox textBoxString = (TextBox)this.groupBoxFiltrage.Controls.Find(propertyInfo.Name, true).First();
                             if (textBoxString.Text != String.Empty)
                                 RechercheInfos[propertyInfo.Name] = textBoxString.Text;
+                        }
+                        break;
+                    case "Int32":
+                        {
+                            TextBox textBoxString = (TextBox)this.groupBoxFiltrage.Controls.Find(propertyInfo.Name, true).First();
+                            if (textBoxString.Text != String.Empty)
+                                RechercheInfos[propertyInfo.Name] = Convert.ToInt32(textBoxString.Text);
+                        }
+                        break;
+                    case "DateTime":
+                        {
+                            DateTimePicker dateTimePicker = (DateTimePicker)this.groupBoxFiltrage.Controls.Find(propertyInfo.Name, true).First();
+                            if (dateTimePicker.Text != String.Empty)
+                                RechercheInfos[propertyInfo.Name] = dateTimePicker.Value;
                         }
                         break;
                     default: // Dans le cas d'un objet de type BaseEntity

@@ -54,13 +54,22 @@ namespace App.WinForm.Annotation
 
         /// <summary>
         /// Indique si la proriété fait partie du filtre de recherhe 
+        /// l'attribut doit être dans DataGrid
         /// </summary>
         public bool Filtre { get; set; }
-        public bool isValeurVide { get; set; }
+
+        /// <summary>
+        /// Si la valeur est vide dans le filtre
+        /// </summary>
+        public bool isValeurFiltreVide { get; set; }
 
         /// <summary>
         /// Indique si la saisie de cette information est 
         /// </summary>
         public bool isOblegatoir { get; set; }
+        /// <summary>
+        /// Unité : min,h,annee, g, Kg
+        /// </summary>
+        public string Unite { get; set; }
     }
 }

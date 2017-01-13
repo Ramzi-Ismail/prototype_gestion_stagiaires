@@ -229,17 +229,19 @@ namespace App.WinForm
                     if (CritereFiltre != null && CritereFiltre.ContainsKey(item.Name))
                     {
                         Int64 id = (Int64)CritereFiltre[item.Name];
-                        // Select Id dans Combo
-                        // comboBox.selectedvalue ne marche pas ici !!
-                        int index = 0;
-                        foreach (object obj in (List<object>) comboBox.DataSource)
-                        {
-                            BaseEntity o = (BaseEntity)obj;
-                            if (o.Id == id)
-                                comboBox.SelectedIndex = index;
+                        comboBox.Refresh();
 
-                            index++;
-                        }
+                        // Select Id dans Combo
+                        comboBox.SelectedValue = id;
+                        //int index = 0;
+                        //foreach (object obj in (List<object>) comboBox.DataSource)
+                        //{
+                        //    BaseEntity o = (BaseEntity)obj;
+                        //    if (o.Id == id)
+                        //        comboBox.SelectedIndex = index;
+
+                        //    index++;
+                        //}
                         
                         
                     }
