@@ -27,33 +27,12 @@ namespace App
             InitializeComponent();
         }
 
+
         private void binfingNavigatorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           // new FormBinfingNavigator().Show();
         }
 
-        /// <summary>
-        /// Affichage d'une formulaire de Type : Form
-        /// </summary>
-        /// <param name="f">Le controle Form à afficher </param>
-        private void AfficherForm(Form addForm)
-        {
-            Cursor.Current = Cursors.WaitCursor;
-            Form form = this.MdiChildren.Where(f => f.Name == addForm.Name).FirstOrDefault();
-            if (form == null) {
-                addForm.MdiParent = this;
-                addForm.StartPosition = FormStartPosition.CenterScreen;
-                addForm.WindowState = FormWindowState.Maximized;
-                addForm.Show();
-            }
-            else
-            {
-                form.WindowState = FormWindowState.Normal;
-
-            }
-
-            Cursor.Current = Cursors.Default;
-        }
+       
 
         /// <summary>
         /// Gestion des stagiaires
@@ -91,7 +70,7 @@ namespace App
 
         private void gérerLesFilieresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.AfficherUnGestion<Filiere>();
+            this.AfficherUneGestion<Filiere>();
         }
 
 
@@ -119,7 +98,7 @@ namespace App
 
         private void formateursToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.AfficherUnGestion<Formateur>();
+            this.AfficherUneGestion<Formateur>();
         }
 
         private void gérerLesGroupesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -147,12 +126,68 @@ namespace App
 
         private void annéesDeFormationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.AfficherUnGestion<AnneeFormation>(new AnneeFormationFormulaire());
+            this.AfficherUneGestion<AnneeFormation>(new AnneeFormationFormulaire());
         }
 
-        private void AfficherUnGestion<T>() where T:BaseEntity
+      
+
+        private void gestionMaisonDéditionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.AfficherUneGestion<MaisonEdition>();
+        }
+
+        private void gestionDesLivresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.AfficherUneGestion<Livre>();
+        }
+
+        private void gestionDesGroupesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.AfficherUneGestion<Groupe>();
+        }
+
+        private void sallesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void gestionDesSéancesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.AfficherUneGestion<Seance>(new SeancesService());
+        }
+
+        private void prévisionDesSéancesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.AfficherUneGestion<PrevisionSeance>(new PrevisionSeancesService());
+        }
+
+        private void gestionDesFormationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.AfficherUneGestion<Formation>();
+            
+        }
+
+        private void gestionDesSallesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.AfficherUneGestion<Salle>();
+        }
+
+        private void catégoriesSalleDeFormationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.AfficherUneGestion<CategogiesSalleFormation>();
+        }
+
+
+        #region La méthode AfficherUneGestion
+        private void AfficherUneGestion<T>() where T : BaseEntity
         {
             InterfaceGestion form = new InterfaceGestion(new BaseRepository<T>());
+            this.AfficherForm(form);
+        }
+
+        private void AfficherUneGestion<T>(IBaseRepository Service) where T : BaseEntity
+        {
+            InterfaceGestion form = new InterfaceGestion(Service);
             this.AfficherForm(form);
         }
 
@@ -161,25 +196,41 @@ namespace App
         /// </summary>
         /// <typeparam name="T">L'objet à gérer</typeparam>
         /// <param name="formulaire">Le Formulaire spécifique</param>
-        private void AfficherUnGestion<T>(BaseFormulaire formulaire) where T : BaseEntity
+        private void AfficherUneGestion<T>(BaseFormulaire formulaire) where T : BaseEntity
         {
             InterfaceGestion form = new InterfaceGestion(new BaseRepository<T>(), formulaire);
             this.AfficherForm(form);
         }
 
-        private void gestionMaisonDéditionToolStripMenuItem_Click(object sender, EventArgs e)
+       
+        /// <summary>
+        /// Affichage d'une formulaire de Type : Form
+        /// </summary>
+        /// <param name="f">Le controle Form à afficher </param>
+        private void AfficherForm(Form addForm)
         {
-            this.AfficherUnGestion<MaisonEdition>();
-        }
+            Cursor.Current = Cursors.WaitCursor;
+            Form form = this.MdiChildren.Where(f => f.Name == addForm.Name).FirstOrDefault();
+            if (form == null)
+            {
+                addForm.MdiParent = this;
+                addForm.StartPosition = FormStartPosition.CenterScreen;
+                addForm.WindowState = FormWindowState.Maximized;
+                addForm.Show();
+            }
+            else
+            {
+                form.WindowState = FormWindowState.Normal;
 
-        private void gestionDesLivresToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.AfficherUnGestion<Livre>();
-        }
+            }
 
-        private void gestionDesGroupesToolStripMenuItem_Click(object sender, EventArgs e)
+            Cursor.Current = Cursors.Default;
+        }
+        #endregion
+
+        private void contenuePrécisionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.AfficherUnGestion<Groupe>();
+            this.AfficherUneGestion<ContenuePrecision>();
         }
     }
 }

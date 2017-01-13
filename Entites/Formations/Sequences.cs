@@ -8,7 +8,7 @@ using System;
 
 namespace App.Formations
 {
-   public class Sequences
+   public class Sequence
    {
       private int id;
       private String titre;

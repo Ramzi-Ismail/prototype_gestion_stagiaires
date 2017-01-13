@@ -15,16 +15,20 @@ namespace App.Modules
             isOblegatoir = true,   Ordre = 1, WidthColonne = 200 )]
         public String Nom { set; get; }
 
+
         [AffichagePropriete(Titre = "Code", isGridView = true, isFormulaire = true,
            isOblegatoir = true, Ordre = 2, WidthColonne = 80)]
         public String Code { set; get; }
 
+
         /// <summary>
         /// La duré en Nombre d'heure
         /// </summary>
-        [AffichagePropriete(Titre = "Durée", isGridView = true, isFormulaire = true,
-            isOblegatoir = true, Ordre = 3,  WidthColonne = 40)]
+        [AffichagePropriete(Titre = "Durée en Heure", isGridView = true, isFormulaire = true,
+          Unite ="h",  isOblegatoir = true, Ordre = 3,  WidthColonne = 40)]
         public int Duree{ set; get; }
+
+
 
         // Affectation
         [AffichagePropriete(Titre = "Filiere", isGridView = true, isFormulaire = true,
@@ -38,6 +42,8 @@ namespace App.Modules
             Ordre = 5 , 
             MultiLine =true)]
         public string Presentation { set; get; }
+
+
 
         [AffichagePropriete(Titre = "Remarque", 
             isFormulaire = true,

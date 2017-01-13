@@ -38,6 +38,7 @@
             this.ObjetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBoxFiltrage = new System.Windows.Forms.GroupBox();
+            this.splitContainerFiltre = new System.Windows.Forms.SplitContainer();
             this.tabControl.SuspendLayout();
             this.TabGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -46,18 +47,24 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerFiltre)).BeginInit();
+            this.splitContainerFiltre.Panel1.SuspendLayout();
+            this.splitContainerFiltre.Panel2.SuspendLayout();
+            this.splitContainerFiltre.SuspendLayout();
             this.SuspendLayout();
             // 
             // bt_Ajouter
             // 
             this.bt_Ajouter.AccessibleDescription = "Ajouter";
-            this.bt_Ajouter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_Ajouter.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.bt_Ajouter.AutoEllipsis = true;
             this.bt_Ajouter.Image = global::App.WinForm.Properties.Resources.edit_bleu;
             this.bt_Ajouter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bt_Ajouter.Location = new System.Drawing.Point(747, 22);
+            this.bt_Ajouter.Location = new System.Drawing.Point(13, 5);
             this.bt_Ajouter.Name = "bt_Ajouter";
-            this.bt_Ajouter.Size = new System.Drawing.Size(132, 37);
+            this.bt_Ajouter.Size = new System.Drawing.Size(135, 37);
             this.bt_Ajouter.TabIndex = 12;
             this.bt_Ajouter.Text = "Ajouter";
             this.bt_Ajouter.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -66,14 +73,16 @@
             // 
             // tabControl
             // 
+            this.tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl.CausesValidation = false;
             this.tabControl.Controls.Add(this.TabGrid);
-            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl.Location = new System.Drawing.Point(0, 0);
+            this.tabControl.Location = new System.Drawing.Point(12, 0);
             this.tabControl.Margin = new System.Windows.Forms.Padding(0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(891, 470);
+            this.tabControl.Size = new System.Drawing.Size(870, 470);
             this.tabControl.TabIndex = 13;
             this.tabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl_Selected);
             // 
@@ -84,7 +93,7 @@
             this.TabGrid.Location = new System.Drawing.Point(4, 22);
             this.TabGrid.Name = "TabGrid";
             this.TabGrid.Padding = new System.Windows.Forms.Padding(3);
-            this.TabGrid.Size = new System.Drawing.Size(883, 444);
+            this.TabGrid.Size = new System.Drawing.Size(862, 444);
             this.TabGrid.TabIndex = 0;
             this.TabGrid.Text = "Informations";
             this.TabGrid.UseVisualStyleBackColor = true;
@@ -104,7 +113,7 @@
             this.dataGridView.Location = new System.Drawing.Point(3, 3);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
-            this.dataGridView.Size = new System.Drawing.Size(877, 438);
+            this.dataGridView.Size = new System.Drawing.Size(856, 438);
             this.dataGridView.TabIndex = 10;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             this.dataGridView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView_KeyDown);
@@ -129,16 +138,17 @@
             // 
             // splitContainer1
             // 
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer1.CausesValidation = false;
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.groupBoxFiltrage);
-            this.splitContainer1.Panel1.Controls.Add(this.bt_Ajouter);
+            this.splitContainer1.Panel1.Controls.Add(this.splitContainerFiltre);
             // 
             // splitContainer1.Panel2
             // 
@@ -150,12 +160,34 @@
             // 
             // groupBoxFiltrage
             // 
-            this.groupBoxFiltrage.Location = new System.Drawing.Point(12, 12);
+            this.groupBoxFiltrage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxFiltrage.Location = new System.Drawing.Point(0, 0);
             this.groupBoxFiltrage.Name = "groupBoxFiltrage";
-            this.groupBoxFiltrage.Size = new System.Drawing.Size(729, 66);
+            this.groupBoxFiltrage.Size = new System.Drawing.Size(715, 69);
             this.groupBoxFiltrage.TabIndex = 13;
             this.groupBoxFiltrage.TabStop = false;
             this.groupBoxFiltrage.Text = "Filtre";
+            // 
+            // splitContainerFiltre
+            // 
+            this.splitContainerFiltre.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainerFiltre.Location = new System.Drawing.Point(12, 12);
+            this.splitContainerFiltre.Name = "splitContainerFiltre";
+            // 
+            // splitContainerFiltre.Panel1
+            // 
+            this.splitContainerFiltre.Panel1.Controls.Add(this.groupBoxFiltrage);
+            // 
+            // splitContainerFiltre.Panel2
+            // 
+            this.splitContainerFiltre.Panel2.Controls.Add(this.bt_Ajouter);
+            this.splitContainerFiltre.Size = new System.Drawing.Size(872, 69);
+            this.splitContainerFiltre.SplitterDistance = 718;
+            this.splitContainerFiltre.TabIndex = 14;
             // 
             // InterfaceGestion
             // 
@@ -176,6 +208,10 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.splitContainerFiltre.Panel1.ResumeLayout(false);
+            this.splitContainerFiltre.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerFiltre)).EndInit();
+            this.splitContainerFiltre.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -191,5 +227,6 @@
         private System.Windows.Forms.DataGridViewImageColumn Supprimer;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.GroupBox groupBoxFiltrage;
+        private System.Windows.Forms.SplitContainer splitContainerFiltre;
     }
 }

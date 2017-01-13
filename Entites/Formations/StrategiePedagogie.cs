@@ -3,16 +3,28 @@
 // Created: dimanche 28 décembre 2014 16:36:10
 // Purpose: Definition of Class StrategiePedagogie
 
+using App.WinForm.Annotation;
 using System;
 
 namespace App.Formations
 {
-   public class StrategiePedagogie
+    [AffichageDansFormGestion(Titre = "Gestion des stratégies pédagogique", TitrePageGridView = "Stratégie pédagogique",
+    TitreButtonAjouter = "Ajouter une stratégie pédagogique")]
+    [AffichageClasse(Minuscule = "Stratégie pédagogique", Majuscule = "Stratégies pédagogique")]
+    public class StrategiePedagogie : BaseEntity
    {
-      private int id;
-      private String titre;
-      private String description;
-      private String photo;
-   
+
+        public override string ToString() => this.Titre;
+
+
+        [AffichagePropriete(Titre = "Nom de la stratégie", isGridView = true, isFormulaire = true,
+             isOblegatoir = true, Ordre = 1, WidthColonne = 200)]
+
+
+        public String Titre;
+        [AffichagePropriete(Titre = "Description", isGridView = true, isFormulaire = true,
+          MultiLine =true,  Ordre = 2, WidthColonne = 400)]
+        public String Description;
+ 
    }
 }

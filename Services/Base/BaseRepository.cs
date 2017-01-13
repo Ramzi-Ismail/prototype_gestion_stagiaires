@@ -79,7 +79,7 @@ namespace App
             {
                 query = query.OrderByDescending(x => x.Id).Skip((startPage - 1) * itemsPerPage).Take(itemsPerPage);
             }
-
+           
             return query.ToList<T>();
         }
 
@@ -111,7 +111,9 @@ namespace App
 
                 var  lambda = Extensions.BuildPredicate<T>(item.Key, item.Value);
                 if(lambda != null)
-                query = query.Where(lambda);            }
+                query = query.Where(lambda);
+            }
+            
 
             List<object> ls = query.ToList<object>();
             return ls;

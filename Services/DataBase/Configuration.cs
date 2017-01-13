@@ -1,7 +1,7 @@
 namespace App.Migrations
 {
     using Formations;
-    using GestionFormations;
+ 
     using GestionStagiaires;
     using System;
     using System.Data.Entity;

@@ -7,9 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CplusWinFrom", "AppGestionS
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupCplus", "SetupCplus\SetupCplus.vdproj", "{64039226-3BCA-49B6-BC3F-33CA7697031D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entites", "Entites\Entites.csproj", "{5831AE07-4D1E-449A-B8F8-F49194AA6F04}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.Entites", "Entites\1.Entites.csproj", "{5831AE07-4D1E-449A-B8F8-F49194AA6F04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{3940F5CA-C8C0-4A72-8A1C-0AD50E5D18CA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.Services", "Services\2.Services.csproj", "{3940F5CA-C8C0-4A72-8A1C-0AD50E5D18CA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinForm", "WinForm\WinForm.csproj", "{22B15B44-4F27-4B78-83A3-8C72CF01A3FE}"
 EndProject

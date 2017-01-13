@@ -153,9 +153,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\Entites\Entites.csproj">
+    <ProjectReference Include="..\Entites\1.Entites.csproj">
       <Project>{5831ae07-4d1e-449a-b8f8-f49194aa6f04}</Project>
-      <Name>Entites</Name>
+      <Name>1.Entites</Name>
     </ProjectReference>
     <ProjectReference Include="..\GestionFormations\GestionFormations.csproj">
       <Project>{ab95218a-0f8c-4810-a885-1ecab78ab589}</Project>
@@ -169,9 +169,9 @@
       <Project>{af242d81-9f90-47d6-9561-f50bc7aca07a}</Project>
       <Name>GestionStagiaires</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Services\Services.csproj">
+    <ProjectReference Include="..\Services\2.Services.csproj">
       <Project>{3940f5ca-c8c0-4a72-8a1c-0ad50e5d18ca}</Project>
-      <Name>Services</Name>
+      <Name>2.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\WinForm\WinForm.csproj">
       <Project>{22b15b44-4f27-4b78-83a3-8c72cf01a3fe}</Project>
