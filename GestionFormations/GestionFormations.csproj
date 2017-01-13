@@ -48,19 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnneeFormations\AnneeFormationFormulaire.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="AnneeFormations\AnneeFormationFormulaire.Designer.cs">
-      <DependentUpon>AnneeFormationFormulaire.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Formations\" />
-    <Folder Include="Modules\" />
-    <Folder Include="Seances\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Entites\1.Entites.csproj">
       <Project>{5831ae07-4d1e-449a-b8f8-f49194aa6f04}</Project>
@@ -78,11 +68,6 @@
       <Project>{7B89BD41-7117-4C2D-845F-45EEB252CC35}</Project>
       <Name>5.WinFromLib</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="AnneeFormations\AnneeFormationFormulaire.resx">
-      <DependentUpon>AnneeFormationFormulaire.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\DataSources\App.Formations.AnneeFormation.datasource" />

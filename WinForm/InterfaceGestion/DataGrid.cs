@@ -2,6 +2,7 @@
 using App.WinForm.Annotation;
 using App.WinFrom.Menu;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -17,13 +18,9 @@ namespace App.WinForm
         private void InitDataGridView()
         {
             int index_colonne = 0;
-
             AffichageDansFormGestionAttribute AffichageDansFormGestion = this.Service.getAffichageDansFormGestionAttribute();
-
-
             foreach (PropertyInfo propertyInfo in this.ListePropriete)
             {
-
                 if (propertyInfo.Name == "Ordre" &&  !AffichageDansFormGestion.siAffichageAvecOrdre)
                     continue;
 
@@ -32,31 +29,50 @@ namespace App.WinForm
                 if (getAffichagePropriete == null) continue;
                 AffichageProprieteAttribute AffichagePropriete = (AffichageProprieteAttribute)getAffichagePropriete;
 
-
                 // Insertion des la colonne selon le tupe de la propriété
                 DataGridViewColumn colonne = new DataGridViewTextBoxColumn(); ;
                 index_colonne++;
-                if (propertyInfo.PropertyType.Name == "String" || propertyInfo.PropertyType.Name ==  "Integer") { 
-                  colonne.ValueType = typeof(String);
-                     
-                }
-                if (propertyInfo.PropertyType.Name == "DateTime")
-                {
-                    colonne = new DataGridViewTextBoxColumn();
-                    colonne.ValueType = typeof(DateTime);
-                }
-                // Type Liste 
-                if (propertyInfo.PropertyType.Name == "List`1")
-                {
 
-                    colonne = new DataGridViewButtonColumn();
-                    colonne.ReadOnly = true;
-                   
+                switch (propertyInfo.PropertyType.Name)
+                {
+                    case "String":
+                        {
+                            colonne.ValueType = typeof(String);
+                            colonne.DataPropertyName = propertyInfo.Name;
+                        }
+                        break;
+                    case "Integer":
+                        {
+                            colonne.ValueType = typeof(String);
+                            colonne.DataPropertyName = propertyInfo.Name;
+                        }
+                        break;
+                    case "DateTime":
+                        {
+                            colonne = new DataGridViewTextBoxColumn();
+                            colonne.ValueType = typeof(DateTime);
+                            colonne.DataPropertyName = propertyInfo.Name;
+                        }
+                        break;
+                    case "List`1":
+                        {
+                            DataGridViewButtonColumn c = new DataGridViewButtonColumn();
+                            c.UseColumnTextForButtonValue = true;
+                            c.Text = propertyInfo.Name;
+                            colonne = c;
+                            colonne.ReadOnly = true;
+                        }
+                        break;
+                    default:
+                        {
+                            colonne.DataPropertyName = propertyInfo.Name;
+                        }
+                        break;
                 }
 
-               
+ 
                 colonne.HeaderText = AffichagePropriete.Titre;
-                colonne.DataPropertyName = propertyInfo.Name;
+                
                 colonne.Name = propertyInfo.Name;
                 colonne.ReadOnly = true;
                 if(AffichagePropriete.WidthColonne!= 0) colonne.Width = AffichagePropriete.WidthColonne;
@@ -87,26 +103,29 @@ namespace App.WinForm
             {
                 if (e.ColumnIndex == dataGridView.Columns[item.Name].Index && e.RowIndex >= 0)
                 {
-                    EditerCollection(item.Name);
+                    EditerCollection(item, obj);
                 }
                
             }
-            // Action sur les colonnes ManyToOne
-
-           
         }
 
         /// <summary>
         /// Editer la collection ManyToOne
         /// </summary>
         /// <param name="name">Nom de la propriété</param>
-        private void EditerCollection(string name)
+        private void EditerCollection(PropertyInfo item,BaseEntity obj)
         {
+            //IList ls = item.GetValue(obj) as IList;
+            Type type_objet = item.PropertyType.GetGenericArguments()[0];
             AfficherForm Menu= new AfficherForm((Form)this.MdiParent);
-            Menu.AfficherUneGestion<App.Modules.Precision>();
+            IBaseRepository service_objet = this.Service.CreateInstance_Of_Service_From_TypeEntity(type_objet);
 
+            // Valeur Initial du Filtre
+            Dictionary<string, object> ValeursFiltre = new Dictionary<string, object>();
+            ValeursFiltre[item.DeclaringType.Name] = obj.Id;
+            InterfaceGestion form = new InterfaceGestion(service_objet, ValeursFiltre);
+            Menu.Afficher(form);
         }
-
         private void dataGridView_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)

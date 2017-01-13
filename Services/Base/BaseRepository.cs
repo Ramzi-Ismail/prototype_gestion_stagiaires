@@ -330,6 +330,17 @@ namespace App
         {
            return  this.Context.Set<T>().Create();
         }
+
+       
+        public IBaseRepository CreateInstance_Of_Service_From_TypeEntity(Type TypeEntity)
+        {
+            Type TypeEntityService = typeof(BaseRepository<>).MakeGenericType(TypeEntity);
+            IBaseRepository EntityService = (IBaseRepository) Activator.CreateInstance(TypeEntityService);
+            return EntityService;
+        }
+
+
+
         /// <summary>
         /// Obtien l'annotion 'AffichageDansFormGestion' de la classe Entity
         /// pour le paramétrage des titre de l'interface de gestion

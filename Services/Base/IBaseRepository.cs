@@ -46,5 +46,12 @@ namespace App
         /// <returns></returns>
           object CreateInstanceObjet();
        AffichageDansFormGestionAttribute getAffichageDansFormGestionAttribute();
+
+        /// <summary>
+        /// Création d'une instance de de BaseRepositoty depuis le type de l'objet Entity
+        /// </summary>
+        /// <param name="TypeEntity">Le type de classe à utiliser dans BaseRepository</param>
+        /// <returns></returns>
+        IBaseRepository CreateInstance_Of_Service_From_TypeEntity(Type TypeEntity);
     }
 }

@@ -37,8 +37,9 @@ namespace App.Modules
             Ordre = 5,Filtre =true, WidthColonne = 200)]
         public virtual Module Module { set; get; }
 
- 
 
+        [AffichagePropriete(Titre = "Préalables",
+         isGridView = true, Ordre = 20)]
         public virtual List<Prealable> Prealables { set; get; }
 
 

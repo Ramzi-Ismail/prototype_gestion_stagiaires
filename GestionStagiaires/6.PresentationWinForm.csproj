@@ -48,63 +48,97 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Formateurs\FormateurFormUC.cs">
+    <Compile Include="GestionFormations\AnneeFormations\AnneeFormationFormulaire.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Formateurs\FormateurFormUC.Designer.cs">
+    <Compile Include="GestionFormations\AnneeFormations\AnneeFormationFormulaire.Designer.cs">
+      <DependentUpon>AnneeFormationFormulaire.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionProjets\FormAffecterTachesAuMiniGroupe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionProjets\FormAffecterTachesAuMiniGroupe.Designer.cs">
+      <DependentUpon>FormAffecterTachesAuMiniGroupe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionProjets\FormAffecterTachesAuMiniGroupe1.Designer.cs">
+      <DependentUpon>FormAffecterTachesAuMiniGroupe.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="GestionProjets\FormAffecterTachesAuxStagiaires.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionProjets\FormAffecterTachesAuxStagiaires.Designer.cs">
+      <DependentUpon>FormAffecterTachesAuxStagiaires.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionProjets\FormAffecterTachesAuxStagiaires1.Designer.cs">
+      <DependentUpon>FormAffecterTachesAuxStagiaires.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="GestionFormations\Formateurs\FormateurFormUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GestionFormations\Formateurs\FormateurFormUC.Designer.cs">
       <DependentUpon>FormateurFormUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formateurs\FormateurFormUC1.Designer.cs">
+    <Compile Include="GestionFormations\Formateurs\FormateurFormUC1.Designer.cs">
       <DependentUpon>FormateurFormUC.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Groupes\FormGestionGroupes.cs">
+    <Compile Include="GestionStagiaires\Groupes\FormGestionGroupes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Groupes\FormGestionGroupes.Designer.cs">
+    <Compile Include="GestionStagiaires\Groupes\FormGestionGroupes.Designer.cs">
       <DependentUpon>FormGestionGroupes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Groupes\UserControlGroupeForm.cs">
+    <Compile Include="GestionStagiaires\Groupes\UserControlGroupeForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Groupes\UserControlGroupeForm.Designer.cs">
+    <Compile Include="GestionStagiaires\Groupes\UserControlGroupeForm.Designer.cs">
       <DependentUpon>UserControlGroupeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MiniGroupes\FormAffecterStagiairesAuMiniGroupe.cs">
+    <Compile Include="GestionStagiaires\MiniGroupes\FormAffecterStagiairesAuMiniGroupe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MiniGroupes\FormAffecterStagiairesAuMiniGroupe.Designer.cs">
+    <Compile Include="GestionStagiaires\MiniGroupes\FormAffecterStagiairesAuMiniGroupe.Designer.cs">
       <DependentUpon>FormAffecterStagiairesAuMiniGroupe.cs</DependentUpon>
     </Compile>
-    <Compile Include="MiniGroupes\FormAffecterStagiairesAuMiniGroupe1.Designer.cs">
+    <Compile Include="GestionStagiaires\MiniGroupes\FormAffecterStagiairesAuMiniGroupe1.Designer.cs">
       <DependentUpon>FormAffecterStagiairesAuMiniGroupe.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Stagiaires\FormStagiaireUC.cs">
+    <Compile Include="GestionStagiaires\Stagiaires\FormStagiaireUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Stagiaires\FormStagiaireUC.Designer.cs">
+    <Compile Include="GestionStagiaires\Stagiaires\FormStagiaireUC.Designer.cs">
       <DependentUpon>FormStagiaireUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="Stagiaires\FormStagiaireUC1.Designer.cs">
+    <Compile Include="GestionStagiaires\Stagiaires\FormStagiaireUC1.Designer.cs">
       <DependentUpon>FormStagiaireUC.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Stagiaires\FormUpdateProfile.cs">
+    <Compile Include="GestionStagiaires\Stagiaires\FormUpdateProfile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Stagiaires\FormUpdateProfile.Designer.cs">
+    <Compile Include="GestionStagiaires\Stagiaires\FormUpdateProfile.Designer.cs">
       <DependentUpon>FormUpdateProfile.cs</DependentUpon>
     </Compile>
-    <Compile Include="Stagiaires\FormUpdateProfile1.Designer.cs">
+    <Compile Include="GestionStagiaires\Stagiaires\FormUpdateProfile1.Designer.cs">
       <DependentUpon>FormUpdateProfile.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="GestionProjets\Projets\FormGestionProjets.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GestionProjets\Taches\FormGestionTaches.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entites\1.Entites.csproj">
@@ -121,28 +155,42 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Formateurs\FormateurFormUC.resx">
+    <EmbeddedResource Include="GestionFormations\AnneeFormations\AnneeFormationFormulaire.resx">
+      <DependentUpon>AnneeFormationFormulaire.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionProjets\FormAffecterTachesAuMiniGroupe.resx">
+      <DependentUpon>FormAffecterTachesAuMiniGroupe.cs</DependentUpon>
+      <LastGenOutput>FormAffecterTachesAuMiniGroupe1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionProjets\FormAffecterTachesAuxStagiaires.resx">
+      <DependentUpon>FormAffecterTachesAuxStagiaires.cs</DependentUpon>
+      <LastGenOutput>FormAffecterTachesAuxStagiaires1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionFormations\Formateurs\FormateurFormUC.resx">
       <DependentUpon>FormateurFormUC.cs</DependentUpon>
       <LastGenOutput>FormateurFormUC1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Groupes\UserControlGroupeForm.resx">
+    <EmbeddedResource Include="GestionStagiaires\Groupes\UserControlGroupeForm.resx">
       <DependentUpon>UserControlGroupeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MiniGroupes\FormAffecterStagiairesAuMiniGroupe.resx">
+    <EmbeddedResource Include="GestionStagiaires\MiniGroupes\FormAffecterStagiairesAuMiniGroupe.resx">
       <DependentUpon>FormAffecterStagiairesAuMiniGroupe.cs</DependentUpon>
       <LastGenOutput>FormAffecterStagiairesAuMiniGroupe1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Stagiaires\FormStagiaireUC.resx">
+    <EmbeddedResource Include="GestionStagiaires\Stagiaires\FormStagiaireUC.resx">
       <DependentUpon>FormStagiaireUC.cs</DependentUpon>
       <LastGenOutput>FormStagiaireUC1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Stagiaires\FormUpdateProfile.resx">
+    <EmbeddedResource Include="GestionStagiaires\Stagiaires\FormUpdateProfile.resx">
       <DependentUpon>FormUpdateProfile.cs</DependentUpon>
       <LastGenOutput>FormUpdateProfile1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Filieres\" />
+    <Folder Include="GestionFormations\Filieres\" />
+    <Folder Include="GestionFormations\Formations\" />
+    <Folder Include="GestionFormations\Modules\" />
+    <Folder Include="GestionFormations\Seances\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

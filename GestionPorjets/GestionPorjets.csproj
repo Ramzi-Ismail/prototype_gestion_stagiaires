@@ -48,35 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormAffecterTachesAuMiniGroupe.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormAffecterTachesAuMiniGroupe.Designer.cs">
-      <DependentUpon>FormAffecterTachesAuMiniGroupe.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormAffecterTachesAuMiniGroupe1.Designer.cs">
-      <DependentUpon>FormAffecterTachesAuMiniGroupe.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="FormAffecterTachesAuxStagiaires.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormAffecterTachesAuxStagiaires.Designer.cs">
-      <DependentUpon>FormAffecterTachesAuxStagiaires.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormAffecterTachesAuxStagiaires1.Designer.cs">
-      <DependentUpon>FormAffecterTachesAuxStagiaires.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Projets\FormGestionProjets.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Taches\FormGestionTaches.cs">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entites\1.Entites.csproj">
@@ -91,16 +63,6 @@
       <Project>{22b15b44-4f27-4b78-83a3-8c72cf01a3fe}</Project>
       <Name>2.WinForm</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="FormAffecterTachesAuMiniGroupe.resx">
-      <DependentUpon>FormAffecterTachesAuMiniGroupe.cs</DependentUpon>
-      <LastGenOutput>FormAffecterTachesAuMiniGroupe1.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormAffecterTachesAuxStagiaires.resx">
-      <DependentUpon>FormAffecterTachesAuxStagiaires.cs</DependentUpon>
-      <LastGenOutput>FormAffecterTachesAuxStagiaires1.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\delete.png" />

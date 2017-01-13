@@ -21,6 +21,8 @@ namespace App.WinForm
         /// Le Service de gestion  
         /// </summary>
         protected IBaseRepository Service;
+
+
         /// <summary>
         /// Le formulaire de l'édition et d'insertion
         /// </summary>
@@ -32,6 +34,10 @@ namespace App.WinForm
         /// </summary>
         protected List<PropertyInfo> ListePropriete { set; get; }
 
+        /// <summary>
+        /// définir les valeurs initiaux du filtre
+        /// </summary>
+        Dictionary<string, object> ValeursFiltre { set; get; }
         #endregion
 
         #region Constructeur
@@ -41,7 +47,6 @@ namespace App.WinForm
         /// </summary>
         public InterfaceGestion()
         {
-            
             InitializeComponent();
         }
 
@@ -55,6 +60,16 @@ namespace App.WinForm
             BaseFormulaire formulaire = new FormulaireControle(service);
             initParams(service, formulaire);
         }
+
+        
+        public InterfaceGestion(IBaseRepository service, Dictionary<string, object> ValeursFiltre)
+        {
+            InitializeComponent();
+            BaseFormulaire formulaire = new FormulaireControle(service);
+            this.ValeursFiltre = ValeursFiltre;
+            initParams(service, formulaire);
+        }
+
         /// <summary>
         /// Création d'une gestion avec une formulaire personalisé
         /// </summary>
@@ -107,6 +122,7 @@ namespace App.WinForm
             this.bt_Ajouter.Text = AffichageDansFormGestion.TitreButtonAjouter;
             TabPage tabGrid = this.tabControl.TabPages["TabGrid"];
             tabGrid.Text = AffichageDansFormGestion.TitrePageGridView;
+            lbl_titre_gestion.Text = AffichageDansFormGestion.Titre;
         }
         #endregion
 
@@ -146,5 +162,7 @@ namespace App.WinForm
             }
 
         }
+
+       
     }
 }

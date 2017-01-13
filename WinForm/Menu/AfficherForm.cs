@@ -22,6 +22,8 @@ namespace App.WinFrom.Menu
             this.Afficher(form);
         }
 
+
+
         public void AfficherUneGestion<T>(IBaseRepository Service) where T : BaseEntity
         {
             InterfaceGestion form = new InterfaceGestion(Service);

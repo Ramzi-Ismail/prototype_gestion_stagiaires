@@ -15,11 +15,15 @@ namespace App.WinForm
     partial class InterfaceGestion
     {
         /// <summary>
-        /// Création et Initialisation de filtre
+        /// Création et Initialisation de filtre en utilisation de la liste des propriété de la classe
+        /// et l'annotation 
         /// </summary>
         protected void initFiltre()
         {
             int x = 27;
+            int increment_x = 200;
+            int height_controle = 50;
+            int width_controle = 140;
             int TabIndex = 0;
             foreach (PropertyInfo propertyInfo in this.ListePropriete)
             {
@@ -33,13 +37,16 @@ namespace App.WinForm
                 // label_relation_many_to_one
                 // 
                 Label label_champ_filtre = new Label();
-                label_champ_filtre.Location = new System.Drawing.Point(x, 20);
+                label_champ_filtre.Location = new System.Drawing.Point(x , 15);
                 label_champ_filtre.Name = "label_" + propertyInfo.Name;
-                label_champ_filtre.Size = new System.Drawing.Size(145, 13);
+                label_champ_filtre.Size = new System.Drawing.Size(width_controle, 20);
                 label_champ_filtre.TabIndex = TabIndex++;
                 label_champ_filtre.Text = AffichagePropriete.Titre;
                 this.groupBoxFiltrage.Controls.Add(label_champ_filtre);
 
+                //
+                // Relation ManyToOne
+                //
                 if (AffichagePropriete.Relation != String.Empty &&
                  AffichagePropriete.Relation == AffichageProprieteAttribute.RELATION_MANYTOONE)
                 {
@@ -50,7 +57,7 @@ namespace App.WinForm
                     comboBoxRelationManyToOne.FormattingEnabled = true;
                     comboBoxRelationManyToOne.Location = new System.Drawing.Point(x, 37);
                     comboBoxRelationManyToOne.Name =  propertyInfo.Name;
-                    comboBoxRelationManyToOne.Size = new System.Drawing.Size(145, 21);
+                    comboBoxRelationManyToOne.Size = new System.Drawing.Size(width_controle, height_controle);
                     comboBoxRelationManyToOne.TabIndex = TabIndex++;
                     this.groupBoxFiltrage.Controls.Add(comboBoxRelationManyToOne);
                     //
@@ -61,11 +68,18 @@ namespace App.WinForm
                     List<object> ls = ServicesEntity.GetAllDetached();
                     comboBoxRelationManyToOne.ValueMember = "Id";
                     comboBoxRelationManyToOne.DisplayMember = AffichagePropriete.DisplayMember;
-
-                    //if (AffichagePropriete.isValeurVide) ls.Insert(0, new BaseEntity() { Id= 0});
                     comboBoxRelationManyToOne.DataSource = ls;
-
                     if(AffichagePropriete.isValeurFiltreVide) comboBoxRelationManyToOne.SelectedIndex = -1;
+                    // Affectation de valeur initial
+                    if (this.ValeursFiltre != null && this.ValeursFiltre.ContainsKey(propertyInfo.Name)) {
+                        comboBoxRelationManyToOne.CreateControl();
+                        comboBoxRelationManyToOne.SelectedValue = Convert.ToInt64(this.ValeursFiltre[propertyInfo.Name]);
+                    }
+                    // Recalcule le widht de comboBox
+                 
+                    int width = ls.Max(o => ((BaseEntity)o).ToString().Count()) * 5 + 20;
+                    comboBoxRelationManyToOne.Size = new System.Drawing.Size(width, height_controle);
+                    if (width > 200) x += (200 - width);
 
                     //
                     // Evénement Change sur le ComboBox : Actualisation de DataGrid
@@ -81,7 +95,7 @@ namespace App.WinForm
                     TextBox textBoxString = new TextBox();
                     textBoxString.Location = new System.Drawing.Point(x, 37);
                     textBoxString.Name =  propertyInfo.Name;
-                    textBoxString.Size = new System.Drawing.Size(145, 21);
+                    textBoxString.Size = new System.Drawing.Size(width_controle, height_controle);
                     textBoxString.TabIndex = TabIndex++;
                     this.groupBoxFiltrage.Controls.Add(textBoxString);
 
@@ -99,7 +113,7 @@ namespace App.WinForm
                     TextBox textBoxString = new TextBox();
                     textBoxString.Location = new System.Drawing.Point(x, 37);
                     textBoxString.Name = propertyInfo.Name;
-                    textBoxString.Size = new System.Drawing.Size(145, 21);
+                    textBoxString.Size = new System.Drawing.Size(width_controle, height_controle);
                     textBoxString.TabIndex = TabIndex++;
                     this.groupBoxFiltrage.Controls.Add(textBoxString);
 
@@ -117,7 +131,7 @@ namespace App.WinForm
                     DateTimePicker dateTimePicker = new DateTimePicker();
                     dateTimePicker.Location = new System.Drawing.Point(x, 37);
                     dateTimePicker.Name = propertyInfo.Name;
-                    dateTimePicker.Size = new System.Drawing.Size(145, 21);
+                    dateTimePicker.Size = new System.Drawing.Size(width_controle, height_controle);
                     dateTimePicker.TabIndex = TabIndex++;
                     this.groupBoxFiltrage.Controls.Add(dateTimePicker);
 
@@ -128,7 +142,7 @@ namespace App.WinForm
 
                 }
 
-                x += 200;
+                x += increment_x;
             } // End For
         }
 
@@ -156,10 +170,17 @@ namespace App.WinForm
         public void Actualiser()
         {
             ObjetBindingSource.Clear();
+            Dictionary<string,object> critereRechercheFiltre =  this.CritereRechercheFiltre();
             var ls = Service.Recherche(this.CritereRechercheFiltre());
             ObjetBindingSource.DataSource = ls;
+            this.RenomerTitrePage(critereRechercheFiltre);
+           
         }
 
+        /// <summary>
+        /// Lecture des valeurs du filtre
+        /// </summary>
+        /// <returns></returns>
         protected Dictionary<string, object> CritereRechercheFiltre()
         {
             // Application de filtre
@@ -213,6 +234,20 @@ namespace App.WinForm
             }
 
             return RechercheInfos;
+        }
+
+
+        protected void RenomerTitrePage(Dictionary<string, object> critereRechercheFiltre)
+        {
+            // Renommer le Titre de la page
+            lbl_titre_gestion.Text = this.Text;
+            if (critereRechercheFiltre != null && critereRechercheFiltre.Count() > 0)
+            {
+                lbl_titre_gestion.Text += " par ( ";
+                lbl_titre_gestion.Text += string.Join(",", critereRechercheFiltre.Select(d => d.Key));
+                lbl_titre_gestion.Text += " )";
+            } 
+           
         }
 
 
