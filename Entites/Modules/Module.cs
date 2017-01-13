@@ -11,14 +11,17 @@ namespace App.Modules
     [AffichageClasse(Minuscule="Module", Majuscule = "Modules")]
     public class Module : BaseEntity
     {
+
         [AffichagePropriete(Titre = "Nom du module", isGridView = true, isFormulaire = true,
             isOblegatoir = true,   Ordre = 1, WidthColonne = 200 )]
         public String Nom { set; get; }
 
 
+
         [AffichagePropriete(Titre = "Code", isGridView = true, isFormulaire = true,
            isOblegatoir = true, Ordre = 2, WidthColonne = 80)]
         public String Code { set; get; }
+
 
 
         /// <summary>
@@ -37,6 +40,7 @@ namespace App.Modules
         public virtual Filiere Filiere { set; get; }
 
 
+
         [AffichagePropriete(Titre = "Présentation", 
             isFormulaire = true, 
             Ordre = 5 , 
@@ -52,6 +56,7 @@ namespace App.Modules
         public string Description { set; get; }
 
       
+
       // Description pédagogique
       public string StrategieEnseignement{ set; get; } 
       public string Apprentisage{ set; get; } 
@@ -60,15 +65,13 @@ namespace App.Modules
       public string Equipement{ set; get; } 
       public string Competence{ set; get; }
 
-       
 
 
+      [AffichagePropriete(Titre = "Precisions",
+         isGridView = true, Ordre = 20)]
       public virtual List<Precision> Precisions { set; get; }
 
 
-        public override string ToString() => this.Nom;
- 
-
-
+      public override string ToString() => this.Nom;
     }
 }

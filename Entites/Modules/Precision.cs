@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace App.Modules
 {
-    [AffichageDansFormGestion(Titre = "Gestion des précision",
+    [AffichageDansFormGestion(Titre = "Gestion des précision", siAffichageAvecOrdre = true,
        TitrePageGridView = "Précision",
        TitreButtonAjouter = "Ajouter une précision")]
     public class Precision : BaseEntity
@@ -14,19 +14,19 @@ namespace App.Modules
         //
         // Nom
         //
-        [AffichagePropriete(Titre = "Précision", isGridView = true, isFormulaire = true, Ordre = 1, 
+        [AffichagePropriete(Titre = "Précision", isGridView = true, isFormulaire = true, Ordre = 2, 
            isOblegatoir =true, WidthColonne = 200)]
         public string Nom { set; get; }
 
         //
         // Duree
         //
-        [AffichagePropriete(Titre = "Durée", isGridView = true, isFormulaire = true, Ordre = 2,
+        [AffichagePropriete(Titre = "Durée", isGridView = true, isFormulaire = true, Ordre = 3,
            
             WidthColonne = 100)]
         public int Duree { set; get; }
 
-        [AffichagePropriete(Titre = "Description", isFormulaire = true, Ordre = 3,MultiLine = true)]
+        [AffichagePropriete(Titre = "Description", isFormulaire = true, Ordre = 4,MultiLine = true)]
         public string Description { set; get; }
        
         //
@@ -34,11 +34,10 @@ namespace App.Modules
         //
         [AffichagePropriete(Titre = "Module",Relation = "ManyToOne", isGridView = true, isFormulaire = true,
             isOblegatoir = true,
-            Ordre = 1,Filtre =true, WidthColonne = 200)]
+            Ordre = 5,Filtre =true, WidthColonne = 200)]
         public virtual Module Module { set; get; }
 
-
-        private int Ordre { set; get; }
+ 
 
         public virtual List<Prealable> Prealables { set; get; }
 

@@ -80,9 +80,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\WinFromLib\WinFromLib.csproj">
+    <ProjectReference Include="..\WinFromLib\5.WinFromLib.csproj">
       <Project>{7b89bd41-7117-4c2d-845f-45eeb252cc35}</Project>
-      <Name>WinFromLib</Name>
+      <Name>5.WinFromLib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

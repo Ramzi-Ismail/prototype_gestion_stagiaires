@@ -19,7 +19,14 @@ namespace App
         }
         [Key]
         public Int64 Id { get; set; }
+
+
+        [AffichagePropriete(Titre = "Ordre", isGridView = true, Ordre = 1, WidthColonne = 50)]
+        public int Ordre { set; get; }
+
+
         public DateTime DateCreation { get; set; }
+
 
         [AffichagePropriete(DisplayMember = "Date de modification", 
             Titre = "Date de modification", 
@@ -30,14 +37,16 @@ namespace App
 
 
 
-        public virtual string GetNomObjet()
-        {
-            return "Information";
-        }
-        public virtual string GetNomObjets()
-        {
-            return "Informations";
-        }
+
+
+        //public virtual string GetNomObjet()
+        //{
+        //    return "Information";
+        //}
+        //public virtual string GetNomObjets()
+        //{
+        //    return "Informations";
+        //}
 
         public override bool Equals(Object obj)
         {

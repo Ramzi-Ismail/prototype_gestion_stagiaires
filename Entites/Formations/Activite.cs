@@ -44,8 +44,6 @@ namespace App.Formations
         public String Description { set; get; }
 
 
-
-        public int Ordre { set; get; }
  
     }
 }

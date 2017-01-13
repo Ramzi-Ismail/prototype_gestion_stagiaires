@@ -30,7 +30,7 @@ namespace App.WinForm
         /// <summary>
         /// Obient ou définire la liste des propriété de l'entity en cours de gestion
         /// </summary>
-        protected List<PropertyInfo> ListePropriete;
+        protected List<PropertyInfo> ListePropriete { set; get; }
 
         #endregion
 

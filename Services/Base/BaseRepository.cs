@@ -225,7 +225,10 @@ namespace App
         protected virtual int Update(T item)
         {
             this.Context.Entry(item).State = EntityState.Modified;
+            // Modification de la date de modification
             item.DateModification = DateTime.Now;
+
+
             return this.Context.SaveChanges();
         }
         //private int Update(T item)
@@ -244,6 +247,18 @@ namespace App
 
         public virtual int Save(T item)
         {
+
+
+            // Calcule de l'ordre 
+
+
+            if (item.Ordre == 0)
+            {
+                int ordre = this.DbSet.Count();
+                item.Ordre = ++ordre;
+            }
+
+
             if (item.Id <= 0)
             {
                 
@@ -293,16 +308,16 @@ namespace App
 
         //}
 
-        public virtual string GetNomObjet()
-        {
-            BaseEntity obj = Activator.CreateInstance<T>();
-            return obj.GetNomObjet();
-        }
-        public virtual string GetNomObjets()
-        {
-            BaseEntity obj = Activator.CreateInstance<T>();
-            return obj.GetNomObjets();
-        }
+        //public virtual string GetNomObjet()
+        //{
+        //    BaseEntity obj = Activator.CreateInstance<T>();
+        //    return obj.GetNomObjet();
+        //}
+        //public virtual string GetNomObjets()
+        //{
+        //    BaseEntity obj = Activator.CreateInstance<T>();
+        //    return obj.GetNomObjets();
+        //}
 
        
 

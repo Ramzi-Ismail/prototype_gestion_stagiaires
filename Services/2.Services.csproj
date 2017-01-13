@@ -76,6 +76,14 @@
     <Compile Include="Migrations\201701131148237_AddOrdreSance.Designer.cs">
       <DependentUpon>201701131148237_AddOrdreSance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701131622190_AddOrdreColonne.cs" />
+    <Compile Include="Migrations\201701131622190_AddOrdreColonne.Designer.cs">
+      <DependentUpon>201701131622190_AddOrdreColonne.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701131644377_ColonneOrdre_update_2.cs" />
+    <Compile Include="Migrations\201701131644377_ColonneOrdre_update_2.Designer.cs">
+      <DependentUpon>201701131644377_ColonneOrdre_update_2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Stagiaires\FilieresService.cs" />
     <Compile Include="GestionFormations\FormateursService.cs" />
     <Compile Include="Stagiaires\GroupesService.cs" />
@@ -146,15 +154,21 @@
     <EmbeddedResource Include="Migrations\201701131148237_AddOrdreSance.resx">
       <DependentUpon>201701131148237_AddOrdreSance.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701131622190_AddOrdreColonne.resx">
+      <DependentUpon>201701131622190_AddOrdreColonne.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701131644377_ColonneOrdre_update_2.resx">
+      <DependentUpon>201701131644377_ColonneOrdre_update_2.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entites\1.Entites.csproj">
       <Project>{5831ae07-4d1e-449a-b8f8-f49194aa6f04}</Project>
       <Name>1.Entites</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WinFromLib\WinFromLib.csproj">
+    <ProjectReference Include="..\WinFromLib\5.WinFromLib.csproj">
       <Project>{7b89bd41-7117-4c2d-845f-45eeb252cc35}</Project>
-      <Name>WinFromLib</Name>
+      <Name>5.WinFromLib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

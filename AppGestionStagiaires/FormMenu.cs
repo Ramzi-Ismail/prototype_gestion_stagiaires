@@ -17,6 +17,7 @@ using App.GestionProjets;
 using App.Modules;
 using App.Formations;
 using App.Livres;
+using App.WinFrom.Menu;
 
 namespace App
 {
@@ -25,9 +26,10 @@ namespace App
         public FormMenu()
         {
             InitializeComponent();
+            AfficherFormulaire = new AfficherForm(this);
         }
 
-
+        AfficherForm AfficherFormulaire { set; get; }
         private void binfingNavigatorToolStripMenuItem_Click(object sender, EventArgs e)
         {
         }
@@ -45,12 +47,12 @@ namespace App
             StagiairesService service = new StagiairesService();
             FormStagiaireUC objetForm = new FormStagiaireUC(service);
             InterfaceGestion form = new InterfaceGestion(service, objetForm);
-            this.AfficherForm(form);
+            AfficherFormulaire.Afficher(form);
         }
 
         private void projetsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.AfficherForm(new GestionProjets.FormGestionProjet());
+            AfficherFormulaire.Afficher(new GestionProjets.FormGestionProjet());
         }
 
         private void FormMenu_Load(object sender, EventArgs e)
@@ -70,80 +72,80 @@ namespace App
 
         private void gérerLesFilieresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.AfficherUneGestion<Filiere>();
+            AfficherFormulaire.AfficherUneGestion<Filiere>();
         }
 
 
         private void gérerLesTâchesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            this.AfficherForm(new GestionProjets.FormGestionTaches());
+            AfficherFormulaire.Afficher(new GestionProjets.FormGestionTaches());
         }
 
         private void affecterTâcheÀUnStagiaireToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.AfficherForm(new GestionProjets.FormAffecterTachesAuxStagiaires());
+            AfficherFormulaire.Afficher(new GestionProjets.FormAffecterTachesAuxStagiaires());
         }
 
         private void affecterTâcheÀUnMiniGroupeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.AfficherForm(new GestionProjets.FormAffecterTachesAuMiniGroupe());
+            AfficherFormulaire.Afficher(new GestionProjets.FormAffecterTachesAuMiniGroupe());
         }
 
         private void editerGénériqueToolStripMenuItem_Click(object sender, EventArgs e)
         {
            // Gestion.FormGestion<GestionStagiaires.FormStagiaireUC> f = new Gestion.FormGestion<GestionStagiaires.FormStagiaireUC>("Stagiaires", new GestionStagiaires.GridStagiaireUC());
-          //  this.AfficherForm(f);
+          //  AfficherFormulaire.Afficher(f);
 
         }
 
         private void formateursToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.AfficherUneGestion<Formateur>();
+            AfficherFormulaire.AfficherUneGestion<Formateur>();
         }
 
         private void gérerLesGroupesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
-            this.AfficherForm(new FormGestionGroupes());
+            AfficherFormulaire.Afficher(new FormGestionGroupes());
         }
 
         private void tâchesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.AfficherForm(new FormGestionTaches());
+            AfficherFormulaire.Afficher(new FormGestionTaches());
         }
 
         private void gestionDesModulesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             InterfaceGestion form = new InterfaceGestion(new BaseRepository<Module>());
-            this.AfficherForm(form);
+            AfficherFormulaire.Afficher(form);
         }
 
         private void gestionDesPrécisionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             InterfaceGestion form = new InterfaceGestion(new BaseRepository<Precision>());
-            this.AfficherForm(form);
+            AfficherFormulaire.Afficher(form);
         }
 
         private void annéesDeFormationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.AfficherUneGestion<AnneeFormation>(new AnneeFormationFormulaire());
+            AfficherFormulaire.AfficherUneGestion<AnneeFormation>(new AnneeFormationFormulaire());
         }
 
       
 
         private void gestionMaisonDéditionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.AfficherUneGestion<MaisonEdition>();
+            AfficherFormulaire.AfficherUneGestion<MaisonEdition>();
         }
 
         private void gestionDesLivresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.AfficherUneGestion<Livre>();
+            AfficherFormulaire.AfficherUneGestion<Livre>();
         }
 
         private void gestionDesGroupesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.AfficherUneGestion<Groupe>();
+            AfficherFormulaire.AfficherUneGestion<Groupe>();
         }
 
         private void sallesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -153,84 +155,46 @@ namespace App
 
         private void gestionDesSéancesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.AfficherUneGestion<Seance>(new SeancesService());
+            AfficherFormulaire.AfficherUneGestion<Seance>(new SeancesService());
         }
 
         private void prévisionDesSéancesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.AfficherUneGestion<PrevisionSeance>(new PrevisionSeancesService());
+            AfficherFormulaire.AfficherUneGestion<PrevisionSeance>(new PrevisionSeancesService());
         }
 
         private void gestionDesFormationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.AfficherUneGestion<Formation>();
+            AfficherFormulaire.AfficherUneGestion<Formation>();
             
         }
 
         private void gestionDesSallesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.AfficherUneGestion<Salle>();
+            AfficherFormulaire.AfficherUneGestion<Salle>();
         }
 
         private void catégoriesSalleDeFormationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.AfficherUneGestion<CategogiesSalleFormation>();
+            AfficherFormulaire.AfficherUneGestion<CategogiesSalleFormation>();
         }
 
 
         #region La méthode AfficherUneGestion
-        private void AfficherUneGestion<T>() where T : BaseEntity
-        {
-            InterfaceGestion form = new InterfaceGestion(new BaseRepository<T>());
-            this.AfficherForm(form);
-        }
-
-        private void AfficherUneGestion<T>(IBaseRepository Service) where T : BaseEntity
-        {
-            InterfaceGestion form = new InterfaceGestion(Service);
-            this.AfficherForm(form);
-        }
-
-        /// <summary>
-        /// Afficher une gestion avec une formulaire spécifique
-        /// </summary>
-        /// <typeparam name="T">L'objet à gérer</typeparam>
-        /// <param name="formulaire">Le Formulaire spécifique</param>
-        private void AfficherUneGestion<T>(BaseFormulaire formulaire) where T : BaseEntity
-        {
-            InterfaceGestion form = new InterfaceGestion(new BaseRepository<T>(), formulaire);
-            this.AfficherForm(form);
-        }
+      
 
        
-        /// <summary>
-        /// Affichage d'une formulaire de Type : Form
-        /// </summary>
-        /// <param name="f">Le controle Form à afficher </param>
-        private void AfficherForm(Form addForm)
-        {
-            Cursor.Current = Cursors.WaitCursor;
-            Form form = this.MdiChildren.Where(f => f.Name == addForm.Name).FirstOrDefault();
-            if (form == null)
-            {
-                addForm.MdiParent = this;
-                addForm.StartPosition = FormStartPosition.CenterScreen;
-                addForm.WindowState = FormWindowState.Maximized;
-                addForm.Show();
-            }
-            else
-            {
-                form.WindowState = FormWindowState.Normal;
-
-            }
-
-            Cursor.Current = Cursors.Default;
-        }
+       
         #endregion
 
         private void contenuePrécisionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.AfficherUneGestion<ContenuePrecision>();
+            AfficherFormulaire.AfficherUneGestion<ContenuePrecision>();
+        }
+
+        private void gestionDesPréalablesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AfficherFormulaire.AfficherUneGestion<Prealable>();
         }
     }
 }

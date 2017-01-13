@@ -33,20 +33,10 @@
             this.stagiairesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionStagiaires = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionDesGroupesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gestionDesModulesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gestionDesModulesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.gestionDesPrécisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionDesProjetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tâchesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.projetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miniGroupesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.etablissementDeFormationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.formateursToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.annéesDeFormationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gérerLesFilieresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sallesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.catégoriesSalleDeFormationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gestionDesSallesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.livresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionDesLivresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionMaisonDéditionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,7 +46,18 @@
             this.pédagogieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.formationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionDesFormationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestionDesModulesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestionDesModulesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestionDesPrécisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contenuePrécisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.etablissementDeFormationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.formateursToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.annéesDeFormationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gérerLesFilieresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sallesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.catégoriesSalleDeFormationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestionDesSallesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestionDesPréalablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,13 +65,13 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.stagiairesToolStripMenuItem,
-            this.gestionDesModulesToolStripMenuItem,
             this.gestionDesProjetsToolStripMenuItem,
-            this.etablissementDeFormationToolStripMenuItem,
             this.livresToolStripMenuItem,
             this.séancesToolStripMenuItem,
             this.pédagogieToolStripMenuItem,
-            this.formationsToolStripMenuItem});
+            this.formationsToolStripMenuItem,
+            this.gestionDesModulesToolStripMenuItem,
+            this.etablissementDeFormationToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(657, 24);
@@ -99,30 +100,6 @@
             this.gestionDesGroupesToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.gestionDesGroupesToolStripMenuItem.Text = "Gestion des groupes";
             this.gestionDesGroupesToolStripMenuItem.Click += new System.EventHandler(this.gestionDesGroupesToolStripMenuItem_Click);
-            // 
-            // gestionDesModulesToolStripMenuItem
-            // 
-            this.gestionDesModulesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gestionDesModulesToolStripMenuItem1,
-            this.gestionDesPrécisionToolStripMenuItem,
-            this.contenuePrécisionToolStripMenuItem});
-            this.gestionDesModulesToolStripMenuItem.Name = "gestionDesModulesToolStripMenuItem";
-            this.gestionDesModulesToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
-            this.gestionDesModulesToolStripMenuItem.Text = "Modules";
-            // 
-            // gestionDesModulesToolStripMenuItem1
-            // 
-            this.gestionDesModulesToolStripMenuItem1.Name = "gestionDesModulesToolStripMenuItem1";
-            this.gestionDesModulesToolStripMenuItem1.Size = new System.Drawing.Size(186, 22);
-            this.gestionDesModulesToolStripMenuItem1.Text = "Gestion des modules";
-            this.gestionDesModulesToolStripMenuItem1.Click += new System.EventHandler(this.gestionDesModulesToolStripMenuItem1_Click);
-            // 
-            // gestionDesPrécisionToolStripMenuItem
-            // 
-            this.gestionDesPrécisionToolStripMenuItem.Name = "gestionDesPrécisionToolStripMenuItem";
-            this.gestionDesPrécisionToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.gestionDesPrécisionToolStripMenuItem.Text = "Gestion des Précision";
-            this.gestionDesPrécisionToolStripMenuItem.Click += new System.EventHandler(this.gestionDesPrécisionToolStripMenuItem_Click);
             // 
             // gestionDesProjetsToolStripMenuItem
             // 
@@ -153,62 +130,6 @@
             this.miniGroupesToolStripMenuItem.Name = "miniGroupesToolStripMenuItem";
             this.miniGroupesToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.miniGroupesToolStripMenuItem.Text = "Mini groupes";
-            // 
-            // etablissementDeFormationToolStripMenuItem
-            // 
-            this.etablissementDeFormationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.formateursToolStripMenuItem,
-            this.annéesDeFormationToolStripMenuItem,
-            this.gérerLesFilieresToolStripMenuItem,
-            this.sallesToolStripMenuItem});
-            this.etablissementDeFormationToolStripMenuItem.Name = "etablissementDeFormationToolStripMenuItem";
-            this.etablissementDeFormationToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
-            this.etablissementDeFormationToolStripMenuItem.Text = "Etablissement ";
-            // 
-            // formateursToolStripMenuItem
-            // 
-            this.formateursToolStripMenuItem.Name = "formateursToolStripMenuItem";
-            this.formateursToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.formateursToolStripMenuItem.Text = "Formateurs";
-            this.formateursToolStripMenuItem.Click += new System.EventHandler(this.formateursToolStripMenuItem_Click);
-            // 
-            // annéesDeFormationToolStripMenuItem
-            // 
-            this.annéesDeFormationToolStripMenuItem.Name = "annéesDeFormationToolStripMenuItem";
-            this.annéesDeFormationToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.annéesDeFormationToolStripMenuItem.Text = "Années de formation";
-            this.annéesDeFormationToolStripMenuItem.Click += new System.EventHandler(this.annéesDeFormationToolStripMenuItem_Click);
-            // 
-            // gérerLesFilieresToolStripMenuItem
-            // 
-            this.gérerLesFilieresToolStripMenuItem.Name = "gérerLesFilieresToolStripMenuItem";
-            this.gérerLesFilieresToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.gérerLesFilieresToolStripMenuItem.Text = "Filieres";
-            this.gérerLesFilieresToolStripMenuItem.Click += new System.EventHandler(this.gérerLesFilieresToolStripMenuItem_Click);
-            // 
-            // sallesToolStripMenuItem
-            // 
-            this.sallesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.catégoriesSalleDeFormationToolStripMenuItem,
-            this.gestionDesSallesToolStripMenuItem});
-            this.sallesToolStripMenuItem.Name = "sallesToolStripMenuItem";
-            this.sallesToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.sallesToolStripMenuItem.Text = "Salles";
-            this.sallesToolStripMenuItem.Click += new System.EventHandler(this.sallesToolStripMenuItem_Click);
-            // 
-            // catégoriesSalleDeFormationToolStripMenuItem
-            // 
-            this.catégoriesSalleDeFormationToolStripMenuItem.Name = "catégoriesSalleDeFormationToolStripMenuItem";
-            this.catégoriesSalleDeFormationToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
-            this.catégoriesSalleDeFormationToolStripMenuItem.Text = "Catégories salle de formation";
-            this.catégoriesSalleDeFormationToolStripMenuItem.Click += new System.EventHandler(this.catégoriesSalleDeFormationToolStripMenuItem_Click);
-            // 
-            // gestionDesSallesToolStripMenuItem
-            // 
-            this.gestionDesSallesToolStripMenuItem.Name = "gestionDesSallesToolStripMenuItem";
-            this.gestionDesSallesToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
-            this.gestionDesSallesToolStripMenuItem.Text = "Gestion des salles";
-            this.gestionDesSallesToolStripMenuItem.Click += new System.EventHandler(this.gestionDesSallesToolStripMenuItem_Click);
             // 
             // livresToolStripMenuItem
             // 
@@ -277,12 +198,100 @@
             this.gestionDesFormationsToolStripMenuItem.Text = "Gestion des formations";
             this.gestionDesFormationsToolStripMenuItem.Click += new System.EventHandler(this.gestionDesFormationsToolStripMenuItem_Click);
             // 
+            // gestionDesModulesToolStripMenuItem
+            // 
+            this.gestionDesModulesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gestionDesModulesToolStripMenuItem1,
+            this.gestionDesPrécisionToolStripMenuItem,
+            this.contenuePrécisionToolStripMenuItem,
+            this.gestionDesPréalablesToolStripMenuItem});
+            this.gestionDesModulesToolStripMenuItem.Name = "gestionDesModulesToolStripMenuItem";
+            this.gestionDesModulesToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.gestionDesModulesToolStripMenuItem.Text = "Modules";
+            // 
+            // gestionDesModulesToolStripMenuItem1
+            // 
+            this.gestionDesModulesToolStripMenuItem1.Name = "gestionDesModulesToolStripMenuItem1";
+            this.gestionDesModulesToolStripMenuItem1.Size = new System.Drawing.Size(191, 22);
+            this.gestionDesModulesToolStripMenuItem1.Text = "Gestion des modules";
+            this.gestionDesModulesToolStripMenuItem1.Click += new System.EventHandler(this.gestionDesModulesToolStripMenuItem1_Click);
+            // 
+            // gestionDesPrécisionToolStripMenuItem
+            // 
+            this.gestionDesPrécisionToolStripMenuItem.Name = "gestionDesPrécisionToolStripMenuItem";
+            this.gestionDesPrécisionToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.gestionDesPrécisionToolStripMenuItem.Text = "Gestion des Précision";
+            this.gestionDesPrécisionToolStripMenuItem.Click += new System.EventHandler(this.gestionDesPrécisionToolStripMenuItem_Click);
+            // 
             // contenuePrécisionToolStripMenuItem
             // 
             this.contenuePrécisionToolStripMenuItem.Name = "contenuePrécisionToolStripMenuItem";
-            this.contenuePrécisionToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.contenuePrécisionToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.contenuePrécisionToolStripMenuItem.Text = "Contenue Précision";
             this.contenuePrécisionToolStripMenuItem.Click += new System.EventHandler(this.contenuePrécisionToolStripMenuItem_Click);
+            // 
+            // etablissementDeFormationToolStripMenuItem
+            // 
+            this.etablissementDeFormationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.formateursToolStripMenuItem,
+            this.annéesDeFormationToolStripMenuItem,
+            this.gérerLesFilieresToolStripMenuItem,
+            this.sallesToolStripMenuItem});
+            this.etablissementDeFormationToolStripMenuItem.Name = "etablissementDeFormationToolStripMenuItem";
+            this.etablissementDeFormationToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+            this.etablissementDeFormationToolStripMenuItem.Text = "Etablissement ";
+            // 
+            // formateursToolStripMenuItem
+            // 
+            this.formateursToolStripMenuItem.Name = "formateursToolStripMenuItem";
+            this.formateursToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.formateursToolStripMenuItem.Text = "Formateurs";
+            this.formateursToolStripMenuItem.Click += new System.EventHandler(this.formateursToolStripMenuItem_Click);
+            // 
+            // annéesDeFormationToolStripMenuItem
+            // 
+            this.annéesDeFormationToolStripMenuItem.Name = "annéesDeFormationToolStripMenuItem";
+            this.annéesDeFormationToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.annéesDeFormationToolStripMenuItem.Text = "Années de formation";
+            this.annéesDeFormationToolStripMenuItem.Click += new System.EventHandler(this.annéesDeFormationToolStripMenuItem_Click);
+            // 
+            // gérerLesFilieresToolStripMenuItem
+            // 
+            this.gérerLesFilieresToolStripMenuItem.Name = "gérerLesFilieresToolStripMenuItem";
+            this.gérerLesFilieresToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.gérerLesFilieresToolStripMenuItem.Text = "Filieres";
+            this.gérerLesFilieresToolStripMenuItem.Click += new System.EventHandler(this.gérerLesFilieresToolStripMenuItem_Click);
+            // 
+            // sallesToolStripMenuItem
+            // 
+            this.sallesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.catégoriesSalleDeFormationToolStripMenuItem,
+            this.gestionDesSallesToolStripMenuItem});
+            this.sallesToolStripMenuItem.Name = "sallesToolStripMenuItem";
+            this.sallesToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.sallesToolStripMenuItem.Text = "Salles";
+            this.sallesToolStripMenuItem.Click += new System.EventHandler(this.sallesToolStripMenuItem_Click);
+            // 
+            // catégoriesSalleDeFormationToolStripMenuItem
+            // 
+            this.catégoriesSalleDeFormationToolStripMenuItem.Name = "catégoriesSalleDeFormationToolStripMenuItem";
+            this.catégoriesSalleDeFormationToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.catégoriesSalleDeFormationToolStripMenuItem.Text = "Catégories salle de formation";
+            this.catégoriesSalleDeFormationToolStripMenuItem.Click += new System.EventHandler(this.catégoriesSalleDeFormationToolStripMenuItem_Click);
+            // 
+            // gestionDesSallesToolStripMenuItem
+            // 
+            this.gestionDesSallesToolStripMenuItem.Name = "gestionDesSallesToolStripMenuItem";
+            this.gestionDesSallesToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.gestionDesSallesToolStripMenuItem.Text = "Gestion des salles";
+            this.gestionDesSallesToolStripMenuItem.Click += new System.EventHandler(this.gestionDesSallesToolStripMenuItem_Click);
+            // 
+            // gestionDesPréalablesToolStripMenuItem
+            // 
+            this.gestionDesPréalablesToolStripMenuItem.Name = "gestionDesPréalablesToolStripMenuItem";
+            this.gestionDesPréalablesToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.gestionDesPréalablesToolStripMenuItem.Text = "Gestion des préalables";
+            this.gestionDesPréalablesToolStripMenuItem.Click += new System.EventHandler(this.gestionDesPréalablesToolStripMenuItem_Click);
             // 
             // FormMenu
             // 
@@ -336,5 +345,6 @@
         private System.Windows.Forms.ToolStripMenuItem catégoriesSalleDeFormationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionDesSallesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem contenuePrécisionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gestionDesPréalablesToolStripMenuItem;
     }
 }

@@ -1,15 +1,33 @@
+using App.WinForm.Annotation;
 using System;
 
 namespace App.Modules
 {
-   public class Prealable : BaseEntity
-   {
-    
-      public string Nom { set; get; }
-        public string Description { set; get; }
-        public int Ordre { set; get; }
 
+    [AffichageDansFormGestion(Titre = "Gestion des préalables", TitrePageGridView = "Préalables",
+        siAffichageAvecOrdre = true,
+        TitreButtonAjouter = "Ajouter un préalable")]
+    [AffichageClasse(Minuscule = "Préalable", Majuscule = "Préalables")]
+    public class Prealable : BaseEntity
+   {
+        [AffichagePropriete(Titre = "Précision", isGridView = true, isFormulaire = true,
+         Filtre = true, Relation ="ManyToOne",  isOblegatoir = true, Ordre = 2, WidthColonne = 200)]
         public Precision Precision { set; get; }
+
+
+        [AffichagePropriete(Titre = "Titre", isGridView = true, isFormulaire = true,
+            Filtre = true, isOblegatoir = true, Ordre = 3, WidthColonne = 200)]
+        public string Nom { set; get; }
+
+
+        [AffichagePropriete(Titre = "Remarque",
+          isFormulaire = true,
+          Ordre = 6,
+          MultiLine = true)]
+        public string Description { set; get; }
+       
+
+       
 
     }
 }

@@ -33,12 +33,12 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.TabGrid = new System.Windows.Forms.TabPage();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.Editer = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Supprimer = new System.Windows.Forms.DataGridViewImageColumn();
             this.ObjetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.groupBoxFiltrage = new System.Windows.Forms.GroupBox();
             this.splitContainerFiltre = new System.Windows.Forms.SplitContainer();
+            this.groupBoxFiltrage = new System.Windows.Forms.GroupBox();
+            this.Editer = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Supprimer = new System.Windows.Forms.DataGridViewImageColumn();
             this.tabControl.SuspendLayout();
             this.TabGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -119,23 +119,6 @@
             this.dataGridView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView_KeyDown);
             this.dataGridView.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView_KeyUp);
             // 
-            // Editer
-            // 
-            this.Editer.HeaderText = "";
-            this.Editer.Image = global::App.WinForm.Properties.Resources.edit;
-            this.Editer.Name = "Editer";
-            this.Editer.ReadOnly = true;
-            this.Editer.ToolTipText = "Editer";
-            this.Editer.Width = 50;
-            // 
-            // Supprimer
-            // 
-            this.Supprimer.HeaderText = "";
-            this.Supprimer.Image = global::App.WinForm.Properties.Resources.delete;
-            this.Supprimer.Name = "Supprimer";
-            this.Supprimer.ReadOnly = true;
-            this.Supprimer.Width = 50;
-            // 
             // splitContainer1
             // 
             this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -158,18 +141,6 @@
             this.splitContainer1.SplitterDistance = 93;
             this.splitContainer1.TabIndex = 14;
             // 
-            // groupBoxFiltrage
-            // 
-            this.groupBoxFiltrage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxFiltrage.Location = new System.Drawing.Point(0, 0);
-            this.groupBoxFiltrage.Name = "groupBoxFiltrage";
-            this.groupBoxFiltrage.Size = new System.Drawing.Size(715, 69);
-            this.groupBoxFiltrage.TabIndex = 13;
-            this.groupBoxFiltrage.TabStop = false;
-            this.groupBoxFiltrage.Text = "Filtre";
-            // 
             // splitContainerFiltre
             // 
             this.splitContainerFiltre.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -188,6 +159,35 @@
             this.splitContainerFiltre.Size = new System.Drawing.Size(872, 69);
             this.splitContainerFiltre.SplitterDistance = 718;
             this.splitContainerFiltre.TabIndex = 14;
+            // 
+            // groupBoxFiltrage
+            // 
+            this.groupBoxFiltrage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxFiltrage.Location = new System.Drawing.Point(0, 0);
+            this.groupBoxFiltrage.Name = "groupBoxFiltrage";
+            this.groupBoxFiltrage.Size = new System.Drawing.Size(715, 69);
+            this.groupBoxFiltrage.TabIndex = 13;
+            this.groupBoxFiltrage.TabStop = false;
+            this.groupBoxFiltrage.Text = "Filtre";
+            // 
+            // Editer
+            // 
+            this.Editer.HeaderText = "";
+            this.Editer.Image = global::App.WinForm.Properties.Resources.edit;
+            this.Editer.Name = "Editer";
+            this.Editer.ReadOnly = true;
+            this.Editer.ToolTipText = "Editer";
+            this.Editer.Width = 50;
+            // 
+            // Supprimer
+            // 
+            this.Supprimer.HeaderText = "";
+            this.Supprimer.Image = global::App.WinForm.Properties.Resources.delete;
+            this.Supprimer.Name = "Supprimer";
+            this.Supprimer.ReadOnly = true;
+            this.Supprimer.Width = 50;
             // 
             // InterfaceGestion
             // 
@@ -223,10 +223,10 @@
         private System.Windows.Forms.TabPage TabGrid;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.BindingSource ObjetBindingSource;
-        private System.Windows.Forms.DataGridViewImageColumn Editer;
-        private System.Windows.Forms.DataGridViewImageColumn Supprimer;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.GroupBox groupBoxFiltrage;
         private System.Windows.Forms.SplitContainer splitContainerFiltre;
+        private System.Windows.Forms.DataGridViewImageColumn Editer;
+        private System.Windows.Forms.DataGridViewImageColumn Supprimer;
     }
 }

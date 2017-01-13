@@ -26,9 +26,7 @@ namespace App.Formations
         public override string ToString() => this.Titre;
 
 
-        [AffichagePropriete(Titre = "Ordre", isGridView = true,
-Ordre = 1, WidthColonne = 30)]
-        public int Ordre { set; get; }
+   
 
         [AffichagePropriete(Titre = "Prévision Séance", isFormulaire = true,
 Relation = "ManyToOne", isOblegatoir = true, Ordre = 1)]

@@ -20,9 +20,9 @@ namespace App
         Object ToBindingList();
         void AddElement();
 
-        string GetNomObjet();
+        //string GetNomObjet();
         List<object> GetAllDetached();
-        string GetNomObjets();
+        //string GetNomObjets();
 
         List<Object> Recherche(Dictionary<string, List<string>> dictionary,int startPage = 0, int itemsPerPage = 0);
         List<Object> Recherche(Dictionary<string, object> rechercheInfos, int startPage = 0, int itemsPerPage = 0);
