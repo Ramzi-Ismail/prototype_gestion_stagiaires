@@ -12,7 +12,7 @@ namespace App.WinForm
     /// <summary>
     /// Configuration de filtre de l'interface de gestion
     /// </summary>
-    partial class InterfaceGestion
+    partial class EntityManagementForm
     {
         /// <summary>
         /// Création et Initialisation de filtre en utilisation de la liste des propriété de la classe
@@ -76,10 +76,11 @@ namespace App.WinForm
                         comboBoxRelationManyToOne.SelectedValue = Convert.ToInt64(this.ValeursFiltre[propertyInfo.Name]);
                     }
                     // Recalcule le widht de comboBox
-                 
-                    int width = ls.Max(o => ((BaseEntity)o).ToString().Count()) * 5 + 20;
-                    comboBoxRelationManyToOne.Size = new System.Drawing.Size(width, height_controle);
-                    if (width > 200) x += (200 - width);
+                    if(ls.Count > 0) { 
+                        int width = ls.Max(o => ((BaseEntity)o).ToString().Count()) * 5 + 20;
+                        comboBoxRelationManyToOne.Size = new System.Drawing.Size(width, height_controle);
+                        if (width > 200) x += (200 - width);
+                    }
 
                     //
                     // Evénement Change sur le ComboBox : Actualisation de DataGrid

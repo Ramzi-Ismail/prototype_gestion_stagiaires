@@ -1,6 +1,6 @@
 ﻿namespace App.WinForm
 {
-    partial class BaseFormulaire
+    partial class BaseEntryForm
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -106,12 +106,12 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
-            // BaseFormulaire
+            // BaseEntryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainer1);
-            this.Name = "BaseFormulaire";
+            this.Name = "BaseEntryForm";
             this.Size = new System.Drawing.Size(647, 296);
             this.panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

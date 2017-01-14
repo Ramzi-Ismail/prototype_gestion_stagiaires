@@ -50,19 +50,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntryForms\InputManyToManyControle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EntryForms\InputManyToManyControle.Designer.cs">
+      <DependentUpon>InputManyToManyControle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntryForms\InputManyToOneControle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EntryForms\InputManyToOneControle.Designer.cs">
+      <DependentUpon>InputManyToOneControle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormulaireControl\FormulaireControle.cs">
+    <Compile Include="EntryForms\EntryForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="FormulaireControl\FormulaireControle.Designer.cs">
-      <DependentUpon>FormulaireControle.cs</DependentUpon>
+    <Compile Include="EntryForms\EntryForm.Designer.cs">
+      <DependentUpon>EntryForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="InterfaceGestion\Filtre.cs">
+    <Compile Include="EntityManagementForm\Filtre.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Menu\AfficherForm.cs" />
@@ -72,46 +84,49 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Comptes\Session.cs" />
-    <Compile Include="BaseFormulaire\BaseFormulaire.cs">
+    <Compile Include="Security\Session.cs" />
+    <Compile Include="BaseEntryForm\BaseEntryForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="BaseFormulaire\BaseFormulaire.Designer.cs">
-      <DependentUpon>BaseFormulaire.cs</DependentUpon>
+    <Compile Include="BaseEntryForm\BaseEntryForm.Designer.cs">
+      <DependentUpon>BaseEntryForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFormulaire\IBaseFormulaire.cs" />
-    <Compile Include="InterfaceGestion\Variables_Constructeurs.cs">
+    <Compile Include="BaseEntryForm\IBaseEntryForm.cs" />
+    <Compile Include="EntityManagementForm\Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InterfaceGestion\Variables_Constructeurs.Designer.cs">
-      <DependentUpon>Variables_Constructeurs.cs</DependentUpon>
+    <Compile Include="EntityManagementForm\Form.Designer.cs">
+      <DependentUpon>Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="InterfaceGestion\Ajouter.cs">
+    <Compile Include="EntityManagementForm\Add.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InterfaceGestion\Editer.cs">
+    <Compile Include="EntityManagementForm\Edit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InterfaceGestion\DataGrid.cs">
+    <Compile Include="EntityManagementForm\DataGrid.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="EntryForms\InputManyToManyControle.resx">
+      <DependentUpon>InputManyToManyControle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormulaireControl\FormulaireControle.resx">
-      <DependentUpon>FormulaireControle.cs</DependentUpon>
+    <EmbeddedResource Include="EntryForms\EntryForm.resx">
+      <DependentUpon>EntryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaseFormulaire\BaseFormulaire.resx">
-      <DependentUpon>BaseFormulaire.cs</DependentUpon>
+    <EmbeddedResource Include="BaseEntryForm\BaseEntryForm.resx">
+      <DependentUpon>BaseEntryForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InterfaceGestion\Variables_Constructeurs.resx">
-      <DependentUpon>Variables_Constructeurs.cs</DependentUpon>
+    <EmbeddedResource Include="EntityManagementForm\Form.resx">
+      <DependentUpon>Form.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

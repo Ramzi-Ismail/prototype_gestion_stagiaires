@@ -46,7 +46,7 @@ namespace App
             // Gestion des stagiaire
             StagiairesService service = new StagiairesService();
             FormStagiaireUC objetForm = new FormStagiaireUC(service);
-            InterfaceGestion form = new InterfaceGestion(service, objetForm);
+            EntityManagementForm form = new EntityManagementForm(service, objetForm);
             AfficherFormulaire.Afficher(form);
         }
 
@@ -116,13 +116,13 @@ namespace App
 
         private void gestionDesModulesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            InterfaceGestion form = new InterfaceGestion(new BaseRepository<Module>());
+            EntityManagementForm form = new EntityManagementForm(new BaseRepository<Module>());
             AfficherFormulaire.Afficher(form);
         }
 
         private void gestionDesPrécisionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            InterfaceGestion form = new InterfaceGestion(new BaseRepository<Precision>());
+            EntityManagementForm form = new EntityManagementForm(new BaseRepository<Precision>());
             AfficherFormulaire.Afficher(form);
         }
 

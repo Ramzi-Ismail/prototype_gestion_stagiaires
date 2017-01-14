@@ -10,9 +10,13 @@ namespace App.Modules
     [AffichageClasse(Minuscule = "Préalable", Majuscule = "Préalables")]
     public class Prealable : BaseEntity
    {
+
+        public override string ToString() => this.Nom;
+
+
         [AffichagePropriete(Titre = "Précision", isGridView = true, isFormulaire = true,
          Filtre = true, Relation ="ManyToOne",  isOblegatoir = true, Ordre = 2, WidthColonne = 200)]
-        public Precision Precision { set; get; }
+        public virtual Precision Precision { set; get; }
 
 
         [AffichagePropriete(Titre = "Titre", isGridView = true, isFormulaire = true,

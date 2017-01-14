@@ -8,9 +8,12 @@ namespace App.Modules
     public class ContenuePrecision :BaseEntity
    {
 
+        public override string ToString() => this.Objectif;
+
+
         [AffichagePropriete(Titre = "Précision", isGridView = true, isFormulaire = true,
   Relation = "ManyToOne", Filtre = true, isOblegatoir = true, Ordre = 1, WidthColonne = 100)]
-        public Precision Precision { set; get; }
+        public virtual Precision Precision { set; get; }
 
 
         [AffichagePropriete(Titre = "Objectif", isGridView = true, isFormulaire = true,
@@ -27,22 +30,6 @@ namespace App.Modules
         [AffichagePropriete(Titre = "Description", isFormulaire = true,
       MultiLine = true, Ordre = 10)]
         public string Description { set; get; }
-
- 
-
-
-  
-
-
-     
-
-       
-      
-        public int Ordre { set; get; }
-
-        
-
-
 
     }
 }

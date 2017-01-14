@@ -48,8 +48,6 @@
             this.gestionDesFormationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionDesModulesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionDesModulesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.gestionDesPrécisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contenuePrécisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.etablissementDeFormationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.formateursToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.annéesDeFormationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,7 +55,6 @@
             this.sallesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.catégoriesSalleDeFormationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionDesSallesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gestionDesPréalablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -201,10 +198,7 @@
             // gestionDesModulesToolStripMenuItem
             // 
             this.gestionDesModulesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gestionDesModulesToolStripMenuItem1,
-            this.gestionDesPrécisionToolStripMenuItem,
-            this.contenuePrécisionToolStripMenuItem,
-            this.gestionDesPréalablesToolStripMenuItem});
+            this.gestionDesModulesToolStripMenuItem1});
             this.gestionDesModulesToolStripMenuItem.Name = "gestionDesModulesToolStripMenuItem";
             this.gestionDesModulesToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.gestionDesModulesToolStripMenuItem.Text = "Modules";
@@ -212,23 +206,9 @@
             // gestionDesModulesToolStripMenuItem1
             // 
             this.gestionDesModulesToolStripMenuItem1.Name = "gestionDesModulesToolStripMenuItem1";
-            this.gestionDesModulesToolStripMenuItem1.Size = new System.Drawing.Size(191, 22);
+            this.gestionDesModulesToolStripMenuItem1.Size = new System.Drawing.Size(184, 22);
             this.gestionDesModulesToolStripMenuItem1.Text = "Gestion des modules";
             this.gestionDesModulesToolStripMenuItem1.Click += new System.EventHandler(this.gestionDesModulesToolStripMenuItem1_Click);
-            // 
-            // gestionDesPrécisionToolStripMenuItem
-            // 
-            this.gestionDesPrécisionToolStripMenuItem.Name = "gestionDesPrécisionToolStripMenuItem";
-            this.gestionDesPrécisionToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.gestionDesPrécisionToolStripMenuItem.Text = "Gestion des Précision";
-            this.gestionDesPrécisionToolStripMenuItem.Click += new System.EventHandler(this.gestionDesPrécisionToolStripMenuItem_Click);
-            // 
-            // contenuePrécisionToolStripMenuItem
-            // 
-            this.contenuePrécisionToolStripMenuItem.Name = "contenuePrécisionToolStripMenuItem";
-            this.contenuePrécisionToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.contenuePrécisionToolStripMenuItem.Text = "Contenue Précision";
-            this.contenuePrécisionToolStripMenuItem.Click += new System.EventHandler(this.contenuePrécisionToolStripMenuItem_Click);
             // 
             // etablissementDeFormationToolStripMenuItem
             // 
@@ -286,13 +266,6 @@
             this.gestionDesSallesToolStripMenuItem.Text = "Gestion des salles";
             this.gestionDesSallesToolStripMenuItem.Click += new System.EventHandler(this.gestionDesSallesToolStripMenuItem_Click);
             // 
-            // gestionDesPréalablesToolStripMenuItem
-            // 
-            this.gestionDesPréalablesToolStripMenuItem.Name = "gestionDesPréalablesToolStripMenuItem";
-            this.gestionDesPréalablesToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.gestionDesPréalablesToolStripMenuItem.Text = "Gestion des préalables";
-            this.gestionDesPréalablesToolStripMenuItem.Click += new System.EventHandler(this.gestionDesPréalablesToolStripMenuItem_Click);
-            // 
             // FormMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -330,7 +303,6 @@
         private System.Windows.Forms.ToolStripMenuItem gérerLesFilieresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionDesModulesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionDesModulesToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem gestionDesPrécisionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionDesGroupesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem livresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionDesLivresToolStripMenuItem;
@@ -344,7 +316,5 @@
         private System.Windows.Forms.ToolStripMenuItem gestionDesFormationsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem catégoriesSalleDeFormationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionDesSallesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem contenuePrécisionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gestionDesPréalablesToolStripMenuItem;
     }
 }

@@ -47,6 +47,7 @@
     <Compile Include="Annotation\Affichage.cs" />
     <Compile Include="Annotation\AffichageClasseAttribute.cs" />
     <Compile Include="Annotation\AffichageGestionAttribute.cs" />
+    <Compile Include="Annotation\SelectionCriteriaAttribute.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Linq\LinqExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

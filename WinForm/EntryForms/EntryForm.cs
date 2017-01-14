@@ -10,48 +10,66 @@ using System.Windows.Forms;
 using System.Reflection;
 using System.ComponentModel.DataAnnotations;
 using App.WinForm.Annotation;
+using System.Collections;
 
 namespace App.WinForm {  
 
     /// <summary>
-    /// Formulaire générique, il générer automatiquement les champs,
-    /// selon l'annotation des Propriétés de l'Entity de la formulaire.
+    /// Générer automatiquement le formulaire de saisie
+    ///  les champs sont générés selon son annotation
     /// </summary>
-    public partial class FormulaireControle : BaseFormulaire
+    public partial class EntryForm : BaseEntryForm
     {
 
         #region Constructeurs et Initalisation
-        public FormulaireControle():base()
+        public EntryForm():base()
         {
             InitializeComponent();
       
         }
-        public FormulaireControle(IBaseRepository service) : base(service)
+
+        /// <summary>
+        /// Constructeur principale
+        /// </summary>
+        /// <param name="service">Instance de ServerManager qui gérer l'entity en cours gestion</param>
+        public EntryForm(IBaseRepository service) : base(service)
         {
             InitializeComponent();
             ConteneurFormulaire = this.formulaire;
             InitFormulaire();
         }
+        public EntryForm(IBaseRepository service,BaseEntity entity) : base(service)
+        {
+            InitializeComponent();
+            this.Entity = entity;
+            ConteneurFormulaire = this.formulaire;
+            InitFormulaire();
+        }
+
+        
 
         /// <summary>
-        /// Création des contrôle du formulaire à partire de son annotation
+        /// Création et Initalisation des contrôles du formulaire
         /// </summary>
         private void InitFormulaire()
         {
             
-            // La position Y
+            // La position X et Y
             int y = 35;
             int x_label = 16;
             int x_control = 200;
             // L'index de la touche Entrer
             int index = 0;
+
+            // Boucle sur les champs de la classe qui contient l'annotation : AffichageProprieteAttribute
             foreach (PropertyInfo item in ListeChampsFormulaire())
             {
+                // Lecture de l'annotation 
                 AffichageProprieteAttribute AffichagePropriete = (AffichageProprieteAttribute) item.GetCustomAttribute(typeof(AffichageProprieteAttribute));
 
 
                 //
-                // label
+                // Cration de label
                 // 
                 Label lbl = new Label();
                 lbl.AutoSize = true;
@@ -61,6 +79,9 @@ namespace App.WinForm {
                 lbl.TabIndex = index++;
                 lbl.Text = AffichagePropriete.Titre;
 
+                //
+                // Création des champs de type String
+                //
                 if (item.PropertyType.Name == "String")
                 {
                     // 
@@ -85,6 +106,10 @@ namespace App.WinForm {
                        
                     this.formulaire.Controls.Add(textBoxString);
                     }
+
+                //
+                // Création des champs de type Int32
+                //
                 if (item.PropertyType.Name == "Int32")
                 {
                     // textBoxInt32
@@ -98,6 +123,10 @@ namespace App.WinForm {
 
                     this.formulaire.Controls.Add(textBoxInt32);
                 }
+
+                //
+                // Création des champs de type DateTime
+                //
                 if (item.PropertyType.Name == "DateTime")
                     {
                         DateTimePicker dateTimePicker = new DateTimePicker();
@@ -111,7 +140,11 @@ namespace App.WinForm {
 
                         this.formulaire.Controls.Add(dateTimePicker);
                     }
-                    if (AffichagePropriete.Relation == "ManyToOne")
+
+                //
+                // Création des champs de type BaseEntity : ManyToOne
+                //
+                if (AffichagePropriete.Relation == "ManyToOne")
                     {
                         Type ServicesEntityType = typeof(BaseRepository<>).MakeGenericType(item.PropertyType);
                         IBaseRepository ServicesEntity = (IBaseRepository) Activator.CreateInstance(ServicesEntityType);
@@ -132,7 +165,34 @@ namespace App.WinForm {
 
                     }
 
-                    this.formulaire.Controls.Add(lbl);
+                //
+                // Création des champs de type BaseEntity : ManyToOne
+                //
+                if (AffichagePropriete.Relation == "ManyToMany")
+                {
+                    // Création de TabPage
+                    TabPage tabPage = new TabPage();
+                    tabPage.Text = item.Name;
+                    this.tabControlManytoMany.TabPages.Add(tabPage);
+
+                    //Valeur par défaut
+                    List<BaseEntity> ls_default_value = null;
+                    if (this.Entity != null) {
+                        IList ls_obj = item.GetValue(this.Entity) as IList;
+                        ls_default_value = ls_obj.Cast<BaseEntity>().ToList();
+                    }
+
+                    
+             
+                    InputManyToManyControle InputManyToManyControle = new InputManyToManyControle(item,ls_default_value, this.Entity);
+                        tabPage.Controls.Add(InputManyToManyControle);
+              
+
+
+
+                }
+
+                this.formulaire.Controls.Add(lbl);
                
                 y += 25;
 

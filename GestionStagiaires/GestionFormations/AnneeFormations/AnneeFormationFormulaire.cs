@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace App
 {
-    public partial class AnneeFormationFormulaire : App.WinForm.BaseFormulaire
+    public partial class AnneeFormationFormulaire : App.WinForm.BaseEntryForm
     {
         public AnneeFormationFormulaire():base()
         {

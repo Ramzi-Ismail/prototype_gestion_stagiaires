@@ -18,7 +18,7 @@ namespace App.WinForm
     /// Formulaire de base pour la réalisation d'une Formulaire Particulier
     /// ou à utimiser dans la formulaire génirique
     /// </summary>
-    public partial class BaseFormulaire : UserControl, IBaseFormulaire
+    public partial class BaseEntryForm : UserControl, IBaseEntryForm
     {
         #region Variables
         /// <summary>
@@ -62,7 +62,7 @@ namespace App.WinForm
         /// Créer du formuliare avec l'instance de service en cours d'utilisation
         /// </summary>
         /// <param name="service"></param>
-        public BaseFormulaire(IBaseRepository service)
+        public BaseEntryForm(IBaseRepository service)
         {
             InitializeComponent();
             this.Service = service;
@@ -79,9 +79,9 @@ namespace App.WinForm
         ///// </summary>
         ///// <param name="entity"></param>
         ///// <param name="context"></param>
-        // public BaseFormulaire():this(null) : l'appel de constructeur de base , block la modification
+        // public BaseEntryForm():this(null) : l'appel de constructeur de base , block la modification
         // des controle protected et public sur la formulaire hérité
-        public BaseFormulaire() 
+        public BaseEntryForm() 
         {
             InitializeComponent();
             if (!DesignMode) {
@@ -133,10 +133,19 @@ namespace App.WinForm
         /// Création d'une instance comme cette formulaire
         /// </summary>
         /// <returns></returns>
-        public virtual BaseFormulaire CreateInstance(IBaseRepository Service) {
+        public virtual BaseEntryForm CreateInstance(IBaseRepository Service) {
 
-            BaseFormulaire formilaire =(BaseFormulaire) Activator.CreateInstance(this.GetType(), Service);
+            BaseEntryForm formilaire =(BaseEntryForm) Activator.CreateInstance(this.GetType(), Service);
            
+            return formilaire;
+
+
+        }
+        public virtual BaseEntryForm CreateInstance(IBaseRepository Service,BaseEntity entity)
+        {
+
+            BaseEntryForm formilaire = (BaseEntryForm)Activator.CreateInstance(this.GetType(), Service, entity);
+
             return formilaire;
 
 
@@ -341,7 +350,7 @@ namespace App.WinForm
             
         }
 
-        void IBaseFormulaire.Lire()
+        void IBaseEntryForm.Lire()
         {
             throw new NotImplementedException();
         }

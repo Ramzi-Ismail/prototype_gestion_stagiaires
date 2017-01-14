@@ -23,7 +23,7 @@ namespace App.Modules
         //
         [AffichagePropriete(Titre = "Durée", isGridView = true, isFormulaire = true, Ordre = 3,
            
-            WidthColonne = 100)]
+            WidthColonne = 50)]
         public int Duree { set; get; }
 
         [AffichagePropriete(Titre = "Description", isFormulaire = true, Ordre = 4,MultiLine = true)]
@@ -34,13 +34,17 @@ namespace App.Modules
         //
         [AffichagePropriete(Titre = "Module",Relation = "ManyToOne", isGridView = true, isFormulaire = true,
             isOblegatoir = true,
-            Ordre = 5,Filtre =true, WidthColonne = 200)]
+            Ordre = 5,Filtre =true, WidthColonne = 150)]
         public virtual Module Module { set; get; }
 
 
         [AffichagePropriete(Titre = "Préalables",
-         isGridView = true, Ordre = 20)]
+         isGridView = true, Ordre = 21)]
         public virtual List<Prealable> Prealables { set; get; }
+
+        [AffichagePropriete(Titre = "Contenues", WidthColonne = 120,
+         isGridView = true, Ordre = 20)]
+        public virtual List<ContenuePrecision> ContenuePrecisions { set; get; }
 
 
 

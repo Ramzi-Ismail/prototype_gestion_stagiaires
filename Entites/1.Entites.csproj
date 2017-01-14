@@ -58,9 +58,9 @@
     <Compile Include="Formations\Planing\EmploisTemps.cs" />
     <Compile Include="Formations\Etablissement\Salle.cs" />
     <Compile Include="Formations\Planing\SeancePlanning.cs" />
-    <Compile Include="Formations\PrevisionSeance.cs" />
-    <Compile Include="Formations\Seance.cs" />
-    <Compile Include="Formations\Sequences.cs" />
+    <Compile Include="Formations\Seabces\PrevisionSeance.cs" />
+    <Compile Include="Formations\Seabces\Seance.cs" />
+    <Compile Include="Formations\Seabces\Sequences.cs" />
     <Compile Include="Formations\StrategiePedagogie.cs" />
     <Compile Include="Livres\Livre.cs" />
     <Compile Include="Livres\MaisonEdition.cs" />

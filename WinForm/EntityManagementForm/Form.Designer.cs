@@ -1,6 +1,6 @@
 ﻿namespace App.WinForm
 {
-    partial class InterfaceGestion
+    partial class EntityManagementForm
     {
         /// <summary>
         /// Required designer variable.
@@ -214,17 +214,17 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(867, 131);
             this.tableLayoutPanel1.TabIndex = 14;
             // 
-            // InterfaceGestion
+            // EntityManagementForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(891, 567);
             this.Controls.Add(this.splitContainer1);
-            this.Name = "InterfaceGestion";
+            this.Name = "EntityManagementForm";
             this.Text = "FormGestion";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.InterfaceGestion_FormClosing);
-            this.Load += new System.EventHandler(this.InterfaceGestion_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EntityManagementForm_FormClosing);
+            this.Load += new System.EventHandler(this.EntityManagementForm_Load);
             this.tabControl.ResumeLayout(false);
             this.TabGrid.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();

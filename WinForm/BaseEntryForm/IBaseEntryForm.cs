@@ -1,7 +1,7 @@
 ﻿
 namespace App.WinForm
 {
-    public interface IBaseFormulaire
+    public interface IBaseEntryForm
     {
         /// <summary>
         /// Afficher l'objet dans le formulaire
@@ -18,7 +18,7 @@ namespace App.WinForm
         /// </summary>
         /// <param name="service"></param>
         /// <returns></returns>
-        BaseFormulaire CreateInstance(IBaseRepository service);
+        BaseEntryForm CreateInstance(IBaseRepository service);
 
         /// <summary>
         /// Créer d'une instance de l'objet en cours

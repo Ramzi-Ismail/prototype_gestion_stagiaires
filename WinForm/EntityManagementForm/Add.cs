@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace App.WinForm
 {
-    partial class InterfaceGestion
+    partial class EntityManagementForm
     {
         /// <summary>
         /// Boutton Ajouter
@@ -31,8 +31,9 @@ namespace App.WinForm
                 //
                 // Insertion du formulaire 
                 //
-                BaseFormulaire form = Formulaire.CreateInstance(Service);
-                form.Entity = (BaseEntity) this.Service.CreateInstanceObjet();
+                BaseEntity Entity = (BaseEntity)this.Service.CreateInstanceObjet();
+                BaseEntryForm form = Formulaire.CreateInstance(Service, Entity);
+                
                 form.Name = "Form";
                 form.Dock = DockStyle.Fill;
                 form.Afficher(this.CritereRechercheFiltre()); // Affichage des valeur initial
@@ -50,7 +51,7 @@ namespace App.WinForm
         private void Form_EnregistrerClick(object sender, EventArgs e)
         {
             TabPage tabAjouter = this.tabControl.TabPages["TabAjouter"];
-            BaseFormulaire form = (BaseFormulaire)tabAjouter.Controls
+            BaseEntryForm form = (BaseEntryForm)tabAjouter.Controls
                 .Find("Form", false).First();
             this.tabControl.TabPages.Remove(tabAjouter);
             this.Actualiser();

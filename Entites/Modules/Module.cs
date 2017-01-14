@@ -67,9 +67,9 @@ namespace App.Modules
 
 
 
-      [AffichagePropriete(Titre = "Precisions",
-         isGridView = true, Ordre = 20)]
-      public virtual List<Precision> Precisions { set; get; }
+        [AffichagePropriete(Titre = "Précisions",
+         Relation = "ManyToMany", isGridView = true, Ordre = 20)]
+        public virtual List<Precision> Precisions { set; get; }
 
 
       public override string ToString() => this.Nom;

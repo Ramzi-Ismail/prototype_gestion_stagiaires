@@ -18,7 +18,7 @@ namespace App.WinFrom.Menu
 
         public void AfficherUneGestion<T>() where T : BaseEntity
         {
-            InterfaceGestion form = new InterfaceGestion(new BaseRepository<T>());
+            EntityManagementForm form = new EntityManagementForm(new BaseRepository<T>());
             this.Afficher(form);
         }
 
@@ -26,7 +26,7 @@ namespace App.WinFrom.Menu
 
         public void AfficherUneGestion<T>(IBaseRepository Service) where T : BaseEntity
         {
-            InterfaceGestion form = new InterfaceGestion(Service);
+            EntityManagementForm form = new EntityManagementForm(Service);
             this.Afficher(form);
         }
 
@@ -35,9 +35,9 @@ namespace App.WinFrom.Menu
         /// </summary>
         /// <typeparam name="T">L'objet à gérer</typeparam>
         /// <param name="formulaire">Le Formulaire spécifique</param>
-        public void AfficherUneGestion<T>(BaseFormulaire formulaire) where T : BaseEntity
+        public void AfficherUneGestion<T>(BaseEntryForm formulaire) where T : BaseEntity
         {
-            InterfaceGestion form = new InterfaceGestion(new BaseRepository<T>(), formulaire);
+            EntityManagementForm form = new EntityManagementForm(new BaseRepository<T>(), formulaire);
             this.Afficher(form);
         }
 

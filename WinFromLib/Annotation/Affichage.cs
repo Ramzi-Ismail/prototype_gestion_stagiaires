@@ -71,5 +71,6 @@ namespace App.WinForm.Annotation
         /// Unité : min,h,annee, g, Kg
         /// </summary>
         public string Unite { get; set; }
+        public List<string> CriteriaFilter { get; set; }
     }
 }

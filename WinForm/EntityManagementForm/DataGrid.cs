@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace App.WinForm
 {
-    partial class InterfaceGestion
+    partial class EntityManagementForm
     {
         /// <summary>
         /// Insertion des colonne selon les annotation : AffichageProprieteAttribute
@@ -123,7 +123,7 @@ namespace App.WinForm
             // Valeur Initial du Filtre
             Dictionary<string, object> ValeursFiltre = new Dictionary<string, object>();
             ValeursFiltre[item.DeclaringType.Name] = obj.Id;
-            InterfaceGestion form = new InterfaceGestion(service_objet, ValeursFiltre);
+            EntityManagementForm form = new EntityManagementForm(service_objet, ValeursFiltre);
             Menu.Afficher(form);
         }
         private void dataGridView_KeyDown(object sender, KeyEventArgs e)

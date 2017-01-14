@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace App.WinForm
 {
-    public partial class InterfaceGestion : Form
+    public partial class EntityManagementForm : Form
     {
         #region Variables
 
@@ -26,7 +26,7 @@ namespace App.WinForm
         /// <summary>
         /// Le formulaire de l'édition et d'insertion
         /// </summary>
-        protected BaseFormulaire Formulaire;
+        protected BaseEntryForm Formulaire;
 
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace App.WinForm
         /// On ne pas Créer ce formulaire sans Paramétre
         /// ce Constructeur est ajouter seuelement pour supproer le mode désigne de Visual Studio 2015
         /// </summary>
-        public InterfaceGestion()
+        public EntityManagementForm()
         {
             InitializeComponent();
         }
@@ -54,18 +54,18 @@ namespace App.WinForm
        /// Création d'une gestion générique 
        /// </summary>
        /// <param name="service"></param>
-        public InterfaceGestion(IBaseRepository service)
+        public EntityManagementForm(IBaseRepository service)
         {
             InitializeComponent();
-            BaseFormulaire formulaire = new FormulaireControle(service);
+            BaseEntryForm formulaire = new EntryForm(service);
             initParams(service, formulaire);
         }
 
         
-        public InterfaceGestion(IBaseRepository service, Dictionary<string, object> ValeursFiltre)
+        public EntityManagementForm(IBaseRepository service, Dictionary<string, object> ValeursFiltre)
         {
             InitializeComponent();
-            BaseFormulaire formulaire = new FormulaireControle(service);
+            BaseEntryForm formulaire = new EntryForm(service);
             this.ValeursFiltre = ValeursFiltre;
             initParams(service, formulaire);
         }
@@ -76,7 +76,7 @@ namespace App.WinForm
         /// <param name="formulaire">Une instance de formulaire de saisie, il est utilisr 
         /// pour la creation des autres instance en cas d'édition des objet
         /// </param>
-        public InterfaceGestion(IBaseRepository service, BaseFormulaire formulaire)
+        public EntityManagementForm(IBaseRepository service, BaseEntryForm formulaire)
         {
             InitializeComponent();
             initParams(service, formulaire);
@@ -88,7 +88,7 @@ namespace App.WinForm
         /// </summary>
         /// <param name="service"></param>
         /// <param name="formulaire"></param>
-        protected void initParams(IBaseRepository service, BaseFormulaire formulaire)
+        protected void initParams(IBaseRepository service, BaseEntryForm formulaire)
         {
             this.Service = service;
             this.Formulaire = formulaire;
@@ -126,8 +126,8 @@ namespace App.WinForm
         }
         #endregion
 
-        #region InterfaceGestion Actions
-        private void InterfaceGestion_Load(object sender, EventArgs e)
+        #region EntityManagementForm Actions
+        private void EntityManagementForm_Load(object sender, EventArgs e)
         {
             if(!DesignMode)
             this.Actualiser();
@@ -137,7 +137,7 @@ namespace App.WinForm
 
 
 
-        private void InterfaceGestion_FormClosing(object sender, FormClosingEventArgs e)
+        private void EntityManagementForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             // Solution de problème de fermiture de la forme en cas de validation
             // car le formulaire ne veut pas se fermer si il y a des validation active dans 
@@ -155,10 +155,10 @@ namespace App.WinForm
 
         private void tabControl_Selected(object sender, TabControlEventArgs e)
         {
-            IEnumerable<BaseFormulaire> ls = tabControl.SelectedTab.Controls.OfType<BaseFormulaire>();
+            IEnumerable<BaseEntryForm> ls = tabControl.SelectedTab.Controls.OfType<BaseEntryForm>();
             if(ls.Count() == 1) {
-            BaseFormulaire baseFormulaire = ls.First();
-            this.AcceptButton = baseFormulaire.btEnregistrer;
+            BaseEntryForm BaseEntryForm = ls.First();
+            this.AcceptButton = BaseEntryForm.btEnregistrer;
             }
 
         }
