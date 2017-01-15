@@ -30,7 +30,7 @@ namespace App.WinForm
              
 
                 // Insertion du formulaire 
-                BaseEntryForm form = Formulaire.CreateInstance(this.Service, entity);
+                BaseEntryForm form = Formulaire.CreateInstance(this.Service, entity, null);
                 form.Name = "EntityForm";
                 form.Dock = DockStyle.Fill;
                 

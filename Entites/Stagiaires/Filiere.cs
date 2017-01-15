@@ -1,3 +1,4 @@
+using App.Modules;
 using App.WinForm.Annotation;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ namespace App.GestionStagiaires
     [AffichageDansFormGestion(Titre = "Gestion des filieres",
 TitrePageGridView = "Filiere",
 TitreButtonAjouter = "Ajouter un filiere")]
+    [AffichageClasse(Minuscule = "Filière", Majuscule = "Filières" , DisplayMember ="Code")]
     public class Filiere : BaseEntity 
    {
 
@@ -33,6 +35,9 @@ TitreButtonAjouter = "Ajouter un filiere")]
            Ordre = 3,
            WidthColonne = 150)]
         public String Description { set; get; }
+
+
+        public virtual List<Module> Modules { set; get; }
 
         public override string ToString()
         {

@@ -32,11 +32,11 @@ namespace App.WinForm
                 // Insertion du formulaire 
                 //
                 BaseEntity Entity = (BaseEntity)this.Service.CreateInstanceObjet();
-                BaseEntryForm form = Formulaire.CreateInstance(Service, Entity);
+                BaseEntryForm form = Formulaire.CreateInstance(Service, Entity, this.CritereRechercheFiltre());
                 
                 form.Name = "Form";
                 form.Dock = DockStyle.Fill;
-                form.Afficher(this.CritereRechercheFiltre()); // Affichage des valeur initial
+                form.Afficher(); // Affichage des valeur initial
                 form.InitValeurFromFiltre(this.CritereRechercheFiltre());
                  
                 this.tabControl.TabPages["TabAjouter"].Controls.Add(form);

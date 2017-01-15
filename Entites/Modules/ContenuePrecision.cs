@@ -1,10 +1,12 @@
+using App.GestionStagiaires;
 using App.WinForm.Annotation;
 using System;
 namespace App.Modules
 {
     [AffichageDansFormGestion(Titre = "Gestion des contenues de precision", TitrePageGridView = "Contenues de precision",
      TitreButtonAjouter = "Ajouter un contenue de precision")]
-    [AffichageClasse(Minuscule = "Contenue de precision", Majuscule = "Contenues de precision")]
+    [AffichageClasse(Minuscule = "Contenue de precision", Majuscule = "Contenues de precision", DisplayMember = "Objectif")]
+    [SelectionCriteria(new Type[] { typeof(Filiere), typeof(Module), typeof(Precision) })]
     public class ContenuePrecision :BaseEntity
    {
 

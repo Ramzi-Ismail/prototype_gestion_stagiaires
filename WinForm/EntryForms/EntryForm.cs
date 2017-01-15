@@ -20,8 +20,12 @@ namespace App.WinForm {
     /// </summary>
     public partial class EntryForm : BaseEntryForm
     {
+        #region Variables
 
-        #region Constructeurs et Initalisation
+
+        #endregion
+
+        #region Constructeurs
         public EntryForm():base()
         {
             InitializeComponent();
@@ -38,15 +42,21 @@ namespace App.WinForm {
             ConteneurFormulaire = this.formulaire;
             InitFormulaire();
         }
-        public EntryForm(IBaseRepository service,BaseEntity entity) : base(service)
+
+
+        public EntryForm(IBaseRepository service,BaseEntity entity,Dictionary<string,object> critereRechercheFiltre) : base(service, entity, critereRechercheFiltre)
         {
             InitializeComponent();
-            this.Entity = entity;
+
+       
+
             ConteneurFormulaire = this.formulaire;
             InitFormulaire();
         }
 
-        
+        #endregion
+
+        #region Création du formulaire
 
         /// <summary>
         /// Création et Initalisation des contrôles du formulaire
@@ -179,13 +189,20 @@ namespace App.WinForm {
                     List<BaseEntity> ls_default_value = null;
                     if (this.Entity != null) {
                         IList ls_obj = item.GetValue(this.Entity) as IList;
-                        ls_default_value = ls_obj.Cast<BaseEntity>().ToList();
+
+                        if(ls_obj != null)  ls_default_value = ls_obj.Cast<BaseEntity>().ToList();
                     }
 
                     
              
                     InputManyToManyControle InputManyToManyControle = new InputManyToManyControle(item,ls_default_value, this.Entity);
-                        tabPage.Controls.Add(InputManyToManyControle);
+
+                    InputManyToManyControle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+           | System.Windows.Forms.AnchorStyles.Left)
+           | System.Windows.Forms.AnchorStyles.Right)));
+
+
+                    tabPage.Controls.Add(InputManyToManyControle);
               
 
 

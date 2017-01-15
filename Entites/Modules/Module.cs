@@ -8,9 +8,10 @@ namespace App.Modules
 {
     [AffichageDansFormGestion(Titre = "Gestion des modules",TitrePageGridView = "Modules",
         TitreButtonAjouter = "Ajouter un module")]
-    [AffichageClasse(Minuscule="Module", Majuscule = "Modules")]
+    [AffichageClasse(Minuscule="Module", Majuscule = "Modules",DisplayMember = "Nom")]
     public class Module : BaseEntity
     {
+        public override string ToString() => this.Nom;
 
         [AffichagePropriete(Titre = "Nom du module", isGridView = true, isFormulaire = true,
             isOblegatoir = true,   Ordre = 1, WidthColonne = 200 )]
@@ -72,6 +73,6 @@ namespace App.Modules
         public virtual List<Precision> Precisions { set; get; }
 
 
-      public override string ToString() => this.Nom;
+     
     }
 }

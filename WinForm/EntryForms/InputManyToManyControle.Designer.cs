@@ -39,19 +39,25 @@
             // 
             // groupBoxFilter
             // 
-            this.groupBoxFilter.Location = new System.Drawing.Point(12, 0);
+            this.groupBoxFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxFilter.Location = new System.Drawing.Point(12, 3);
             this.groupBoxFilter.Name = "groupBoxFilter";
-            this.groupBoxFilter.Size = new System.Drawing.Size(200, 100);
+            this.groupBoxFilter.Size = new System.Drawing.Size(262, 100);
             this.groupBoxFilter.TabIndex = 0;
             this.groupBoxFilter.TabStop = false;
             this.groupBoxFilter.Text = "Filtre";
             // 
             // groupBoxListChoices
             // 
+            this.groupBoxListChoices.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxListChoices.Controls.Add(this.listBoxChoices);
             this.groupBoxListChoices.Location = new System.Drawing.Point(12, 109);
             this.groupBoxListChoices.Name = "groupBoxListChoices";
-            this.groupBoxListChoices.Size = new System.Drawing.Size(200, 206);
+            this.groupBoxListChoices.Size = new System.Drawing.Size(262, 206);
             this.groupBoxListChoices.TabIndex = 1;
             this.groupBoxListChoices.TabStop = false;
             this.groupBoxListChoices.Text = "Liste de choix";
@@ -67,10 +73,13 @@
             // 
             // groupBoxDisplaySelected
             // 
+            this.groupBoxDisplaySelected.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxDisplaySelected.Controls.Add(this.labelDisplaySelectedEntity);
             this.groupBoxDisplaySelected.Location = new System.Drawing.Point(12, 321);
             this.groupBoxDisplaySelected.Name = "groupBoxDisplaySelected";
-            this.groupBoxDisplaySelected.Size = new System.Drawing.Size(200, 100);
+            this.groupBoxDisplaySelected.Size = new System.Drawing.Size(262, 100);
             this.groupBoxDisplaySelected.TabIndex = 2;
             this.groupBoxDisplaySelected.TabStop = false;
             this.groupBoxDisplaySelected.Text = "Détaille de la valeur selectioné";
@@ -92,7 +101,7 @@
             this.Controls.Add(this.groupBoxListChoices);
             this.Controls.Add(this.groupBoxFilter);
             this.Name = "InputManyToManyControle";
-            this.Size = new System.Drawing.Size(226, 449);
+            this.Size = new System.Drawing.Size(283, 449);
             this.groupBoxListChoices.ResumeLayout(false);
             this.groupBoxDisplaySelected.ResumeLayout(false);
             this.groupBoxDisplaySelected.PerformLayout();

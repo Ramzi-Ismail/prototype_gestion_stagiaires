@@ -4,6 +4,7 @@
 // Purpose: Definition of Class PrevisionSeance
 
 using App.Formations;
+using App.GestionStagiaires;
 using App.Modules;
 using App.WinForm.Annotation;
 using System;
@@ -46,11 +47,11 @@ namespace App.Formations
 
         [AffichagePropriete(Titre = "Contenue",
         Relation = "ManyToMany", isFormulaire = true, isGridView = true, Ordre = 20)]
-        [SelectionCriteria(new Type[] { typeof(Module),typeof(Precision) })]
+        [SelectionCriteria(new Type[] { typeof(Filiere), typeof(Module),typeof(Precision) })]
         public virtual List<ContenuePrecision> contenuePrecision { set; get; }
 
         [AffichagePropriete(Titre = "Activités",
-        Relation = "ManyToMany", isGridView = true, Ordre = 21)]
+        Relation = "ManyToMany", isGridView = true,isFormulaire =true, Ordre = 21)]
         public virtual List<Activite> Activites { set; get; }
 
 

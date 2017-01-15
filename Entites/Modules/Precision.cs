@@ -1,3 +1,4 @@
+using App.GestionStagiaires;
 using App.WinForm.Annotation;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ namespace App.Modules
     [AffichageDansFormGestion(Titre = "Gestion des précision", siAffichageAvecOrdre = true,
        TitrePageGridView = "Précision",
        TitreButtonAjouter = "Ajouter une précision")]
+    [AffichageClasse(Minuscule = "Précision", Majuscule = "Précisions", DisplayMember = "Nom")]
     public class Precision : BaseEntity
    {
         public override string ToString() => this.Nom;
