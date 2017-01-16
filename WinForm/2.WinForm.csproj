@@ -50,17 +50,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntryForms\InputManyToManyControle.cs">
+    <Compile Include="EntryForms\InputCollectionControle.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EntryForms\InputManyToManyControle.Designer.cs">
-      <DependentUpon>InputManyToManyControle.cs</DependentUpon>
+    <Compile Include="EntryForms\InputCollectionControle.Designer.cs">
+      <DependentUpon>InputCollectionControle.cs</DependentUpon>
     </Compile>
-    <Compile Include="EntryForms\InputManyToOneControle.cs">
+    <Compile Include="EntryForms\InputComboBoxControle.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EntryForms\InputManyToOneControle.Designer.cs">
-      <DependentUpon>InputManyToOneControle.cs</DependentUpon>
+    <Compile Include="EntryForms\InputComboBoxControle.Designer.cs">
+      <DependentUpon>InputComboBoxControle.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -109,8 +109,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="EntryForms\InputManyToManyControle.resx">
-      <DependentUpon>InputManyToManyControle.cs</DependentUpon>
+    <EmbeddedResource Include="EntryForms\InputCollectionControle.resx">
+      <DependentUpon>InputCollectionControle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EntryForms\InputComboBoxControle.resx">
+      <DependentUpon>InputComboBoxControle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

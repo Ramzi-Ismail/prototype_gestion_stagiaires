@@ -36,6 +36,8 @@ namespace App.WinForm {
         /// Constructeur principale
         /// </summary>
         /// <param name="service">Instance de ServerManager qui gérer l'entity en cours gestion</param>
+        /// 
+    
         public EntryForm(IBaseRepository service) : base(service)
         {
             InitializeComponent();
@@ -156,11 +158,35 @@ namespace App.WinForm {
                 //
                 if (AffichagePropriete.Relation == "ManyToOne")
                     {
+
+                    if (AffichagePropriete.FilterSelection)
+                    {
+                        InputComboBox InputComboBox = new InputComboBox(item.PropertyType,
+                            this.Entity, 
+                            InputComboBox.MainContainers.Panel, 
+                            InputComboBox.Directions.Vertical);
+                        
+                        InputComboBox.Location = new System.Drawing.Point(x_control, y - 3);
+                        InputComboBox.Name = char.ToLower(item.Name[0]) + item.Name.Substring(1) + "ComboBox";
+                        InputComboBox.Size = new System.Drawing.Size(200, 100); y += 80;
+                        InputComboBox.TabIndex = index++;
+
+                       
+                        this.formulaire.Controls.Add(InputComboBox);
+
+                        if (AffichagePropriete.isOblegatoir)
+                            InputComboBox.Validating += ComboBox_Validating;
+
+                    }
+                    else {
+
+
                         Type ServicesEntityType = typeof(BaseRepository<>).MakeGenericType(item.PropertyType);
-                        IBaseRepository ServicesEntity = (IBaseRepository) Activator.CreateInstance(ServicesEntityType);
+                        IBaseRepository ServicesEntity = (IBaseRepository)Activator.CreateInstance(ServicesEntityType);
                         List<object> ls = ServicesEntity.GetAllDetached();
 
                         ComboBox comboBox = new ComboBox();
+
                         comboBox.Location = new System.Drawing.Point(x_control, y - 3);
                         comboBox.Name = char.ToLower(item.Name[0]) + item.Name.Substring(1) + "ComboBox";
                         comboBox.Size = new System.Drawing.Size(200, 20);
@@ -170,10 +196,12 @@ namespace App.WinForm {
                         comboBox.DataSource = ls;
                         this.formulaire.Controls.Add(comboBox);
 
-                       if (AffichagePropriete.isOblegatoir)
-                        comboBox.Validating += ComboBox_Validating;
+                        if (AffichagePropriete.isOblegatoir)
+                            comboBox.Validating += ComboBox_Validating;
 
                     }
+
+                }
 
                 //
                 // Création des champs de type BaseEntity : ManyToOne
@@ -195,14 +223,14 @@ namespace App.WinForm {
 
                     
              
-                    InputManyToManyControle InputManyToManyControle = new InputManyToManyControle(item,ls_default_value, this.Entity);
+                    InputCollectionControle InputCollectionControle = new InputCollectionControle(item,ls_default_value, this.Entity);
 
-                    InputManyToManyControle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                    InputCollectionControle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
            | System.Windows.Forms.AnchorStyles.Left)
            | System.Windows.Forms.AnchorStyles.Right)));
 
 
-                    tabPage.Controls.Add(InputManyToManyControle);
+                    tabPage.Controls.Add(InputCollectionControle);
               
 
 

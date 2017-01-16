@@ -1,6 +1,6 @@
 ﻿namespace App.WinForm
 {
-    partial class InputManyToOneControle
+    partial class InputComboBox
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -28,8 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // InputComboBox
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Name = "InputComboBox";
+            this.Size = new System.Drawing.Size(311, 175);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

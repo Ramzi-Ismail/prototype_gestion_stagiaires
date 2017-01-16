@@ -1,6 +1,6 @@
 ﻿namespace App.WinForm
 {
-    partial class InputManyToManyControle
+    partial class InputCollectionControle
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -93,14 +93,14 @@
             this.labelDisplaySelectedEntity.TabIndex = 0;
             this.labelDisplaySelectedEntity.Text = "label1";
             // 
-            // InputManyToManyControle
+            // InputCollectionControle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBoxDisplaySelected);
             this.Controls.Add(this.groupBoxListChoices);
             this.Controls.Add(this.groupBoxFilter);
-            this.Name = "InputManyToManyControle";
+            this.Name = "InputCollectionControle";
             this.Size = new System.Drawing.Size(283, 449);
             this.groupBoxListChoices.ResumeLayout(false);
             this.groupBoxDisplaySelected.ResumeLayout(false);

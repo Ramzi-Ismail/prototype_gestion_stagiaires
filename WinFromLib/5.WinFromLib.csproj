@@ -49,6 +49,7 @@
     <Compile Include="Annotation\AffichageGestionAttribute.cs" />
     <Compile Include="Annotation\SelectionCriteriaAttribute.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Exceptions\PropertyDoesNotExistException.cs" />
     <Compile Include="Linq\LinqExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validation\MessageValidation.cs" />

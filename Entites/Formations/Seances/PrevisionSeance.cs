@@ -57,7 +57,7 @@ namespace App.Formations
 
 
         [AffichagePropriete(Titre = "Module", isGridView = true, isFormulaire = true,
-         Relation = "ManyToOne", Filtre = true, isOblegatoir = true, Ordre = 11, WidthColonne = 100)]
+         Relation = "ManyToOne", FilterSelection=true, Filtre = true, isOblegatoir = true, Ordre = 11, WidthColonne = 100)]
       
         public virtual Module Module { set; get; }
 

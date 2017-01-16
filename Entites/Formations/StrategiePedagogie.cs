@@ -21,10 +21,10 @@ namespace App.Formations
              isOblegatoir = true, Ordre = 1, WidthColonne = 200)]
 
 
-        public String Titre;
+        public String Titre { set; get; }
         [AffichagePropriete(Titre = "Description", isGridView = true, isFormulaire = true,
           MultiLine =true,  Ordre = 2, WidthColonne = 400)]
-        public String Description;
- 
-   }
+        public String Description { set; get; }
+
+    }
 }

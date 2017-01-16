@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace App.WinForm.Annotation
 {
+    [AttributeUsage(AttributeTargets.Property,  AllowMultiple = false)]
     public class AffichageProprieteAttribute : Attribute
     {
         public static string RELATION_MANYTOONE = "ManyToOne";
@@ -72,5 +73,10 @@ namespace App.WinForm.Annotation
         /// </summary>
         public string Unite { get; set; }
         public List<string> CriteriaFilter { get; set; }
+
+        /// <summary>
+        /// Utilisation de filtre de selection pour le comboBox
+        /// </summary>
+        public bool FilterSelection { get; set; }
     }
 }

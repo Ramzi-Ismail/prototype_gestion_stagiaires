@@ -84,6 +84,10 @@
     <Compile Include="Migrations\201701131644377_ColonneOrdre_update_2.Designer.cs">
       <DependentUpon>201701131644377_ColonneOrdre_update_2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701151053383_Changement1.cs" />
+    <Compile Include="Migrations\201701151053383_Changement1.Designer.cs">
+      <DependentUpon>201701151053383_Changement1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Stagiaires\FilieresService.cs" />
     <Compile Include="GestionFormations\FormateursService.cs" />
     <Compile Include="Stagiaires\GroupesService.cs" />
@@ -159,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701131644377_ColonneOrdre_update_2.resx">
       <DependentUpon>201701131644377_ColonneOrdre_update_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701151053383_Changement1.resx">
+      <DependentUpon>201701151053383_Changement1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

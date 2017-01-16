@@ -2,6 +2,7 @@
 
 namespace App.WinForm.Annotation
 {
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
     public class AffichageClasseAttribute : Attribute
     {
         /// <summary>

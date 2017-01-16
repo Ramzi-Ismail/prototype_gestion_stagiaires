@@ -9,6 +9,7 @@ namespace App.Modules
     [AffichageDansFormGestion(Titre = "Gestion des modules",TitrePageGridView = "Modules",
         TitreButtonAjouter = "Ajouter un module")]
     [AffichageClasse(Minuscule="Module", Majuscule = "Modules",DisplayMember = "Nom")]
+    [SelectionCriteria(new Type[] { typeof(Filiere) })]
     public class Module : BaseEntity
     {
         public override string ToString() => this.Nom;

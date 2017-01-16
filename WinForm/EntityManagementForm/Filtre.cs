@@ -50,42 +50,66 @@ namespace App.WinForm
                 if (AffichagePropriete.Relation != String.Empty &&
                  AffichagePropriete.Relation == AffichageProprieteAttribute.RELATION_MANYTOONE)
                 {
-                    // 
-                    // comboBoxRelationManyToOne
-                    // 
-                    ComboBox comboBoxRelationManyToOne = new ComboBox();
-                    comboBoxRelationManyToOne.FormattingEnabled = true;
-                    comboBoxRelationManyToOne.Location = new System.Drawing.Point(x, 37);
-                    comboBoxRelationManyToOne.Name =  propertyInfo.Name;
-                    comboBoxRelationManyToOne.Size = new System.Drawing.Size(width_controle, height_controle);
-                    comboBoxRelationManyToOne.TabIndex = TabIndex++;
-                    this.groupBoxFiltrage.Controls.Add(comboBoxRelationManyToOne);
-                    //
-                    // Remplissage de ComboBox
-                    //
-                    Type ServicesEntityEnRelationType = typeof(BaseRepository<>).MakeGenericType(propertyInfo.PropertyType);
-                    IBaseRepository ServicesEntity = (IBaseRepository)Activator.CreateInstance(ServicesEntityEnRelationType);
-                    List<object> ls = ServicesEntity.GetAllDetached();
-                    comboBoxRelationManyToOne.ValueMember = "Id";
-                    comboBoxRelationManyToOne.DisplayMember = AffichagePropriete.DisplayMember;
-                    comboBoxRelationManyToOne.DataSource = ls;
-                    if(AffichagePropriete.isValeurFiltreVide) comboBoxRelationManyToOne.SelectedIndex = -1;
-                    // Affectation de valeur initial
-                    if (this.ValeursFiltre != null && this.ValeursFiltre.ContainsKey(propertyInfo.Name)) {
-                        comboBoxRelationManyToOne.CreateControl();
-                        comboBoxRelationManyToOne.SelectedValue = Convert.ToInt64(this.ValeursFiltre[propertyInfo.Name]);
-                    }
-                    // Recalcule le widht de comboBox
-                    if(ls.Count > 0) { 
-                        int width = ls.Max(o => ((BaseEntity)o).ToString().Count()) * 5 + 20;
-                        comboBoxRelationManyToOne.Size = new System.Drawing.Size(width, height_controle);
-                        if (width > 200) x += (200 - width);
-                    }
+                     
 
-                    //
-                    // Evénement Change sur le ComboBox : Actualisation de DataGrid
-                    //
-                    comboBoxRelationManyToOne.SelectedValueChanged += Filtre_ComboBox_SelectedValueChanged;
+                    if (AffichagePropriete.FilterSelection)
+                    {
+                        InputComboBox comboBoxRelationManyToOne = new InputComboBox(
+                            propertyInfo.PropertyType,
+                            null, 
+                            InputComboBox.MainContainers.Panel, 
+                            InputComboBox.Directions.Horizontal);
+                        comboBoxRelationManyToOne.Location = new System.Drawing.Point(x, 1);
+                        comboBoxRelationManyToOne.Name = propertyInfo.Name;
+                       // comboBoxRelationManyToOne.Size = new System.Drawing.Size(width_controle, height_controle);
+                        comboBoxRelationManyToOne.TabIndex = TabIndex++;
+                        this.groupBoxFiltrage.Controls.Add(comboBoxRelationManyToOne);
+
+
+                    }
+                    else
+                    {
+                        // 
+                        // comboBoxRelationManyToOne
+                        // 
+                        ComboBox comboBoxRelationManyToOne = new ComboBox();
+                        comboBoxRelationManyToOne.FormattingEnabled = true;
+                        comboBoxRelationManyToOne.Location = new System.Drawing.Point(x, 37);
+                        comboBoxRelationManyToOne.Name = propertyInfo.Name;
+                        comboBoxRelationManyToOne.Size = new System.Drawing.Size(width_controle, height_controle);
+                        comboBoxRelationManyToOne.TabIndex = TabIndex++;
+                        this.groupBoxFiltrage.Controls.Add(comboBoxRelationManyToOne);
+                        //
+                        // Remplissage de ComboBox
+                        //
+                        Type ServicesEntityEnRelationType = typeof(BaseRepository<>).MakeGenericType(propertyInfo.PropertyType);
+                        IBaseRepository ServicesEntity = (IBaseRepository)Activator.CreateInstance(ServicesEntityEnRelationType);
+                        List<object> ls = ServicesEntity.GetAllDetached();
+                        comboBoxRelationManyToOne.ValueMember = "Id";
+                        comboBoxRelationManyToOne.DisplayMember = AffichagePropriete.DisplayMember;
+                        comboBoxRelationManyToOne.DataSource = ls;
+                        if (AffichagePropriete.isValeurFiltreVide) comboBoxRelationManyToOne.SelectedIndex = -1;
+                        // Affectation de valeur initial
+                        if (this.ValeursFiltre != null && this.ValeursFiltre.ContainsKey(propertyInfo.Name))
+                        {
+                            comboBoxRelationManyToOne.CreateControl();
+                            comboBoxRelationManyToOne.SelectedValue = Convert.ToInt64(this.ValeursFiltre[propertyInfo.Name]);
+                        }
+                        // Recalcule le widht de comboBox
+                        if (ls.Count > 0)
+                        {
+                            int width = ls.Max(o => ((BaseEntity)o).ToString().Count()) * 5 + 20;
+                            comboBoxRelationManyToOne.Size = new System.Drawing.Size(width, height_controle);
+                            if (width > 200) x += (200 - width);
+                        }
+
+                        //
+                        // Evénement Change sur le ComboBox : Actualisation de DataGrid
+                        //
+                        comboBoxRelationManyToOne.SelectedValueChanged += Filtre_ComboBox_SelectedValueChanged;
+
+                    }
+                  
 
                 }
                 if (propertyInfo.PropertyType.Name == "String")
@@ -220,12 +244,25 @@ namespace App.WinForm
                         break;
                     default: // Dans le cas d'un objet de type BaseEntity
                         {
-                            ComboBox ComboBoxEntity = (ComboBox)this.groupBoxFiltrage.Controls.Find(propertyInfo.Name, true).First();
-                            BaseEntity obj = (BaseEntity)ComboBoxEntity.SelectedItem;
+                            if (AffichagePropriete.FilterSelection)
+                            {
+                                InputComboBox ComboBoxEntity = (InputComboBox)this.groupBoxFiltrage.Controls.Find(propertyInfo.Name, true).First();
+                                BaseEntity obj = (BaseEntity)ComboBoxEntity.SelectedItem;
+                                if (obj != null && Convert.ToInt32(obj.Id) != 0)
+                                    RechercheInfos[propertyInfo.Name] = ComboBoxEntity.SelectedValue;
+                            }
+                            else
+                            {
+                                ComboBox ComboBoxEntity = (ComboBox)this.groupBoxFiltrage.Controls.Find(propertyInfo.Name, true).First();
+                                BaseEntity obj = (BaseEntity)ComboBoxEntity.SelectedItem;
+                                if (obj != null && Convert.ToInt32(obj.Id) != 0)
+                                    RechercheInfos[propertyInfo.Name] = ComboBoxEntity.SelectedValue;
+
+                            }
+                           
 
 
-                            if (obj != null && Convert.ToInt32(obj.Id) != 0)
-                                RechercheInfos[propertyInfo.Name] = ComboBoxEntity.SelectedValue;
+                            
                         }
                         break;
                 }
