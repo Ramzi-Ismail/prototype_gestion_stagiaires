@@ -49,11 +49,12 @@
   <ItemGroup>
     <Compile Include="Base\BaseEntity.cs" />
     <Compile Include="Base\IBaseEntity.cs" />
-    <Compile Include="Formations\Activite.cs" />
-    <Compile Include="Formations\AnneeFormation.cs" />
-    <Compile Include="Formations\CategogieActivite.cs" />
+    <Compile Include="Formations\Ferier.cs" />
+    <Compile Include="Formations\Seances\Activite.cs" />
+    <Compile Include="Formations\Jours\AnneeFormation.cs" />
+    <Compile Include="Formations\Seances\CategogieActivite.cs" />
     <Compile Include="Formations\Etablissement\CategogiesSalleFormation.cs" />
-    <Compile Include="Formations\Formateur.cs" />
+    <Compile Include="Formations\Etablissement\Formateur.cs" />
     <Compile Include="Formations\Formation.cs" />
     <Compile Include="Formations\Planing\EmploisTemps.cs" />
     <Compile Include="Formations\Etablissement\Salle.cs" />
@@ -61,7 +62,7 @@
     <Compile Include="Formations\Seances\PrevisionSeance.cs" />
     <Compile Include="Formations\Seances\Seance.cs" />
     <Compile Include="Formations\Seances\Sequences.cs" />
-    <Compile Include="Formations\StrategiePedagogie.cs" />
+    <Compile Include="Formations\Seances\StrategiePedagogie.cs" />
     <Compile Include="Livres\Livre.cs" />
     <Compile Include="Livres\MaisonEdition.cs" />
     <Compile Include="Modules\ContenuePrecision.cs" />

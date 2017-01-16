@@ -6,6 +6,11 @@ namespace App.WinForm.Annotation
     public class AffichageDansFormGestionAttribute : Attribute
     {
         /// <summary>
+        /// Le champs à utiliser pour le trie en ordre
+        /// </summary>
+        public string orderBy { get; set; }
+
+        /// <summary>
         /// Indique si l'affichage des objet dans dataGrid se fait avec l'odre
         /// </summary>
         public bool siAffichageAvecOrdre { get; set; }

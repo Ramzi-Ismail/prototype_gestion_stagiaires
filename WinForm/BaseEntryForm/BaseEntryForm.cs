@@ -355,7 +355,7 @@ namespace App.WinForm
 
 
         /// <summary>
-        /// Lire les information du formulaire vers l'objet
+        /// Lire les informations du formulaire vers l'objet : Entity
         /// </summary>
         protected virtual void Lire()
         {

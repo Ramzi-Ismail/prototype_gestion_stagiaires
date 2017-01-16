@@ -54,6 +54,11 @@
   <ItemGroup>
     <Compile Include="DynamiqueLinq.cs" />
     <Compile Include="Linq\LinqExtension.cs" />
+    <Compile Include="ModelT4\EntityServerModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityServerModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RechercheModuleParFiliere.cs" />
@@ -70,6 +75,15 @@
       <Project>{3940f5ca-c8c0-4a72-8a1c-0ad50e5d18ca}</Project>
       <Name>2.Services</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ModelT4\EntityServerModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EntityServerModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

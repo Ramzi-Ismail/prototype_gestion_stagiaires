@@ -37,13 +37,9 @@
             this.tâchesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.projetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miniGroupesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.livresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gestionDesLivresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gestionMaisonDéditionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.séancesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionDesSéancesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.prévisionDesSéancesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pédagogieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.formationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionDesFormationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionDesModulesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,19 +51,18 @@
             this.sallesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.catégoriesSalleDeFormationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionDesSallesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fériésToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.stagiairesToolStripMenuItem,
-            this.gestionDesProjetsToolStripMenuItem,
-            this.livresToolStripMenuItem,
             this.séancesToolStripMenuItem,
-            this.pédagogieToolStripMenuItem,
+            this.stagiairesToolStripMenuItem,
             this.formationsToolStripMenuItem,
             this.gestionDesModulesToolStripMenuItem,
+            this.gestionDesProjetsToolStripMenuItem,
             this.etablissementDeFormationToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -111,51 +106,29 @@
             // tâchesToolStripMenuItem
             // 
             this.tâchesToolStripMenuItem.Name = "tâchesToolStripMenuItem";
-            this.tâchesToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.tâchesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.tâchesToolStripMenuItem.Text = "Tâches";
             this.tâchesToolStripMenuItem.Click += new System.EventHandler(this.tâchesToolStripMenuItem_Click);
             // 
             // projetsToolStripMenuItem
             // 
             this.projetsToolStripMenuItem.Name = "projetsToolStripMenuItem";
-            this.projetsToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.projetsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.projetsToolStripMenuItem.Text = "Projets";
             this.projetsToolStripMenuItem.Click += new System.EventHandler(this.projetsToolStripMenuItem_Click);
             // 
             // miniGroupesToolStripMenuItem
             // 
             this.miniGroupesToolStripMenuItem.Name = "miniGroupesToolStripMenuItem";
-            this.miniGroupesToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.miniGroupesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.miniGroupesToolStripMenuItem.Text = "Mini groupes";
-            // 
-            // livresToolStripMenuItem
-            // 
-            this.livresToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gestionDesLivresToolStripMenuItem,
-            this.gestionMaisonDéditionToolStripMenuItem});
-            this.livresToolStripMenuItem.Name = "livresToolStripMenuItem";
-            this.livresToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
-            this.livresToolStripMenuItem.Text = "Livres";
-            // 
-            // gestionDesLivresToolStripMenuItem
-            // 
-            this.gestionDesLivresToolStripMenuItem.Name = "gestionDesLivresToolStripMenuItem";
-            this.gestionDesLivresToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.gestionDesLivresToolStripMenuItem.Text = "Gestion des livres";
-            this.gestionDesLivresToolStripMenuItem.Click += new System.EventHandler(this.gestionDesLivresToolStripMenuItem_Click);
-            // 
-            // gestionMaisonDéditionToolStripMenuItem
-            // 
-            this.gestionMaisonDéditionToolStripMenuItem.Name = "gestionMaisonDéditionToolStripMenuItem";
-            this.gestionMaisonDéditionToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.gestionMaisonDéditionToolStripMenuItem.Text = "Gestion Maison d\'édition";
-            this.gestionMaisonDéditionToolStripMenuItem.Click += new System.EventHandler(this.gestionMaisonDéditionToolStripMenuItem_Click);
             // 
             // séancesToolStripMenuItem
             // 
             this.séancesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gestionDesSéancesToolStripMenuItem,
-            this.prévisionDesSéancesToolStripMenuItem});
+            this.prévisionDesSéancesToolStripMenuItem,
+            this.fériésToolStripMenuItem});
             this.séancesToolStripMenuItem.Name = "séancesToolStripMenuItem";
             this.séancesToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.séancesToolStripMenuItem.Text = "Séances";
@@ -173,12 +146,6 @@
             this.prévisionDesSéancesToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.prévisionDesSéancesToolStripMenuItem.Text = "Prévision des séances";
             this.prévisionDesSéancesToolStripMenuItem.Click += new System.EventHandler(this.prévisionDesSéancesToolStripMenuItem_Click);
-            // 
-            // pédagogieToolStripMenuItem
-            // 
-            this.pédagogieToolStripMenuItem.Name = "pédagogieToolStripMenuItem";
-            this.pédagogieToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
-            this.pédagogieToolStripMenuItem.Text = "Pédagogie";
             // 
             // formationsToolStripMenuItem
             // 
@@ -266,6 +233,13 @@
             this.gestionDesSallesToolStripMenuItem.Text = "Gestion des salles";
             this.gestionDesSallesToolStripMenuItem.Click += new System.EventHandler(this.gestionDesSallesToolStripMenuItem_Click);
             // 
+            // fériésToolStripMenuItem
+            // 
+            this.fériésToolStripMenuItem.Name = "fériésToolStripMenuItem";
+            this.fériésToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.fériésToolStripMenuItem.Text = "Fériés";
+            this.fériésToolStripMenuItem.Click += new System.EventHandler(this.fériésToolStripMenuItem_Click);
+            // 
             // FormMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -304,17 +278,14 @@
         private System.Windows.Forms.ToolStripMenuItem gestionDesModulesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionDesModulesToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem gestionDesGroupesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem livresToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gestionDesLivresToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gestionMaisonDéditionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sallesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem séancesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionDesSéancesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem prévisionDesSéancesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pédagogieToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem formationsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionDesFormationsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem catégoriesSalleDeFormationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionDesSallesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fériésToolStripMenuItem;
     }
 }

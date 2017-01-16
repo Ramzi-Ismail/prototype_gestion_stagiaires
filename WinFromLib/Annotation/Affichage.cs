@@ -12,6 +12,12 @@ namespace App.WinForm.Annotation
         public static string RELATION_MANYTOONE = "ManyToOne";
         public static string RELATION_MANYTOMANY = "ManyToMany";
 
+
+        public AffichageProprieteAttribute()
+        {
+            Enable = true;
+        }
+
         /// <summary>
         /// Indique le nom à afficher
         /// </summary>
@@ -78,5 +84,11 @@ namespace App.WinForm.Annotation
         /// Utilisation de filtre de selection pour le comboBox
         /// </summary>
         public bool FilterSelection { get; set; }
+
+        /// <summary>
+        /// si l'affichage est activté ou non
+        /// La valeur par défaut est vrais
+        /// </summary>
+        public bool Enable { get; set; }
     }
 }

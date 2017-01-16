@@ -16,8 +16,8 @@
     public class ModelContext : DbContext
     {
         // public ModelContext() : base("name = ModelStagiaires")
-       public ModelContext() : base(@"data source =localhost\SQLEXPRESS; initial catalog = AppGestionStagiaires.ModelStagiaires; user = sa; password = admintp4; MultipleActiveResultSets = True; App = EntityFramework")
-      // public ModelContext() : base(@"data source =192.168.1.57\SQLEXPRESS; initial catalog = CplusESSARRAJ; user = sa; password = admintp4; MultipleActiveResultSets = True; App = EntityFramework")
+      // public ModelContext() : base(@"data source =localhost\SQLEXPRESS; initial catalog = AppGestionStagiaires.ModelStagiaires; user = sa; password = admintp4; MultipleActiveResultSets = True; App = EntityFramework")
+       public ModelContext() : base(@"data source =192.168.1.57\SQLEXPRESS; initial catalog = CplusESSARRAJ; user = sa; password = admintp4; MultipleActiveResultSets = True; App = EntityFramework")
         // public ModelContext()
         {
           
@@ -43,9 +43,11 @@
         public virtual DbSet<StrategiePedagogie> StrategiePedagogies { get; set; }
         
         public virtual DbSet<CategogiesSalleFormation> CategogiesSalleFormations { get; set; }
+
+        public virtual DbSet<Ferier> Feriers { get; set; }
         
-        
-        
+
+
 
         // Gestion Livre 
         public virtual DbSet<Livre> Livres { get; set; }

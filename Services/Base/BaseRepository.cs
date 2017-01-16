@@ -163,6 +163,10 @@ namespace App
         #endregion
 
         #region CRUD
+        public int SaveChanges()
+        {
+            return this.Context.SaveChanges();
+        }
         public virtual int Delete(T item)
         {
             var original = DbSet.Find(item.Id);
@@ -279,6 +283,7 @@ namespace App
         }
         #endregion
 
+
         public virtual void Dispose()
         {
             if (this.Context != null)
@@ -287,12 +292,6 @@ namespace App
             }
         }
       
-
-        public int SaveChanges()
-        {
-            return this.Context.SaveChanges();
-        }
-
       
         /// <summary>
         /// Ajouter un nouvelle objet avec l'état Added qui sera ajouté 
@@ -303,28 +302,12 @@ namespace App
             this.DbSet.Add(Activator.CreateInstance<T>());
         }
 
-        //public static implicit operator BaseRepository<T>(GroupesService v)
-        //{
-
-        //}
-
-        //public virtual string GetNomObjet()
-        //{
-        //    BaseEntity obj = Activator.CreateInstance<T>();
-        //    return obj.GetNomObjet();
-        //}
-        //public virtual string GetNomObjets()
-        //{
-        //    BaseEntity obj = Activator.CreateInstance<T>();
-        //    return obj.GetNomObjets();
-        //}
-
-       
-
         ModelContext IBaseRepository.Context()
         {
             return this.Context;
         }
+
+        #region CreateInstance
 
         public object CreateInstanceObjet()
         {
@@ -338,9 +321,10 @@ namespace App
             IBaseRepository EntityService = (IBaseRepository) Activator.CreateInstance(TypeEntityService);
             return EntityService;
         }
+        #endregion
 
 
-
+        #region Annotation
         /// <summary>
         /// Obtien l'annotion 'AffichageDansFormGestion' de la classe Entity
         /// pour le paramétrage des titre de l'interface de gestion
@@ -352,6 +336,19 @@ namespace App
             if (ls_attribut == null || ls_attribut.Count() == 0) return new AffichageDansFormGestionAttribute();
             AffichageDansFormGestionAttribute AffichageDansFormGestion = (AffichageDansFormGestionAttribute)ls_attribut[0];
             return AffichageDansFormGestion;
+        }
+
+        #endregion
+
+
+
+        /// <summary>
+        /// Indique que les valeurs de l'entity sont changé
+        /// </summary>
+        public virtual void ValueChanged()
+        {
+           // Cette méthode est surcharger pour appliquer les règle de gestions 
+          
         }
     }
 }

@@ -52,7 +52,7 @@ namespace App
 
         private void projetsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AfficherFormulaire.Afficher(new GestionProjets.FormGestionProjet());
+            AfficherFormulaire.AfficherUneGestion<Projet>();
         }
 
         private void FormMenu_Load(object sender, EventArgs e)
@@ -111,7 +111,7 @@ namespace App
 
         private void tâchesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AfficherFormulaire.Afficher(new FormGestionTaches());
+            AfficherFormulaire.AfficherUneGestion<Tache>();
         }
 
         private void gestionDesModulesToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -195,6 +195,11 @@ namespace App
         private void gestionDesPréalablesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AfficherFormulaire.AfficherUneGestion<Prealable>();
+        }
+
+        private void fériésToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AfficherFormulaire.AfficherUneGestion<Ferier>();
         }
     }
 }

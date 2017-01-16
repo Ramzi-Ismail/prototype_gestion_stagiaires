@@ -11,6 +11,7 @@ namespace App.GestionProjets
     [AffichageDansFormGestion (Titre="Gestion des tâches",
         TitrePageGridView="Tâches",
         TitreButtonAjouter="Ajouter une tâche")]
+    [AffichageClasse(Minuscule = "Tâche", Majuscule = "Tâches", DisplayMember = "Titre")]
     public class Tache : BaseEntity 
     {
 
@@ -25,6 +26,7 @@ namespace App.GestionProjets
 
         [AffichagePropriete(Titre = "Description", 
             Ordre = 3,
+            MultiLine = true,
             WidthColonne = 200,
             isGridView = true, 
             isFormulaire = true)]
@@ -34,7 +36,9 @@ namespace App.GestionProjets
         [AffichagePropriete( Relation = "ManyToOne", 
             DisplayMember ="Titre",
             Titre = "Projet", 
-            Ordre = 3, 
+            Filtre = true,
+            Ordre = 2,
+            Enable = false, 
             isGridView = true, 
             isFormulaire = true)]
         public virtual Projet Projet {set;get;}

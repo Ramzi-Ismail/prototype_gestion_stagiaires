@@ -20,6 +20,14 @@ namespace App.WinForm
     public partial class InputCollectionControle : UserControl
     {
         #region Variables
+
+        /// <summary>
+        /// Evenement de changement de la valeur
+        /// </summary>
+        public event EventHandler ValueChanged;
+
+
+
         /// <summary>
         /// Les critères de filtre
         /// Le filtre permet de filtre la liste de collection de choix
@@ -52,6 +60,7 @@ namespace App.WinForm
         /// L'objet qui contient la collection
         /// </summary>
         BaseEntity Entity { set; get; }
+      
 
         /// <summary>
         /// Lite des ComboBox 

@@ -34,6 +34,10 @@ namespace App.WinForm
 
         #region Variables
         /// <summary>
+        /// Evénement Value Chnager de ComboBox
+        /// </summary>
+        public event EventHandler ValueChanged;
+        /// <summary>
         /// Direction : Horizontale ou Virtical
         /// </summary>
         public Directions Direction { set; get; }
@@ -97,6 +101,8 @@ namespace App.WinForm
 
             }
         }
+
+       
 
 
         /// <summary>

@@ -12,7 +12,8 @@ using System.ComponentModel.DataAnnotations;
 using App.WinForm.Annotation;
 using System.Collections;
 
-namespace App.WinForm {  
+namespace App.WinForm
+{
 
     /// <summary>
     /// Générer automatiquement le formulaire de saisie
@@ -20,16 +21,26 @@ namespace App.WinForm {
     /// </summary>
     public partial class EntryForm : BaseEntryForm
     {
+
+        /// <summary>
+        /// Indique si la saisie des valeurs provient de l'étape de l'initialisation 
+        /// de la formulaire
+        /// La valeurs par défaut : fasle
+        /// </summary>
+        public bool isStepInitializingValues { get;  set; }
+
+
+
         #region Variables
 
 
         #endregion
 
         #region Constructeurs
-        public EntryForm():base()
+        public EntryForm() : base()
         {
             InitializeComponent();
-      
+
         }
 
         /// <summary>
@@ -37,20 +48,21 @@ namespace App.WinForm {
         /// </summary>
         /// <param name="service">Instance de ServerManager qui gérer l'entity en cours gestion</param>
         /// 
-    
+
         public EntryForm(IBaseRepository service) : base(service)
         {
             InitializeComponent();
+            isStepInitializingValues = false;
             ConteneurFormulaire = this.formulaire;
             InitFormulaire();
         }
 
 
-        public EntryForm(IBaseRepository service,BaseEntity entity,Dictionary<string,object> critereRechercheFiltre) : base(service, entity, critereRechercheFiltre)
+        public EntryForm(IBaseRepository service, BaseEntity entity, Dictionary<string, object> critereRechercheFiltre) : base(service, entity, critereRechercheFiltre)
         {
             InitializeComponent();
 
-       
+
 
             ConteneurFormulaire = this.formulaire;
             InitFormulaire();
@@ -65,7 +77,7 @@ namespace App.WinForm {
         /// </summary>
         private void InitFormulaire()
         {
-            
+
             // La position X et Y
             int y = 35;
             int x_label = 16;
@@ -77,8 +89,7 @@ namespace App.WinForm {
             foreach (PropertyInfo item in ListeChampsFormulaire())
             {
                 // Lecture de l'annotation 
-                AffichageProprieteAttribute AffichagePropriete = (AffichageProprieteAttribute) item.GetCustomAttribute(typeof(AffichageProprieteAttribute));
-
+                AffichageProprieteAttribute AffichagePropriete = (AffichageProprieteAttribute)item.GetCustomAttribute(typeof(AffichageProprieteAttribute));
 
                 //
                 // Cration de label
@@ -91,6 +102,9 @@ namespace App.WinForm {
                 lbl.TabIndex = index++;
                 lbl.Text = AffichagePropriete.Titre;
 
+                // Le contrôle qui représente la propriété
+                Control controlPropriete = null;
+
                 //
                 // Création des champs de type String
                 //
@@ -100,24 +114,28 @@ namespace App.WinForm {
                     // textBoxString
                     // 
                     TextBox textBoxString = new TextBox();
-                    textBoxString.Location = new System.Drawing.Point(x_control, y-3);
-                    textBoxString.Name = char.ToLower(item.Name[0]) + item.Name.Substring(1)   + "TextBox";
+                    textBoxString.Location = new System.Drawing.Point(x_control, y - 3);
+                    textBoxString.Name = char.ToLower(item.Name[0]) + item.Name.Substring(1) + "TextBox";
                     textBoxString.TabIndex = index++;
-                    if(AffichagePropriete.isOblegatoir)
+                    textBoxString.TextChanged += ControlPropriete_ValueChanged;
+
+                    if (AffichagePropriete.isOblegatoir)
                         textBoxString.Validating += textBoxString_Validating;
                     if (AffichagePropriete.MultiLine)
                     {
                         textBoxString.Multiline = true;
                         textBoxString.Size = new System.Drawing.Size(400, 100);
-                         y += 80;
+                        y += 80;
                     }
-                        else
-                        {
+                    else
+                    {
                         textBoxString.Size = new System.Drawing.Size(200, 20);
-                        }
-                       
-                    this.formulaire.Controls.Add(textBoxString);
                     }
+
+                    this.formulaire.Controls.Add(textBoxString);
+
+                    controlPropriete = textBoxString;
+                }
 
                 //
                 // Création des champs de type Int32
@@ -130,55 +148,64 @@ namespace App.WinForm {
                     textBoxInt32.Name = char.ToLower(item.Name[0]) + item.Name.Substring(1) + "TextBox";
                     textBoxInt32.Size = new System.Drawing.Size(200, 20);
                     textBoxInt32.TabIndex = index++;
+                    textBoxInt32.TextChanged += ControlPropriete_ValueChanged;
                     if (AffichagePropriete.isOblegatoir)
                         textBoxInt32.Validating += TextBoxInt32_Validating;
 
                     this.formulaire.Controls.Add(textBoxInt32);
+
+                    controlPropriete = textBoxInt32;
                 }
 
                 //
                 // Création des champs de type DateTime
                 //
                 if (item.PropertyType.Name == "DateTime")
-                    {
-                        DateTimePicker dateTimePicker = new DateTimePicker();
+                {
+                    DateTimePicker dateTimePicker = new DateTimePicker();
                     dateTimePicker.Location = new System.Drawing.Point(x_control, y - 3);
                     dateTimePicker.Name = char.ToLower(item.Name[0]) + item.Name.Substring(1) + "DateTimePicker";
-                 
+
                     dateTimePicker.Size = new System.Drawing.Size(200, 20);
                     dateTimePicker.TabIndex = index++;
+                    dateTimePicker.ValueChanged += ControlPropriete_ValueChanged;
                     if (AffichagePropriete.isOblegatoir)
                         dateTimePicker.Validating += DateTimePicker_Validating;
 
-                        this.formulaire.Controls.Add(dateTimePicker);
-                    }
+                    this.formulaire.Controls.Add(dateTimePicker);
+
+                    controlPropriete = dateTimePicker;
+                }
+
+
 
                 //
                 // Création des champs de type BaseEntity : ManyToOne
                 //
                 if (AffichagePropriete.Relation == "ManyToOne")
-                    {
+                {
 
                     if (AffichagePropriete.FilterSelection)
                     {
                         InputComboBox InputComboBox = new InputComboBox(item.PropertyType,
-                            this.Entity, 
-                            InputComboBox.MainContainers.Panel, 
+                            this.Entity,
+                            InputComboBox.MainContainers.Panel,
                             InputComboBox.Directions.Vertical);
-                        
+
                         InputComboBox.Location = new System.Drawing.Point(x_control, y - 3);
                         InputComboBox.Name = char.ToLower(item.Name[0]) + item.Name.Substring(1) + "ComboBox";
                         InputComboBox.Size = new System.Drawing.Size(200, 100); y += 80;
                         InputComboBox.TabIndex = index++;
+                        InputComboBox.ValueChanged += ControlPropriete_ValueChanged;
 
-                       
                         this.formulaire.Controls.Add(InputComboBox);
 
                         if (AffichagePropriete.isOblegatoir)
                             InputComboBox.Validating += ComboBox_Validating;
 
                     }
-                    else {
+                    else
+                    {
 
 
                         Type ServicesEntityType = typeof(BaseRepository<>).MakeGenericType(item.PropertyType);
@@ -191,6 +218,7 @@ namespace App.WinForm {
                         comboBox.Name = char.ToLower(item.Name[0]) + item.Name.Substring(1) + "ComboBox";
                         comboBox.Size = new System.Drawing.Size(200, 20);
                         comboBox.TabIndex = index++;
+                        comboBox.ValueMemberChanged += ControlPropriete_ValueChanged;
                         comboBox.ValueMember = "Id";
                         comboBox.DisplayMember = AffichagePropriete.DisplayMember;
                         comboBox.DataSource = ls;
@@ -215,15 +243,16 @@ namespace App.WinForm {
 
                     //Valeur par défaut
                     List<BaseEntity> ls_default_value = null;
-                    if (this.Entity != null) {
+                    if (this.Entity != null)
+                    {
                         IList ls_obj = item.GetValue(this.Entity) as IList;
 
-                        if(ls_obj != null)  ls_default_value = ls_obj.Cast<BaseEntity>().ToList();
+                        if (ls_obj != null) ls_default_value = ls_obj.Cast<BaseEntity>().ToList();
                     }
 
-                    
-             
-                    InputCollectionControle InputCollectionControle = new InputCollectionControle(item,ls_default_value, this.Entity);
+
+
+                    InputCollectionControle InputCollectionControle = new InputCollectionControle(item, ls_default_value, this.Entity);
 
                     InputCollectionControle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
            | System.Windows.Forms.AnchorStyles.Left)
@@ -231,15 +260,37 @@ namespace App.WinForm {
 
 
                     tabPage.Controls.Add(InputCollectionControle);
-              
+
+                    InputCollectionControle.ValueChanged += ControlPropriete_ValueChanged;
 
 
 
                 }
 
                 this.formulaire.Controls.Add(lbl);
-               
+
                 y += 25;
+
+            }
+        }
+
+        /// <summary>
+        /// Exécuter aprés le changement de chaque propriété 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ControlPropriete_ValueChanged(object sender, EventArgs e)
+        {
+            if (!this.isStepInitializingValues)
+            {
+                // Lecture informations
+                this.Lire();
+
+                this.Service.ValueChanged();
+                this.isStepInitializingValues = true;
+                this.Afficher();
+                this.isStepInitializingValues = false;
+                // Re-Initialisation des valeurs
 
             }
         }
@@ -266,7 +317,7 @@ namespace App.WinForm {
         #endregion
 
 
-
+        [Obsolete("La fonction est vide, il ne fait rient")]
         /// <summary>
         /// Initialisation des valeurs depuis le fitre
         /// </summary>

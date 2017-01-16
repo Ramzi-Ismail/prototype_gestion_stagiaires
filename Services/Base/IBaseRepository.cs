@@ -53,5 +53,10 @@ namespace App
         /// <param name="TypeEntity">Le type de classe à utiliser dans BaseRepository</param>
         /// <returns></returns>
         IBaseRepository CreateInstance_Of_Service_From_TypeEntity(Type TypeEntity);
+
+        /// <summary>
+        /// Indique que les valeurs de l'entity sont changé
+        /// </summary>
+        void ValueChanged();
     }
 }

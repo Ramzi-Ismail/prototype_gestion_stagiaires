@@ -48,10 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\BaseRepository.cs" />
-    <Compile Include="GestionFormations\PrevisionSeancesService.cs" />
-    <Compile Include="GestionFormations\SeancesService.cs" />
-    <Compile Include="GestionProjets\ProjetsService.cs" />
-    <Compile Include="GestionProjets\TachesService.cs" />
+    <Compile Include="Base\IService.cs" />
+    <Compile Include="Formations\FeriesService.cs" />
+    <Compile Include="Formations\PrevisionSeancesService.cs" />
+    <Compile Include="Formations\SeancesService.cs" />
+    <Compile Include="Projets\ProjetsService.cs" />
+    <Compile Include="Projets\TachesService.cs" />
     <Compile Include="Migrations\201701121004335_AddRelationGroupeAnneeFormation.cs" />
     <Compile Include="Migrations\201701121004335_AddRelationGroupeAnneeFormation.Designer.cs">
       <DependentUpon>201701121004335_AddRelationGroupeAnneeFormation.cs</DependentUpon>
@@ -88,8 +90,16 @@
     <Compile Include="Migrations\201701151053383_Changement1.Designer.cs">
       <DependentUpon>201701151053383_Changement1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701160810316_Update_GestionPorjet_Required_Titre_Tache.cs" />
+    <Compile Include="Migrations\201701160810316_Update_GestionPorjet_Required_Titre_Tache.Designer.cs">
+      <DependentUpon>201701160810316_Update_GestionPorjet_Required_Titre_Tache.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701160915016_Geston_Jours_Féries.cs" />
+    <Compile Include="Migrations\201701160915016_Geston_Jours_Féries.Designer.cs">
+      <DependentUpon>201701160915016_Geston_Jours_Féries.cs</DependentUpon>
+    </Compile>
     <Compile Include="Stagiaires\FilieresService.cs" />
-    <Compile Include="GestionFormations\FormateursService.cs" />
+    <Compile Include="Formations\FormateursService.cs" />
     <Compile Include="Stagiaires\GroupesService.cs" />
     <Compile Include="Stagiaires\StagiairesService.cs" />
     <Compile Include="Base\IBaseRepository.cs" />
@@ -167,6 +177,12 @@
     <EmbeddedResource Include="Migrations\201701151053383_Changement1.resx">
       <DependentUpon>201701151053383_Changement1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701160810316_Update_GestionPorjet_Required_Titre_Tache.resx">
+      <DependentUpon>201701160810316_Update_GestionPorjet_Required_Titre_Tache.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701160915016_Geston_Jours_Féries.resx">
+      <DependentUpon>201701160915016_Geston_Jours_Féries.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entites\1.Entites.csproj">
@@ -177,6 +193,9 @@
       <Project>{7b89bd41-7117-4c2d-845f-45eeb252cc35}</Project>
       <Name>5.WinFromLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
