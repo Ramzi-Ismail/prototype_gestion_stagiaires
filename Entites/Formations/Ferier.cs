@@ -15,6 +15,8 @@ namespace App.Formations
     [AffichageClasse(Minuscule = "Féries", Majuscule = "Férie", DisplayMember = "Titre")]
     public class Ferier : BaseEntity
     {
+
+
         public Ferier():base()
         {
             this.DateDebut = DateTime.Now;

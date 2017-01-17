@@ -8,17 +8,32 @@ using System.Windows.Forms;
 
 namespace App.WinFrom.Menu
 {
-    public class AfficherForm
+    /// <summary>
+    /// Helper Pour Afficher un formulaire dans l'application
+    /// </summary>
+    public class AfficherFormHelper
     {
-        Form Parent { set; get; }
-        public AfficherForm(Form Parent)
+        /// <summary>
+        /// L'objet Form MDI
+        /// </summary>
+        Form FormApplicationMdi { set; get; }
+
+
+        /// <summary>
+        /// Création d'une instance de AfficherHelper
+        /// </summary>
+        /// <param name="Parent">
+        /// L'objet Form : conteneur des formulaire de l'application
+        /// Générale c'est une objet From MDI
+        /// </param>
+        public AfficherFormHelper(Form FormApplicationMdi)
         {
-            this.Parent = Parent;
+            this.FormApplicationMdi = FormApplicationMdi;
         }
 
         public void AfficherUneGestion<T>() where T : BaseEntity
         {
-            EntityManagementForm form = new EntityManagementForm(new BaseRepository<T>());
+            EntityManagementForm form = new EntityManagementForm(new BaseRepository<T>(),null,null,this.FormApplicationMdi);
             this.Afficher(form);
         }
 
@@ -26,7 +41,7 @@ namespace App.WinFrom.Menu
 
         public void AfficherUneGestion<T>(IBaseRepository Service) where T : BaseEntity
         {
-            EntityManagementForm form = new EntityManagementForm(Service);
+            EntityManagementForm form = new EntityManagementForm(Service, null, null, this.FormApplicationMdi);
             this.Afficher(form);
         }
 
@@ -37,7 +52,13 @@ namespace App.WinFrom.Menu
         /// <param name="formulaire">Le Formulaire spécifique</param>
         public void AfficherUneGestion<T>(BaseEntryForm formulaire) where T : BaseEntity
         {
-            EntityManagementForm form = new EntityManagementForm(new BaseRepository<T>(), formulaire);
+            EntityManagementForm form = new EntityManagementForm(null, formulaire, null, this.FormApplicationMdi);
+            this.Afficher(form);
+        }
+
+        public void AfficherUneGestion<T>(IBaseRepository Service,BaseEntryForm formulaire) where T : BaseEntity
+        {
+            EntityManagementForm form = new EntityManagementForm(Service, formulaire, null, this.FormApplicationMdi);
             this.Afficher(form);
         }
 
@@ -48,10 +69,10 @@ namespace App.WinFrom.Menu
         public void Afficher(Form addForm)
         {
             Cursor.Current = Cursors.WaitCursor;
-            Form form = Parent.MdiChildren.Where(f => f.Name == addForm.Name).FirstOrDefault();
+            Form form = FormApplicationMdi.MdiChildren.Where(f => f.Name == addForm.Name).FirstOrDefault();
             if (form == null)
             {
-                addForm.MdiParent = Parent;
+                addForm.MdiParent = FormApplicationMdi;
                 addForm.StartPosition = FormStartPosition.CenterScreen;
                 addForm.WindowState = FormWindowState.Maximized;
                 addForm.Show();

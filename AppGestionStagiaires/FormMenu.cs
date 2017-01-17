@@ -26,10 +26,10 @@ namespace App
         public FormMenu()
         {
             InitializeComponent();
-            AfficherFormulaire = new AfficherForm(this);
+            AfficherFormulaire = new AfficherFormHelper(this);
         }
 
-        AfficherForm AfficherFormulaire { set; get; }
+        AfficherFormHelper AfficherFormulaire { set; get; }
         private void binfingNavigatorToolStripMenuItem_Click(object sender, EventArgs e)
         {
         }
@@ -46,8 +46,9 @@ namespace App
             // Gestion des stagiaire
             StagiairesService service = new StagiairesService();
             FormStagiaireUC objetForm = new FormStagiaireUC(service);
-            EntityManagementForm form = new EntityManagementForm(service, objetForm);
-            AfficherFormulaire.Afficher(form);
+
+            AfficherFormulaire.AfficherUneGestion<Stagiaire>(service, objetForm);
+
         }
 
         private void projetsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -78,7 +79,7 @@ namespace App
 
         private void gérerLesTâchesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            AfficherFormulaire.Afficher(new GestionProjets.FormGestionTaches());
+            AfficherFormulaire.AfficherUneGestion<Tache>(new TachesService());
         }
 
         private void affecterTâcheÀUnStagiaireToolStripMenuItem_Click(object sender, EventArgs e)
@@ -106,7 +107,7 @@ namespace App
         private void gérerLesGroupesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
-            AfficherFormulaire.Afficher(new FormGestionGroupes());
+            AfficherFormulaire.AfficherUneGestion<Groupe>(new UserControlGroupeForm());
         }
 
         private void tâchesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -116,14 +117,16 @@ namespace App
 
         private void gestionDesModulesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            EntityManagementForm form = new EntityManagementForm(new BaseRepository<Module>());
+            EntityManagementForm form = new EntityManagementForm(
+                new BaseRepository<Module>(),null,null,this);
             AfficherFormulaire.Afficher(form);
         }
 
         private void gestionDesPrécisionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EntityManagementForm form = new EntityManagementForm(new BaseRepository<Precision>());
-            AfficherFormulaire.Afficher(form);
+       
+            AfficherFormulaire.AfficherUneGestion<Precision>(new BaseRepository<Precision>());
+          
         }
 
         private void annéesDeFormationToolStripMenuItem_Click(object sender, EventArgs e)

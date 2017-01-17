@@ -12,15 +12,9 @@ namespace App.GestionProjets
 {
     public partial class FormGestionProjet : App.WinForm.EntityManagementForm
     {
-        public FormGestionProjet() : base()
+        public FormGestionProjet() :base()
         {
              
-            // Gestion des projets
-            ProjetsService service = new ProjetsService();
-            EntryForm objetForm = new EntryForm(service);
-            this.initParams(service, objetForm);
- 
-
         }
     }
 }

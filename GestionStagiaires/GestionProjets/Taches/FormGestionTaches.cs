@@ -14,12 +14,6 @@ namespace App.GestionProjets
     {
         public FormGestionTaches() : base()
         {
-             
-            TachesService service = new TachesService();
-            EntryForm objetForm = new EntryForm(service);
-            this.initParams(service, objetForm);
- 
-
         }
     }
 }

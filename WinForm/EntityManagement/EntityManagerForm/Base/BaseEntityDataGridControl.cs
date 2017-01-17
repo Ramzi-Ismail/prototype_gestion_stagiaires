@@ -108,13 +108,13 @@ namespace App.WinForm.EntityManagement
         {
             //IList ls = item.GetValue(obj) as IList;
             Type type_objet = item.PropertyType.GetGenericArguments()[0];
-            AfficherForm Menu = new AfficherForm((Form)this.MdiParent);
+            AfficherFormHelper Menu = new AfficherFormHelper((Form)this.MdiParent);
             IBaseRepository service_objet = this.Service.CreateInstance_Of_Service_From_TypeEntity(type_objet);
 
             // Valeur Initial du Filtre
             Dictionary<string, object> ValeursFiltre = new Dictionary<string, object>();
             ValeursFiltre[item.DeclaringType.Name] = obj.Id;
-            EntityManagementForm form = new EntityManagementForm(service_objet, ValeursFiltre);
+            EntityManagementForm form = new EntityManagementForm(service_objet,null, ValeursFiltre, this.MdiParent);
             Menu.Afficher(form);
         }
         #endregion

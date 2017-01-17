@@ -43,6 +43,12 @@ namespace App.WinForm
         /// Instance de controle DataGrid
         /// </summary>
         EntityManagerControl EntityManagerControl { set; get; }
+
+        /// <summary>
+        /// Le formulaire MDI de l'application
+        /// il sert à afficher 
+        /// </summary>
+        Form FormApplicationMdi { set; get; }
         #endregion
 
         #region Constructeur
@@ -50,40 +56,74 @@ namespace App.WinForm
         /// On ne pas Créer ce formulaire sans Paramétre
         /// ce Constructeur est ajouter seuelement pour supproer le mode désigne de Visual Studio 2015
         /// </summary>
+        [Obsolete]
         public EntityManagementForm()
         {
             InitializeComponent();
+
         }
 
-       /// <summary>
-       /// Création d'une gestion générique 
-       /// </summary>
-       /// <param name="service"></param>
-        public EntityManagementForm(IBaseRepository service)
+        /// <summary>
+        ///  Création d'une interface de gestion des entity 
+        /// </summary>
+        /// <param name="Service">Le service de gestion</param>
+        /// <param name="formulaire">
+        /// Le formulaire spécifique à l'objet Entity, 
+        /// pour ne pas utiliser le formulaire générique
+        /// </param>
+        /// <param name="ValeursFiltre">Les valeurs de filtre</param>
+        public EntityManagementForm(
+            IBaseRepository Service, 
+            BaseEntryForm formulaire, 
+            Dictionary<string, object> ValeursFiltre,
+            Form FormApplicationMdi)
         {
             InitializeComponent();
-            BaseEntryForm formulaire = new EntryForm(service);
-            initParams(service, formulaire);
-        }
-
-        public EntityManagementForm(IBaseRepository service, Dictionary<string, object> ValeursFiltre)
-        {
-            InitializeComponent();
-            BaseEntryForm formulaire = new EntryForm(service);
+            this.Service = Service;
             this.ValeursFiltre = ValeursFiltre;
-            initParams(service, formulaire);
+            this.FormApplicationMdi = FormApplicationMdi;
+            // Création d'une instance de furmulaire générique 
+            // si la formulaire spécifique est null
+            this.Formulaire = formulaire;
+            if (this.Formulaire == null)
+                this.Formulaire = new EntryForm(this.Service);
+           
+
+            initControls();
         }
+
+        /// <summary>
+        /// Création d'une formulaire de gestion avec l'objet Service et 
+        /// le formulaire générique
+        /// </summary>
+        /// <param name="Service">Le service de gestion</param>
+        /// <param name="ValeursFiltre">Les valeurs de filtre</param>
+        public EntityManagementForm(IBaseRepository Service, 
+            Dictionary<string, object> ValeursFiltre,Form FormApplicationMdi)
+            :this(Service, null, ValeursFiltre, FormApplicationMdi)
+        {
+        }
+
+
+        /// <summary>
+        /// Création d'une gestion des entity avec Une Instance de l'objet Service
+        /// et la formulaire généique et sans valeurs de filtre
+        /// </summary>
+        /// <param name="Service">Le service de gestion</param>
+        public EntityManagementForm(IBaseRepository Service, Form FormApplicationMdi) :this(Service, null,null, FormApplicationMdi)
+        { 
+        }
+
 
         /// <summary>
         /// Création d'une gestion avec une formulaire personalisé
         /// </summary>
-        /// <param name="formulaire">Une instance de formulaire de saisie, il est utilisr 
+        /// <param name="Formulaire">Une instance de formulaire de saisie, il est utilisr 
         /// pour la creation des autres instance en cas d'édition des objet
         /// </param>
-        public EntityManagementForm(IBaseRepository service, BaseEntryForm formulaire)
+        public EntityManagementForm(IBaseRepository Service, 
+            BaseEntryForm Formulaire, Form FormApplicationMdi) :this(Service, Formulaire, null, FormApplicationMdi)
         {
-            InitializeComponent();
-            initParams(service, formulaire);
         }
 
         #endregion
@@ -91,15 +131,20 @@ namespace App.WinForm
         #region Initialisation
 
         /// <summary>
-        /// Applelet dans le construcreur , pour initialiser cette formulaire
+        /// Initialisation et Création des controles
         /// </summary>
         /// <param name="service"></param>
         /// <param name="formulaire"></param>
-        protected void initParams(IBaseRepository service, BaseEntryForm formulaire)
+        protected void initControls()
         {
-            this.Service = service;
-            this.Formulaire = formulaire;
-            this.Name = "Interface_Gestion_" + service.TypeEntity.ToString();
+            //
+            // Interface de gestion
+            //
+            AffichageDansFormGestionAttribute AffichageDansFormGestion = this.Service.getAffichageDansFormGestionAttribute();
+            this.Name = "Interface_Gestion_" + this.Service.TypeEntity.ToString();
+            this.Text = AffichageDansFormGestion.Titre;
+            this.bt_Ajouter.Text = AffichageDansFormGestion.TitreButtonAjouter;
+            lbl_titre_gestion.Text = AffichageDansFormGestion.Titre;
 
             //
             // Initialisation de filtre
@@ -115,35 +160,22 @@ namespace App.WinForm
             this.EntityManagerControl = new EntityManagerControl(
                 this.Service, 
                 this.FiltreControl, 
-                this.MdiParent, 
+                this.FormApplicationMdi, 
                 this.Formulaire);
             this.EntityManagerControl.Dock = DockStyle.Fill;
             this.panelDataGrid.Controls.Add(this.EntityManagerControl);
-     
-            // Afficher le titre de la gestion
-            this.setTitre();
         }
-
         private void FiltreControl_RefreshEvent(object sender, EventArgs e)
         {
             this.Actualiser();
         }
 
-      
 
-        /// <summary>
-        /// Configuration de Titre du formulaire et le titre de Page Grid
-        /// </summary>
-        private void setTitre()
-        {
-            AffichageDansFormGestionAttribute AffichageDansFormGestion = this.Service.getAffichageDansFormGestionAttribute();
-            this.Text = AffichageDansFormGestion.Titre;
-            this.bt_Ajouter.Text = AffichageDansFormGestion.TitreButtonAjouter;
-            lbl_titre_gestion.Text = AffichageDansFormGestion.Titre;
-        }
         #endregion
 
+ 
         #region EntityManagementForm Load
+
         private void EntityManagementForm_Load(object sender, EventArgs e)
         {
             if(!DesignMode)

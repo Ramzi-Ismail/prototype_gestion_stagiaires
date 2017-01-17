@@ -59,10 +59,18 @@ namespace App
            
         }
 
+
+        /// <summary>
+        /// Généric ToString
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
 
-            return this.GetType().ToString();
+            AffichageClasseAttribute AffichageClasse =(AffichageClasseAttribute) this.GetType().GetCustomAttributes(typeof(AffichageClasseAttribute),true)[0];
+            string Titre =  this.GetType().GetProperty(AffichageClasse.DisplayMember).GetValue(this).ToString();
+
+            return Titre;
         }
 
         ///// <summary>

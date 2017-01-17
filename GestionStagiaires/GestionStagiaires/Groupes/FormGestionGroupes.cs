@@ -13,16 +13,7 @@ namespace App.GestionStagiaires.Groupes
     {
         public FormGestionGroupes():base()
         {
-            InitializeComponent();
 
-
-            // Gestion des groupes
-            GroupesService service = new GroupesService();
-            UserControlGroupeForm objetForm = new UserControlGroupeForm(service);
-
-          
-     
-            this.initParams(service, objetForm);
         }
     }
 }
