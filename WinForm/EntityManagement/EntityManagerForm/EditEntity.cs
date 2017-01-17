@@ -1,11 +1,15 @@
-﻿using App.WinForm;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace App.WinForm
+namespace App.WinForm.EntityManagement
 {
-    partial class EntityManagementForm
+    public partial class EntityManagerControl
     {
+        #region Editer 
         /// <summary>
         /// Editer un objet séléctioné du DataGridView
         /// </summary>
@@ -17,23 +21,23 @@ namespace App.WinForm
 
 
 
-           if (tabControl.TabPages.IndexOfKey(tabEditerName) == -1)
+            if (tabControl.TabPages.IndexOfKey(tabEditerName) == -1)
             {
                 // Création de Tab
                 TabPage tabEditer = new TabPage();
                 tabEditer.Text = entity.ToString();
                 tabEditer.Name = tabEditerName;
                 tabControl.TabPages.Add(tabEditer);
-                
+
                 tabControl.CausesValidation = false;
 
-             
+
 
                 // Insertion du formulaire 
                 BaseEntryForm form = Formulaire.CreateInstance(this.Service, entity, null);
                 form.Name = "EntityForm";
                 form.Dock = DockStyle.Fill;
-                
+
                 this.tabControl.TabPages[tabEditerName].Controls.Add(form);
                 tabControl.SelectedTab = tabEditer;
 
@@ -41,12 +45,13 @@ namespace App.WinForm
                 form.EnregistrerClick += Form_EditerClick;
                 form.AnnulerClick += Form_AnnulerEditerClick;
 
-            }else
+            }
+            else
             {
                 TabPage tabEditer = this.tabControl.TabPages[tabEditerName];
                 tabControl.SelectedTab = tabEditer;
             }
-          
+
 
         }
         private void Form_EditerClick(object sender, EventArgs e)
@@ -55,7 +60,7 @@ namespace App.WinForm
             BaseEntity entity = form.Entity;
             string tabEditerName = "TabEditer-" + entity.Id;
 
-            
+
             TabPage tabEditer = this.tabControl.TabPages[tabEditerName];
             // Suppression de la page Editer
             this.tabControl.TabPages.Remove(tabEditer);
@@ -70,7 +75,6 @@ namespace App.WinForm
             TabPage tabEditer = this.tabControl.TabPages[tabEditerName];
             tabControl.TabPages.Remove(tabEditer);
         }
-
-      
+        #endregion
     }
 }

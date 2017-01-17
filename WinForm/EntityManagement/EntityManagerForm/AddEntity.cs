@@ -1,19 +1,20 @@
-﻿using App.WinForm;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace App.WinForm
+namespace App.WinForm.EntityManagement
 {
-    partial class EntityManagementForm
+    public partial class EntityManagerControl
     {
+        #region Ajouter un objet
+
         /// <summary>
         /// Boutton Ajouter
         /// </summary>
-        private void bt_Ajouter_Click(object sender, EventArgs e)
+        public void bt_Ajouter_Click(object sender, EventArgs e)
         {
 
             // Insertion du formulaire Si la page TabAjouter n'existe pas
@@ -32,13 +33,13 @@ namespace App.WinForm
                 // Insertion du formulaire 
                 //
                 BaseEntity Entity = (BaseEntity)this.Service.CreateInstanceObjet();
-                BaseEntryForm form = Formulaire.CreateInstance(Service, Entity, this.CritereRechercheFiltre());
-                
+                BaseEntryForm form = Formulaire.CreateInstance(Service, Entity, this.FiltreControl.CritereRechercheFiltre());
+
                 form.Name = "Form";
                 form.Dock = DockStyle.Fill;
-                form.Afficher(); // Affichage des valeur initial
-                form.InitValeurFromFiltre(this.CritereRechercheFiltre());
-                 
+                form.Afficher(this.FiltreControl.CritereRechercheFiltre());
+
+
                 this.tabControl.TabPages["TabAjouter"].Controls.Add(form);
                 tabControl.SelectedTab = tabAjouter;
                 form.EnregistrerClick += Form_EnregistrerClick;
@@ -64,5 +65,7 @@ namespace App.WinForm
             TabPage tabAjouter = this.tabControl.TabPages["TabAjouter"];
             tabControl.TabPages.Remove(tabAjouter);
         }
+
+        #endregion
     }
 }

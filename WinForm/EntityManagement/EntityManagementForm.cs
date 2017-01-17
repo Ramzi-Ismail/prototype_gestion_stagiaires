@@ -1,5 +1,6 @@
 ﻿using App.WinForm;
 using App.WinForm.Annotation;
+using App.WinForm.EntityManagement;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,29 +16,33 @@ namespace App.WinForm
 {
     public partial class EntityManagementForm : Form
     {
-        #region Variables
-
+        #region Propriétés
         /// <summary>
         /// Le Service de gestion  
         /// </summary>
-        protected IBaseRepository Service;
-
+        protected IBaseRepository Service { set; get; }
 
         /// <summary>
         /// Le formulaire de l'édition et d'insertion
         /// </summary>
-        protected BaseEntryForm Formulaire;
-
-
-        /// <summary>
-        /// Obient ou définire la liste des propriété de l'entity en cours de gestion
-        /// </summary>
-        protected List<PropertyInfo> ListePropriete { set; get; }
+        protected BaseEntryForm Formulaire { set; get; }
 
         /// <summary>
         /// définir les valeurs initiaux du filtre
         /// </summary>
         Dictionary<string, object> ValeursFiltre { set; get; }
+        #endregion
+
+        #region Controls
+        /// <summary>
+        /// Instance de filtre
+        /// </summary>
+        FiltreControl FiltreControl { set; get; }
+
+        /// <summary>
+        /// Instance de controle DataGrid
+        /// </summary>
+        EntityManagerControl EntityManagerControl { set; get; }
         #endregion
 
         #region Constructeur
@@ -61,7 +66,6 @@ namespace App.WinForm
             initParams(service, formulaire);
         }
 
-        
         public EntityManagementForm(IBaseRepository service, Dictionary<string, object> ValeursFiltre)
         {
             InitializeComponent();
@@ -82,6 +86,9 @@ namespace App.WinForm
             initParams(service, formulaire);
         }
 
+        #endregion
+
+        #region Initialisation
 
         /// <summary>
         /// Applelet dans le construcreur , pour initialiser cette formulaire
@@ -93,24 +100,36 @@ namespace App.WinForm
             this.Service = service;
             this.Formulaire = formulaire;
             this.Name = "Interface_Gestion_" + service.TypeEntity.ToString();
-            this.InitListePropriete();
-            this.initFiltre();
-            this.InitDataGridView();
+
+            //
+            // Initialisation de filtre
+            //
+            this.FiltreControl = new FiltreControl(this.Service, this.ValeursFiltre);
+            this.FiltreControl.Dock = DockStyle.Fill;
+            this.panel_Filtre.Controls.Add(this.FiltreControl);
+            this.FiltreControl.RefreshEvent += FiltreControl_RefreshEvent;
+
+            //
+            // Initialisation de DataGrid
+            //
+            this.EntityManagerControl = new EntityManagerControl(
+                this.Service, 
+                this.FiltreControl, 
+                this.MdiParent, 
+                this.Formulaire);
+            this.EntityManagerControl.Dock = DockStyle.Fill;
+            this.panelDataGrid.Controls.Add(this.EntityManagerControl);
+     
+            // Afficher le titre de la gestion
             this.setTitre();
         }
 
-        /// <summary>
-        /// Lecture de la liste des Propriété de l'entity à partire son annotation
-        /// </summary>
-        private void InitListePropriete()
+        private void FiltreControl_RefreshEvent(object sender, EventArgs e)
         {
-           var requete = from i in Service.TypeEntity.GetProperties()
-                                where i.GetCustomAttribute(typeof(AffichageProprieteAttribute)) != null &&
-                                ((AffichageProprieteAttribute)i.GetCustomAttribute(typeof(AffichageProprieteAttribute))).isGridView
-                                orderby ((AffichageProprieteAttribute)i.GetCustomAttribute(typeof(AffichageProprieteAttribute))).Ordre
-                                select i;
-            ListePropriete = requete.ToList<PropertyInfo>();
+            this.Actualiser();
         }
+
+      
 
         /// <summary>
         /// Configuration de Titre du formulaire et le titre de Page Grid
@@ -120,23 +139,29 @@ namespace App.WinForm
             AffichageDansFormGestionAttribute AffichageDansFormGestion = this.Service.getAffichageDansFormGestionAttribute();
             this.Text = AffichageDansFormGestion.Titre;
             this.bt_Ajouter.Text = AffichageDansFormGestion.TitreButtonAjouter;
-            TabPage tabGrid = this.tabControl.TabPages["TabGrid"];
-            tabGrid.Text = AffichageDansFormGestion.TitrePageGridView;
             lbl_titre_gestion.Text = AffichageDansFormGestion.Titre;
         }
         #endregion
 
-        #region EntityManagementForm Actions
+        #region EntityManagementForm Load
         private void EntityManagementForm_Load(object sender, EventArgs e)
         {
             if(!DesignMode)
             this.Actualiser();
         }
+        /// <summary>
+        /// Affichage des information dans DataGrid selon le filtre s'il exsiste
+        /// </summary> 
+        public void Actualiser()
+        {
+            this.EntityManagerControl.Actualiser();
+            this.RenomerTitrePage(this.FiltreControl.CritereRechercheFiltre());
 
-       
-
-
-
+        }
+        protected void bt_Ajouter_Click(object sender, EventArgs e)
+        {
+            this.EntityManagerControl.bt_Ajouter_Click(sender, e);
+        }
         private void EntityManagementForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             // Solution de problème de fermiture de la forme en cas de validation
@@ -144,25 +169,18 @@ namespace App.WinForm
             // le formilaire
             e.Cancel = false;
         }
-        #endregion
-
-       
-
-        private void dataGridView_KeyUp(object sender, KeyEventArgs e)
+        protected void RenomerTitrePage(Dictionary<string, object> critereRechercheFiltre)
         {
-           
-        }
-
-        private void tabControl_Selected(object sender, TabControlEventArgs e)
-        {
-            IEnumerable<BaseEntryForm> ls = tabControl.SelectedTab.Controls.OfType<BaseEntryForm>();
-            if(ls.Count() == 1) {
-            BaseEntryForm BaseEntryForm = ls.First();
-            this.AcceptButton = BaseEntryForm.btEnregistrer;
+            // Renommer le Titre de la page
+            lbl_titre_gestion.Text = this.Text;
+            if (critereRechercheFiltre != null && critereRechercheFiltre.Count() > 0)
+            {
+                lbl_titre_gestion.Text += " par ( ";
+                lbl_titre_gestion.Text += string.Join(",", critereRechercheFiltre.Select(d => d.Key));
+                lbl_titre_gestion.Text += " )";
             }
 
         }
-
-       
+        #endregion
     }
 }

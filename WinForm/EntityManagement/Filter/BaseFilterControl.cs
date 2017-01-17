@@ -1,31 +1,91 @@
-﻿using App.WinForm.Annotation;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection;
+using App.WinForm.Annotation;
 
-namespace App.WinForm
+namespace App.WinForm.EntityManagement
 {
-    /// <summary>
-    /// Configuration de filtre de l'interface de gestion
-    /// </summary>
-    partial class EntityManagementForm
+    public partial class BaseFilterControl : UserControl
     {
+        #region Propriétés
+        /// <summary>
+        /// Le Service de gestion  
+        /// </summary>
+        protected IBaseRepository Service { set; get; }
+
+        /// <summary>
+        /// définir les valeurs initiaux du filtre
+        /// </summary>
+        protected Dictionary<string, object> ValeursFiltre { set; get; }
+        #endregion
+
+        #region Evénement
+        public event EventHandler RefreshEvent;
+        protected void onRefreshEvent(object sender, EventArgs e)
+        {
+            RefreshEvent(sender, e);
+        }
+        #endregion
+
+        #region Constructeurs
+        [Obsolete("N'utiliserz pas le constructeur pardéfaut, il est ajouter au programme pour supporter le mode designe de VisualStudio")]
+        public BaseFilterControl()
+        {
+            InitializeComponent();
+        }
+
+        public BaseFilterControl(IBaseRepository Service, Dictionary<string, object> ValeursFiltre) 
+        {
+            InitializeComponent();
+            this.Service = Service;
+            this.ValeursFiltre = ValeursFiltre;
+            initFiltre();
+
+        }
+
+        public BaseFilterControl(IBaseRepository Service) : this(Service,null)
+        {
+        }
+    
+        #endregion
+
+        #region InitializeFilter
+
+        protected List<PropertyInfo> PropertyListFilter()
+        {
+            // [Bug]
+            // Ajoutez la condition filtre 
+            var requete = from i in Service.TypeEntity.GetProperties()
+                          where i.GetCustomAttribute(typeof(AffichageProprieteAttribute)) != null &&
+                          ((AffichageProprieteAttribute)i.GetCustomAttribute(typeof(AffichageProprieteAttribute))).isGridView
+                          orderby ((AffichageProprieteAttribute)i.GetCustomAttribute(typeof(AffichageProprieteAttribute))).Ordre
+                          select i;
+            return requete.ToList<PropertyInfo>();
+        }
+
         /// <summary>
         /// Création et Initialisation de filtre en utilisation de la liste des propriété de la classe
         /// et l'annotation 
         /// </summary>
         protected void initFiltre()
         {
+ 
             int x = 27;
             int increment_x = 200;
             int height_controle = 50;
             int width_controle = 140;
             int TabIndex = 0;
-            foreach (PropertyInfo propertyInfo in this.ListePropriete)
+
+
+
+            foreach (PropertyInfo propertyInfo in PropertyListFilter())
             {
                 // Trouver l'objet AffichagePropriete depuis l'annotation
                 Attribute getAffichagePropriete = propertyInfo.GetCustomAttribute(typeof(AffichageProprieteAttribute));
@@ -37,7 +97,7 @@ namespace App.WinForm
                 // label_relation_many_to_one
                 // 
                 Label label_champ_filtre = new Label();
-                label_champ_filtre.Location = new System.Drawing.Point(x , 15);
+                label_champ_filtre.Location = new System.Drawing.Point(x, 15);
                 label_champ_filtre.Name = "label_" + propertyInfo.Name;
                 label_champ_filtre.Size = new System.Drawing.Size(width_controle, 20);
                 label_champ_filtre.TabIndex = TabIndex++;
@@ -50,18 +110,18 @@ namespace App.WinForm
                 if (AffichagePropriete.Relation != String.Empty &&
                  AffichagePropriete.Relation == AffichageProprieteAttribute.RELATION_MANYTOONE)
                 {
-                     
+
 
                     if (AffichagePropriete.FilterSelection)
                     {
                         InputComboBox comboBoxRelationManyToOne = new InputComboBox(
                             propertyInfo.PropertyType,
-                            null, 
-                            InputComboBox.MainContainers.Panel, 
+                            null,
+                            InputComboBox.MainContainers.Panel,
                             InputComboBox.Directions.Horizontal);
                         comboBoxRelationManyToOne.Location = new System.Drawing.Point(x, 1);
                         comboBoxRelationManyToOne.Name = propertyInfo.Name;
-                       // comboBoxRelationManyToOne.Size = new System.Drawing.Size(width_controle, height_controle);
+                        // comboBoxRelationManyToOne.Size = new System.Drawing.Size(width_controle, height_controle);
                         comboBoxRelationManyToOne.TabIndex = TabIndex++;
                         this.groupBoxFiltrage.Controls.Add(comboBoxRelationManyToOne);
 
@@ -109,7 +169,7 @@ namespace App.WinForm
                         comboBoxRelationManyToOne.SelectedValueChanged += Filtre_ComboBox_SelectedValueChanged;
 
                     }
-                  
+
 
                 }
                 if (propertyInfo.PropertyType.Name == "String")
@@ -119,7 +179,7 @@ namespace App.WinForm
                     // 
                     TextBox textBoxString = new TextBox();
                     textBoxString.Location = new System.Drawing.Point(x, 37);
-                    textBoxString.Name =  propertyInfo.Name;
+                    textBoxString.Name = propertyInfo.Name;
                     textBoxString.Size = new System.Drawing.Size(width_controle, height_controle);
                     textBoxString.TabIndex = TabIndex++;
                     this.groupBoxFiltrage.Controls.Add(textBoxString);
@@ -178,7 +238,7 @@ namespace App.WinForm
         /// <param name="e"></param>
         private void Filtre_TextBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            this.Actualiser();
+            onRefreshEvent(sender, e);
         }
         private void Filtre_ComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -186,31 +246,23 @@ namespace App.WinForm
             {
                 item.Text = "";
             }
-            this.Actualiser();
+            onRefreshEvent(sender, e);
         }
 
-        /// <summary>
-        /// Affichage des information dans DataGrid selon le filtre s'il exsiste
-        /// </summary> 
-        public void Actualiser()
-        {
-            ObjetBindingSource.Clear();
-            Dictionary<string,object> critereRechercheFiltre =  this.CritereRechercheFiltre();
-            var ls = Service.Recherche(this.CritereRechercheFiltre());
-            ObjetBindingSource.DataSource = ls;
-            this.RenomerTitrePage(critereRechercheFiltre);
-           
-        }
 
+        #endregion
+
+
+        #region Read & Write
         /// <summary>
-        /// Lecture des valeurs du filtre
+        /// Obtient les valeurs du filtre
         /// </summary>
         /// <returns></returns>
-        protected Dictionary<string, object> CritereRechercheFiltre()
+        public Dictionary<string, object> CritereRechercheFiltre()
         {
             // Application de filtre
             Dictionary<string, object> RechercheInfos = new Dictionary<string, object>();
-            foreach (PropertyInfo propertyInfo in this.ListePropriete)
+            foreach (PropertyInfo propertyInfo in PropertyListFilter())
             {
                 // Trouver l'objet AffichagePropriete depuis l'annotation avec Filtre = True
                 Attribute getAffichagePropriete = propertyInfo.GetCustomAttribute(typeof(AffichageProprieteAttribute));
@@ -254,15 +306,16 @@ namespace App.WinForm
                             else
                             {
                                 ComboBox ComboBoxEntity = (ComboBox)this.groupBoxFiltrage.Controls.Find(propertyInfo.Name, true).First();
+                                
                                 BaseEntity obj = (BaseEntity)ComboBoxEntity.SelectedItem;
                                 if (obj != null && Convert.ToInt32(obj.Id) != 0)
                                     RechercheInfos[propertyInfo.Name] = ComboBoxEntity.SelectedValue;
 
                             }
-                           
 
 
-                            
+
+
                         }
                         break;
                 }
@@ -273,22 +326,7 @@ namespace App.WinForm
 
             return RechercheInfos;
         }
-
-
-        protected void RenomerTitrePage(Dictionary<string, object> critereRechercheFiltre)
-        {
-            // Renommer le Titre de la page
-            lbl_titre_gestion.Text = this.Text;
-            if (critereRechercheFiltre != null && critereRechercheFiltre.Count() > 0)
-            {
-                lbl_titre_gestion.Text += " par ( ";
-                lbl_titre_gestion.Text += string.Join(",", critereRechercheFiltre.Select(d => d.Key));
-                lbl_titre_gestion.Text += " )";
-            } 
-           
-        }
-
-
+        #endregion
 
 
     }

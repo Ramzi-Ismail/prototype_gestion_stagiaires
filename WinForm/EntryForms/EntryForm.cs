@@ -319,18 +319,16 @@ namespace App.WinForm
         #endregion
 
 
-        [Obsolete("La fonction est vide, il ne fait rient")]
-        /// <summary>
-        /// Initialisation des valeurs depuis le fitre
-        /// </summary>
-        /// <param name="dictionary"></param>
-        public override void InitValeurFromFiltre(Dictionary<string, object> dictionary)
-        {
-            foreach (var item in dictionary)
-            {
+        //[Obsolete("La fonction est vide, il ne fait rient")]
+        ///// <summary>
+        ///// Initialisation des valeurs depuis le fitre
+        ///// </summary>
+        ///// <param name="dictionary"></param>
+        //public override void InitValeurFromFiltre(Dictionary<string, object> dictionary)
+        //{
+            
 
-            }
-        }
+        //}
 
 
     }

@@ -1,17 +1,71 @@
-﻿
-using App.WinForm.Annotation;
-using App.WinFrom.Menu;
+﻿using App.WinForm.Annotation;
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Windows.Forms;
 
-namespace App.WinForm
+namespace App.WinForm.EntityManagement
 {
-    partial class EntityManagementForm
+    public partial class EntityManagerControl : App.WinForm.EntityManagement.BaseEntityManagerControl
     {
+        #region Constructeurs
+        public EntityManagerControl()
+        {
+            InitializeComponent();
+        }
+
+        public EntityManagerControl(IBaseRepository Service, 
+            FiltreControl FiltreControl, Form MdiParent, BaseEntryForm Formulaire) :base(Service, FiltreControl, MdiParent, Formulaire)
+        {
+            InitializeComponent();
+            InitDataGridView();
+            setTitre();
+        }
+        #endregion
+
+        #region Form_Load
+        /// <summary>
+        /// Affichage des information dans DataGrid selon le filtre s'il exsiste
+        /// </summary> 
+        public void Actualiser()
+        {
+            ObjetBindingSource.Clear();
+            Dictionary<string, object> critereRechercheFiltre = this.FiltreControl.CritereRechercheFiltre();
+            var ls = Service.Recherche(critereRechercheFiltre);
+            ObjetBindingSource.DataSource = ls;
+        }
+
+        protected void setTitre()
+        {
+            AffichageDansFormGestionAttribute AffichageDansFormGestion = this.Service.getAffichageDansFormGestionAttribute();
+            this.Text = AffichageDansFormGestion.Titre;
+            TabPage tabGrid = this.tabControl.TabPages["TabGrid"];
+            tabGrid.Text = AffichageDansFormGestion.TitrePageGridView;
+  
+        }
+        #endregion
+
+
+        private void tabControl_Selected(object sender, TabControlEventArgs e)
+        {
+            IEnumerable<BaseEntryForm> ls = tabControl.SelectedTab.Controls.OfType<BaseEntryForm>();
+            if (ls.Count() == 1)
+            {
+                BaseEntryForm BaseEntryForm = ls.First();
+               this.ParentForm.AcceptButton = BaseEntryForm.btEnregistrer;
+            }
+
+        }
+
+
+        #region InitDisingeDataGrid
+
+
         /// <summary>
         /// Insertion des colonne selon les annotation : AffichageProprieteAttribute
         /// </summary>
@@ -21,7 +75,7 @@ namespace App.WinForm
             AffichageDansFormGestionAttribute AffichageDansFormGestion = this.Service.getAffichageDansFormGestionAttribute();
             foreach (PropertyInfo propertyInfo in this.ListePropriete)
             {
-                if (propertyInfo.Name == "Ordre" &&  !AffichageDansFormGestion.siAffichageAvecOrdre)
+                if (propertyInfo.Name == "Ordre" && !AffichageDansFormGestion.siAffichageAvecOrdre)
                     continue;
 
                 // Trouver l'objet AffichagePropriete depuis l'annotation
@@ -70,15 +124,16 @@ namespace App.WinForm
                         break;
                 }
 
- 
+
                 colonne.HeaderText = AffichagePropriete.Titre;
-                
+
                 colonne.Name = propertyInfo.Name;
                 colonne.ReadOnly = true;
-                if(AffichagePropriete.WidthColonne!= 0) colonne.Width = AffichagePropriete.WidthColonne;
+                if (AffichagePropriete.WidthColonne != 0) colonne.Width = AffichagePropriete.WidthColonne;
                 this.dataGridView.Columns.Insert(index_colonne, colonne);
             }
         }
+
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             BaseEntity obj = (BaseEntity)ObjetBindingSource.Current;
@@ -99,33 +154,16 @@ namespace App.WinForm
                 EditerObjet();
             }
 
-            foreach (var item in this.ListePropriete.Where(p=>p.PropertyType.Name == "List`1"))
+            foreach (var item in this.ListePropriete.Where(p => p.PropertyType.Name == "List`1"))
             {
                 if (e.ColumnIndex == dataGridView.Columns[item.Name].Index && e.RowIndex >= 0)
                 {
                     EditerCollection(item, obj);
                 }
-               
+
             }
         }
 
-        /// <summary>
-        /// Editer la collection ManyToOne
-        /// </summary>
-        /// <param name="name">Nom de la propriété</param>
-        private void EditerCollection(PropertyInfo item,BaseEntity obj)
-        {
-            //IList ls = item.GetValue(obj) as IList;
-            Type type_objet = item.PropertyType.GetGenericArguments()[0];
-            AfficherForm Menu= new AfficherForm((Form)this.MdiParent);
-            IBaseRepository service_objet = this.Service.CreateInstance_Of_Service_From_TypeEntity(type_objet);
-
-            // Valeur Initial du Filtre
-            Dictionary<string, object> ValeursFiltre = new Dictionary<string, object>();
-            ValeursFiltre[item.DeclaringType.Name] = obj.Id;
-            EntityManagementForm form = new EntityManagementForm(service_objet, ValeursFiltre);
-            Menu.Afficher(form);
-        }
         private void dataGridView_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -133,5 +171,10 @@ namespace App.WinForm
                 EditerObjet();
             }
         }
+        #endregion
+
+     
+
+
     }
 }

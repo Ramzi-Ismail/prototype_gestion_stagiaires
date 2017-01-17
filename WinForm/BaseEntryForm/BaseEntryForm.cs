@@ -239,13 +239,20 @@ namespace App.WinForm
 
         #region Lire et Afficher
 
-
-
         /// <summary>
-        /// Affiher l'objet dans le formulaire
-        /// Utilisation de l'annotation de l'objet dans le cas d'un formilaire spécifique à l'objet
+        /// Affiher l'objet dans le formulaire avec la valeurs initial de l'objet
+        /// ? Utilisation de l'annotation de l'objet dans le cas d'un formilaire spécifique à l'objet
         /// </summary>
         public virtual void Afficher()
+        {
+            this.Afficher(null);
+        }
+
+        /// <summary>
+        /// Affiher l'objet dans le formulaire avec la valeurs initial de l'objet
+        /// avec l'affichage  des valeurs initiaux de filtre
+        /// </summary>
+        public virtual void Afficher(Dictionary<string, object> CritereRechercheFiltre)
         {
 
             BaseEntity entity = this.Entity;
@@ -262,35 +269,64 @@ namespace App.WinForm
 
                 Type typePropriete = item.PropertyType;
                 string NomPropriete = item.Name;
+
                 if (typePropriete.Name == "String")
                 {
-
+                    // Recherche de contôle
                     String NomControle = char.ToLower(item.Name[0]) + item.Name.Substring(1) + "TextBox";
-                    string valeur = (string)typeEntity.GetProperty(NomPropriete).GetValue(entity);
                     TextBox txtBox = (TextBox)this.ConteneurFormulaire.Controls.Find(NomControle, true).First();
+
+                    // La valeur Iniale de l'objet
+                    string valeur = (string)typeEntity.GetProperty(NomPropriete).GetValue(entity);
                     txtBox.Text = valeur;
+
+                    // La valeur Iniale de filtre
+                    if(CritereRechercheFiltre != null && CritereRechercheFiltre.ContainsKey(item.Name))
+                    {
+                        txtBox.Text = CritereRechercheFiltre[item.Name].ToString();
+                    }
                 }
                 if (typePropriete.Name == "Int32")
                 {
-
+                    // Recherche de contôle
                     String NomControle = char.ToLower(item.Name[0]) + item.Name.Substring(1) + "TextBox";
-                    int valeur = (int)typeEntity.GetProperty(NomPropriete).GetValue(entity);
                     TextBox txtBox = (TextBox)this.ConteneurFormulaire.Controls.Find(NomControle, true).First();
+
+                    // La valeur Iniale de l'objet
+                    int valeur = (int)typeEntity.GetProperty(NomPropriete).GetValue(entity);
                     txtBox.Text = valeur.ToString();
+
+                    // La valeur Iniale de filtre
+                    if (CritereRechercheFiltre != null && CritereRechercheFiltre.ContainsKey(item.Name))
+                    {
+                        txtBox.Text = CritereRechercheFiltre[item.Name].ToString();
+                    }
+
                 }
 
                 if (typePropriete.Name == "DateTime")
                 {
+                    // Recherche de contôle
                     String NomControle = char.ToLower(item.Name[0]) + item.Name.Substring(1) + "DateTimePicker";
-                    DateTime valeur = (DateTime)typeEntity.GetProperty(NomPropriete).GetValue(entity);
                     DateTimePicker dateTimePicker = (DateTimePicker)this.ConteneurFormulaire.Controls.Find(NomControle, true).First();
+
+                    // La valeur Iniale de l'objet
+                    DateTime valeur = (DateTime)typeEntity.GetProperty(NomPropriete).GetValue(entity);
                     dateTimePicker.Value = valeur;
+
+                    // La valeur Iniale de filtre
+                    if (CritereRechercheFiltre != null && CritereRechercheFiltre.ContainsKey(item.Name))
+                    {
+                        dateTimePicker.Value = Convert.ToDateTime( CritereRechercheFiltre[item.Name]);
+                    }
+
                 }
 
 
                 if (AffichagePropriete.Relation == "ManyToOne")
                 {
 
+                    // si le la propriété avoir un filtre personnelle
                     if (AffichagePropriete.FilterSelection)
                     {
                         // Initialisation de la valeur depuis l'objet 
@@ -306,14 +342,23 @@ namespace App.WinForm
                     }
                     else
                     {
-                        // Initialisation de la valeur depuis l'objet 
+                        // Recherche de contôle
                         String NomControle = char.ToLower(item.Name[0]) + item.Name.Substring(1) + "ComboBox";
-                        BaseEntity valeur = (BaseEntity)typeEntity.GetProperty(NomPropriete).GetValue(entity);
                         ComboBox comboBox = (ComboBox)this.ConteneurFormulaire.Controls.Find(NomControle, true).First();
+
+
+                        // Initialisation de la valeur depuis l'objet 
+                        BaseEntity valeur = (BaseEntity)typeEntity.GetProperty(NomPropriete).GetValue(entity);
+                        comboBox.CreateControl();
                         if (valeur != null)
                         {
-                            comboBox.CreateControl();
                             comboBox.SelectedValue = valeur.Id;
+                        }
+
+                        // La valeur Iniale de filtre
+                        if (CritereRechercheFiltre != null && CritereRechercheFiltre.ContainsKey(item.Name))
+                        {
+                            comboBox.SelectedValue = Convert.ToInt64(CritereRechercheFiltre[item.Name]);
                         }
 
 
