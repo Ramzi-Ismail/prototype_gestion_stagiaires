@@ -52,6 +52,7 @@ namespace App.WinForm
         public EntryForm(IBaseRepository service) : base(service)
         {
             InitializeComponent();
+            this.Entity =(BaseEntity) service.CreateInstanceObjet();
             isStepInitializingValues = false;
             ConteneurFormulaire = this.formulaire;
             InitFormulaire();
@@ -218,7 +219,7 @@ namespace App.WinForm
                         comboBox.Name = char.ToLower(item.Name[0]) + item.Name.Substring(1) + "ComboBox";
                         comboBox.Size = new System.Drawing.Size(200, 20);
                         comboBox.TabIndex = index++;
-                        comboBox.ValueMemberChanged += ControlPropriete_ValueChanged;
+                        comboBox.SelectedIndexChanged += ControlPropriete_ValueChanged;
                         comboBox.ValueMember = "Id";
                         comboBox.DisplayMember = AffichagePropriete.DisplayMember;
                         comboBox.DataSource = ls;
@@ -283,10 +284,11 @@ namespace App.WinForm
         {
             if (!this.isStepInitializingValues)
             {
+                
                 // Lecture informations
+                
                 this.Lire();
-
-                this.Service.ValueChanged();
+                this.Service.ValueChanged(sender,this.Entity);
                 this.isStepInitializingValues = true;
                 this.Afficher();
                 this.isStepInitializingValues = false;

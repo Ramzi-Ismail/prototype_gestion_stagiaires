@@ -345,7 +345,7 @@ namespace App
         /// <summary>
         /// Indique que les valeurs de l'entity sont changé
         /// </summary>
-        public virtual void ValueChanged()
+        public virtual void ValueChanged(object sender,BaseEntity entity)
         {
            // Cette méthode est surcharger pour appliquer les règle de gestions 
           

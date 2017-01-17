@@ -57,6 +57,7 @@ namespace App
         /// <summary>
         /// Indique que les valeurs de l'entity sont changé
         /// </summary>
-        void ValueChanged();
+      
+        void ValueChanged(object sender, BaseEntity entity );
     }
 }

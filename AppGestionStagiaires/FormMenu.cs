@@ -199,7 +199,7 @@ namespace App
 
         private void fériésToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AfficherFormulaire.AfficherUneGestion<Ferier>();
+            AfficherFormulaire.AfficherUneGestion<Ferier>(new FeriesService());
         }
     }
 }

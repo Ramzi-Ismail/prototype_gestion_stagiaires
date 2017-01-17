@@ -59,6 +59,7 @@
     <Compile Include="Annotation\ApplicationMenuAttribute.cs" />
     <Compile Include="Annotation\SelectionCriteriaAttribute.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="EF\Class1.cs" />
     <Compile Include="Exceptions\PropertyDoesNotExistException.cs" />
     <Compile Include="Linq\LinqExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
