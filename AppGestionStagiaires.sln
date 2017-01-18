@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5.WinFromLib", "WinFromLib\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoFormation", "ConsoleApplicationTest\AutoFormation.csproj", "{7AEB698A-CDCD-4007-B916-7913C68AE740}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.WinFormTests", "2.WinFormTests\2.WinFormTests.csproj", "{C3CCE8BF-800C-4514-B7FB-35AF32CDB9FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6.PresentationWinFormTests", "6.PresentationWinFormTests\6.PresentationWinFormTests.csproj", "{589EB1F4-5778-4867-A87D-20166177C952}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +59,14 @@ Global
 		{7AEB698A-CDCD-4007-B916-7913C68AE740}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7AEB698A-CDCD-4007-B916-7913C68AE740}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7AEB698A-CDCD-4007-B916-7913C68AE740}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3CCE8BF-800C-4514-B7FB-35AF32CDB9FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3CCE8BF-800C-4514-B7FB-35AF32CDB9FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3CCE8BF-800C-4514-B7FB-35AF32CDB9FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3CCE8BF-800C-4514-B7FB-35AF32CDB9FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{589EB1F4-5778-4867-A87D-20166177C952}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{589EB1F4-5778-4867-A87D-20166177C952}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{589EB1F4-5778-4867-A87D-20166177C952}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{589EB1F4-5778-4867-A87D-20166177C952}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

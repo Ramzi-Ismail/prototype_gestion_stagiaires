@@ -14,7 +14,7 @@ namespace AppGestionStagiaires.GestionStagiaires
 {
     public partial class FormUpdateProfile : Form
     {
-        FormStagiaireUC formStagiaire;
+        StagiaireEntryForm formStagiaire;
         IBaseRepository Service;
 
         public FormUpdateProfile()
@@ -26,7 +26,7 @@ namespace AppGestionStagiaires.GestionStagiaires
         private void FormUpdateProfile_Load(object sender, EventArgs e)
         {
             this.Service = new StagiairesService();
-            formStagiaire = new FormStagiaireUC(Service);
+            formStagiaire = new StagiaireEntryForm(Service);
             this.Controls.Add(formStagiaire);
             formStagiaire.Entity =(Stagiaire)App.Session.user;
             formStagiaire.Afficher();

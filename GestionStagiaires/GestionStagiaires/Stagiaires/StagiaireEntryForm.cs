@@ -11,12 +11,16 @@ using App.WinForm;
 
 namespace App.GestionStagiaires
 {
-    public partial class FormStagiaireUC : BaseEntryForm
+    public partial class StagiaireEntryForm : BaseEntryForm
     {
-        public FormStagiaireUC(IBaseRepository service) :base(service)
+        public StagiaireEntryForm(IBaseRepository service) :base(service)
         {
             InitializeComponent();
-            this.Service = service;
+            this.ConteneurFormulaire = splitContainer1.Panel1;
+        }
+        public StagiaireEntryForm(IBaseRepository service, BaseEntity entity, Dictionary<string, object> critereRechercheFiltre) : base(service, entity, critereRechercheFiltre)
+        {
+            InitializeComponent();
         }
 
 
@@ -28,7 +32,7 @@ namespace App.GestionStagiaires
 
 
 
-        private void FormStagiaireUC_Load(object sender, EventArgs e)
+        private void StagiaireEntryForm_Load(object sender, EventArgs e)
         {
             filiereBindingSource.DataSource = new FilieresService(Service.Context()).GetAll();
             groupeBindingSource.DataSource = new GroupesService(Service.Context()).GetAll();
@@ -65,8 +69,8 @@ namespace App.GestionStagiaires
             txt_password2.Text = Stagiaire.Password;
 
             // Affectation
-            Combo_Filiere.SelectedItem = Stagiaire.Filiere;
-            Combo_groupe.SelectedItem = Stagiaire.Groupe;
+            filiereComboBox.SelectedItem = Stagiaire.Filiere;
+            groupeComboBox.SelectedItem = Stagiaire.Groupe;
         }
 
        
@@ -94,13 +98,13 @@ namespace App.GestionStagiaires
                 Stagiaire.Email = emailTextBox.Text;
 
                 //Affectation
-                if (Combo_groupe.SelectedItem != null) {
-                Groupe g    = new GroupesService(this.Service.Context()).GetByID(Convert.ToInt32(Combo_groupe.SelectedValue));
+                if (groupeComboBox.SelectedItem != null) {
+                Groupe g    = new GroupesService(this.Service.Context()).GetByID(Convert.ToInt32(groupeComboBox.SelectedValue));
                 Stagiaire.Groupe = g;
                  }
 
-            if (Combo_Filiere.SelectedItem != null)
-                    Stagiaire.Filiere = new FilieresService(this.Service.Context()).GetByID(Convert.ToInt32(Combo_Filiere.SelectedValue));
+            if (filiereComboBox.SelectedItem != null)
+                    Stagiaire.Filiere = new FilieresService(this.Service.Context()).GetByID(Convert.ToInt32(filiereComboBox.SelectedValue));
 
                 //Identification
                 Stagiaire.Login = txt_login.Text;

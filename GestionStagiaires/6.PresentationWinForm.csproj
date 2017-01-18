@@ -110,14 +110,14 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="GestionStagiaires\Stagiaires\FormStagiaireUC.cs">
+    <Compile Include="GestionStagiaires\Stagiaires\StagiaireEntryForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GestionStagiaires\Stagiaires\FormStagiaireUC.Designer.cs">
-      <DependentUpon>FormStagiaireUC.cs</DependentUpon>
+    <Compile Include="GestionStagiaires\Stagiaires\StagiaireEntryForm.Designer.cs">
+      <DependentUpon>StagiaireEntryForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GestionStagiaires\Stagiaires\FormStagiaireUC1.Designer.cs">
-      <DependentUpon>FormStagiaireUC.resx</DependentUpon>
+    <Compile Include="GestionStagiaires\Stagiaires\StagiaireEntryForm1.cs">
+      <DependentUpon>StagiaireEntryForm.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -177,9 +177,9 @@
       <DependentUpon>FormAffecterStagiairesAuMiniGroupe.cs</DependentUpon>
       <LastGenOutput>FormAffecterStagiairesAuMiniGroupe1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="GestionStagiaires\Stagiaires\FormStagiaireUC.resx">
-      <DependentUpon>FormStagiaireUC.cs</DependentUpon>
-      <LastGenOutput>FormStagiaireUC1.Designer.cs</LastGenOutput>
+    <EmbeddedResource Include="GestionStagiaires\Stagiaires\StagiaireEntryForm.resx">
+      <DependentUpon>StagiaireEntryForm.cs</DependentUpon>
+      <LastGenOutput>StagiaireEntryForm1.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="GestionStagiaires\Stagiaires\FormUpdateProfile.resx">
       <DependentUpon>FormUpdateProfile.cs</DependentUpon>

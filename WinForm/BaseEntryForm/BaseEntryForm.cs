@@ -76,17 +76,6 @@ namespace App.WinForm
         /// Créer du formuliare avec l'instance de service en cours d'utilisation
         /// </summary>
         /// <param name="service"></param>
-        public BaseEntryForm(IBaseRepository service)
-        {
-            InitializeComponent();
-            this.Service = service;
-            MessageValidation = new MessageValidation(errorProvider);
-            ConteneurFormulaire = this.splitContainer1.Panel1;
-        }
-        /// <summary>
-        /// Créer du formuliare avec l'instance de service en cours d'utilisation
-        /// </summary>
-        /// <param name="service"></param>
         public BaseEntryForm(IBaseRepository service, BaseEntity entity, Dictionary<string, object> critereRechercheFiltre)
         {
             InitializeComponent();
@@ -99,6 +88,12 @@ namespace App.WinForm
             MessageValidation = new MessageValidation(errorProvider);
             ConteneurFormulaire = this.splitContainer1.Panel1;
         }
+        /// <summary>
+        /// Créer du formuliare avec l'instance de service en cours d'utilisation
+        /// </summary>
+        /// <param name="service"></param>
+        public BaseEntryForm(IBaseRepository service):this(service,null,null) {}
+       
 
 
         /// <summary>

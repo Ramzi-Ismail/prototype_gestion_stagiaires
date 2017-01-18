@@ -163,19 +163,7 @@ namespace App.WinForm
                 //
                 if (item.PropertyType.Name == "DateTime")
                 {
-                    DateTimePicker dateTimePicker = new DateTimePicker();
-                    dateTimePicker.Location = new System.Drawing.Point(x_control, y - 3);
-                    dateTimePicker.Name = char.ToLower(item.Name[0]) + item.Name.Substring(1) + "DateTimePicker";
-
-                    dateTimePicker.Size = new System.Drawing.Size(200, 20);
-                    dateTimePicker.TabIndex = index++;
-                    dateTimePicker.ValueChanged += ControlPropriete_ValueChanged;
-                    if (AffichagePropriete.isOblegatoir)
-                        dateTimePicker.Validating += DateTimePicker_Validating;
-
-                    this.formulaire.Controls.Add(dateTimePicker);
-
-                    controlPropriete = dateTimePicker;
+                    controlPropriete = this.CreateChampsDateTime(item, x_control, y - 3, index++);
                 }
 
 
@@ -330,6 +318,28 @@ namespace App.WinForm
 
         //}
 
+        private Control CreateChampsDateTime(PropertyInfo item,int x,int y,int index)
+        {
+            // Lecture de l'annotation 
+            AffichageProprieteAttribute AffichagePropriete = (AffichageProprieteAttribute)item.GetCustomAttribute(typeof(AffichageProprieteAttribute));
+
+
+            DateTimePicker dateTimePicker = new DateTimePicker();
+            dateTimePicker.Location = new System.Drawing.Point(x, y);
+            dateTimePicker.Name = char.ToLower(item.Name[0]) + item.Name.Substring(1) + "DateTimePicker";
+
+            dateTimePicker.Size = new System.Drawing.Size(200, 20);
+            dateTimePicker.TabIndex = index++;
+            dateTimePicker.ValueChanged += ControlPropriete_ValueChanged;
+            if (AffichagePropriete.isOblegatoir)
+                dateTimePicker.Validating += DateTimePicker_Validating;
+
+            this.formulaire.Controls.Add(dateTimePicker);
+
+
+            return dateTimePicker;
+
+        }
 
     }
 }

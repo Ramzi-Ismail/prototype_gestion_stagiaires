@@ -6,14 +6,14 @@ namespace App.GestionStagiaires
 {
     public partial class FormInscription : Form
     {
-        FormStagiaireUC StagiaireForm;
+        StagiaireEntryForm StagiaireForm;
         StagiairesService Service;
         public FormInscription()
         {
 
             InitializeComponent();
             Service = new StagiairesService();
-            StagiaireForm = new FormStagiaireUC(Service);
+            StagiaireForm = new StagiaireEntryForm(Service);
         }
 
         private void FormInscription_Load(object sender, EventArgs e)

@@ -190,7 +190,7 @@ namespace App.WinForm
             this.RenomerTitrePage(this.FiltreControl.CritereRechercheFiltre());
 
         }
-        protected void bt_Ajouter_Click(object sender, EventArgs e)
+        public void bt_Ajouter_Click(object sender, EventArgs e)
         {
             this.EntityManagerControl.bt_Ajouter_Click(sender, e);
         }

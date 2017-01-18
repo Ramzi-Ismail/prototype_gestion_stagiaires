@@ -11,7 +11,7 @@ namespace App.WinFrom.Menu
     /// <summary>
     /// Helper Pour Afficher un formulaire dans l'application
     /// </summary>
-    public class AfficherFormHelper
+    public class AfficherFormHelper 
     {
         /// <summary>
         /// L'objet Form MDI
@@ -31,11 +31,22 @@ namespace App.WinFrom.Menu
             this.FormApplicationMdi = FormApplicationMdi;
         }
 
-        public void AfficherUneGestion<T>() where T : BaseEntity
+        #region Afficher par Type d'entity
+        public EntityManagementForm AfficherUneGestion(Type TypeEntity) 
         {
-            EntityManagementForm form = new EntityManagementForm(new BaseRepository<T>(),null,null,this.FormApplicationMdi);
+            IBaseRepository baseRepository = new BaseRepository<BaseEntity>()
+                .CreateInstance_Of_Service_From_TypeEntity(TypeEntity);
+
+            EntityManagementForm form = new EntityManagementForm(baseRepository, null, null, this.FormApplicationMdi);
             this.Afficher(form);
+            return form;
         }
+
+        public EntityManagementForm AfficherUneGestion<T>() where T : BaseEntity
+        {
+           return AfficherUneGestion(typeof(T));
+        }
+        #endregion
 
 
 
@@ -50,10 +61,12 @@ namespace App.WinFrom.Menu
         /// </summary>
         /// <typeparam name="T">L'objet à gérer</typeparam>
         /// <param name="formulaire">Le Formulaire spécifique</param>
-        public void AfficherUneGestion<T>(BaseEntryForm formulaire) where T : BaseEntity
+        public EntityManagementForm AfficherUneGestion<T>(BaseEntryForm formulaire) where T : BaseEntity
         {
-            EntityManagementForm form = new EntityManagementForm(null, formulaire, null, this.FormApplicationMdi);
+
+            EntityManagementForm form = new EntityManagementForm(formulaire.Service, formulaire, null, this.FormApplicationMdi);
             this.Afficher(form);
+            return form;
         }
 
         public void AfficherUneGestion<T>(IBaseRepository Service,BaseEntryForm formulaire) where T : BaseEntity

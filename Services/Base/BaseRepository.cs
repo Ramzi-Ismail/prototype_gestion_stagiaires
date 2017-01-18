@@ -317,6 +317,7 @@ namespace App
        
         public IBaseRepository CreateInstance_Of_Service_From_TypeEntity(Type TypeEntity)
         {
+           
             Type TypeEntityService = typeof(BaseRepository<>).MakeGenericType(TypeEntity);
             IBaseRepository EntityService = (IBaseRepository) Activator.CreateInstance(TypeEntityService);
             return EntityService;

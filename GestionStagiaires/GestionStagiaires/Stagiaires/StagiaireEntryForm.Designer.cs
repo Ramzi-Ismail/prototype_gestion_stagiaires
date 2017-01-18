@@ -1,6 +1,6 @@
 ﻿namespace App.GestionStagiaires
 {
-    partial class FormStagiaireUC
+    partial class StagiaireEntryForm
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -44,13 +44,13 @@
             this.dateNaissanceDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.nomTextBox = new System.Windows.Forms.TextBox();
             this.prenomTextBox = new System.Windows.Forms.TextBox();
-            this.Combo_groupe = new System.Windows.Forms.ComboBox();
+            this.groupeComboBox = new System.Windows.Forms.ComboBox();
             this.groupeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.adressTextBox = new System.Windows.Forms.TextBox();
             this.emailTextBox = new System.Windows.Forms.TextBox();
             this.telephoneTextBox = new System.Windows.Forms.TextBox();
-            this.Combo_Filiere = new System.Windows.Forms.ComboBox();
+            this.filiereComboBox = new System.Windows.Forms.ComboBox();
             this.filiereBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -70,6 +70,10 @@
             nomLabel = new System.Windows.Forms.Label();
             prenomLabel = new System.Windows.Forms.Label();
             telephoneLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupeBindingSource)).BeginInit();
@@ -79,6 +83,22 @@
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btEnregistrer
+            // 
+            this.btEnregistrer.Location = new System.Drawing.Point(3, 21);
+            // 
+            // splitContainer1
+            // 
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox3);
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox5);
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
+            this.splitContainer1.Size = new System.Drawing.Size(659, 432);
+            this.splitContainer1.SplitterDistance = 356;
             // 
             // adressLabel
             // 
@@ -149,12 +169,12 @@
             this.groupBox1.Controls.Add(cinLabel);
             this.groupBox1.Controls.Add(this.cinTextBox);
             this.groupBox1.Controls.Add(dateNaissanceLabel);
+            this.groupBox1.Controls.Add(this.nomTextBox);
             this.groupBox1.Controls.Add(this.dateNaissanceDateTimePicker);
             this.groupBox1.Controls.Add(nomLabel);
-            this.groupBox1.Controls.Add(this.nomTextBox);
             this.groupBox1.Controls.Add(prenomLabel);
             this.groupBox1.Controls.Add(this.prenomTextBox);
-            this.groupBox1.Location = new System.Drawing.Point(3, 46);
+            this.groupBox1.Location = new System.Drawing.Point(3, 10);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(322, 214);
             this.groupBox1.TabIndex = 10;
@@ -227,16 +247,16 @@
             this.prenomTextBox.TabIndex = 23;
             this.prenomTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.prenomTextBox_Validating);
             // 
-            // Combo_groupe
+            // groupeComboBox
             // 
-            this.Combo_groupe.DataSource = this.groupeBindingSource;
-            this.Combo_groupe.DisplayMember = "Nom";
-            this.Combo_groupe.FormattingEnabled = true;
-            this.Combo_groupe.Location = new System.Drawing.Point(98, 28);
-            this.Combo_groupe.Name = "Combo_groupe";
-            this.Combo_groupe.Size = new System.Drawing.Size(200, 21);
-            this.Combo_groupe.TabIndex = 0;
-            this.Combo_groupe.ValueMember = "Id";
+            this.groupeComboBox.DataSource = this.groupeBindingSource;
+            this.groupeComboBox.DisplayMember = "Nom";
+            this.groupeComboBox.FormattingEnabled = true;
+            this.groupeComboBox.Location = new System.Drawing.Point(98, 28);
+            this.groupeComboBox.Name = "groupeComboBox";
+            this.groupeComboBox.Size = new System.Drawing.Size(200, 21);
+            this.groupeComboBox.TabIndex = 0;
+            this.groupeComboBox.ValueMember = "Id";
             // 
             // groupeBindingSource
             // 
@@ -275,16 +295,16 @@
             this.telephoneTextBox.TabIndex = 29;
             this.telephoneTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.telephoneTextBox_Validating);
             // 
-            // Combo_Filiere
+            // filiereComboBox
             // 
-            this.Combo_Filiere.DataSource = this.filiereBindingSource;
-            this.Combo_Filiere.DisplayMember = "Code";
-            this.Combo_Filiere.FormattingEnabled = true;
-            this.Combo_Filiere.Location = new System.Drawing.Point(98, 58);
-            this.Combo_Filiere.Name = "Combo_Filiere";
-            this.Combo_Filiere.Size = new System.Drawing.Size(200, 21);
-            this.Combo_Filiere.TabIndex = 30;
-            this.Combo_Filiere.ValueMember = "Id";
+            this.filiereComboBox.DataSource = this.filiereBindingSource;
+            this.filiereComboBox.DisplayMember = "Code";
+            this.filiereComboBox.FormattingEnabled = true;
+            this.filiereComboBox.Location = new System.Drawing.Point(98, 58);
+            this.filiereComboBox.Name = "filiereComboBox";
+            this.filiereComboBox.Size = new System.Drawing.Size(200, 21);
+            this.filiereComboBox.TabIndex = 30;
+            this.filiereComboBox.ValueMember = "Id";
             // 
             // filiereBindingSource
             // 
@@ -301,10 +321,10 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.Combo_Filiere);
+            this.groupBox2.Controls.Add(this.filiereComboBox);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.Combo_groupe);
+            this.groupBox2.Controls.Add(this.groupeComboBox);
             this.groupBox2.Location = new System.Drawing.Point(331, 3);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(321, 112);
@@ -320,7 +340,7 @@
             this.groupBox3.Controls.Add(this.telephoneTextBox);
             this.groupBox3.Controls.Add(this.emailTextBox);
             this.groupBox3.Controls.Add(emailLabel);
-            this.groupBox3.Location = new System.Drawing.Point(331, 121);
+            this.groupBox3.Location = new System.Drawing.Point(335, 128);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(321, 234);
             this.groupBox3.TabIndex = 12;
@@ -335,7 +355,7 @@
             this.groupBox5.Controls.Add(this.txt_password);
             this.groupBox5.Controls.Add(this.label4);
             this.groupBox5.Controls.Add(this.txt_login);
-            this.groupBox5.Location = new System.Drawing.Point(3, 266);
+            this.groupBox5.Location = new System.Drawing.Point(0, 230);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(322, 157);
             this.groupBox5.TabIndex = 13;
@@ -400,21 +420,17 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // FormStagiaireUC
+            // StagiaireEntryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.Name = "FormStagiaireUC";
+            this.Name = "StagiaireEntryForm";
             this.Size = new System.Drawing.Size(659, 432);
-            this.Load += new System.EventHandler(this.FormStagiaireUC_Load);
-            this.Controls.SetChildIndex(this.groupBox1, 0);
-            this.Controls.SetChildIndex(this.groupBox2, 0);
-            this.Controls.SetChildIndex(this.groupBox3, 0);
-            this.Controls.SetChildIndex(this.groupBox5, 0);
+            this.Load += new System.EventHandler(this.StagiaireEntryForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -435,7 +451,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox Combo_groupe;
+        private System.Windows.Forms.ComboBox groupeComboBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox adressTextBox;
         private System.Windows.Forms.TextBox cinTextBox;
@@ -444,7 +460,7 @@
         private System.Windows.Forms.TextBox nomTextBox;
         private System.Windows.Forms.TextBox prenomTextBox;
         private System.Windows.Forms.TextBox telephoneTextBox;
-        private System.Windows.Forms.ComboBox Combo_Filiere;
+        private System.Windows.Forms.ComboBox filiereComboBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.RadioButton radioButtonFamme;

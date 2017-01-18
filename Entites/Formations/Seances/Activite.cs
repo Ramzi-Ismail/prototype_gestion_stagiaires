@@ -27,13 +27,17 @@ namespace App.Formations
         public int Duree { set; get; }
 
 
-        [AffichagePropriete(Titre = "Catégogie d'activite", isGridView = true, isFormulaire = true,
+        [AffichagePropriete(Titre = "Catégogie d'activite", 
+            isGridView = true, isFormulaire = true,
+            Relation ="ManyToOne",
            Filtre =true, isOblegatoir = true, Ordre = 3, WidthColonne = 100)]
         public virtual CategogieActivite CategogieActivite { set; get; }
 
 
 
-        [AffichagePropriete(Titre = "Stratégie Pédagogie", isGridView = true, isFormulaire = true,
+        [AffichagePropriete(Titre = "Stratégie Pédagogie", 
+            isGridView = true, isFormulaire = true,
+             Relation = "ManyToOne",
             Filtre = true, isOblegatoir = true, Ordre = 4, WidthColonne = 100)]
         public virtual StrategiePedagogie StrategiePedagogie { set; get; }
 

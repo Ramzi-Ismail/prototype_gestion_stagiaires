@@ -45,7 +45,7 @@ namespace App
         {
             // Gestion des stagiaire
             StagiairesService service = new StagiairesService();
-            FormStagiaireUC objetForm = new FormStagiaireUC(service);
+            StagiaireEntryForm objetForm = new StagiaireEntryForm(service);
 
             AfficherFormulaire.AfficherUneGestion<Stagiaire>(service, objetForm);
 
@@ -94,7 +94,7 @@ namespace App
 
         private void editerGénériqueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           // Gestion.FormGestion<GestionStagiaires.FormStagiaireUC> f = new Gestion.FormGestion<GestionStagiaires.FormStagiaireUC>("Stagiaires", new GestionStagiaires.GridStagiaireUC());
+           // Gestion.FormGestion<GestionStagiaires.StagiaireEntryForm> f = new Gestion.FormGestion<GestionStagiaires.StagiaireEntryForm>("Stagiaires", new GestionStagiaires.GridStagiaireUC());
           //  AfficherFormulaire.Afficher(f);
 
         }

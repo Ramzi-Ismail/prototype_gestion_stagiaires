@@ -22,6 +22,7 @@ namespace App.AutoFormation
             // new RechercheModuleParFiliere();
             var sets = from p in typeof(ModelContext).GetProperties() where p.PropertyType.IsGenericType && p.PropertyType.GetGenericTypeDefinition() == typeof(DbSet<>) let entityType = p.PropertyType.GetGenericArguments().First() select p.Name;
 
+            object a = sets.ToList();
 
 
         }

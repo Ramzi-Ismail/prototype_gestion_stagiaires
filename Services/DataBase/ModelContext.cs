@@ -7,6 +7,7 @@
     using Livres;
     using Modules;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Validation;
@@ -116,6 +117,16 @@
         //    return new Exception(message, dbu);
         //}
 
+
+        /// <summary>
+        /// trouver la liste des type des objets dans le context
+        /// </summary>
+        /// <returns></returns>
+        public List<Type> GetTypesSets()
+        {
+            var sets = from p in typeof(ModelContext).GetProperties() where p.PropertyType.IsGenericType && p.PropertyType.GetGenericTypeDefinition() == typeof(DbSet<>) let entityType = p.PropertyType.GetGenericArguments().First() select p.PropertyType.GetGenericArguments()[0];
+            return sets.ToList<Type>();
+        }
 
     }
 
