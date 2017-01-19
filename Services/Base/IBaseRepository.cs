@@ -9,43 +9,91 @@ using System.Threading.Tasks;
 
 namespace App
 {
-
+    /// <summary>
+    ///  L'inteface non générique de BaseRepository
+    /// </summary>
     public interface IBaseRepository 
     {
-          Type TypeEntity { set; get; } 
-        int SaveChanges();
+        #region Variables
+        /// <summary>
+        /// Obtient l'objet Type de l'entity en gestion
+        /// </summary>
+        Type TypeEntity { set; get; }
+        #endregion
 
-        int Save(BaseEntity item);
+        #region Evénements
+        /// <summary>
+        /// à exécuter aprés l'événement qui Indique que les valeurs de l'entity sont changé
+        /// </summary>
+        void ValueChanged(object sender, BaseEntity entity);
+        #endregion
 
-        Object ToBindingList();
-        void AddElement();
-
-        //string GetNomObjet();
-        List<object> GetAllDetached();
-        //string GetNomObjets();
-
-        List<Object> Recherche(Dictionary<string, List<string>> dictionary,int startPage = 0, int itemsPerPage = 0);
-        List<Object> Recherche(Dictionary<string, object> rechercheInfos, int startPage = 0, int itemsPerPage = 0);
-        
-
-        List<Object> GetAll();
-
-        BaseEntity GetBaseEntityByID(Int64 id);
-
-        void Supprimer(BaseEntity obj);
-
+        #region Context
         /// <summary>
         /// Obtient le context 
         /// </summary>
         /// <returns></returns>
         ModelContext Context();
 
+        void Dispose();
+        #endregion
+
+        #region CRUD
+
+        /// <summary>
+        /// Enregistrement d'une Entity en cas de Add ou Update
+        /// </summary>
+        /// <param name="entity">L'entity à enregistrer</param>
+        /// <returns></returns>
+        int Save(BaseEntity entity);
+
+        /// <summary>
+        /// Supprimer un entity
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns>Le nombre des entity supprimés</returns>
+        int Delete(BaseEntity obj);
+
+
+        #endregion
+
+        #region Rechercher
+
+        /// <summary>
+        /// Rechercher 
+        /// </summary>
+        /// <param name="rechercheInfos"></param>
+        /// <param name="startPage"></param>
+        /// <param name="itemsPerPage"></param>
+        /// <returns></returns>
+        List<Object> Recherche(Dictionary<string, object> rechercheInfos, int startPage = 0, int itemsPerPage = 0);
+
+        /// <summary>
+        /// Reourne tous les objets avec l'état détaché
+        /// </summary>
+        /// <returns></returns>
+        List<object> GetAllDetached();
+
+        List<Object> GetAll();
+
+        BaseEntity GetBaseEntityByID(Int64 id);
+
+        #endregion
+
+        #region Binding Source
+        /// <summary>
+        /// Binding une liste avec une source de données
+        /// </summary>
+        /// <returns></returns>
+        Object ToBindingList();
+        #endregion
+
+        #region Create Instance
         /// <summary>
         /// Création d'une instance de l'objet T
         /// </summary>
         /// <returns></returns>
-          object CreateInstanceObjet();
-       AffichageDansFormGestionAttribute getAffichageDansFormGestionAttribute();
+        object CreateInstanceObjet();
 
         /// <summary>
         /// Création d'une instance de de BaseRepositoty depuis le type de l'objet Entity
@@ -54,10 +102,11 @@ namespace App
         /// <returns></returns>
         IBaseRepository CreateInstance_Of_Service_From_TypeEntity(Type TypeEntity);
 
-        /// <summary>
-        /// Indique que les valeurs de l'entity sont changé
-        /// </summary>
-      
-        void ValueChanged(object sender, BaseEntity entity );
+        #endregion
+
+        #region Annotation
+        AffichageDansFormGestionAttribute getAffichageDansFormGestionAttribute();
+        #endregion
+
     }
 }

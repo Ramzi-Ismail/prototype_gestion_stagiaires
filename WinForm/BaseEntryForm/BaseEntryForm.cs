@@ -51,6 +51,13 @@ namespace App.WinForm
         /// </summary>
         protected Dictionary<string, object> CritereRechercheFiltre { set; get; }
 
+        /// <summary>
+        /// Indique si la saisie des valeurs provient de l'étape de l'initialisation 
+        /// de la formulaire
+        /// il est utiliser pour ne pas lancer les evénement de changement des champs 
+        /// lors de la pase de l'initialisation
+        /// </summary>
+        public bool isStepInitializingValues { get; set; }
 
 
         #endregion
@@ -249,6 +256,9 @@ namespace App.WinForm
         /// </summary>
         public virtual void Afficher(Dictionary<string, object> CritereRechercheFiltre)
         {
+            // début de la phase d'initialisation, pour ne pas lancer les evénement 
+            // de changement des valeurs des contôle
+            isStepInitializingValues = true;
 
             BaseEntity entity = this.Entity;
             Type typeEntity = this.Service.TypeEntity;
@@ -389,6 +399,9 @@ namespace App.WinForm
 
 
             }
+
+            // Fin de la phase d'initialisaiton
+            this.isStepInitializingValues = false;
         }
 
 
@@ -466,11 +479,18 @@ namespace App.WinForm
 
 
         #region Enregistrer et Annuler
-        private void btEnregistrer_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Le button d'enregistremnet du formulaire de saisie
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected virtual void btEnregistrer_Click(object sender, EventArgs e)
         {
+            // Varéfier la validation 
             bool validation = true;
             if (ValidationManager.hasValidationErrors(this.Controls))
                 return;
+
             this.Lire();
 
             if (validation)
@@ -478,12 +498,18 @@ namespace App.WinForm
                 if (Service.Save(this.Entity) > 0)
                 {
                     MessageBox.Show(string.Format("'{0}' a été bien enregistrer", this.Entity.ToString()));
+                    onEnregistrerClick(this, e);
                 }
                 else
                 {
-                    MessageBox.Show(string.Format("'{0}' n'est pas enregistrer car il n'y a pas des modifications", this.Entity.ToString()));
+                    MessageBox.Show(
+                        string.Format("L'information n'est pas enregistrer car il n'y a pas des modifications"
+                        , this.Entity.ToString())
+                        ,"Il n'y a pas des modification"
+                        
+                        );
                 }
-                onEnregistrerClick(this, e);
+                
             }
         }
 

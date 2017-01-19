@@ -144,7 +144,7 @@ namespace App.WinForm.EntityManagement
                     "Voullez-vous vraimment supprimer :" + obj.ToString(),
                     "Confirmation de supprision", MessageBoxButtons.YesNo))
                 {
-                    this.Service.Supprimer(obj);
+                    this.Service.Delete(obj);
                     this.Actualiser();
                 }
             }

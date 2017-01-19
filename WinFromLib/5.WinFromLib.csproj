@@ -69,6 +69,7 @@
     <Compile Include="EF\Class1.cs" />
     <Compile Include="Exceptions\PropertyDoesNotExistException.cs" />
     <Compile Include="Linq\LinqExtension.cs" />
+    <Compile Include="Message\MessageToUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\RuntimeTextTemplate1.cs">
       <AutoGen>True</AutoGen>

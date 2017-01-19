@@ -25,14 +25,15 @@ namespace App.Formations
         }
 
 
-        [Required]
+        [Required ]
         [AffichagePropriete(Titre = "Titre", Ordre = 2,
            WidthColonne = 200,
            isFormulaire = true, isGridView = true)]
         public string Titre { set; get; }
 
         [Required]
-        [AffichagePropriete(Titre = "Début de férie", Ordre = 3,
+        [AffichagePropriete(Titre = "Début de férie", 
+           Ordre = 3,
            WidthColonne = 120,
            isFormulaire = true, isGridView = true)]
         public DateTime DateDebut { set; get; }

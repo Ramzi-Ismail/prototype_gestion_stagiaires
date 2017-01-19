@@ -22,33 +22,18 @@ namespace App.WinForm
     public partial class EntryForm : BaseEntryForm
     {
 
-        /// <summary>
-        /// Indique si la saisie des valeurs provient de l'étape de l'initialisation 
-        /// de la formulaire
-        /// La valeurs par défaut : fasle
-        /// </summary>
-        public bool isStepInitializingValues { get;  set; }
-
-
-
-        #region Variables
-
-
-        #endregion
-
         #region Constructeurs
         public EntryForm() : base()
         {
             InitializeComponent();
 
         }
-
+   
         /// <summary>
         /// Constructeur principale
         /// </summary>
         /// <param name="service">Instance de ServerManager qui gérer l'entity en cours gestion</param>
         /// 
-
         public EntryForm(IBaseRepository service) : base(service)
         {
             InitializeComponent();
@@ -57,28 +42,20 @@ namespace App.WinForm
             ConteneurFormulaire = this.formulaire;
             InitFormulaire();
         }
-
-
         public EntryForm(IBaseRepository service, BaseEntity entity, Dictionary<string, object> critereRechercheFiltre) : base(service, entity, critereRechercheFiltre)
         {
             InitializeComponent();
-
-
-
             ConteneurFormulaire = this.formulaire;
             InitFormulaire();
         }
-
         #endregion
 
         #region Création du formulaire
-
         /// <summary>
         /// Création et Initalisation des contrôles du formulaire
         /// </summary>
         private void InitFormulaire()
         {
-
             // La position X et Y
             int y = 35;
             int x_label = 16;
@@ -91,7 +68,6 @@ namespace App.WinForm
             {
                 // Lecture de l'annotation 
                 AffichageProprieteAttribute AffichagePropriete = (AffichageProprieteAttribute)item.GetCustomAttribute(typeof(AffichageProprieteAttribute));
-
                 //
                 // Cration de label
                 // 
@@ -102,164 +78,36 @@ namespace App.WinForm
                 lbl.Size = new System.Drawing.Size(100, 13);
                 lbl.TabIndex = index++;
                 lbl.Text = AffichagePropriete.Titre;
+                this.formulaire.Controls.Add(lbl);
 
                 // Le contrôle qui représente la propriété
                 Control controlPropriete = null;
-
-                //
-                // Création des champs de type String
-                //
-                if (item.PropertyType.Name == "String")
+                switch (item.PropertyType.Name)
                 {
-                    // 
-                    // textBoxString
-                    // 
-                    TextBox textBoxString = new TextBox();
-                    textBoxString.Location = new System.Drawing.Point(x_control, y - 3);
-                    textBoxString.Name = char.ToLower(item.Name[0]) + item.Name.Substring(1) + "TextBox";
-                    textBoxString.TabIndex = index++;
-                    textBoxString.TextChanged += ControlPropriete_ValueChanged;
+                    case "String":
+                        controlPropriete = this.CreateStringField(item, x_control, y - 3, index++);
+                        break;
+                    case "Int32":
+                        controlPropriete = this.CreateInt32Field(item, x_control, y - 3, index++);
+                        break;
+                    case "DateTime":
+                        controlPropriete = this.CreateDateTimeField(item, x_control, y - 3, index++);
+                        break;
 
-                    if (AffichagePropriete.isOblegatoir)
-                        textBoxString.Validating += textBoxString_Validating;
-                    if (AffichagePropriete.MultiLine)
-                    {
-                        textBoxString.Multiline = true;
-                        textBoxString.Size = new System.Drawing.Size(400, 100);
-                        y += 80;
-                    }
-                    else
-                    {
-                        textBoxString.Size = new System.Drawing.Size(200, 20);
-                    }
-
-                    this.formulaire.Controls.Add(textBoxString);
-
-                    controlPropriete = textBoxString;
+                    default:
+                        {
+                            if (AffichagePropriete.Relation == "ManyToOne")
+                            {
+                                controlPropriete = this.CreateManyToOneField(item, x_control, y - 3, index++);
+                            }
+                            if (AffichagePropriete.Relation == "ManyToMany")
+                            {
+                                controlPropriete = this.CreateManyToManyField(item, x_control, y - 3, index++);
+                            }
+                        }
+                        break;
                 }
-
-                //
-                // Création des champs de type Int32
-                //
-                if (item.PropertyType.Name == "Int32")
-                {
-                    // textBoxInt32
-                    TextBox textBoxInt32 = new TextBox();
-                    textBoxInt32.Location = new System.Drawing.Point(x_control, y - 3);
-                    textBoxInt32.Name = char.ToLower(item.Name[0]) + item.Name.Substring(1) + "TextBox";
-                    textBoxInt32.Size = new System.Drawing.Size(200, 20);
-                    textBoxInt32.TabIndex = index++;
-                    textBoxInt32.TextChanged += ControlPropriete_ValueChanged;
-                    if (AffichagePropriete.isOblegatoir)
-                        textBoxInt32.Validating += TextBoxInt32_Validating;
-
-                    this.formulaire.Controls.Add(textBoxInt32);
-
-                    controlPropriete = textBoxInt32;
-                }
-
-                //
-                // Création des champs de type DateTime
-                //
-                if (item.PropertyType.Name == "DateTime")
-                {
-                    controlPropriete = this.CreateChampsDateTime(item, x_control, y - 3, index++);
-                }
-
-
-
-                //
-                // Création des champs de type BaseEntity : ManyToOne
-                //
-                if (AffichagePropriete.Relation == "ManyToOne")
-                {
-
-                    if (AffichagePropriete.FilterSelection)
-                    {
-                        InputComboBox InputComboBox = new InputComboBox(item.PropertyType,
-                            this.Entity,
-                            InputComboBox.MainContainers.Panel,
-                            InputComboBox.Directions.Vertical);
-
-                        InputComboBox.Location = new System.Drawing.Point(x_control, y - 3);
-                        InputComboBox.Name = char.ToLower(item.Name[0]) + item.Name.Substring(1) + "ComboBox";
-                        InputComboBox.Size = new System.Drawing.Size(200, 100); y += 80;
-                        InputComboBox.TabIndex = index++;
-                        InputComboBox.ValueChanged += ControlPropriete_ValueChanged;
-
-                        this.formulaire.Controls.Add(InputComboBox);
-
-                        if (AffichagePropriete.isOblegatoir)
-                            InputComboBox.Validating += ComboBox_Validating;
-
-                    }
-                    else
-                    {
-
-
-                        Type ServicesEntityType = typeof(BaseRepository<>).MakeGenericType(item.PropertyType);
-                        IBaseRepository ServicesEntity = (IBaseRepository)Activator.CreateInstance(ServicesEntityType);
-                        List<object> ls = ServicesEntity.GetAllDetached();
-
-                        ComboBox comboBox = new ComboBox();
-
-                        comboBox.Location = new System.Drawing.Point(x_control, y - 3);
-                        comboBox.Name = char.ToLower(item.Name[0]) + item.Name.Substring(1) + "ComboBox";
-                        comboBox.Size = new System.Drawing.Size(200, 20);
-                        comboBox.TabIndex = index++;
-                        comboBox.SelectedIndexChanged += ControlPropriete_ValueChanged;
-                        comboBox.ValueMember = "Id";
-                        comboBox.DisplayMember = AffichagePropriete.DisplayMember;
-                        comboBox.DataSource = ls;
-                        this.formulaire.Controls.Add(comboBox);
-
-                        if (AffichagePropriete.isOblegatoir)
-                            comboBox.Validating += ComboBox_Validating;
-
-                    }
-
-                }
-
-                //
-                // Création des champs de type BaseEntity : ManyToOne
-                //
-                if (AffichagePropriete.Relation == "ManyToMany")
-                {
-                    // Création de TabPage
-                    TabPage tabPage = new TabPage();
-                    tabPage.Text = item.Name;
-                    this.tabControlManytoMany.TabPages.Add(tabPage);
-
-                    //Valeur par défaut
-                    List<BaseEntity> ls_default_value = null;
-                    if (this.Entity != null)
-                    {
-                        IList ls_obj = item.GetValue(this.Entity) as IList;
-
-                        if (ls_obj != null) ls_default_value = ls_obj.Cast<BaseEntity>().ToList();
-                    }
-
-
-
-                    InputCollectionControle InputCollectionControle = new InputCollectionControle(item, ls_default_value, this.Entity);
-
-                    InputCollectionControle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-           | System.Windows.Forms.AnchorStyles.Left)
-           | System.Windows.Forms.AnchorStyles.Right)));
-
-
-                    tabPage.Controls.Add(InputCollectionControle);
-
-                    InputCollectionControle.ValueChanged += ControlPropriete_ValueChanged;
-
-
-
-                }
-
-                this.formulaire.Controls.Add(lbl);
-
                 y += 25;
-
             }
         }
 
@@ -272,16 +120,13 @@ namespace App.WinForm
         {
             if (!this.isStepInitializingValues)
             {
-                
                 // Lecture informations
-                
                 this.Lire();
                 this.Service.ValueChanged(sender,this.Entity);
                 this.isStepInitializingValues = true;
                 this.Afficher();
                 this.isStepInitializingValues = false;
                 // Re-Initialisation des valeurs
-
             }
         }
 
@@ -306,40 +151,12 @@ namespace App.WinForm
         }
         #endregion
 
-
-        //[Obsolete("La fonction est vide, il ne fait rient")]
-        ///// <summary>
-        ///// Initialisation des valeurs depuis le fitre
-        ///// </summary>
-        ///// <param name="dictionary"></param>
-        //public override void InitValeurFromFiltre(Dictionary<string, object> dictionary)
-        //{
-            
-
-        //}
-
-        private Control CreateChampsDateTime(PropertyInfo item,int x,int y,int index)
+        private void btEnregistrer_Click(object sender, EventArgs e)
         {
-            // Lecture de l'annotation 
-            AffichageProprieteAttribute AffichagePropriete = (AffichageProprieteAttribute)item.GetCustomAttribute(typeof(AffichageProprieteAttribute));
+            // même si nous avons définit l'événement Clikc sur le button ajouter 
+            // l'événement de btEnregistrer_Click est toujour exécuter
 
-
-            DateTimePicker dateTimePicker = new DateTimePicker();
-            dateTimePicker.Location = new System.Drawing.Point(x, y);
-            dateTimePicker.Name = char.ToLower(item.Name[0]) + item.Name.Substring(1) + "DateTimePicker";
-
-            dateTimePicker.Size = new System.Drawing.Size(200, 20);
-            dateTimePicker.TabIndex = index++;
-            dateTimePicker.ValueChanged += ControlPropriete_ValueChanged;
-            if (AffichagePropriete.isOblegatoir)
-                dateTimePicker.Validating += DateTimePicker_Validating;
-
-            this.formulaire.Controls.Add(dateTimePicker);
-
-
-            return dateTimePicker;
 
         }
-
     }
 }

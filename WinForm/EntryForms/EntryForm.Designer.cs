@@ -45,7 +45,8 @@
             // 
             // btEnregistrer
             // 
-            this.btEnregistrer.Location = new System.Drawing.Point(3, 11);
+            this.btEnregistrer.Location = new System.Drawing.Point(10, 9);
+            this.btEnregistrer.Click += new System.EventHandler(this.btEnregistrer_Click);
             // 
             // splitContainer1
             // 

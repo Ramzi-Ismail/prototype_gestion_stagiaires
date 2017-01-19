@@ -18,9 +18,6 @@ namespace App.WinForm.EntityManagement
             BaseEntity entity = (BaseEntity)ObjetBindingSource.Current;
             string tabEditerName = "TabEditer-" + entity.Id;
 
-
-
-
             if (tabControl.TabPages.IndexOfKey(tabEditerName) == -1)
             {
                 // Création de Tab
@@ -28,10 +25,7 @@ namespace App.WinForm.EntityManagement
                 tabEditer.Text = entity.ToString();
                 tabEditer.Name = tabEditerName;
                 tabControl.TabPages.Add(tabEditer);
-
                 tabControl.CausesValidation = false;
-
-
 
                 // Insertion du formulaire 
                 BaseEntryForm form = Formulaire.CreateInstance(this.Service, entity, null);
@@ -41,7 +35,7 @@ namespace App.WinForm.EntityManagement
                 this.tabControl.TabPages[tabEditerName].Controls.Add(form);
                 tabControl.SelectedTab = tabEditer;
 
-                form.Afficher();
+                form.Afficher(this.FiltreControl.CritereRechercheFiltre());
                 form.EnregistrerClick += Form_EditerClick;
                 form.AnnulerClick += Form_AnnulerEditerClick;
 

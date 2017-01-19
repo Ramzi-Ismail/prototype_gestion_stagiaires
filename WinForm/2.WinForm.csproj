@@ -89,6 +89,21 @@
     <Compile Include="EntityManagement\Filter\FiltreControl.Designer.cs">
       <DependentUpon>FiltreControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="EntryForms\Fields\DateTimeField.EntryForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EntryForms\Fields\IntegerField.EntryForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EntryForms\Fields\ManyToManyField.EntyForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EntryForms\Fields\ManyToOneField.EntryForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EntryForms\Fields\StringField.EntryForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="EntryForms\InputCollectionControle.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App.WinForm;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,18 @@ namespace App.Formations
                 case "dateDebutDateTimePicker":
                     {
                             ferier.DateFin = ferier.DateDebut;
+                    }
+                    break;
+                case "dateFinDateTimePicker":
+                    {
+                        if(ferier.DateFin < ferier.DateDebut)
+                        {
+                            ferier.DateFin = ferier.DateDebut;
+                            MessageToUser.AddMessage(MessageToUser.Category.BusinessRule, 
+                                "La date de fin ne peut pas être ingférieur de la date de début");
+
+                        }
+
                     }
                     break;
                 default: break;

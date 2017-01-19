@@ -12,18 +12,19 @@ using System.Reflection;
 using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using App.WinForm;
+using System.Data.Entity.Validation;
 
 namespace App
 {
     public class BaseRepository<T> : IBaseRepository where T : BaseEntity   
     {
         #region Variables
-        public ModelContext Context { get; set; }
         private Type typeEntity;
-        
-        protected IDbSet<T> DbSet { get; set; }
-
-        public Type  TypeEntity
+        /// <summary>
+        /// Obtient l'objet Type de l'entity en gestion
+        /// </summary>
+        public Type TypeEntity 
         {
             get
             {
@@ -35,26 +36,230 @@ namespace App
                 typeEntity = value;
             }
         }
+
+        protected IDbSet<T> DbSet { get; set; }
         #endregion
 
+        #region Evénements
+        /// <summary>
+        /// Indique que les valeurs de l'entity sont changé
+        /// </summary>
+        public virtual void ValueChanged(object sender, BaseEntity entity)
+        {
+            // Cette méthode est surcharger pour appliquer les règle de gestions 
+
+        }
+        #endregion
 
         #region construcreur
         public BaseRepository(ModelContext context)
         {
             this.Context = context;
+            if (this.Context == null) this.Context = new ModelContext();
+
             this.DbSet = this.Context.Set<T>();
             this.TypeEntity = typeof(T);
         }
-        public BaseRepository()
+        public BaseRepository() : this(null) { }
+        #endregion
+
+        #region Context
+
+        public ModelContext Context { get; set; }
+
+        ModelContext IBaseRepository.Context()
         {
-            this.Context = new ModelContext();
-            this.DbSet = this.Context.Set<T>();
-            this.TypeEntity = typeof(T);
+            return this.Context;
+        }
+
+        public virtual void Dispose()
+        {
+            if (this.Context != null)
+            {
+                this.Context.Dispose();
+            }
         }
         #endregion
 
+        #region Traitement des excéption
+
+        private void DbEntityValidationExceptionTreatment(DbEntityValidationException ex)
+        {
+            foreach (DbEntityValidationResult item in ex.EntityValidationErrors)
+            {
+                // Get entry
+                DbEntityEntry entry = item.Entry;
+
+                BaseEntity entity =(BaseEntity) entry.Entity;
+                string entityTypeName = entity.ToString();
+
+                // Display or log error messages
+                foreach (DbValidationError subItem in item.ValidationErrors)
+                {
+                    string message = string.Format("Erreur : '{0}' \n trouvé dans l'objet : {1}  \n sur la propriété {2}",
+                             subItem.ErrorMessage, entityTypeName, subItem.PropertyName);
+                    MessageToUser.AddMessage(MessageToUser.Category.EntityValidation, message);
+                }
+            }
+        }
+        private void SQLExceptionTreatment(SqlException sqlException)
+        {
+            if (sqlException != null)
+            {
+                if (sqlException.Errors.Count > 0)
+                {
+                    switch (sqlException.Errors[0].Number)
+                    {
+                        case 547: // Foreign Key violation
+                            MessageToUser.AddMessage(MessageToUser.Category.ForeignKeViolation, "");
+                            break;
+                        default:
+                            throw (sqlException);
+
+                    }
+                }
+            }
+            else
+            {
+                throw (sqlException);
+            }
+        }
+
+        private void DbUpdateExceptionTreatment(DbUpdateException e)
+        {
+            var sqlException = e.GetBaseException() as SqlException;
+            if (sqlException != null)
+            {
+                if (sqlException.Errors.Count > 0)
+                {
+                    switch (sqlException.Errors[0].Number)
+                    {
+                        case 547: // Foreign Key violation
+                            MessageToUser.AddMessage(MessageToUser.Category.ForeignKeViolation, "");
+                            break;
+                        default:
+                            throw (sqlException);
+
+                    }
+                }
+            }
+            else
+            {
+                throw (sqlException);
+            }
+        }
+        #endregion
+
+        #region Save
+        public int Save(BaseEntity item)
+        {
+            return this.Save((T)item);
+        }
+        public virtual int Save(T item)
+        {
+            // Calcule de l'ordre 
+            CalculateOrder(item);
+
+            // Enregistrement
+            try
+            {
+                if (item.Id <= 0) return Insert(item);
+                else return Update(item);
+            }
+            catch (SqlException e)
+            {
+                this.SQLExceptionTreatment(e);
+                return 0;
+            }
+            catch(DbEntityValidationException e)
+            {
+                DbEntityValidationExceptionTreatment(e);
+                return 0;
+            }
+           
+        }
+        protected virtual int Insert(T item)
+        {
+            // Règle de gestion : La date de création égale la date de système lors de l'enregistrement
+            item.DateCreation = DateTime.Now;
+            this.DbSet.Add(item);
+            return this.Context.SaveChanges();
+        }
+
+        protected virtual int Update(T item)
+        {
+            this.Context.Entry(item).State = EntityState.Modified;
+
+            // Règle de gestion : Modification de la date de modification avec la date Actuel
+            item.DateModification = DateTime.Now;
+
+            return this.Context.SaveChanges();
+        }
+        protected void CalculateOrder(BaseEntity entity)
+        {
+            if (entity.Ordre == 0)
+            {
+                int ordre = this.DbSet.Count();
+                entity.Ordre = ++ordre;
+            }
+        }
+        #endregion
+
+        #region Delete
+        public virtual int Delete(BaseEntity obj)
+        {
+            return this.Delete(obj.Id);
+        }
+
+        public virtual int Delete(Int64 Id)
+        {
+            var original = DbSet.Find(Id);
+            DbSet.Remove(original);
+            try
+            {
+                return Context.SaveChanges();
+
+            }
+
+            catch(DbUpdateException e)
+            {
+                DbUpdateExceptionTreatment(e);
+                return 0;
+            }
+ 
+        }
+      
+
+      
+ 
+
+       
+
+
+       
+
+        public virtual int Count(Expression<Func<T, bool>> filter = null)
+        {
+            IQueryable<T> query = DbSet;
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+
+            return query.Count();
+        }
+        #endregion
 
         #region Recherche
+        /// <summary>
+        /// Recherche, il est n'est pas déclarer dans l'interface IBaseRepositoty
+        /// </summary>
+        /// <param name="startPage"></param>
+        /// <param name="itemsPerPage"></param>
+        /// <param name="filter"></param>
+        /// <param name="order"></param>
+        /// <param name="includeProperties"></param>
+        /// <returns></returns>
         public virtual List<T> GetAll(int startPage = 0, int itemsPerPage = 0, Expression<Func<T, bool>> filter = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> order = null, string includeProperties = "")
         {
@@ -83,14 +288,6 @@ namespace App
             return query.ToList<T>();
         }
 
-
-        public List<object> Recherche(Dictionary<string, List<string>> dictionary,int startPage = 0, int itemsPerPage = 0 )
-        {
-            IQueryable<T> query = DbSet;
-           
-            List<object>  ls = query.CollectionToQuery(dictionary).ToList<object>();
-            return ls;
-        }
         
         public List<object> Recherche(Dictionary<string, object> rechercheInfos, int startPage = 0, int itemsPerPage = 0)
         {
@@ -144,168 +341,22 @@ namespace App
         {
             return DbSet.Find(id);
         }
+
+
+        #endregion
+
+        #region Binding Source
         public object ToBindingList()
         {
             DbSet.Load();
             return DbSet.Local.ToBindingList();
 
         }
-        public virtual int Count(Expression<Func<T, bool>> filter = null)
-        {
-            IQueryable<T> query = DbSet;
-            if (filter != null)
-            {
-                query = query.Where(filter);
-            }
-
-            return query.Count();
-        }
-        #endregion
-
-        #region CRUD
-        public int SaveChanges()
-        {
-            return this.Context.SaveChanges();
-        }
-        public virtual int Delete(T item)
-        {
-            var original = DbSet.Find(item.Id);
-            DbSet.Remove(original);
-
-
-
-            int return_value = 0;
-
-            try
-            {
-                return_value = Context.SaveChanges();
-                
-            }
-            catch (DbUpdateException e)
-            {
-                var sqlException = e.GetBaseException() as SqlException;
-                if (sqlException != null)
-                {
-                    if (sqlException.Errors.Count > 0)
-                    {
-                        switch (sqlException.Errors[0].Number)
-                        {
-                            case 547: // Foreign Key violation
-                               MessageBox.Show("Vous ne pauvez pas effacer cette information car il est encours d'utilisation");
-                                break;
-                            default:
-                                throw;
-                        }
-                    }
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return return_value;
-
-
-        }
-        /// <summary>
-        /// Supprimer par un objet de Type BaseEntity
-        /// Car delete n'est pas accissible depuis une interface non générique
-        /// </summary>
-        /// <param name="obj"></param>
-        public void Supprimer(BaseEntity obj)
-        {
-            T entity = (T)obj;
-            this.Delete(entity);
-        }
-
-        protected virtual int Insert(T item)
-        {
-         
-            this.DbSet.Add(item);
-            return this.Context.SaveChanges();
-        }
-
-        protected virtual int Update(T item)
-        {
-            this.Context.Entry(item).State = EntityState.Modified;
-            // Modification de la date de modification
-            item.DateModification = DateTime.Now;
-
-
-            return this.Context.SaveChanges();
-        }
-        //private int Update(T item)
-        //{
-        //    var original = DbSet.Find(item.Id);
-
-        //    if (original != null)
-        //    {
-        //        Context.Entry(original).CurrentValues.SetValues(item);
-        //        Context.Entry(original).State = EntityState.Modified;
-        //        return Context.SaveChanges();
-        //    }
-        //    return 0;
-        //}
-
-
-        public virtual int Save(T item)
-        {
-
-
-            // Calcule de l'ordre 
-
-
-            if (item.Ordre == 0)
-            {
-                int ordre = this.DbSet.Count();
-                item.Ordre = ++ordre;
-            }
-
-
-            if (item.Id <= 0)
-            {
-                
-                return Insert(item);
-            }
-            else
-            {
-                return Update(item);
-            }
-        }
-       
-
-
-        public int Save(BaseEntity item)
-        {
-            string state = this.Context.Entry(item).State.ToString();
-            return this.Save((T)item);
-        }
         #endregion
 
 
-        public virtual void Dispose()
-        {
-            if (this.Context != null)
-            {
-                this.Context.Dispose();
-            }
-        }
-      
-      
-        /// <summary>
-        /// Ajouter un nouvelle objet avec l'état Added qui sera ajouté 
-        /// à la base de données aprés l'appelle de SaveChange
-        /// </summary>
-        public void AddElement()
-        {
-            this.DbSet.Add(Activator.CreateInstance<T>());
-        }
-
-        ModelContext IBaseRepository.Context()
-        {
-            return this.Context;
-        }
+  
+ 
 
         #region CreateInstance
 
@@ -341,15 +392,6 @@ namespace App
 
         #endregion
 
-
-
-        /// <summary>
-        /// Indique que les valeurs de l'entity sont changé
-        /// </summary>
-        public virtual void ValueChanged(object sender,BaseEntity entity)
-        {
-           // Cette méthode est surcharger pour appliquer les règle de gestions 
-          
-        }
+      
     }
 }

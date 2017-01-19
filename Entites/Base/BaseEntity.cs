@@ -5,25 +5,24 @@ using System.Linq;
 
 namespace App
 {
-    
+    /// <summary>
+    /// La classe de Base de toutes les entity
+    /// </summary>
     public  class BaseEntity : IBaseEntity
     {
-         
-
         public BaseEntity()
         {
+            // Problème de EF avec DateTime
             this.DateCreation = DateTime.Now;
             this.DateModification = DateTime.Now;
-            
-           
         }
+
         [Key]
         public Int64 Id { get; set; }
 
 
         [AffichagePropriete(Titre = "Ordre", isGridView = true, Ordre = 1, WidthColonne = 50)]
         public int Ordre { set; get; }
-
 
         public DateTime DateCreation { get; set; }
 
@@ -36,17 +35,6 @@ namespace App
         public DateTime DateModification { get; set; }
 
 
-
-
-
-        //public virtual string GetNomObjet()
-        //{
-        //    return "Information";
-        //}
-        //public virtual string GetNomObjets()
-        //{
-        //    return "Informations";
-        //}
 
         public override bool Equals(Object obj)
         {
@@ -66,11 +54,10 @@ namespace App
         /// <returns></returns>
         public override string ToString()
         {
-
             AffichageClasseAttribute AffichageClasse =(AffichageClasseAttribute) this.GetType().GetCustomAttributes(typeof(AffichageClasseAttribute),true)[0];
             string Titre =  this.GetType().GetProperty(AffichageClasse.DisplayMember).GetValue(this).ToString();
-
-            return Titre;
+            if (Titre == string.Empty) return AffichageClasse.Minuscule;
+            else  return Titre;
         }
 
         ///// <summary>
