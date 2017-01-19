@@ -77,8 +77,10 @@ Relation = "ManyToOne", Filtre = true, isOblegatoir = true, Ordre = 10, WidthCol
         public virtual Formation Formation { set; get; }
 
 
-        
+        [AffichagePropriete(Titre = "Absence", isGridView = true, isFormulaire = true,
+Relation = "ManyToMany", Ordre = 10, WidthColonne = 100)]
 
+        public virtual List<Absence> Absences { set; get; }
 
 
 

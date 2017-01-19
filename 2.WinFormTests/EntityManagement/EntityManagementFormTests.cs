@@ -29,20 +29,33 @@ namespace App.WinForm.Tests
             // Tester tous les bouttons ajouter 
             using (ModelContext db = new ModelContext())
             {
-
-
                 foreach (var item in db.GetTypesSets())
                 {
                     AfficherFormHelper AfficherFormulaire = new AfficherFormHelper(form);
                     EntityManagementForm emform = AfficherFormulaire.AfficherUneGestion(item);
                     emform.bt_Ajouter_Click(new Button(), null);
                 }
-
-               
-
             }
-
-          
         }
+
+        [TestMethod()]
+        public void Editer_Click()
+        {
+
+            Form form = new Form();
+            form.IsMdiContainer = true;
+
+            // Tester tous les bouttons ajouter 
+            using (ModelContext db = new ModelContext())
+            {
+                foreach (var item in db.GetTypesSets())
+                {
+                    AfficherFormHelper AfficherFormulaire = new AfficherFormHelper(form);
+                    EntityManagementForm emform = AfficherFormulaire.AfficherUneGestion(item);
+                    emform.bt_Ajouter_Click(new Button(), null);
+                }
+            }
+        }
+
     }
 }

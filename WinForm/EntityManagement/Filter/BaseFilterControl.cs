@@ -24,6 +24,13 @@ namespace App.WinForm.EntityManagement
         /// définir les valeurs initiaux du filtre
         /// </summary>
         protected Dictionary<string, object> ValeursFiltre { set; get; }
+
+
+        /// <summary>
+        /// Le contenuer de l'interface
+        /// </summary>
+        protected Control MainContainer { set; get; }
+
         #endregion
 
         #region Evénement
@@ -44,6 +51,7 @@ namespace App.WinForm.EntityManagement
         public BaseFilterControl(IBaseRepository Service, Dictionary<string, object> ValeursFiltre) 
         {
             InitializeComponent();
+            this.MainContainer = this.flowLayoutPanel1;
             this.Service = Service;
             this.ValeursFiltre = ValeursFiltre;
             initFiltre();
@@ -76,15 +84,18 @@ namespace App.WinForm.EntityManagement
         /// </summary>
         protected void initFiltre()
         {
- 
-            int x = 27;
-            int increment_x = 200;
-            int height_controle = 50;
-            int width_controle = 140;
+
+            int height_panel = 60;
+            int width_panel = 100;
+
+            int height_controle = 20;
+            int width_controle = 80;
+
+
+            int height_main_contrainner = 100;
+
+            int y = 30;
             int TabIndex = 0;
-
-
-
             foreach (PropertyInfo propertyInfo in PropertyListFilter())
             {
                 // Trouver l'objet AffichagePropriete depuis l'annotation
@@ -93,16 +104,21 @@ namespace App.WinForm.EntityManagement
                 AffichageProprieteAttribute AffichagePropriete = (AffichageProprieteAttribute)getAffichagePropriete;
                 if (AffichagePropriete.Filtre == false) continue;
 
+                // Chaque panel représente un seul critère
+                Panel panel = new Panel();
+
+
+
                 // 
                 // label_relation_many_to_one
                 // 
                 Label label_champ_filtre = new Label();
-                label_champ_filtre.Location = new System.Drawing.Point(x, 15);
+                label_champ_filtre.Location = new System.Drawing.Point(5, 5);
                 label_champ_filtre.Name = "label_" + propertyInfo.Name;
-                label_champ_filtre.Size = new System.Drawing.Size(width_controle, 20);
+                label_champ_filtre.Size = new System.Drawing.Size(width_controle, height_controle);
                 label_champ_filtre.TabIndex = TabIndex++;
                 label_champ_filtre.Text = AffichagePropriete.Titre;
-                this.groupBoxFiltrage.Controls.Add(label_champ_filtre);
+               
 
                 //
                 // Relation ManyToOne
@@ -111,7 +127,7 @@ namespace App.WinForm.EntityManagement
                  AffichagePropriete.Relation == AffichageProprieteAttribute.RELATION_MANYTOONE)
                 {
 
-
+                    // si le combo a des filtre personnelle
                     if (AffichagePropriete.FilterSelection)
                     {
                         InputComboBox comboBoxRelationManyToOne = new InputComboBox(
@@ -119,11 +135,12 @@ namespace App.WinForm.EntityManagement
                             null,
                             InputComboBox.MainContainers.Panel,
                             InputComboBox.Directions.Horizontal);
-                        comboBoxRelationManyToOne.Location = new System.Drawing.Point(x, 1);
+                        comboBoxRelationManyToOne.Dock = DockStyle.Fill;
                         comboBoxRelationManyToOne.Name = propertyInfo.Name;
-                        // comboBoxRelationManyToOne.Size = new System.Drawing.Size(width_controle, height_controle);
                         comboBoxRelationManyToOne.TabIndex = TabIndex++;
-                        this.groupBoxFiltrage.Controls.Add(comboBoxRelationManyToOne);
+                     
+                        panel.Controls.Add(comboBoxRelationManyToOne);
+                        height_panel = comboBoxRelationManyToOne.height + 10;
 
 
                     }
@@ -134,11 +151,12 @@ namespace App.WinForm.EntityManagement
                         // 
                         ComboBox comboBoxRelationManyToOne = new ComboBox();
                         comboBoxRelationManyToOne.FormattingEnabled = true;
-                        comboBoxRelationManyToOne.Location = new System.Drawing.Point(x, 37);
                         comboBoxRelationManyToOne.Name = propertyInfo.Name;
+                        comboBoxRelationManyToOne.Location = new System.Drawing.Point(5, y);
                         comboBoxRelationManyToOne.Size = new System.Drawing.Size(width_controle, height_controle);
                         comboBoxRelationManyToOne.TabIndex = TabIndex++;
-                        this.groupBoxFiltrage.Controls.Add(comboBoxRelationManyToOne);
+                        panel.Controls.Add(comboBoxRelationManyToOne);
+
                         //
                         // Remplissage de ComboBox
                         //
@@ -160,7 +178,7 @@ namespace App.WinForm.EntityManagement
                         {
                             int width = ls.Max(o => ((BaseEntity)o).ToString().Count()) * 5 + 20;
                             comboBoxRelationManyToOne.Size = new System.Drawing.Size(width, height_controle);
-                            if (width > 200) x += (200 - width);
+                           // if (width > 200) x += (200 - width);
                         }
 
                         //
@@ -175,59 +193,69 @@ namespace App.WinForm.EntityManagement
                 if (propertyInfo.PropertyType.Name == "String")
                 {
                     // 
-                    // comboBoxRelationManyToOne
+                    // comboBox
                     // 
                     TextBox textBoxString = new TextBox();
-                    textBoxString.Location = new System.Drawing.Point(x, 37);
+                    textBoxString.Location = new System.Drawing.Point(5, y);
                     textBoxString.Name = propertyInfo.Name;
                     textBoxString.Size = new System.Drawing.Size(width_controle, height_controle);
                     textBoxString.TabIndex = TabIndex++;
-                    this.groupBoxFiltrage.Controls.Add(textBoxString);
+                    panel.Controls.Add(textBoxString);
 
                     //
                     // Evénement Change sur le ComboBox : Actualisation de DataGrid
                     //
                     textBoxString.TextChanged += Filtre_TextBox_SelectedValueChanged;
+                    panel.Controls.Add(label_champ_filtre);
 
                 }
                 if (propertyInfo.PropertyType.Name == "Int32")
                 {
                     // 
-                    // comboBoxRelationManyToOne
+                    // comboBoxRelation
                     // 
                     TextBox textBoxString = new TextBox();
-                    textBoxString.Location = new System.Drawing.Point(x, 37);
+                    textBoxString.Location = new System.Drawing.Point(5, y);
                     textBoxString.Name = propertyInfo.Name;
                     textBoxString.Size = new System.Drawing.Size(width_controle, height_controle);
                     textBoxString.TabIndex = TabIndex++;
-                    this.groupBoxFiltrage.Controls.Add(textBoxString);
+                    panel.Controls.Add(textBoxString);
 
                     //
                     // Evénement Change sur le ComboBox : Actualisation de DataGrid
                     //
                     textBoxString.TextChanged += Filtre_TextBox_SelectedValueChanged;
+                    panel.Controls.Add(label_champ_filtre);
 
                 }
                 if (propertyInfo.PropertyType.Name == "DateTime")
                 {
                     // 
-                    // comboBoxRelationManyToOne
+                    // comboBoxRelation
                     // 
                     DateTimePicker dateTimePicker = new DateTimePicker();
-                    dateTimePicker.Location = new System.Drawing.Point(x, 37);
+                    dateTimePicker.Location = new System.Drawing.Point(5, y);
                     dateTimePicker.Name = propertyInfo.Name;
                     dateTimePicker.Size = new System.Drawing.Size(width_controle, height_controle);
                     dateTimePicker.TabIndex = TabIndex++;
-                    this.groupBoxFiltrage.Controls.Add(dateTimePicker);
+                    panel.Controls.Add(dateTimePicker);
 
                     //
                     // Evénement Change sur le ComboBox : Actualisation de DataGrid
                     //
                     dateTimePicker.ValueChanged += Filtre_TextBox_SelectedValueChanged;
+                    panel.Controls.Add(label_champ_filtre);
 
                 }
 
-                x += increment_x;
+
+                panel.Size = new System.Drawing.Size(width_panel, height_panel);
+                panel.BackColor = Color.Gray;
+                this.MainContainer.Controls.Add(panel);
+
+                int max_h = this.MainContainer.Controls.Cast<Control>().Max(c => c.Size.Height);
+                this.MainContainer.Size = new Size(this.MainContainer.Size.Width, max_h);
+
             } // End For
         }
 
@@ -326,8 +354,12 @@ namespace App.WinForm.EntityManagement
 
             return RechercheInfos;
         }
+
         #endregion
 
+        private void groupBoxFiltrage_Enter(object sender, EventArgs e)
+        {
 
+        }
     }
 }

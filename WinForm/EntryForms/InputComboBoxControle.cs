@@ -33,6 +33,9 @@ namespace App.WinForm
         #endregion
 
         #region Variables
+
+
+        public int height { set; get; }
         /// <summary>
         /// Evénement Value Chnager de ComboBox
         /// </summary>
@@ -189,9 +192,7 @@ namespace App.WinForm
             }
 
             MainContainer.Dock = DockStyle.Fill;
-            MainContainer.Location = new System.Drawing.Point(0, 0);
             MainContainer.Name = "groupBoxFilter_" + this.TypeOfObject.Name;
-            MainContainer.Size = new System.Drawing.Size(305, 169);
             MainContainer.TabIndex = 1;
             MainContainer.TabStop = false;
             MainContainer.Text = this.MetaAffichageClasse.Minuscule;
@@ -243,7 +244,7 @@ namespace App.WinForm
             //
             // Positions
             int index = 0;
-            int y = 20;
+            int y = 0;
             // Si un objet du critère de selection exite dans la classe 
             // Nous cherchons sa valeur pour l'utiliser
             foreach (Type item in MetaSelectionCriteria.Criteria)
@@ -259,9 +260,9 @@ namespace App.WinForm
           | System.Windows.Forms.AnchorStyles.Left)
           | System.Windows.Forms.AnchorStyles.Right)));
                 label_comboBox.AutoSize = true;
-                label_comboBox.Location = new System.Drawing.Point(6, y);
+                label_comboBox.Location = new System.Drawing.Point(0, y);
                 label_comboBox.Name = "label_" + item.Name;
-                label_comboBox.Size = new System.Drawing.Size(35, 13);
+                label_comboBox.Size = new System.Drawing.Size(50, 20);
                 label_comboBox.TabIndex = ++index;
                 label_comboBox.Text = item.Name;
 
@@ -273,9 +274,9 @@ namespace App.WinForm
            | System.Windows.Forms.AnchorStyles.Left)
            | System.Windows.Forms.AnchorStyles.Right)));
                 comboBox.FormattingEnabled = true;
-                comboBox.Location = new System.Drawing.Point(6, y + 20);
+                comboBox.Location = new System.Drawing.Point(0, y + 25);
                 comboBox.Name = "comboBoxFilter_" + item.Name; ;
-                comboBox.Size = new System.Drawing.Size(250, 21);
+                comboBox.Size = new System.Drawing.Size(100, 20);
                 comboBox.ValueMember = "Id";
                 comboBox.DisplayMember = MetaAffichageClasseCritere.DisplayMember;
                 comboBox.TabIndex = ++index; ;
@@ -287,11 +288,12 @@ namespace App.WinForm
 
                 ListeComboBox.Add(item.Name, comboBox);
                 LsiteTypeObjetCritere.Add(item.Name, item);
-                y += 40;
+                y += 50;
             }
 
             MainContainer.Location = new Point(12, 5);
             MainContainer.Size = new System.Drawing.Size(188, y);
+            height = y + 10;
         }
 
 

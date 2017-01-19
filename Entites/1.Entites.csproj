@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Absence.cs" />
     <Compile Include="Base\BaseEntity.cs" />
     <Compile Include="Base\IBaseEntity.cs" />
     <Compile Include="Formations\Ferier.cs" />

@@ -69,8 +69,9 @@ namespace App.WinForm
         ///// <param name="entity"></param>
         ///// <param name="context"></param>
         // public BaseEntryForm():this(null) : l'appel de constructeur de base , block la modification
-        // des controle protected et public sur la formulaire hérité
-        public BaseEntryForm()
+        // des controle protected et public sur la formulaire hérit
+        [Obsolete]
+        private BaseEntryForm()
         {
             InitializeComponent();
             if (!DesignMode)

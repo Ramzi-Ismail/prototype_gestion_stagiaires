@@ -23,11 +23,11 @@ namespace App.WinForm
     {
 
         #region Constructeurs
-        public EntryForm() : base()
-        {
-            InitializeComponent();
+        //private EntryForm() : base()
+        //{
+        //    InitializeComponent();
 
-        }
+        //}
    
         /// <summary>
         /// Constructeur principale

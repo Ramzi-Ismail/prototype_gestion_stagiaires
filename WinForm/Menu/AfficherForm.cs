@@ -63,6 +63,7 @@ namespace App.WinFrom.Menu
         /// <param name="formulaire">Le Formulaire spécifique</param>
         public EntityManagementForm AfficherUneGestion<T>(BaseEntryForm formulaire) where T : BaseEntity
         {
+           
 
             EntityManagementForm form = new EntityManagementForm(formulaire.Service, formulaire, null, this.FormApplicationMdi);
             this.Afficher(form);

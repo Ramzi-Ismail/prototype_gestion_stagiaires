@@ -10,10 +10,10 @@ namespace App
 {
     public partial class AnneeFormationFormulaire : App.WinForm.BaseEntryForm
     {
-        public AnneeFormationFormulaire():base()
-        {
-            InitializeComponent();
-        }
+        //public AnneeFormationFormulaire() : base()
+        //{
+        //    InitializeComponent();
+        //}
         public AnneeFormationFormulaire(IBaseRepository service) : base(service)
         {
             InitializeComponent();

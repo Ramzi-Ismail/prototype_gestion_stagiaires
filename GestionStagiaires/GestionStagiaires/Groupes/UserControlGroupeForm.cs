@@ -19,11 +19,11 @@ namespace App.GestionStagiaires.Groupes
         /// <summary>
         /// Ce constructeur est utiliser par le ModeDesign de Visual Studio
         /// </summary>
-        public UserControlGroupeForm() : base()
-        {
-            InitializeComponent();
+        //public UserControlGroupeForm() : base()
+        //{
+        //    InitializeComponent();
 
-        }
+        //}
 
         public override BaseEntity CreateObjetInstance()
         {

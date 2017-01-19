@@ -107,7 +107,7 @@ namespace App
         private void gérerLesGroupesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
-            AfficherFormulaire.AfficherUneGestion<Groupe>(new UserControlGroupeForm());
+            AfficherFormulaire.AfficherUneGestion<Groupe>(new UserControlGroupeForm(new BaseRepository<Groupe>()));
         }
 
         private void tâchesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -131,7 +131,7 @@ namespace App
 
         private void annéesDeFormationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AfficherFormulaire.AfficherUneGestion<AnneeFormation>(new AnneeFormationFormulaire());
+            AfficherFormulaire.AfficherUneGestion<AnneeFormation>(new AnneeFormationFormulaire(new BaseRepository<AnneeFormation>()));
         }
 
       

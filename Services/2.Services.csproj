@@ -54,6 +54,10 @@
     <Compile Include="Formations\FeriesService.cs" />
     <Compile Include="Formations\PrevisionSeancesService.cs" />
     <Compile Include="Formations\SeancesService.cs" />
+    <Compile Include="Migrations\201701191526166_GestionAbsence.cs" />
+    <Compile Include="Migrations\201701191526166_GestionAbsence.Designer.cs">
+      <DependentUpon>201701191526166_GestionAbsence.cs</DependentUpon>
+    </Compile>
     <Compile Include="Projets\ProjetsService.cs" />
     <Compile Include="Projets\TachesService.cs" />
     <Compile Include="Migrations\201701121004335_AddRelationGroupeAnneeFormation.cs" />
@@ -184,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701160915016_Geston_Jours_Féries.resx">
       <DependentUpon>201701160915016_Geston_Jours_Féries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701191526166_GestionAbsence.resx">
+      <DependentUpon>201701191526166_GestionAbsence.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
