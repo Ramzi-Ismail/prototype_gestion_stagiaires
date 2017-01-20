@@ -29,10 +29,7 @@ namespace App.WinForm.EntityManagement
        
 
 
-        private void FiltreControl_Load(object sender, EventArgs e)
-        {
-            this.initFiltre();
-        }
+        
  
     }
 }

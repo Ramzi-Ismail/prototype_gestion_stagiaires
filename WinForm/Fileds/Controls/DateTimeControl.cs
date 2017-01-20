@@ -9,16 +9,38 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
 
-namespace App.WinFrom.Controls
+namespace App.WinFrom.Fileds.Controls
 {
-
-  
-
+ 
     /// <summary>
     /// Représente un champs de type DateTime dans une Entity
     /// </summary>
     public partial class DateTimeControl : UserControl
     {
+
+        #region Evénement
+        public event EventHandler ValueChanged;
+        protected void onValueChanged(object sender, EventArgs e)
+        {
+            ValueChanged(sender, e);
+        }
+
+        #endregion
+
+        #region Propriété 
+        public DateTime Value
+        {
+            get
+            {
+                if(this.dateTimePicker.Text == string.Empty) return DateTime.MinValue;
+                else return this.dateTimePicker.Value;
+            }
+        }
+        #endregion
+
+
+
+
 
         List<CultureInfo> ListCultureInfo { get; set; }
 
@@ -36,6 +58,11 @@ namespace App.WinFrom.Controls
         {
             InitializeComponent();
             this.ListCultureInfo = ListCultureInfo;
+        }
+
+        private void dateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            onValueChanged(sender, e);
         }
     }
 }

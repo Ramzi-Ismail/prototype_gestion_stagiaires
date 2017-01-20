@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.Entites", "Entites\1.Enti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.Services", "Services\2.Services.csproj", "{3940F5CA-C8C0-4A72-8A1C-0AD50E5D18CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.WinForm", "WinForm\2.WinForm.csproj", "{22B15B44-4F27-4B78-83A3-8C72CF01A3FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.WinFormEntity", "WinForm\2.WinFormEntity.csproj", "{22B15B44-4F27-4B78-83A3-8C72CF01A3FE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6.PresentationWinForm", "GestionStagiaires\6.PresentationWinForm.csproj", "{AF242D81-9F90-47D6-9561-F50BC7ACA07A}"
 EndProject

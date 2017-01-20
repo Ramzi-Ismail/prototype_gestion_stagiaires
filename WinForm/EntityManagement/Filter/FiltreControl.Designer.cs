@@ -35,7 +35,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.Name = "FiltreControl";
             this.Size = new System.Drawing.Size(540, 186);
-            this.Load += new System.EventHandler(this.FiltreControl_Load);
+           
             this.ResumeLayout(false);
 
         }

@@ -1,4 +1,4 @@
-﻿namespace App.WinFrom.Controls
+﻿namespace App.WinFrom.Fileds.Controls
 {
     partial class DateTimeControl
     {
@@ -42,6 +42,7 @@
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(230, 20);
             this.dateTimePicker.TabIndex = 0;
+            this.dateTimePicker.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
             // 
             // radioButtonCultureInfo1
             // 

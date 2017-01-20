@@ -163,10 +163,8 @@ namespace App.WinForm
             ls.Add(TypeOfObject);
             MetaSelectionCriteria.Criteria = ls.ToArray<Type>();
            
-
             // Meta information d'affichage du de Critère
             this.MetaAffichageClasse = (AffichageClasseAttribute)TypeOfObject.GetCustomAttribute(typeof(AffichageClasseAttribute));
-
 
         }
 

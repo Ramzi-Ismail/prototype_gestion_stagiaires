@@ -83,17 +83,17 @@
     <Compile Include="Base\Utilisateur.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WinFromLib\5.WinFromLib.csproj">
-      <Project>{7b89bd41-7117-4c2d-845f-45eeb252cc35}</Project>
-      <Name>5.WinFromLib</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WinFromLib\5.WinFromLib.csproj">
+      <Project>{7b89bd41-7117-4c2d-845f-45eeb252cc35}</Project>
+      <Name>5.WinFromLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

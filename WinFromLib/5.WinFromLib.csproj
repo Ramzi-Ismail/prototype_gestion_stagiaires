@@ -60,12 +60,6 @@
     <Compile Include="Annotation\ApplicationMenuAttribute.cs" />
     <Compile Include="Annotation\SelectionCriteriaAttribute.cs" />
     <Compile Include="Class1.cs" />
-    <Compile Include="Controls\DateTimeControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\DateTimeControl.Designer.cs">
-      <DependentUpon>DateTimeControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="EF\Class1.cs" />
     <Compile Include="Exceptions\PropertyDoesNotExistException.cs" />
     <Compile Include="Linq\LinqExtension.cs" />
@@ -91,11 +85,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Controls\DateTimeControl.resx">
-      <DependentUpon>DateTimeControl.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

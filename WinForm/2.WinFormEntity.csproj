@@ -116,6 +116,45 @@
     <Compile Include="EntryForms\InputComboBoxControle.Designer.cs">
       <DependentUpon>InputComboBoxControle.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fileds\BaseField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fileds\BaseField.Designer.cs">
+      <DependentUpon>BaseField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fileds\Controls\DateTimeControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fileds\Controls\DateTimeControl.Designer.cs">
+      <DependentUpon>DateTimeControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fileds\DateTimeField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fileds\DateTimeField.Designer.cs">
+      <DependentUpon>DateTimeField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fileds\Int32Filed.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fileds\Int32Filed.Designer.cs">
+      <DependentUpon>Int32Filed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fileds\ManyToOneField\ManyToOneField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fileds\ManyToOneField\ManyToOneField.Designer.cs">
+      <DependentUpon>ManyToOneField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fileds\ManyToOneField\ManyToOneField.Filter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fileds\StringFiled.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fileds\StringFiled.Designer.cs">
+      <DependentUpon>StringFiled.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +207,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EntryForms\InputComboBoxControle.resx">
       <DependentUpon>InputComboBoxControle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fileds\BaseField.resx">
+      <DependentUpon>BaseField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fileds\Controls\DateTimeControl.resx">
+      <DependentUpon>DateTimeControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fileds\DateTimeField.resx">
+      <DependentUpon>DateTimeField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fileds\Int32Filed.resx">
+      <DependentUpon>Int32Filed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fileds\ManyToOneField\ManyToOneField.resx">
+      <DependentUpon>ManyToOneField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fileds\StringFiled.resx">
+      <DependentUpon>StringFiled.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
