@@ -28,6 +28,10 @@ namespace App.WinForm.Fileds
             }
         }
 
+        #endregion
+
+        #region Propriété : ComboBox
+
         public string ValueMember {
             get { return this.comboBoxManyToOne.ValueMember; }
             set { this.comboBoxManyToOne.ValueMember = value; }
@@ -56,19 +60,25 @@ namespace App.WinForm.Fileds
             get { return this.comboBoxManyToOne.SelectedItem; }
             set { this.comboBoxManyToOne.SelectedItem = value; }
         }
+
+
+        public string TextCombobox {
+            get { return this.comboBoxManyToOne.Text; }
+            set { this.comboBoxManyToOne.Text = value; }
+        }
         #endregion
 
 
-       
-        public ManyToOneField(Type TypeObjet,PropertyInfo propertyInfo,BaseFilterControl FilterControl, int WidthField, Orientation OrientationFiled) 
+
+        public ManyToOneField(Type TypeObjet,PropertyInfo propertyInfo, Control MainContainner, int WidthField, Orientation OrientationFiled) 
             :base(TypeObjet,propertyInfo, OrientationFiled, WidthField)
         {
             InitializeComponent();
-            this.FilterControl = FilterControl;
+            this.MainContainner = MainContainner;
             InitAndLoadData();
         }
-        public ManyToOneField(PropertyInfo propertyInfo, BaseFilterControl FilterControl, int WidthField, Orientation OrientationFiled)
-          : this(null, propertyInfo, FilterControl, WidthField, OrientationFiled)
+        public ManyToOneField(PropertyInfo propertyInfo, Control MainContainner, int WidthField, Orientation OrientationFiled)
+          : this(null, propertyInfo, MainContainner, WidthField, OrientationFiled)
         {
 
         }

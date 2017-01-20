@@ -25,7 +25,7 @@ namespace App.WinForm.EntityManagement
         /// <summary>
         /// Instance de filtre controle
         /// </summary>
-        protected FiltreControl FiltreControl { set; get; }
+        protected BaseFilterControl BaseFilterControl { set; get; }
 
         /// <summary>
         /// Le formulaire de l'édition et d'insertion
@@ -71,11 +71,11 @@ namespace App.WinForm.EntityManagement
             InitializeComponent();
             
         }
-        public BaseEntityManagerControl(IBaseRepository Service,FiltreControl FiltreControl,Form MdiParent, BaseEntryForm Formulaire)
+        public BaseEntityManagerControl(IBaseRepository Service,BaseFilterControl BaseFilterControl,Form MdiParent, BaseEntryForm Formulaire)
         {
             InitializeComponent();
             this.Service = Service;
-            this.FiltreControl = FiltreControl;
+            this.BaseFilterControl = BaseFilterControl;
             this.MdiParent = MdiParent;
             this.Formulaire = Formulaire;
             InitPropertyListDataGrid();

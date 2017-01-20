@@ -1,4 +1,5 @@
 ﻿using App.WinForm.Annotation;
+using App.WinForm.Fileds;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,15 @@ namespace App.WinForm
 {
     public partial class EntryForm
     {
-        private Control CreateManyToOneField(PropertyInfo item, int x, int y, int index)
+        /// <summary>
+        /// Création et Affichage de champs ManytoOne
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="x">La postion X du controle</param>
+        /// <param name="y">La position T du control</param>
+        /// <param name="index">L'index du contôle</param>
+        /// <returns></returns>
+        private Control CreateManyToOneField(PropertyInfo item, int x,int x_label, ref int y, int index)
         {
             
 
@@ -21,23 +30,32 @@ namespace App.WinForm
 
             if (AffichagePropriete.FilterSelection)
             {
-                InputComboBox InputComboBox = new InputComboBox(item.PropertyType,
-                    this.Entity,
-                    InputComboBox.MainContainers.Panel,
-                    InputComboBox.Directions.Vertical);
 
-                InputComboBox.Location = new System.Drawing.Point(x, y);
-                InputComboBox.Name = char.ToLower(item.Name[0]) + item.Name.Substring(1) + "ComboBox";
-                InputComboBox.Size = new System.Drawing.Size(200, 100); y += 80;
-                InputComboBox.TabIndex = index;
-                InputComboBox.ValueChanged += ControlPropriete_ValueChanged;
+                FlowLayoutPanel flowLayoutPanel = new FlowLayoutPanel();
 
-                this.formulaire.Controls.Add(InputComboBox);
+                flowLayoutPanel.Location = new System.Drawing.Point(x_label, y);
+                flowLayoutPanel.Size = new System.Drawing.Size(500, 100);
+                flowLayoutPanel.BackColor = System.Drawing.Color.Gray;
+                y += 200;
+                this.formulaire.Controls.Add(flowLayoutPanel);
+
+                ManyToOneField manyToOneField = new ManyToOneField(item, flowLayoutPanel, 350,Orientation.Vertical);
+                manyToOneField.Location = new System.Drawing.Point(x, y);
+                manyToOneField.Name = char.ToLower(item.Name[0]) + item.Name.Substring(1) + "ComboBox";
+                manyToOneField.BackColor = System.Drawing.Color.Green;
+
+                // !!
+                manyToOneField.Size = new System.Drawing.Size(500, 50);
+
+                manyToOneField.TabIndex = index;
+                manyToOneField.FieldChanged += ControlPropriete_ValueChanged;
+
+                flowLayoutPanel.Controls.Add(manyToOneField);
 
                 if (AffichagePropriete.isOblegatoir)
-                    InputComboBox.Validating += ComboBox_Validating;
+                    manyToOneField.Validating += ComboBox_Validating;
 
-                return InputComboBox;
+                return manyToOneField;
             }
             else
             {

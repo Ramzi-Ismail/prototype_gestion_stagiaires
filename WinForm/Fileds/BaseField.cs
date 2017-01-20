@@ -115,7 +115,10 @@ namespace App.WinFrom.Fileds
             this.WidthLabel = Default_Width_Label;
             this.HeightLabel = Default_Heifht_Label;
             // Default Filed size
+
             this.HeightField = 100; // doit être initialiser avant WidhtField
+
+            // Widht et Initialisation 
             this.WidthField = WidthField;
 
 
@@ -144,16 +147,18 @@ namespace App.WinFrom.Fileds
             // Containner
             // 
             this.splitContainer.Orientation = this.OrientationFiled;
-            this.Size = new Size(this.WidthField, this.HeightField);
+            
             this.splitContainer.Width = this.WidthField;
             this.splitContainer.Height = this.HeightField;
             if (OrientationFiled == Orientation.Vertical)
             {
+                this.Size = new Size(this.WidthField, 25);
                 this.WidthControleValue = this.WidthField - this.WidthLabel;
                 this.splitContainer.SplitterDistance = this.WidthLabel;
             }
             else
             {
+                this.Size = new Size(this.WidthField, 70);
                 this.WidthControleValue = widthField;
                 this.splitContainer.SplitterDistance = this.HeightLabel ;  
             }

@@ -60,6 +60,7 @@ namespace App.WinForm
             int y = 35;
             int x_label = 16;
             int x_control = 200;
+
             // L'index de la touche Entrer
             int index = 0;
 
@@ -78,31 +79,34 @@ namespace App.WinForm
                 lbl.Size = new System.Drawing.Size(100, 13);
                 lbl.TabIndex = index++;
                 lbl.Text = AffichagePropriete.Titre;
-                this.formulaire.Controls.Add(lbl);
+                
 
                 // Le contrôle qui représente la propriété
                 Control controlPropriete = null;
                 switch (item.PropertyType.Name)
                 {
                     case "String":
-                        controlPropriete = this.CreateStringField(item, x_control, y - 3, index++);
+                        this.formulaire.Controls.Add(lbl);
+                        controlPropriete = this.CreateStringField(item, x_control, ref y, index++);
                         break;
                     case "Int32":
-                        controlPropriete = this.CreateInt32Field(item, x_control, y - 3, index++);
+                        this.formulaire.Controls.Add(lbl);
+                        controlPropriete = this.CreateInt32Field(item, x_control, ref y, index++);
                         break;
                     case "DateTime":
-                        controlPropriete = this.CreateDateTimeField(item, x_control, y - 3, index++);
+                        this.formulaire.Controls.Add(lbl);
+                        controlPropriete = this.CreateDateTimeField(item, x_control, ref y, index++);
                         break;
 
                     default:
                         {
                             if (AffichagePropriete.Relation == "ManyToOne")
                             {
-                                controlPropriete = this.CreateManyToOneField(item, x_control, y - 3, index++);
+                                controlPropriete = this.CreateManyToOneField(item, x_control, x_label, ref y, index++);
                             }
                             if (AffichagePropriete.Relation == "ManyToMany")
                             {
-                                controlPropriete = this.CreateManyToManyField(item, x_control, y - 3, index++);
+                                controlPropriete = this.CreateManyToManyField(item, x_control, ref y, index++);
                             }
                         }
                         break;

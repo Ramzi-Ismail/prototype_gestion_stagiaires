@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4.CplusWinFrom", "AppGestionStagiaires\4.CplusWinFrom.csproj", "{B035060E-7DE1-4FB0-B4F9-AB8410BEA497}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4.CplusWinForm", "AppGestionStagiaires\4.CplusWinForm.csproj", "{B035060E-7DE1-4FB0-B4F9-AB8410BEA497}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupCplus", "SetupCplus\SetupCplus.vdproj", "{64039226-3BCA-49B6-BC3F-33CA7697031D}"
 EndProject

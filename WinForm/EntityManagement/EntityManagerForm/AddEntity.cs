@@ -33,11 +33,11 @@ namespace App.WinForm.EntityManagement
                 // Insertion du formulaire 
                 //
                 BaseEntity Entity = (BaseEntity)this.Service.CreateInstanceObjet();
-                BaseEntryForm form = Formulaire.CreateInstance(Service, Entity, this.FiltreControl.CritereRechercheFiltre());
+                BaseEntryForm form = Formulaire.CreateInstance(Service, Entity, this.BaseFilterControl.CritereRechercheFiltre());
 
                 form.Name = "Form";
                 form.Dock = DockStyle.Fill;
-                form.Afficher(this.FiltreControl.CritereRechercheFiltre());
+                form.Afficher(this.BaseFilterControl.CritereRechercheFiltre());
 
 
                 this.tabControl.TabPages["TabAjouter"].Controls.Add(form);

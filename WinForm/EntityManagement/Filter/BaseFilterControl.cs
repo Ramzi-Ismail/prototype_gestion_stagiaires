@@ -113,6 +113,7 @@ namespace App.WinForm.EntityManagement
                    
 
                     stringFiled.FieldChanged += Filtre_TextBox_SelectedValueChanged;
+            
                     MainContainer.Controls.Add(stringFiled);
 
 
@@ -152,7 +153,7 @@ namespace App.WinForm.EntityManagement
                 {
 
                     ManyToOneField manyToOneField = new ManyToOneField(propertyInfo,
-                        this,
+                        this.MainContainer,
                         width_critere_filtre,
                         Orientation.Horizontal
                         );
@@ -162,7 +163,7 @@ namespace App.WinForm.EntityManagement
                     manyToOneField.FieldChanged += Filtre_ComboBox_SelectedValueChanged;
 
                     MainContainer.Controls.Add(manyToOneField);
-
+             
 
                     //
                     // Remplissage de ComboBox
@@ -189,11 +190,11 @@ namespace App.WinForm.EntityManagement
 
 
 
-                if (MainContainer.Controls.Count > 0)
-                {
-                    int max_h = this.MainContainer.Controls.Cast<Control>().Max(c => c.Size.Height);
-                    this.MainContainer.Size = new Size(this.MainContainer.Size.Width, max_h);
-                }
+                //if (MainContainer.Controls.Count > 0)
+                //{
+                //    int max_h = this.MainContainer.Controls.Cast<Control>().Max(c => c.Size.Height);
+                //    this.MainContainer.Size = new Size(this.MainContainer.Size.Width, max_h);
+                //}
 
             } // End For
         }

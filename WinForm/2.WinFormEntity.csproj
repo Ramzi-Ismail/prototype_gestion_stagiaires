@@ -83,12 +83,6 @@
     <Compile Include="EntityManagement\Filter\BaseFilterControl.Designer.cs">
       <DependentUpon>BaseFilterControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="EntityManagement\Filter\FiltreControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="EntityManagement\Filter\FiltreControl.Designer.cs">
-      <DependentUpon>FiltreControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="EntryForms\Fields\DateTimeField.EntryForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -133,6 +127,12 @@
     </Compile>
     <Compile Include="Fileds\DateTimeField.Designer.cs">
       <DependentUpon>DateTimeField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fileds\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fileds\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Fileds\Int32Filed.cs">
       <SubType>UserControl</SubType>
@@ -198,9 +198,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EntityManagement\Filter\BaseFilterControl.resx">
       <DependentUpon>BaseFilterControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EntityManagement\Filter\FiltreControl.resx">
-      <DependentUpon>FiltreControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EntryForms\InputCollectionControle.resx">
       <DependentUpon>InputCollectionControle.cs</DependentUpon>

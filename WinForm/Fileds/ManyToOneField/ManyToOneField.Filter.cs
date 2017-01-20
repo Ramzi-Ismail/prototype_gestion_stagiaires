@@ -23,7 +23,8 @@ namespace App.WinForm.Fileds
         /// <summary>
         /// Filtre
         /// </summary>
-        public BaseFilterControl FilterControl { set; get; }
+        public Control MainContainner { set; get; }
+       
         #endregion
 
         #region Les critère de filtrage
@@ -88,8 +89,22 @@ namespace App.WinForm.Fileds
         private void InitAndLoadData()
         {
 
+           
+            this.DisplayMember = "";
+            this.ValueMember = "Id";
+            
+
             if (this.propertyInfo != null)
             {
+
+                // DisplayMember de combobox actuel
+                // Annotation : Affichage de l'objet
+                AffichageClasseAttribute MetaAffichageClasse = (AffichageClasseAttribute)this.propertyInfo.PropertyType
+                    .GetCustomAttribute(typeof(AffichageClasseAttribute));
+
+
+                this.DisplayMember = MetaAffichageClasse.DisplayMember;
+                this.Text_Label = MetaAffichageClasse.Minuscule;
 
                 Attribute getAffichagePropriete = propertyInfo.GetCustomAttribute(typeof(AffichageProprieteAttribute));
                 AffichageProprieteAttribute AffichagePropriete = (AffichageProprieteAttribute)getAffichagePropriete;
@@ -103,13 +118,11 @@ namespace App.WinForm.Fileds
 
 
 
-                    // Annotation : Affichage de l'objet
-                    AffichageClasseAttribute MetaAffichageClasse = (AffichageClasseAttribute)this.propertyInfo.PropertyType
-                        .GetCustomAttribute(typeof(AffichageClasseAttribute));
+                  
                     #endregion
 
 
-                    int index = 0;
+                    int index = 10;
 
                     // Si un objet du critère de selection exite dans la classe 
                     // Nous cherchons sa valeur pour l'utiliser
@@ -119,11 +132,16 @@ namespace App.WinForm.Fileds
                         AffichageClasseAttribute MetaAffichageClasseCritere = (AffichageClasseAttribute)item.GetCustomAttribute(typeof(AffichageClasseAttribute));
 
 
-                        ManyToOneField manyToOneFilter = new ManyToOneField(item);
+                        ManyToOneField manyToOneFilter = new ManyToOneField(item, null, null,this.HeightField,this.orientationFiled);
                         manyToOneFilter.Name = item.Name;
+
+
+                        manyToOneFilter.Size = new System.Drawing.Size(this.widthField, this.HeightField);
+
+
                         manyToOneFilter.TabIndex = ++index;
                         manyToOneFilter.Text_Label = item.Name;
-
+                        manyToOneFilter.BackColor = System.Drawing.Color.Beige;
 
 
                         manyToOneFilter.ValueMember = "Id";
@@ -131,8 +149,19 @@ namespace App.WinForm.Fileds
                         manyToOneFilter.FieldChanged += Value_SelectedIndexChanged;
 
 
-                        this.FilterControl.MainContainer.Controls.Add(manyToOneFilter);
 
+                      
+                        
+
+                        manyToOneFilter.Visible = true;
+
+                        // [bug] Le contôle ne s'affiche pas dans le formilaire ??
+                        //Form f = new Form();
+                        //f.Controls.Add(manyToOneFilter);
+                        //f.Show();
+
+                        this.MainContainner.Controls.Add(manyToOneFilter);
+                        
                         ListeComboBox.Add(item.Name, manyToOneFilter);
                         LsiteTypeObjetCritere.Add(item.Name, item);
                     }
@@ -145,8 +174,9 @@ namespace App.WinForm.Fileds
                 // Insertion du ComBox Actuel pour qu'il sera remplit par les données
                 ListeComboBox.Add(this.propertyInfo.PropertyType.Name, this);
                 LsiteTypeObjetCritere.Add(this.propertyInfo.PropertyType.Name, this.propertyInfo.PropertyType);
-               
-            }else
+
+            }
+            else
             {
                 // Cas des sous ComBobox de filtre
 
@@ -205,7 +235,7 @@ namespace App.WinForm.Fileds
                     {
                         ManyToOneField comboBox_suivant2 = ListeComboBox.Values.ElementAt(i);
                         comboBox_suivant2.DataSource = null;
-                        comboBox_suivant2.Text = "";
+                        comboBox_suivant2.TextCombobox = "";
                     }
             }
         }

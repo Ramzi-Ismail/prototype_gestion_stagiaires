@@ -19,7 +19,7 @@ namespace App.WinForm
         /// <param name="y">Position Y</param>
         /// <param name="index">L'index de contrôle dans l'interface</param>
         /// <returns>Le contôle ajouté à l'interface</returns>
-        private Control CreateDateTimeField(PropertyInfo item, int x, int y, int index)
+        private Control CreateDateTimeField(PropertyInfo item, int x,ref int y, int index)
         {
             // Lecture de l'annotation 
             AffichageProprieteAttribute AffichagePropriete = (AffichageProprieteAttribute)item.GetCustomAttribute(typeof(AffichageProprieteAttribute));

@@ -11,6 +11,7 @@ using App.WinFrom.Validation;
 using System.Reflection;
 using App.WinForm.Annotation;
 using System.Data.Entity;
+using App.WinForm.Fileds;
 
 namespace App.WinForm
 {
@@ -236,10 +237,6 @@ namespace App.WinForm
         #endregion
 
 
-
-
-
-
         #region Lire et Afficher
 
         /// <summary>
@@ -338,11 +335,11 @@ namespace App.WinForm
                         // Initialisation de la valeur depuis l'objet 
                         String NomControle = char.ToLower(item.Name[0]) + item.Name.Substring(1) + "ComboBox";
                         BaseEntity valeur = (BaseEntity)typeEntity.GetProperty(NomPropriete).GetValue(entity);
-                        InputComboBox comboBox = (InputComboBox)this.ConteneurFormulaire.Controls.Find(NomControle, true).First();
+                        ManyToOneField manyToOneField = (ManyToOneField)this.ConteneurFormulaire.Controls.Find(NomControle, true).First();
                         if (valeur != null)
                         {
-                            comboBox.CreateControl();
-                            comboBox.SelectedValue = valeur.Id;
+                            manyToOneField.CreateControl();
+                            manyToOneField.SelectedValue = valeur.Id;
                         }
 
                     }
@@ -455,7 +452,7 @@ namespace App.WinForm
 
                     if (AffichagePropriete.FilterSelection)
                     {
-                        InputComboBox comboBox = (InputComboBox)this.ConteneurFormulaire.Controls.Find(NomControle, true).First();
+                        ManyToOneField comboBox = (ManyToOneField)this.ConteneurFormulaire.Controls.Find(NomControle, true).First();
                         BaseEntity ManyToOneEntity = ServicesEntity.GetBaseEntityByID(Convert.ToInt32(comboBox.SelectedValue));
                         typeEntity.GetProperty(NomPropriete).SetValue(entity, ManyToOneEntity);
                     }

@@ -12,7 +12,7 @@ namespace App.WinForm
 {
     public partial class EntryForm
     {
-        private Control CreateManyToManyField(PropertyInfo item, int x, int y, int index)
+        private Control CreateManyToManyField(PropertyInfo item, int x,ref int y, int index)
         {
 
 

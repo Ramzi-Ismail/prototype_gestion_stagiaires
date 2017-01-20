@@ -35,7 +35,7 @@ namespace App.WinForm.EntityManagement
                 this.tabControl.TabPages[tabEditerName].Controls.Add(form);
                 tabControl.SelectedTab = tabEditer;
 
-                form.Afficher(this.FiltreControl.CritereRechercheFiltre());
+                form.Afficher(this.BaseFilterControl.CritereRechercheFiltre());
                 form.EnregistrerClick += Form_EditerClick;
                 form.AnnulerClick += Form_AnnulerEditerClick;
 

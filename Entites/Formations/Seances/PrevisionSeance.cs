@@ -27,20 +27,20 @@ namespace App.Formations
 
 
 
-        [AffichagePropriete(Titre = "Objectif", isGridView = true, isFormulaire = true,
-             MultiLine = true, Filtre = true, isOblegatoir = true, Ordre = 3, WidthColonne = 400)]
+        [AffichagePropriete(Titre = "Objectif", isFormulaire = true,
+             MultiLine = true, Filtre = true, isOblegatoir = true, Ordre = 3, WidthColonne = 150)]
         public String Objectif { set; get; }
 
 
 
-        [AffichagePropriete(Titre = "Durée en minute", isGridView = true, isFormulaire = true,
-          Unite = "min", isOblegatoir = true, Ordre = 4, WidthColonne = 80)]
+        [AffichagePropriete(Titre = "Durée", isGridView = true, isFormulaire = true,
+          Unite = "min", isOblegatoir = true, Ordre = 4, WidthColonne = 50)]
         public int Duree { set; get; }
 
 
 
         [AffichagePropriete(Titre = "Catégogie salle", isGridView = true, isFormulaire = true,
-         Relation = "ManyToOne", isOblegatoir = true, Ordre = 5, WidthColonne = 100)]
+         Relation = "ManyToOne", isOblegatoir = true, Ordre = 5, WidthColonne = 80)]
         public virtual CategogiesSalleFormation categogiesSalleFormation { set; get; }
 
 

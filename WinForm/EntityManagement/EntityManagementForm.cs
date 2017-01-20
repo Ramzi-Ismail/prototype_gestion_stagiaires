@@ -37,7 +37,7 @@ namespace App.WinForm
         /// <summary>
         /// Instance de filtre
         /// </summary>
-        FiltreControl FiltreControl { set; get; }
+        BaseFilterControl BaseFilterControl { set; get; }
 
         /// <summary>
         /// Instance de controle DataGrid
@@ -149,23 +149,23 @@ namespace App.WinForm
             //
             // Initialisation de filtre
             //
-            this.FiltreControl = new FiltreControl(this.Service, this.ValeursFiltre);
-            this.FiltreControl.Dock = DockStyle.Fill;
-            this.panel_Filtre.Controls.Add(this.FiltreControl);
-            this.FiltreControl.RefreshEvent += FiltreControl_RefreshEvent;
+            this.BaseFilterControl = new BaseFilterControl(this.Service, this.ValeursFiltre);
+            this.BaseFilterControl.Dock = DockStyle.Fill;
+            this.panel_Filtre.Controls.Add(this.BaseFilterControl);
+            this.BaseFilterControl.RefreshEvent += BaseFilterControl_RefreshEvent;
 
             //
             // Initialisation de DataGrid
             //
             this.EntityManagerControl = new EntityManagerControl(
                 this.Service, 
-                this.FiltreControl, 
+                this.BaseFilterControl, 
                 this.FormApplicationMdi, 
                 this.Formulaire);
             this.EntityManagerControl.Dock = DockStyle.Fill;
             this.panelDataGrid.Controls.Add(this.EntityManagerControl);
         }
-        private void FiltreControl_RefreshEvent(object sender, EventArgs e)
+        private void BaseFilterControl_RefreshEvent(object sender, EventArgs e)
         {
             this.Actualiser();
         }
@@ -187,7 +187,7 @@ namespace App.WinForm
         public void Actualiser()
         {
             this.EntityManagerControl.Actualiser();
-            this.RenomerTitrePage(this.FiltreControl.CritereRechercheFiltre());
+            this.RenomerTitrePage(this.BaseFilterControl.CritereRechercheFiltre());
 
         }
         public void bt_Ajouter_Click(object sender, EventArgs e)

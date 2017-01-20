@@ -11,7 +11,7 @@ namespace App.WinForm
 {
     public partial class EntryForm
     {
-        private TextBox CreateStringField(PropertyInfo item, int x, int y, int index)
+        private TextBox CreateStringField(PropertyInfo item, int x,ref int y, int index)
         {
             // Lecture de l'annotation 
             AffichageProprieteAttribute AffichagePropriete = (AffichageProprieteAttribute)item.GetCustomAttribute(typeof(AffichageProprieteAttribute));

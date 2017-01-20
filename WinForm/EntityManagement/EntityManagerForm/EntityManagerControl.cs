@@ -20,7 +20,7 @@ namespace App.WinForm.EntityManagement
         }
 
         public EntityManagerControl(IBaseRepository Service, 
-            FiltreControl FiltreControl, Form MdiParent, BaseEntryForm Formulaire) :base(Service, FiltreControl, MdiParent, Formulaire)
+            BaseFilterControl BaseFilterControl, Form MdiParent, BaseEntryForm Formulaire) :base(Service, BaseFilterControl, MdiParent, Formulaire)
         {
             InitializeComponent();
             InitDataGridView();
@@ -35,7 +35,7 @@ namespace App.WinForm.EntityManagement
         public void Actualiser()
         {
             ObjetBindingSource.Clear();
-            Dictionary<string, object> critereRechercheFiltre = this.FiltreControl.CritereRechercheFiltre();
+            Dictionary<string, object> critereRechercheFiltre = this.BaseFilterControl.CritereRechercheFiltre();
             var ls = Service.Recherche(critereRechercheFiltre);
             ObjetBindingSource.DataSource = ls;
         }
