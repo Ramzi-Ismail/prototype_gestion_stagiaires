@@ -77,10 +77,10 @@
     <Compile Include="EntityManagement\EntityManagerForm\Base\BaseEntityDataGridControl.Designer.cs">
       <DependentUpon>BaseEntityDataGridControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="EntityManagement\Filter\BaseFilterControl.cs">
+    <Compile Include="Filter\BaseFilterControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EntityManagement\Filter\BaseFilterControl.Designer.cs">
+    <Compile Include="Filter\BaseFilterControl.Designer.cs">
       <DependentUpon>BaseFilterControl.cs</DependentUpon>
     </Compile>
     <Compile Include="EntryForms\Exceptions\FieldNotExistInFormException.cs" />
@@ -94,15 +94,6 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="EntryForms\Write.BaseEntryForm.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="EntryForms\Fields\ManyToManyField.EntyForm.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="EntryForms\Fields\ManyToOneField.EntryForm.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="EntryForms\Fields\StringField.EntryForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="EntryForms\InputCollectionControle.cs">
@@ -182,13 +173,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Security\Session.cs" />
-    <Compile Include="EntryForms\Base\BaseEntryForm.cs">
+    <Compile Include="EntryForms\BaseEntryForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EntryForms\Base\BaseEntryForm.Designer.cs">
+    <Compile Include="EntryForms\BaseEntryForm.Designer.cs">
       <DependentUpon>BaseEntryForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="EntryForms\Base\IBaseEntryForm.cs" />
+    <Compile Include="EntryForms\IBaseEntryForm.cs" />
     <Compile Include="EntityManagement\EntityManagementForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,7 +194,7 @@
     <EmbeddedResource Include="EntityManagement\EntityManagerForm\Base\BaseEntityDataGridControl.resx">
       <DependentUpon>BaseEntityDataGridControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EntityManagement\Filter\BaseFilterControl.resx">
+    <EmbeddedResource Include="Filter\BaseFilterControl.resx">
       <DependentUpon>BaseFilterControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EntryForms\InputCollectionControle.resx">
@@ -240,7 +231,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="EntryForms\Base\BaseEntryForm.resx">
+    <EmbeddedResource Include="EntryForms\BaseEntryForm.resx">
       <DependentUpon>BaseEntryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EntityManagement\EntityManagementForm.resx">

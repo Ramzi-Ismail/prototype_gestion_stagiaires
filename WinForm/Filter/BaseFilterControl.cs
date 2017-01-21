@@ -105,14 +105,20 @@ namespace App.WinForm.EntityManagement
                 AffichageProprieteAttribute AffichagePropriete = (AffichageProprieteAttribute)getAffichagePropriete;
                 if (AffichagePropriete.Filtre == false) continue;
 
-
+                
+                // Utiliser le Largeur de la configuration s'il existe
+                int item_width_control = width_control;
+                if(AffichagePropriete.WidthColonne != 0)
+                    item_width_control = AffichagePropriete.WidthColonne;
 
                 if (propertyInfo.PropertyType.Name == "String")
                 {
+
+
                     StringFiled stringFiled = new StringFiled(propertyInfo,
                         Orientation.Horizontal,
                         new Size(width_label, height_label),
-                            new Size(width_control, height_control));
+                            new Size(item_width_control, height_control));
                     stringFiled.Name = propertyInfo.Name;
                     stringFiled.TabIndex = TabIndex++;
                     stringFiled.Text_Label = AffichagePropriete.Titre;
@@ -129,7 +135,7 @@ namespace App.WinForm.EntityManagement
                     Int32Filed int32Filed = new Int32Filed(propertyInfo,
                         Orientation.Vertical,
                        new Size(width_label, height_label),
-                            new Size(width_control, height_control)
+                            new Size(item_width_control, height_control)
                         );
                     int32Filed.Name = propertyInfo.Name;
                     int32Filed.TabIndex = TabIndex++;
@@ -146,7 +152,7 @@ namespace App.WinForm.EntityManagement
                 {
                     DateTimeField dateTimeField = new DateTimeField(propertyInfo,Orientation.Vertical,
                          new Size(width_label, height_label),
-                            new Size(width_control, height_control)
+                            new Size(item_width_control, height_control)
                         );
                     dateTimeField.Name = propertyInfo.Name;
                     dateTimeField.TabIndex = TabIndex++;
@@ -169,7 +175,7 @@ namespace App.WinForm.EntityManagement
                         this.MainContainer,
                         Orientation.Horizontal,
                          new Size(width_label, height_label),
-                         new Size(width_control, height_control)
+                         new Size(item_width_control, height_control)
                         );
                     manyToOneField.Name = propertyInfo.Name;
                     manyToOneField.TabIndex = TabIndex++;

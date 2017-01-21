@@ -60,7 +60,13 @@ namespace App.WinForm
         /// L'objet qui contient la collection
         /// </summary>
         BaseEntity Entity { set; get; }
-      
+        public List<BaseEntity> Value {
+            get
+            {
+                return listBoxChoices.SelectedItems.Cast<BaseEntity>().ToList<BaseEntity>();
+            }
+        }
+
 
         /// <summary>
         /// Lite des ComboBox 

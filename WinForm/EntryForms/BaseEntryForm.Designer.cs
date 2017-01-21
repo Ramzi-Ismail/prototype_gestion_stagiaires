@@ -33,13 +33,16 @@
             this.btEnregistrer = new System.Windows.Forms.Button();
             this.btAnnuler = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.flowLayoutPanelForm = new System.Windows.Forms.FlowLayoutPanel();
+            this.tabControlForm = new System.Windows.Forms.TabControl();
+            this.tabPageForm = new System.Windows.Forms.TabPage();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.tabControlForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,7 +98,8 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.CausesValidation = false;
-            this.splitContainer1.Panel1.Controls.Add(this.flowLayoutPanel1);
+            this.splitContainer1.Panel1.Controls.Add(this.flowLayoutPanelForm);
+            this.splitContainer1.Panel1.Controls.Add(this.tabControlForm);
             // 
             // splitContainer1.Panel2
             // 
@@ -105,19 +109,44 @@
             this.splitContainer1.SplitterDistance = 244;
             this.splitContainer1.TabIndex = 3;
             // 
+            // flowLayoutPanelForm
+            // 
+            this.flowLayoutPanelForm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanelForm.Location = new System.Drawing.Point(311, 29);
+            this.flowLayoutPanelForm.Name = "flowLayoutPanelForm";
+            this.flowLayoutPanelForm.Size = new System.Drawing.Size(260, 152);
+            this.flowLayoutPanelForm.TabIndex = 1;
+            // 
+            // tabControlForm
+            // 
+            this.tabControlForm.Alignment = System.Windows.Forms.TabAlignment.Left;
+            this.tabControlForm.Controls.Add(this.tabPageForm);
+            this.tabControlForm.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.tabControlForm.ItemSize = new System.Drawing.Size(30, 70);
+            this.tabControlForm.Location = new System.Drawing.Point(17, 25);
+            this.tabControlForm.Multiline = true;
+            this.tabControlForm.Name = "tabControlForm";
+            this.tabControlForm.SelectedIndex = 0;
+            this.tabControlForm.Size = new System.Drawing.Size(261, 156);
+            this.tabControlForm.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.tabControlForm.TabIndex = 2;
+            this.tabControlForm.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl1_DrawItem);
+            // 
+            // tabPageForm
+            // 
+            this.tabPageForm.Location = new System.Drawing.Point(74, 4);
+            this.tabPageForm.Name = "tabPageForm";
+            this.tabPageForm.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageForm.Size = new System.Drawing.Size(183, 148);
+            this.tabPageForm.TabIndex = 0;
+            this.tabPageForm.Text = "tabPage1";
+            this.tabPageForm.UseVisualStyleBackColor = true;
+            // 
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(641, 238);
-            this.flowLayoutPanel1.TabIndex = 1;
             // 
             // BaseEntryForm
             // 
@@ -131,6 +160,7 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.tabControlForm.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
@@ -142,6 +172,8 @@
         protected System.Windows.Forms.ErrorProvider errorProvider;
         public System.Windows.Forms.Button btEnregistrer;
         public System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelForm;
+        private System.Windows.Forms.TabPage tabPageForm;
+        protected System.Windows.Forms.TabControl tabControlForm;
     }
 }

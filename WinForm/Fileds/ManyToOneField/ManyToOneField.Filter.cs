@@ -143,7 +143,7 @@ namespace App.WinForm.Fileds
 
                         manyToOneFilter.TabIndex = ++index;
                         manyToOneFilter.Text_Label = item.Name;
-                        manyToOneFilter.BackColor = System.Drawing.Color.Beige;
+
                         manyToOneFilter.ValueMember = "Id";
                         manyToOneFilter.DisplayMember = MetaAffichageClasseCritere.DisplayMember;
                         manyToOneFilter.FieldChanged += Value_SelectedIndexChanged;

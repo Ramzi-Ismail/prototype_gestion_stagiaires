@@ -21,27 +21,39 @@ namespace App.Formations
 
 
 
-        [AffichagePropriete(Titre = "Titre", isGridView = true, isFormulaire = true,
+        // Objectif pédagogie
+        [AffichagePropriete(Titre = "Titre", GroupeBox = "Objectif pédagogie",
+           isGridView = true, isFormulaire = true,
            Filtre = true, isOblegatoir = true, Ordre = 2, WidthColonne = 200)]
         public String Titre { set; get; }
 
 
 
-        [AffichagePropriete(Titre = "Objectif", isFormulaire = true,
+        [AffichagePropriete(Titre = "Objectif", GroupeBox = "Objectif pédagogie",
+            isFormulaire = true,NombreLigne = 10,
              MultiLine = true, Filtre = true, isOblegatoir = true, Ordre = 3, WidthColonne = 150)]
         public String Objectif { set; get; }
 
 
-
-        [AffichagePropriete(Titre = "Durée", isGridView = true, isFormulaire = true,
-          Unite = "min", isOblegatoir = true, Ordre = 4, WidthColonne = 50)]
+        [AffichagePropriete(Titre = "Durée", GroupeBox = "Objectif pédagogie",
+            isGridView = true, isFormulaire = true,
+          Unite = "min", isOblegatoir = true, Ordre = 4, WidthColonne = 40)]
         public int Duree { set; get; }
 
 
-
-        [AffichagePropriete(Titre = "Catégogie salle", isGridView = true, isFormulaire = true,
-         Relation = "ManyToOne", isOblegatoir = true, Ordre = 5, WidthColonne = 80)]
+        [AffichagePropriete(Titre = "Catégogie salle", GroupeBox = "Objectif pédagogie",
+            isGridView = true, isFormulaire = true,
+         Relation = "ManyToOne", isOblegatoir = true, Ordre = 5, WidthColonne = 70)]
         public virtual CategogiesSalleFormation categogiesSalleFormation { set; get; }
+
+        // Affectation
+        [AffichagePropriete(Titre = "Module", GroupeBox = "Module",
+            isGridView = true, isFormulaire = true,
+         Relation = "ManyToOne", FilterSelection = true, 
+            Filtre = true, isOblegatoir = true, Ordre = 11, WidthColonne = 120)]
+
+        public virtual Module Module { set; get; }
+
 
 
 
@@ -55,11 +67,7 @@ namespace App.Formations
         public virtual List<Activite> Activites { set; get; }
 
 
-
-        [AffichagePropriete(Titre = "Module", isGridView = true, isFormulaire = true,
-         Relation = "ManyToOne", FilterSelection=true, Filtre = true, isOblegatoir = true, Ordre = 11, WidthColonne = 100)]
-      
-        public virtual Module Module { set; get; }
+       
 
 
 

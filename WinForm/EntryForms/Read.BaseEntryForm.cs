@@ -2,6 +2,7 @@
 using App.WinForm.Fileds;
 using App.WinFrom.Fileds;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -91,6 +92,48 @@ namespace App.WinForm
                     BaseEntity ManyToOneEntity = ServicesEntity.GetBaseEntityByID(Convert.ToInt32(id));
                     typeEntity.GetProperty(NomPropriete).SetValue(entity, ManyToOneEntity);
                 }
+                if (AffichagePropriete.Relation == "ManyToMany")
+                {
+                    List<BaseEntity> ls = null;
+                    if (this.AutoGenerateField)
+                    {
+                        InputCollectionControle inputCollectionControle = null;
+                        Control[] recherche = this.tabControlForm.Controls.Find(item.Name, true);
+                        if (recherche.Count() > 0)
+                            inputCollectionControle =(InputCollectionControle)recherche.First();
+                        else 
+                           throw new FieldNotExistInFormException();
+
+                       ls = inputCollectionControle.Value;
+                    }
+                    else
+                    {
+                        ListBox comboBox = (ListBox)this.FindPersonelField(item.Name, "ListBox");
+                        ls = comboBox.Items.Cast<BaseEntity>().ToList<BaseEntity>();
+
+                    }
+
+                    Type ServicesEntityType = typeof(BaseRepository<>).MakeGenericType(item.PropertyType.GetGenericArguments()[0]);
+                    IBaseRepository ServicesEntity = (IBaseRepository)Activator.CreateInstance(ServicesEntityType, this.Service.Context());
+
+
+                    Type TypeListeObjetValeur = typeof(List<>).MakeGenericType(item.PropertyType.GetGenericArguments()[0]);
+                    IList ls_valeur = (IList)Activator.CreateInstance(TypeListeObjetValeur);
+
+
+                   
+                    foreach (BaseEntity b in ls)
+                    {
+                        var entity_valeur = ServicesEntity.GetBaseEntityByID(b.Id);
+                        ls_valeur.Add(entity_valeur);
+
+                    }
+
+                   
+                    typeEntity.GetProperty(NomPropriete).SetValue(entity, ls_valeur);
+
+                }
+
             }
         }
     }

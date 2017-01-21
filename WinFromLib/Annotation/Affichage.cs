@@ -98,5 +98,10 @@ namespace App.WinForm.Annotation
         /// En cas d'un champs multi-ligne, il détermine le nombre de ligne à utiliser
         /// </summary>
         public int NombreLigne { get; set; }
+
+        /// <summary>
+        /// Affichage dans un groupe Box
+        /// </summary>
+        public string GroupeBox { get; set; }
     }
 }

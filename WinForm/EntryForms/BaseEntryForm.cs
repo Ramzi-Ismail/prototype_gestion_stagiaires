@@ -23,6 +23,8 @@ namespace App.WinForm
     {
         #region Variables
 
+  
+
         /// <summary>
         /// Indique si les champs seront automatiquement générer ou manuellement implémenter 
         /// par la classe Hérité
@@ -102,7 +104,7 @@ namespace App.WinForm
                 // Les valeus par défaux
                 this.isStepInitializingValues = false;
                 this.MessageValidation = new MessageValidation(errorProvider);
-                this.ConteneurFormulaire = this.flowLayoutPanel1;
+                
 
                 // Préparation de l'objet Entity
                 if (this.Service != null && this.Entity == null)
@@ -110,13 +112,17 @@ namespace App.WinForm
                 if ((this.Entity == null || this.Entity.Id == 0) && this.CritereRechercheFiltre != null)
                     this.InitialisationEntityParCritereRechercheFiltre();
 
+                // Conteneurs du formulaire
+               
+                this.ConteneurFormulaire = this.flowLayoutPanelForm;
+
                 // Génération du Formulaire
                 if (this.AutoGenerateField) this.GenerateForm();
             }
         }
         public BaseEntryForm(IBaseRepository service) : this(service, null, null) { }
         [Obsolete]
-        private BaseEntryForm(): this(null,null,null)  { }
+        private BaseEntryForm() : this(null, null, null) { }
 
 
         /// <summary>
@@ -177,7 +183,7 @@ namespace App.WinForm
         }
         #endregion
 
-    
+
 
         #region validation
         [Obsolete]
@@ -244,6 +250,30 @@ namespace App.WinForm
             return listeProprite.ToList<PropertyInfo>();
         }
 
- 
+
+
+        /// <summary>
+        /// Orientation Horizontal de TabPage des du formulaire
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)
+        {
+
+            TabControl ctlTab = (TabControl)sender;
+
+            Graphics g = e.Graphics;
+            String sText;
+            int iX;
+            int iY;
+
+            SizeF sizeText;
+            sText = ctlTab.TabPages[e.Index].Text;
+            sizeText = g.MeasureString(sText, ctlTab.Font);
+            iX = e.Bounds.Left + 6;
+            iY =(int)( e.Bounds.Top + (e.Bounds.Height - sizeText.Height) / 2);
+            g.DrawString(sText, ctlTab.Font, Brushes.Black, iX, iY);
+
+        }
     }
 }

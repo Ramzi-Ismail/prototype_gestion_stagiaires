@@ -49,8 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\BaseRepository.cs" />
-    <Compile Include="Base\IService.cs" />
+    <Compile Include="BaseService\BaseRepository.cs" />
+    <Compile Include="BaseService\IService.cs" />
     <Compile Include="Formations\FeriesService.cs" />
     <Compile Include="Formations\PrevisionSeancesService.cs" />
     <Compile Include="Formations\SeancesService.cs" />
@@ -108,9 +108,9 @@
     <Compile Include="Formations\FormateursService.cs" />
     <Compile Include="Stagiaires\GroupesService.cs" />
     <Compile Include="Stagiaires\StagiairesService.cs" />
-    <Compile Include="Base\IBaseRepository.cs" />
-    <Compile Include="DataBase\Configuration.cs" />
-    <Compile Include="DataBase\ModelContext.cs" />
+    <Compile Include="BaseService\IBaseRepository.cs" />
+    <Compile Include="Contex\Configuration.cs" />
+    <Compile Include="Contex\ModelContext.cs" />
     <Compile Include="Migrations\201701071548387_init.cs" />
     <Compile Include="Migrations\201701071548387_init.Designer.cs">
       <DependentUpon>201701071548387_init.cs</DependentUpon>

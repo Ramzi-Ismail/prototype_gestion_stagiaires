@@ -30,7 +30,7 @@ namespace App
         [AffichagePropriete(DisplayMember = "Date de modification", 
             Titre = "Date de modification", 
             Ordre = 1000,
-            WidthColonne = 150,
+            WidthColonne = 100,
             isGridView = true)]
         public DateTime DateModification { get; set; }
 
@@ -58,6 +58,11 @@ namespace App
             string Titre =  this.GetType().GetProperty(AffichageClasse.DisplayMember).GetValue(this).ToString();
             if (Titre == string.Empty) return AffichageClasse.Minuscule;
             else  return Titre;
+        }
+
+        public AffichageClasseAttribute GetAffichageClasseAttribute()
+        {
+          return (AffichageClasseAttribute) this.GetType().GetCustomAttributes(typeof(AffichageClasseAttribute),true).First();
         }
 
         ///// <summary>
