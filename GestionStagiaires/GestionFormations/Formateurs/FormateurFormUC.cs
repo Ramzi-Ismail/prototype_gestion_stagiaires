@@ -33,7 +33,7 @@ namespace App.GestionStagiaires.Formateurs
         }
 
 
-        public override void Afficher()
+        public override void WriteEntityToField()
         {
             Formateur Stagiaire = (Formateur)this.Entity;
             bool validation = true;
@@ -67,7 +67,7 @@ namespace App.GestionStagiaires.Formateurs
  
 
         }
-        protected override void Lire()
+        protected override void ReadFormToEntity()
         {
             Formateur Stagiaire = (Formateur)this.Entity;
             bool validation = true;

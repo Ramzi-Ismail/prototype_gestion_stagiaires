@@ -91,8 +91,11 @@ namespace App.WinForm.EntityManagement
         /// </summary>
         protected void initFiltre()
         {
+            int width_label = 50;
+            int height_label = 20;
+            int width_control = 50;
+            int height_control = 20;
 
-            int width_critere_filtre = 100;
             int TabIndex = 0;
             foreach (PropertyInfo propertyInfo in PropertyListFilter())
             {
@@ -106,7 +109,10 @@ namespace App.WinForm.EntityManagement
 
                 if (propertyInfo.PropertyType.Name == "String")
                 {
-                    StringFiled stringFiled = new StringFiled(propertyInfo,Orientation.Horizontal, width_critere_filtre);
+                    StringFiled stringFiled = new StringFiled(propertyInfo,
+                        Orientation.Horizontal,
+                        new Size(width_label, height_label),
+                            new Size(width_control, height_control));
                     stringFiled.Name = propertyInfo.Name;
                     stringFiled.TabIndex = TabIndex++;
                     stringFiled.Text_Label = AffichagePropriete.Titre;
@@ -120,7 +126,11 @@ namespace App.WinForm.EntityManagement
                 }
                 if (propertyInfo.PropertyType.Name == "Int32")
                 {
-                    Int32Filed int32Filed = new Int32Filed(propertyInfo,Orientation.Vertical, width_critere_filtre);
+                    Int32Filed int32Filed = new Int32Filed(propertyInfo,
+                        Orientation.Vertical,
+                       new Size(width_label, height_label),
+                            new Size(width_control, height_control)
+                        );
                     int32Filed.Name = propertyInfo.Name;
                     int32Filed.TabIndex = TabIndex++;
                     int32Filed.Text_Label = AffichagePropriete.Titre;
@@ -134,7 +144,10 @@ namespace App.WinForm.EntityManagement
                 }
                 if (propertyInfo.PropertyType.Name == "DateTime")
                 {
-                    DateTimeField dateTimeField = new DateTimeField(propertyInfo,Orientation.Vertical, width_critere_filtre);
+                    DateTimeField dateTimeField = new DateTimeField(propertyInfo,Orientation.Vertical,
+                         new Size(width_label, height_label),
+                            new Size(width_control, height_control)
+                        );
                     dateTimeField.Name = propertyInfo.Name;
                     dateTimeField.TabIndex = TabIndex++;
                     dateTimeField.Text_Label = AffichagePropriete.Titre;
@@ -154,8 +167,9 @@ namespace App.WinForm.EntityManagement
 
                     ManyToOneField manyToOneField = new ManyToOneField(propertyInfo,
                         this.MainContainer,
-                        width_critere_filtre,
-                        Orientation.Horizontal
+                        Orientation.Horizontal,
+                         new Size(width_label, height_label),
+                         new Size(width_control, height_control)
                         );
                     manyToOneField.Name = propertyInfo.Name;
                     manyToOneField.TabIndex = TabIndex++;
@@ -250,14 +264,14 @@ namespace App.WinForm.EntityManagement
                     case "Int32":
                         {
                             Int32Filed int32Filed = (Int32Filed)this.groupBoxFiltrage.Controls.Find(propertyInfo.Name, true).First();
-                            if (int32Filed.Value != 0)
+                            if ((int) int32Filed.Value != 0)
                                 RechercheInfos[propertyInfo.Name] = int32Filed.Value;
                         }
                         break;
                     case "DateTime":
                         {
                             DateTimeField dateTimeField = (DateTimeField)this.groupBoxFiltrage.Controls.Find(propertyInfo.Name, true).First();
-                            if (dateTimeField.Value != DateTime.MinValue)
+                            if ((DateTime)dateTimeField.Value != DateTime.MinValue)
                                 RechercheInfos[propertyInfo.Name] = dateTimeField.Value;
                         }
                         break;

@@ -16,7 +16,7 @@ namespace App.WinFrom.Fileds
         /// <summary>
         /// Obient la valeur du champs
         /// </summary>
-        public Int32 Value
+        public override object Value
         {
             get
             {
@@ -36,15 +36,20 @@ namespace App.WinFrom.Fileds
                 }
 
             }
+            set
+            {
+                textBoxFiled.Text = value.ToString();
+
+            }
         }
         #endregion
 
-        public Int32Filed(PropertyInfo PropertyInfo, Orientation OrientationField,int WidhtField) : base(PropertyInfo,OrientationField, WidhtField)
+        public Int32Filed(PropertyInfo PropertyInfo, Orientation OrientationField, Size SizeLabel, Size SizeControl) : base(PropertyInfo,OrientationField, SizeLabel, SizeControl)
         {
             InitializeComponent();
         }
 
-        public Int32Filed() : this(null,Orientation.Vertical,0)
+        public Int32Filed() : this(null, Orientation.Horizontal, new Size(50, 20), new Size(50, 20))
         {
 
         }

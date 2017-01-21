@@ -20,11 +20,15 @@ namespace App.WinForm.Fileds
         /// <summary>
         /// Obient la valeur de ComBox du champs ManyToOne
         /// </summary>
-        public Object Value
+        public override Object Value
         {
             get
             {
                 return comboBoxManyToOne.SelectedValue;
+            }
+            set
+            {
+                comboBoxManyToOne.SelectedValue = Convert.ToInt64(value);
             }
         }
 
@@ -70,25 +74,25 @@ namespace App.WinForm.Fileds
 
 
 
-        public ManyToOneField(Type TypeObjet,PropertyInfo propertyInfo, Control MainContainner, int WidthField, Orientation OrientationFiled) 
-            :base(TypeObjet,propertyInfo, OrientationFiled, WidthField)
+        public ManyToOneField(Type TypeObjet,PropertyInfo propertyInfo, Control MainContainner, Orientation OrientationFiled, Size SizeLabel, Size SizeControl ) 
+            :base(TypeObjet,propertyInfo, OrientationFiled, SizeLabel, SizeControl)
         {
             InitializeComponent();
             this.MainContainner = MainContainner;
             InitAndLoadData();
         }
-        public ManyToOneField(PropertyInfo propertyInfo, Control MainContainner, int WidthField, Orientation OrientationFiled)
-          : this(null, propertyInfo, MainContainner, WidthField, OrientationFiled)
+        public ManyToOneField(PropertyInfo propertyInfo, Control MainContainner, Orientation OrientationFiled, Size SizeLabel, Size SizeControl)
+          : this(null, propertyInfo, MainContainner, OrientationFiled, SizeLabel, SizeControl)
         {
 
         }
 
-        public ManyToOneField() : this(null, null,0, Orientation.Horizontal)
+        public ManyToOneField() : this(null, null, Orientation.Horizontal, new Size(50, 20), new Size(50, 20))
         {
 
         }
 
-        private ManyToOneField(Type TypeObjet) : this(TypeObjet,null,null,0, Orientation.Horizontal )
+        private ManyToOneField(Type TypeObjet) : this(TypeObjet,null,null, Orientation.Horizontal, new Size(50, 20), new Size(50, 20))
         {
             
         }

@@ -16,6 +16,8 @@ namespace App.WinForm.Annotation
         public AffichageProprieteAttribute()
         {
             Enable = true;
+            // Par défaut le nombre du ligne d'un champs MultiLigne = 1
+            NombreLigne = 1;
         }
 
         /// <summary>
@@ -90,5 +92,11 @@ namespace App.WinForm.Annotation
         /// La valeur par défaut est vrais
         /// </summary>
         public bool Enable { get; set; }
+
+
+        /// <summary>
+        /// En cas d'un champs multi-ligne, il détermine le nombre de ligne à utiliser
+        /// </summary>
+        public int NombreLigne { get; set; }
     }
 }

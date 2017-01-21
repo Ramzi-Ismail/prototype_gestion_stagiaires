@@ -37,7 +37,7 @@ namespace App.WinForm.EntityManagement
 
                 form.Name = "Form";
                 form.Dock = DockStyle.Fill;
-                form.Afficher(this.BaseFilterControl.CritereRechercheFiltre());
+                form.WriteEntityToField(this.BaseFilterControl.CritereRechercheFiltre());
 
 
                 this.tabControl.TabPages["TabAjouter"].Controls.Add(form);

@@ -29,7 +29,7 @@ namespace AppGestionStagiaires.GestionStagiaires
             formStagiaire = new StagiaireEntryForm(Service);
             this.Controls.Add(formStagiaire);
             formStagiaire.Entity =(Stagiaire)App.Session.user;
-            formStagiaire.Afficher();
+            formStagiaire.WriteEntityToField();
             formStagiaire.EnregistrerClick += FormStagiaire_EnregistrerClick;
             formStagiaire.AnnulerClick += FormStagiaire_AnnulerClick;
 

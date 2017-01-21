@@ -71,9 +71,9 @@
       <Project>{3940f5ca-c8c0-4a72-8a1c-0ad50e5d18ca}</Project>
       <Name>2.Services</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WinForm\2.WinFormEntity.csproj">
+    <ProjectReference Include="..\WinForm\2.GenericEntityManagement.csproj">
       <Project>{22B15B44-4F27-4B78-83A3-8C72CF01A3FE}</Project>
-      <Name>2.WinFormEntity</Name>
+      <Name>2.GenericEntityManagement</Name>
     </ProjectReference>
     <ProjectReference Include="..\WinFromLib\5.WinFromLib.csproj">
       <Project>{7b89bd41-7117-4c2d-845f-45eeb252cc35}</Project>

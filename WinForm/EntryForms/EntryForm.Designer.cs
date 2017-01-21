@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.formulaire = new System.Windows.Forms.GroupBox();
             this.groupBoxListChoix = new System.Windows.Forms.GroupBox();
             this.tabControlManytoMany = new System.Windows.Forms.TabControl();
             this.splitContainerFormulaire = new System.Windows.Forms.SplitContainer();
@@ -38,14 +37,13 @@
             this.splitContainer1.SuspendLayout();
             this.groupBoxListChoix.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerFormulaire)).BeginInit();
-            this.splitContainerFormulaire.Panel1.SuspendLayout();
             this.splitContainerFormulaire.Panel2.SuspendLayout();
             this.splitContainerFormulaire.SuspendLayout();
             this.SuspendLayout();
             // 
             // btEnregistrer
             // 
-            this.btEnregistrer.Location = new System.Drawing.Point(10, 9);
+            this.btEnregistrer.Location = new System.Drawing.Point(10, 14);
             this.btEnregistrer.Click += new System.EventHandler(this.btEnregistrer_Click);
             // 
             // splitContainer1
@@ -56,21 +54,6 @@
             this.splitContainer1.Panel1.Controls.Add(this.splitContainerFormulaire);
             this.splitContainer1.Size = new System.Drawing.Size(695, 383);
             this.splitContainer1.SplitterDistance = 336;
-            // 
-            // formulaire
-            // 
-            this.formulaire.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.formulaire.CausesValidation = false;
-            this.formulaire.Location = new System.Drawing.Point(10, 10);
-            this.formulaire.Margin = new System.Windows.Forms.Padding(10);
-            this.formulaire.Name = "formulaire";
-            this.formulaire.Padding = new System.Windows.Forms.Padding(10);
-            this.formulaire.Size = new System.Drawing.Size(481, 316);
-            this.formulaire.TabIndex = 3;
-            this.formulaire.TabStop = false;
-            this.formulaire.Text = "Formulaire";
             // 
             // groupBoxListChoix
             // 
@@ -102,10 +85,6 @@
             this.splitContainerFormulaire.Location = new System.Drawing.Point(0, 0);
             this.splitContainerFormulaire.Name = "splitContainerFormulaire";
             // 
-            // splitContainerFormulaire.Panel1
-            // 
-            this.splitContainerFormulaire.Panel1.Controls.Add(this.formulaire);
-            // 
             // splitContainerFormulaire.Panel2
             // 
             this.splitContainerFormulaire.Panel2.Controls.Add(this.groupBoxListChoix);
@@ -124,7 +103,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.groupBoxListChoix.ResumeLayout(false);
-            this.splitContainerFormulaire.Panel1.ResumeLayout(false);
             this.splitContainerFormulaire.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerFormulaire)).EndInit();
             this.splitContainerFormulaire.ResumeLayout(false);
@@ -133,8 +111,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox formulaire;
         private System.Windows.Forms.GroupBox groupBoxListChoix;
         private System.Windows.Forms.TabControl tabControlManytoMany;
         private System.Windows.Forms.SplitContainer splitContainerFormulaire;

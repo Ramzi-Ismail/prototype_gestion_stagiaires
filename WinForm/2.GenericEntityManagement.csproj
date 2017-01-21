@@ -83,10 +83,17 @@
     <Compile Include="EntityManagement\Filter\BaseFilterControl.Designer.cs">
       <DependentUpon>BaseFilterControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="EntryForms\Fields\DateTimeField.EntryForm.cs">
+    <Compile Include="EntryForms\Exceptions\FieldNotExistInFormException.cs" />
+    <Compile Include="EntryForms\Save.BaseEntyForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EntryForms\Fields\IntegerField.EntryForm.cs">
+    <Compile Include="EntryForms\Generate.BaseEntryForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EntryForms\Read.BaseEntryForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EntryForms\Write.BaseEntryForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="EntryForms\Fields\ManyToManyField.EntyForm.cs">
@@ -175,13 +182,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Security\Session.cs" />
-    <Compile Include="BaseEntryForm\BaseEntryForm.cs">
+    <Compile Include="EntryForms\Base\BaseEntryForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="BaseEntryForm\BaseEntryForm.Designer.cs">
+    <Compile Include="EntryForms\Base\BaseEntryForm.Designer.cs">
       <DependentUpon>BaseEntryForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseEntryForm\IBaseEntryForm.cs" />
+    <Compile Include="EntryForms\Base\IBaseEntryForm.cs" />
     <Compile Include="EntityManagement\EntityManagementForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -233,7 +240,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaseEntryForm\BaseEntryForm.resx">
+    <EmbeddedResource Include="EntryForms\Base\BaseEntryForm.resx">
       <DependentUpon>BaseEntryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EntityManagement\EntityManagementForm.resx">

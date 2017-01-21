@@ -36,13 +36,13 @@ namespace App.GestionStagiaires.Groupes
         }
 
 
-        public override void Afficher()
+        public override void WriteEntityToField()
         {
             Groupe groupe = (Groupe) this.Entity;
             nomTextBox.Text = groupe.Nom;
             comboBoxFiliere.SelectedItem = groupe.Filiere;
         }
-        protected override void Lire()
+        protected override void ReadFormToEntity()
         {
             Groupe groupe = (Groupe)this.Entity;
             groupe.Nom = nomTextBox.Text;

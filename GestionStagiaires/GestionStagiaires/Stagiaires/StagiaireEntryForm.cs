@@ -41,7 +41,7 @@ namespace App.GestionStagiaires
         /// <summary>
         /// Afficher l'objet stagiaire dans l'interface
         /// </summary>
-        public override void Afficher()
+        public override void WriteEntityToField()
         {
             Stagiaire Stagiaire = (Stagiaire)this.Entity;
             // Etat civil
@@ -74,7 +74,7 @@ namespace App.GestionStagiaires
         }
 
        
-        protected override void Lire()
+        protected override void ReadFormToEntity()
         {
          
                 Stagiaire Stagiaire = (Stagiaire)this.Entity;

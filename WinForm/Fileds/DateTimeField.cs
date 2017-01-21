@@ -15,21 +15,25 @@ namespace App.WinForm.Fileds
         /// <summary>
         /// Obient la valeur de DateTimePicker
         /// </summary>
-        public DateTime Value
+        public override object Value
         {
             get
             {
                 return dateTimeControl.Value;
             }
+            set
+            {
+                dateTimeControl.Value = Convert.ToDateTime(value);
+            }
         }
         #endregion 
          
 
-        public DateTimeField(PropertyInfo PropertyInfo, Orientation OrientationFiled,int WidhtField):base(PropertyInfo,OrientationFiled, WidhtField)
+        public DateTimeField(PropertyInfo PropertyInfo, Orientation OrientationFiled, Size SizeLabel, Size SizeControl) : base(PropertyInfo, OrientationFiled, SizeLabel, SizeControl)
         {
             InitializeComponent();
         }
-        public DateTimeField() : this(null,Orientation.Horizontal,0)
+        public DateTimeField() : this(null, Orientation.Horizontal, new Size(50, 20), new Size(50, 20))
         {
 
         }

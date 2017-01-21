@@ -6,7 +6,7 @@ namespace App.WinForm
         /// <summary>
         /// Afficher l'objet dans le formulaire
         /// </summary>
-        void Afficher();
+        void WriteEntityToField();
 
         /// <summary>
         /// Lire l'objet à partire du formulaire

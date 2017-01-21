@@ -21,7 +21,8 @@ namespace App.WinForm.Fileds
 
 
         /// <summary>
-        /// Filtre
+        /// Le conteneur de l'interface, our que le Filed ajoute son filtre personnelle à l'interface 
+        /// sous Forme des Field avant son Field
         /// </summary>
         public Control MainContainner { set; get; }
        
@@ -94,26 +95,26 @@ namespace App.WinForm.Fileds
             this.ValueMember = "Id";
             
 
-            if (this.propertyInfo != null)
+            if (this.PropertyInfo != null)
             {
 
                 // DisplayMember de combobox actuel
                 // Annotation : Affichage de l'objet
-                AffichageClasseAttribute MetaAffichageClasse = (AffichageClasseAttribute)this.propertyInfo.PropertyType
+                AffichageClasseAttribute MetaAffichageClasse = (AffichageClasseAttribute)this.PropertyInfo.PropertyType
                     .GetCustomAttribute(typeof(AffichageClasseAttribute));
 
 
                 this.DisplayMember = MetaAffichageClasse.DisplayMember;
                 this.Text_Label = MetaAffichageClasse.Minuscule;
 
-                Attribute getAffichagePropriete = propertyInfo.GetCustomAttribute(typeof(AffichageProprieteAttribute));
+                Attribute getAffichagePropriete = PropertyInfo.GetCustomAttribute(typeof(AffichageProprieteAttribute));
                 AffichageProprieteAttribute AffichagePropriete = (AffichageProprieteAttribute)getAffichagePropriete;
                 if (AffichagePropriete.FilterSelection)
                 {
                     #region Annotatin
                     // Annotation : Critère de filtre
                     SelectionCriteriaAttribute MetaSelectionCriteria =
-                        (SelectionCriteriaAttribute)this.propertyInfo.PropertyType
+                        (SelectionCriteriaAttribute)this.PropertyInfo.PropertyType
                         .GetCustomAttribute(typeof(SelectionCriteriaAttribute));
 
 
@@ -132,27 +133,20 @@ namespace App.WinForm.Fileds
                         AffichageClasseAttribute MetaAffichageClasseCritere = (AffichageClasseAttribute)item.GetCustomAttribute(typeof(AffichageClasseAttribute));
 
 
-                        ManyToOneField manyToOneFilter = new ManyToOneField(item, null, null,this.HeightField,this.orientationFiled);
+                        ManyToOneField manyToOneFilter = new ManyToOneField(item, null, null,
+                            this.orientationFiled,
+                             this.SizeLabel,
+                            this.SizeControl
+                            );
                         manyToOneFilter.Name = item.Name;
-
-
-                        manyToOneFilter.Size = new System.Drawing.Size(this.widthField, this.HeightField);
-
+                        //manyToOneFilter.Size = new System.Drawing.Size(this.widthField, this.HeightField);
 
                         manyToOneFilter.TabIndex = ++index;
                         manyToOneFilter.Text_Label = item.Name;
                         manyToOneFilter.BackColor = System.Drawing.Color.Beige;
-
-
                         manyToOneFilter.ValueMember = "Id";
                         manyToOneFilter.DisplayMember = MetaAffichageClasseCritere.DisplayMember;
                         manyToOneFilter.FieldChanged += Value_SelectedIndexChanged;
-
-
-
-                      
-                        
-
                         manyToOneFilter.Visible = true;
 
                         // [bug] Le contôle ne s'affiche pas dans le formilaire ??
@@ -172,8 +166,8 @@ namespace App.WinForm.Fileds
                 }
 
                 // Insertion du ComBox Actuel pour qu'il sera remplit par les données
-                ListeComboBox.Add(this.propertyInfo.PropertyType.Name, this);
-                LsiteTypeObjetCritere.Add(this.propertyInfo.PropertyType.Name, this.propertyInfo.PropertyType);
+                ListeComboBox.Add(this.PropertyInfo.PropertyType.Name, this);
+                LsiteTypeObjetCritere.Add(this.PropertyInfo.PropertyType.Name, this.PropertyInfo.PropertyType);
 
             }
             else

@@ -35,6 +35,10 @@ namespace App.WinFrom.Fileds.Controls
                 if(this.dateTimePicker.Text == string.Empty) return DateTime.MinValue;
                 else return this.dateTimePicker.Value;
             }
+            set
+            {
+                this.dateTimePicker.Value = Value;
+            }
         }
         #endregion
 
