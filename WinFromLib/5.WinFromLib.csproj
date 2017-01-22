@@ -59,12 +59,10 @@
     <Compile Include="Annotation\AffichageGestionAttribute.cs" />
     <Compile Include="Annotation\ApplicationMenuAttribute.cs" />
     <Compile Include="Annotation\SelectionCriteriaAttribute.cs" />
-    <Compile Include="Class1.cs" />
-    <Compile Include="EF\Class1.cs" />
-    <Compile Include="Entity\BaseEntity.cs" />
-    <Compile Include="Entity\IBaseEntity.cs" />
-    <Compile Include="Entity\Individu.cs" />
-    <Compile Include="Entity\Utilisateur.cs" />
+    <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\IBaseEntity.cs" />
+    <Compile Include="Entities\Individu.cs" />
+    <Compile Include="Entities\Utilisateur.cs" />
     <Compile Include="Exceptions\PropertyDoesNotExistException.cs" />
     <Compile Include="Linq\LinqExtension.cs" />
     <Compile Include="Message\MessageToUser.cs" />
