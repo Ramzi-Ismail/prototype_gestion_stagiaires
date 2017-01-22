@@ -46,7 +46,7 @@
             this.textBoxField.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxField.Location = new System.Drawing.Point(0, 0);
             this.textBoxField.Name = "textBoxField";
-            this.textBoxField.Size = new System.Drawing.Size(150, 20);
+            this.textBoxField.Size = new System.Drawing.Size(50, 20);
             this.textBoxField.TabIndex = 0;
             this.textBoxField.TextChanged += new System.EventHandler(this.textBoxField_TextChanged);
             // 

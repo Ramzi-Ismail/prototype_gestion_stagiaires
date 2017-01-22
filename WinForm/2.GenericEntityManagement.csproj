@@ -77,37 +77,6 @@
     <Compile Include="EntityManagement\EntityManagerForm\Base\BaseEntityDataGridControl.Designer.cs">
       <DependentUpon>BaseEntityDataGridControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Filter\BaseFilterControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Filter\BaseFilterControl.Designer.cs">
-      <DependentUpon>BaseFilterControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EntryForms\Exceptions\FieldNotExistInFormException.cs" />
-    <Compile Include="EntryForms\Save.BaseEntyForm.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="EntryForms\Generate.BaseEntryForm.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="EntryForms\Read.BaseEntryForm.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="EntryForms\Write.BaseEntryForm.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="EntryForms\InputCollectionControle.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="EntryForms\InputCollectionControle.Designer.cs">
-      <DependentUpon>InputCollectionControle.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EntryForms\InputComboBoxControle.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="EntryForms\InputComboBoxControle.Designer.cs">
-      <DependentUpon>InputComboBoxControle.cs</DependentUpon>
-    </Compile>
     <Compile Include="Fileds\BaseField.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -132,6 +101,12 @@
     <Compile Include="Fileds\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fileds\InputCollectionControle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fileds\InputCollectionControle.Designer.cs">
+      <DependentUpon>InputCollectionControle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fileds\Int32Filed.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -152,6 +127,31 @@
     </Compile>
     <Compile Include="Fileds\StringFiled.Designer.cs">
       <DependentUpon>StringFiled.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Filter\BaseFilterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Filter\BaseFilterControl.Designer.cs">
+      <DependentUpon>BaseFilterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntryForms\Exceptions\FieldNotExistInFormException.cs" />
+    <Compile Include="EntryForms\Save.BaseEntyForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EntryForms\Generate.BaseEntryForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EntryForms\Read.BaseEntryForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EntryForms\Write.BaseEntryForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EntryForms\InputComboBoxControle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EntryForms\InputComboBoxControle.Designer.cs">
+      <DependentUpon>InputComboBoxControle.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -194,15 +194,6 @@
     <EmbeddedResource Include="EntityManagement\EntityManagerForm\Base\BaseEntityDataGridControl.resx">
       <DependentUpon>BaseEntityDataGridControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Filter\BaseFilterControl.resx">
-      <DependentUpon>BaseFilterControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EntryForms\InputCollectionControle.resx">
-      <DependentUpon>InputCollectionControle.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EntryForms\InputComboBoxControle.resx">
-      <DependentUpon>InputComboBoxControle.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Fileds\BaseField.resx">
       <DependentUpon>BaseField.cs</DependentUpon>
     </EmbeddedResource>
@@ -212,6 +203,9 @@
     <EmbeddedResource Include="Fileds\DateTimeField.resx">
       <DependentUpon>DateTimeField.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Fileds\InputCollectionControle.resx">
+      <DependentUpon>InputCollectionControle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Fileds\Int32Filed.resx">
       <DependentUpon>Int32Filed.cs</DependentUpon>
     </EmbeddedResource>
@@ -220,6 +214,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fileds\StringFiled.resx">
       <DependentUpon>StringFiled.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Filter\BaseFilterControl.resx">
+      <DependentUpon>BaseFilterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EntryForms\InputComboBoxControle.resx">
+      <DependentUpon>InputComboBoxControle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

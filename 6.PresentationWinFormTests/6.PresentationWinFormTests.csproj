@@ -78,6 +78,10 @@
       <Project>{22B15B44-4F27-4B78-83A3-8C72CF01A3FE}</Project>
       <Name>2.GenericEntityManagement</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WinFromLib\5.WinFromLib.csproj">
+      <Project>{7b89bd41-7117-4c2d-845f-45eeb252cc35}</Project>
+      <Name>5.WinFromLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

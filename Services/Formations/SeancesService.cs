@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace App.GestionFormations
 {
-   public class SeancesService : BaseRepository<Seance>
+   public class SeancesService : BaseRepository<Seance>, IService
     {
         public SeancesService():base()
         {
@@ -15,6 +16,28 @@ namespace App.GestionFormations
 
         public SeancesService(ModelContext context) : base(context)
         {
+        }
+
+        public override void ValueChanged(object sender, BaseEntity entity)
+        {
+            Control control = (Control)sender;
+            Seance seance = (Seance)entity;
+
+            switch (control.Name)
+            {
+                case "dateDebutDateTimePicker":
+                    {
+                        
+                    }
+                    break;
+                case "dateFinDateTimePicker":
+                    {
+                        
+
+                    }
+                    break;
+                default: break;
+            }
         }
 
         public override int Save(Seance item)

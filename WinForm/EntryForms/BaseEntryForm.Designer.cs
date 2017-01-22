@@ -66,7 +66,7 @@
             this.btEnregistrer.Location = new System.Drawing.Point(3, 9);
             this.btEnregistrer.Name = "btEnregistrer";
             this.btEnregistrer.Size = new System.Drawing.Size(83, 31);
-            this.btEnregistrer.TabIndex = 0;
+            this.btEnregistrer.TabIndex = 5;
             this.btEnregistrer.Text = "Enregistrer";
             this.btEnregistrer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btEnregistrer.UseVisualStyleBackColor = true;
@@ -108,15 +108,18 @@
             this.splitContainer1.Size = new System.Drawing.Size(647, 296);
             this.splitContainer1.SplitterDistance = 244;
             this.splitContainer1.TabIndex = 3;
+            this.splitContainer1.TabStop = false;
             // 
             // flowLayoutPanelForm
             // 
             this.flowLayoutPanelForm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanelForm.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanelForm.Location = new System.Drawing.Point(311, 29);
             this.flowLayoutPanelForm.Name = "flowLayoutPanelForm";
-            this.flowLayoutPanelForm.Size = new System.Drawing.Size(260, 152);
+            this.flowLayoutPanelForm.Padding = new System.Windows.Forms.Padding(10);
+            this.flowLayoutPanelForm.Size = new System.Drawing.Size(308, 187);
             this.flowLayoutPanelForm.TabIndex = 1;
             // 
             // tabControlForm
@@ -142,7 +145,6 @@
             this.tabPageForm.Size = new System.Drawing.Size(183, 148);
             this.tabPageForm.TabIndex = 0;
             this.tabPageForm.Text = "tabPage1";
-            this.tabPageForm.UseVisualStyleBackColor = true;
             // 
             // errorProvider
             // 
@@ -172,8 +174,8 @@
         protected System.Windows.Forms.ErrorProvider errorProvider;
         public System.Windows.Forms.Button btEnregistrer;
         public System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelForm;
         private System.Windows.Forms.TabPage tabPageForm;
         protected System.Windows.Forms.TabControl tabControlForm;
+        protected System.Windows.Forms.FlowLayoutPanel flowLayoutPanelForm;
     }
 }

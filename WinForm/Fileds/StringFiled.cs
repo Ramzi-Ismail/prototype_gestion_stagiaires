@@ -55,7 +55,7 @@ namespace App.WinFrom.Fileds
         }
         private void textBoxField_TextChanged(object sender, EventArgs e)
         {
-            onFieldChanged(sender, e);
+            onFieldChanged(this, e);
         }
         /// <summary>
         /// Initialisation spécifique à zone de texte
@@ -66,10 +66,10 @@ namespace App.WinFrom.Fileds
             if (this.AffichagePropriete.MultiLine)
             {
                 this.textBoxField.Multiline = true;
-                this.textBoxField.Size = new Size(this.SizeControl.Width, this.SizeControl.Height * this.AffichagePropriete.NombreLigne);
+                this.textBoxField.Size = new Size(this.SizeControl.Width, 10 * this.AffichagePropriete.NombreLigne);
                 // Modification de Size de Field
                 // [Bug] est ce que il faut augmenter aussi la taille Layout ?
-                this.Size = new Size(this.Size.Width, this.Size.Height + this.SizeControl.Height * (this.AffichagePropriete.NombreLigne - 1));
+                this.Size = new Size(this.Size.Width, this.Size.Height + 10 * (this.AffichagePropriete.NombreLigne));
             }
         }
     }

@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace App.WinForm 
+namespace App.WinForm
 {
     public partial class BaseEntryForm
     {
@@ -26,13 +26,15 @@ namespace App.WinForm
                 AffichageProprieteAttribute AffichagePropriete = (AffichageProprieteAttribute)item.GetCustomAttribute(typeof(AffichageProprieteAttribute));
                 Type typePropriete = item.PropertyType;
                 string NomPropriete = item.Name;
+
+                #region Read :String Field
                 if (typePropriete.Name == "String")
                 {
                     string value = "";
                     if (this.AutoGenerateField)
                     {
                         BaseField baseField = this.FindGenerateField(item.Name);
-                        value = baseField.Value.ToString() ;
+                        value = baseField.Value.ToString();
                     }
                     else
                     {
@@ -41,13 +43,16 @@ namespace App.WinForm
                     }
                     typeEntity.GetProperty(NomPropriete).SetValue(entity, value);
                 }
+                #endregion
+
+                #region Read : Int32 Field
                 if (item.PropertyType.Name == "Int32")
                 {
                     int Nombre = 0;
                     if (this.AutoGenerateField)
                     {
                         BaseField baseField = this.FindGenerateField(item.Name);
-                        Nombre = Convert.ToInt32(baseField.Value)  ;
+                        Nombre = Convert.ToInt32(baseField.Value);
                     }
                     else
                     {
@@ -58,6 +63,9 @@ namespace App.WinForm
                     typeEntity.GetProperty(NomPropriete).SetValue(entity, Nombre);
 
                 }
+                #endregion
+
+                #region Read : DateTime Field
                 if (typePropriete.Name == "DateTime")
                 {
                     DateTime date = DateTime.MinValue;
@@ -73,13 +81,16 @@ namespace App.WinForm
                     }
                     typeEntity.GetProperty(NomPropriete).SetValue(entity, date);
                 }
+                #endregion
+
+                #region Read : ManyToOne Field
                 if (AffichagePropriete.Relation == "ManyToOne")
                 {
                     Int64 id;
                     if (this.AutoGenerateField)
                     {
                         BaseField baseField = this.FindGenerateField(item.Name);
-                        id =Convert.ToInt64( baseField.Value);
+                        id = Convert.ToInt64(baseField.Value);
                     }
                     else
                     {
@@ -92,19 +103,34 @@ namespace App.WinForm
                     BaseEntity ManyToOneEntity = ServicesEntity.GetBaseEntityByID(Convert.ToInt32(id));
                     typeEntity.GetProperty(NomPropriete).SetValue(entity, ManyToOneEntity);
                 }
+                #endregion
+
+                #region  Read : ManyToMany
                 if (AffichagePropriete.Relation == "ManyToMany")
                 {
                     List<BaseEntity> ls = null;
                     if (this.AutoGenerateField)
                     {
                         InputCollectionControle inputCollectionControle = null;
-                        Control[] recherche = this.tabControlForm.Controls.Find(item.Name, true);
-                        if (recherche.Count() > 0)
-                            inputCollectionControle =(InputCollectionControle)recherche.First();
-                        else 
-                           throw new FieldNotExistInFormException();
+                        if (AffichagePropriete.TabPage)
+                        {
+                           
+                            Control[] recherche = this.tabControlForm.Controls.Find(item.Name, true);
+                            if (recherche.Count() > 0)
+                                inputCollectionControle = (InputCollectionControle)recherche.First();
+                            else
+                                throw new FieldNotExistInFormException();
+                        }else
+                        {
+                            Control[] recherche = this.ConteneurFormulaire.Controls.Find(item.Name, true);
+                            if (recherche.Count() > 0) {
+                                inputCollectionControle = (InputCollectionControle)recherche.First();
+                            }
+                            else
+                            throw new FieldNotExistInFormException();
+                        }
 
-                       ls = inputCollectionControle.Value;
+                        ls = inputCollectionControle.Value;
                     }
                     else
                     {
@@ -121,7 +147,7 @@ namespace App.WinForm
                     IList ls_valeur = (IList)Activator.CreateInstance(TypeListeObjetValeur);
 
 
-                   
+
                     foreach (BaseEntity b in ls)
                     {
                         var entity_valeur = ServicesEntity.GetBaseEntityByID(b.Id);
@@ -129,10 +155,11 @@ namespace App.WinForm
 
                     }
 
-                   
+
                     typeEntity.GetProperty(NomPropriete).SetValue(entity, ls_valeur);
 
                 }
+                #endregion
 
             }
         }

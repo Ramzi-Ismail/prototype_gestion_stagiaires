@@ -71,6 +71,8 @@ namespace App.WinFrom.Fileds
             set
             {
                 this.labelField.Text = value;
+                
+               
             }
         }
 
@@ -115,9 +117,13 @@ namespace App.WinFrom.Fileds
         {
             // Label
             labelField.Size = this.SizeLabel;
-             
+            labelField.AutoSize = false;
+            this.splitContainer.IsSplitterFixed = true;
+            this.splitContainer.TabStop = false;
+
             // Containner
             this.splitContainer.Orientation = this.OrientationFiled;
+            
             
             if (OrientationFiled == Orientation.Vertical)
             {

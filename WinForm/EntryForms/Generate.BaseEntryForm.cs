@@ -16,55 +16,72 @@ namespace App.WinForm
 {
     public partial class BaseEntryForm
     {
-        #region Création du formulaire
+ 
         /// <summary>
         /// Création et Initalisation des contrôles du formulaire
         /// </summary>
         private void GenerateForm()
         {
-            // Positions et Tailles
+            #region Taille par défaut
+            // Positions et Tailles par défaut
             int y_field = 0;
             int x_field = 0;
-            int width_label = 80;
-            int height_label = 20;
-            int width_control = 200;
+            int width_label = 100;
+            int height_label = 10;
+            int width_control = 250;
             int height_control = 25;
             int width_groueBox = 100;
             int height_groueBox = 200; // il ne sera pas utilisé 
 
-           
+            // Orientation par défaut
+            Orientation orientation = Orientation.Vertical;
+            #endregion
+
+            #region Préparation de l'interface par Panel et GroupeBox
             // Initalisation de l'interface avec TabControl 
-            this.InitManyToManyInterface();
+            this.InitTabPageInterface();
                  
-            // Liste des Contrôle containner des groupBox dans le formulaire
+            // Création des groupBox s'il existe
             Dictionary<string, Control> GroupesBoxMainContainers = new Dictionary<string, Control>();
-
-           
             this.CreateGroupesBoxes(GroupesBoxMainContainers, width_groueBox, height_groueBox);
-
+            #endregion
 
             // L'index de la touche Entrer
-            int index = 0;
+            int TabIndex = 0;
 
             // Boucle sur les champs de la classe qui doive s'afficher
             foreach (PropertyInfo item in ListeChampsFormulaire())
             {
+                #region Recalcule des valeurs pardéfaut selon l'annotation de chauqe champs
                 // l'annotation 
                 AffichageProprieteAttribute AffichagePropriete = (AffichageProprieteAttribute)item.GetCustomAttribute(typeof(AffichageProprieteAttribute));
+
+                // Taile du Field
+                int width_control_config = width_control;
+                if (AffichagePropriete.WidthControl != 0)
+                    width_control_config = AffichagePropriete.WidthControl;
+
+                // Orientation
+                Orientation orientation_config = orientation;
+                if (AffichagePropriete.UseOrientationField )
+                    orientation_config = AffichagePropriete.OrientationField;
+                #endregion
 
                 Control field_control = null;
                 switch (item.PropertyType.Name)
                 {
+                    #region Champs String
                     case "String":
+                       
 
                         StringFiled stringFiled = new StringFiled(
                             item,
-                            Orientation.Vertical,
+                            orientation_config,
                             new Size(width_label, height_label),
-                            new Size(width_control, height_control));
+                            new Size(width_control_config, height_control));
                         stringFiled.Location = new System.Drawing.Point(x_field, y_field);
                         stringFiled.Name = item.Name;
-                        stringFiled.TabIndex = index;
+                        stringFiled.TabIndex = ++TabIndex;
                         stringFiled.Text_Label = AffichagePropriete.Titre;
                         stringFiled.FieldChanged += ControlPropriete_ValueChanged;
                         if (AffichagePropriete.isOblegatoir)
@@ -73,16 +90,19 @@ namespace App.WinForm
                         this.ConteneurFormulaire.Controls.Add(stringFiled);
                         field_control = stringFiled;
                         break;
+                    #endregion
+
+                    #region Champs Int32
                     case "Int32":
 
                         Int32Filed int32Filed = new Int32Filed(
                            item,
-                           Orientation.Vertical,
+                           orientation_config,
                            new Size(width_label, height_label),
-                           new Size(width_control, height_control));
+                           new Size(width_control_config, height_control));
                         int32Filed.Location = new System.Drawing.Point(x_field, y_field);
                         int32Filed.Name = item.Name;
-                        int32Filed.TabIndex = index;
+                        int32Filed.TabIndex = ++TabIndex;
                         int32Filed.Text_Label = AffichagePropriete.Titre;
                         int32Filed.FieldChanged += ControlPropriete_ValueChanged;
                         if (AffichagePropriete.isOblegatoir)
@@ -91,16 +111,19 @@ namespace App.WinForm
                         this.ConteneurFormulaire.Controls.Add(int32Filed);
                         field_control = int32Filed;
                         break;
+                    #endregion
+
+                    #region Champs DateTime
                     case "DateTime":
 
                         DateTimeField dateTimeField = new DateTimeField(
                          item,
-                         Orientation.Vertical,
+                         orientation_config,
                          new Size(width_label, height_label),
-                         new Size(width_control, height_control));
+                         new Size(width_control_config, height_control));
                         dateTimeField.Location = new System.Drawing.Point(x_field, y_field);
                         dateTimeField.Name = item.Name;
-                        dateTimeField.TabIndex = index;
+                        dateTimeField.TabIndex = ++TabIndex;
                         dateTimeField.Text_Label = AffichagePropriete.Titre;
                         dateTimeField.FieldChanged += ControlPropriete_ValueChanged;
                         if (AffichagePropriete.isOblegatoir)
@@ -109,9 +132,11 @@ namespace App.WinForm
                         this.ConteneurFormulaire.Controls.Add(dateTimeField);
                         field_control = dateTimeField;
                         break;
+                    #endregion
 
                     default:
                         {
+                            #region Champs : ManyToOne
                             if (AffichagePropriete.Relation == "ManyToOne")
                             {
 
@@ -121,14 +146,14 @@ namespace App.WinForm
                                     ConteneurManyToMany = GroupesBoxMainContainers[AffichagePropriete.GroupeBox];
 
                                 ManyToOneField manyToOneField = new ManyToOneField(item,
-                                   ConteneurManyToMany, Orientation.Vertical,
+                                   ConteneurManyToMany, orientation_config,
                                     new Size(width_label, height_label),
-                                   new Size(width_control, height_control)
+                                   new Size(width_control_config, height_control)
                                     );
                                 manyToOneField.Location = new System.Drawing.Point(x_field, y_field);
                                 manyToOneField.Name = item.Name;
 
-                                manyToOneField.TabIndex = index;
+                                manyToOneField.TabIndex = ++TabIndex;
                                 manyToOneField.Text_Label = AffichagePropriete.Titre;
                                 
 
@@ -143,11 +168,13 @@ namespace App.WinForm
                                 this.ConteneurFormulaire.Controls.Add(manyToOneField);
                                 field_control = manyToOneField;
                             }
+                            #endregion
+
+                            #region Champs ManyToMany
                             if (AffichagePropriete.Relation == "ManyToMany")
                             {
 
-                              
-                                //Valeur par défaut
+                                //Trouver les Valeurs par défaut
                                 List<BaseEntity> ls_default_value = null;
                                 if (this.Entity != null)
                                 {
@@ -157,55 +184,44 @@ namespace App.WinForm
                                 }
 
                                 InputCollectionControle InputCollectionControle = new InputCollectionControle(item, ls_default_value, this.Entity);
-                                InputCollectionControle.Dock = DockStyle.Fill;
                                 InputCollectionControle.Name = item.Name;
                                 InputCollectionControle.ValueChanged += ControlPropriete_ValueChanged;
 
-                                TabPage tabPage = new TabPage();
-                                tabPage.Name = "tabPage" + item.Name;
-                                tabPage.Text = AffichagePropriete.Titre;
-                                tabPage.Controls.Add(InputCollectionControle);
-
-                                tabControlForm.TabPages.Add(tabPage);
+                                if (AffichagePropriete.TabPage)
+                                {
+                                    InputCollectionControle.Dock = DockStyle.Fill;
+                                    TabPage tabPage = new TabPage();
+                                    tabPage.Name = "tabPage" + item.Name;
+                                    tabPage.Text = AffichagePropriete.Titre;
+                                    tabPage.Controls.Add(InputCollectionControle);
+                                    tabControlForm.TabPages.Add(tabPage);
+                                }else
+                                {
+                                    this.ConteneurFormulaire.Controls.Add(InputCollectionControle);
+                                    field_control = InputCollectionControle;
+                                }
+                               
                                 
 
                                
                             }
+                            #endregion
                         }
                         break;
                 } // Fin de suitch
 
-                //  this.AddControlToGroupeBox(field_control, AffichagePropriete,  GroupesBoxMainContainers);
-                if (field_control != null && AffichagePropriete.GroupeBox != string.Empty)
+                // Insertion du Champs dans sa GroupeBox si il existe
+                // [Bug] il n'est pas supprimé de l'inrface, car il est déja ajouté
+                if (field_control != null && AffichagePropriete.GroupeBox!=null && AffichagePropriete.GroupeBox != string.Empty)
                     GroupesBoxMainContainers[AffichagePropriete.GroupeBox].Controls.Add(field_control);
-
-
             }// Fin de for
+
+            // TabControl sur Enregistrer et Annuler
+            this.btEnregistrer.TabIndex = ++TabIndex;
+            this.btAnnuler.TabIndex = ++TabIndex;
         }
 
-        // Ajouter un Contrôle dans Groupe Box
-        private void AddControlToGroupeBox(Control field_control, 
-            AffichageProprieteAttribute AffichagePropriete,
-            Dictionary<string, Control>  GroupesBoxMainContainers)
-        {
-            if (field_control != null && AffichagePropriete.GroupeBox != string.Empty)
-            {
-
-                GroupesBoxMainContainers[AffichagePropriete.GroupeBox].Controls.Add(field_control);
-
-                int Somme_height = GroupesBoxMainContainers[AffichagePropriete.GroupeBox].Controls.Cast<Control>().Sum(c => Height);
-                int Max_width = GroupesBoxMainContainers[AffichagePropriete.GroupeBox].Controls.Cast<Control>().Max(c => Width);
-                Control control = GroupesBoxMainContainers[AffichagePropriete.GroupeBox];
-              //  control.Size = new Size(Max_width, Somme_height);
-
-                //control.Width = Max_width;
-                //control.Height = Somme_height;
-
-
-
-            }
-        }
-
+    
         /// <summary>
         /// Création des groupes Box
         /// </summary>
@@ -248,11 +264,11 @@ namespace App.WinForm
         /// Préparation de conteneurs pour une interface qui contient une relation 
         /// ManytoMany
         /// </summary>
-        private void InitManyToManyInterface()
+        private void InitTabPageInterface()
         {
             var listeProprite = from i in this.Service.TypeEntity.GetProperties()
                                 where i.GetCustomAttribute(typeof(AffichageProprieteAttribute)) != null
-                                && ((AffichageProprieteAttribute)i.GetCustomAttribute(typeof(AffichageProprieteAttribute))).Relation == "ManyToMany"
+                                && ((AffichageProprieteAttribute)i.GetCustomAttribute(typeof(AffichageProprieteAttribute))).TabPage
                                 select i;
 
             // Si l'interface contient des Relation ManyToMany
@@ -260,6 +276,7 @@ namespace App.WinForm
             {
 
                 flowLayoutPanelForm.Parent.Controls.Remove(flowLayoutPanelForm);
+                flowLayoutPanelForm.Dock = DockStyle.Fill;
                 tabControlForm.TabPages["TabPageForm"].Controls.Add(flowLayoutPanelForm);
                 tabControlForm.Dock = DockStyle.Fill;
                 tabControlForm.TabPages["TabPageForm"].Text = this.Entity.GetAffichageClasseAttribute().Minuscule;
@@ -295,6 +312,7 @@ namespace App.WinForm
             }
         }
 
+        #region Validation
         protected void ComboBox_Validating(object sender, CancelEventArgs e)
         {
             // déja le combobox propose le premiere élément séléctioné
@@ -315,5 +333,6 @@ namespace App.WinForm
             this.MessageValidation.TextBoxString(sender, e);
         }
         #endregion
+ 
     }
 }

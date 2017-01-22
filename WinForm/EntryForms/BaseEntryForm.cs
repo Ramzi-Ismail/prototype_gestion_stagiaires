@@ -271,7 +271,7 @@ namespace App.WinForm
             sText = ctlTab.TabPages[e.Index].Text;
             sizeText = g.MeasureString(sText, ctlTab.Font);
             iX = e.Bounds.Left + 6;
-            iY =(int)( e.Bounds.Top + (e.Bounds.Height - sizeText.Height) / 2);
+            iY = (int)(e.Bounds.Top + (e.Bounds.Height - sizeText.Height) / 2);
             g.DrawString(sText, ctlTab.Font, Brushes.Black, iX, iY);
 
         }

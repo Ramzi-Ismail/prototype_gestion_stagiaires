@@ -70,6 +70,7 @@
             this.listBoxChoices.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.listBoxChoices.Size = new System.Drawing.Size(188, 173);
             this.listBoxChoices.TabIndex = 0;
+            this.listBoxChoices.SelectedIndexChanged += new System.EventHandler(this.listBoxChoices_SelectedIndexChanged);
             // 
             // groupBoxDisplaySelected
             // 

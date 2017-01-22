@@ -26,6 +26,11 @@ namespace App.WinForm
         /// </summary>
         public event EventHandler ValueChanged;
 
+        private void onValueChanger(object sender,EventArgs e)
+        {
+            if (ValueChanged != null)
+                ValueChanged(sender, e);
+        }
 
 
         /// <summary>
@@ -119,7 +124,7 @@ namespace App.WinForm
             this.ViewingData();
 
             // Affecter les valeurs par défaut
-            this.SetDefaullValues();
+           // this.SetDefaullValues();
 
             this.Show_List_Of_Choices();
             this.Show_Display_Selected_Entity();
@@ -368,7 +373,12 @@ namespace App.WinForm
                                                     .SingleOrDefault();
 
                     if (PropertyChild == null) throw new PropertyDoesNotExistException("La classe " + EntityPere.GetType().Name + " ne contient pas la propriété " + PropertyInfoOfCollection.PropertyType.GetGenericArguments()[0].Name + "s");
-                    listBoxChoices.DataSource = PropertyChild.GetValue(EntityPere);
+                    {
+                        listBoxChoices.DataSource = null;
+                        listBoxChoices.DataSource = PropertyChild.GetValue(EntityPere);
+                        listBoxChoices.SelectedItems.Clear();
+                    }
+                  
                 }
                 else
                 {
@@ -390,7 +400,7 @@ namespace App.WinForm
         {
 
             IBaseRepository service = new BaseRepository<BaseEntity>().CreateInstance_Of_Service_From_TypeEntity(this.TypeObjetOfCollection);
-            this.listBoxChoices.DataSource = service.GetAll();
+       //     this.listBoxChoices.DataSource = service.GetAll();
 
             if (DefaultValueList == null) return;
             for (int i = 0; i < this.listBoxChoices.Items.Count; i++)
@@ -410,6 +420,11 @@ namespace App.WinForm
         private void Show_Display_Selected_Entity()
         {
 
+        }
+
+        private void listBoxChoices_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            onValueChanger(this, e);
         }
     }
 }

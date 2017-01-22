@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace App.WinForm.Annotation
 {
@@ -19,7 +20,14 @@ namespace App.WinForm.Annotation
             // Par défaut le nombre du ligne d'un champs MultiLigne = 1
             NombreLigne = 1;
         }
+        #region Data Model
+        /// <summary>
+        /// Indique le type de la relation, ManyToOne ou ManyToMany
+        /// </summary>
+        public string Relation { set; get; }
+        #endregion
 
+        #region Display
         /// <summary>
         /// Indique le nom à afficher
         /// </summary>
@@ -28,26 +36,25 @@ namespace App.WinForm.Annotation
         /// Indique la description à afficher
         /// </summary>
         public string Description { set; get; }
-
-        /// <summary>
-        /// Indique l'ordre d'affichage dans le formulaire et dans le dataGrid 
-        /// </summary>
-        public int Ordre { set; get; }
-
-        /// <summary>
-        /// Indique le type de la relation, ManyToOne ou ManyToMany
-        /// </summary>
-        public string Relation { set; get; }
-
         /// <summary>
         /// Le nom de la propriété à afficher dans ComBoBox
         /// </summary>
         public string DisplayMember { get; set; }
+        #endregion
 
+        #region Filter
         /// <summary>
-        /// Indique si la propriété fait partie de la formulaire
+        /// Indique si la proriété fait partie du filtre de recherhe 
+        /// l'attribut doit être dans DataGrid
         /// </summary>
-        public bool isFormulaire { get; set; }
+        public bool Filtre { get; set; }
+        /// <summary>
+        /// Si la valeur est vide dans le filtre
+        /// </summary>
+        public bool isValeurFiltreVide { get; set; }
+        #endregion
+
+        #region DataGrid
         /// <summary>
         /// Indique si la propriété fait partie de DataGrid
         /// </summary>
@@ -56,52 +63,66 @@ namespace App.WinForm.Annotation
         /// Indique la taille de la colonne dans DataGrid
         /// </summary>
         public int WidthColonne { get; set; }
+        #endregion
+
+        #region EntryForm
+        /// <summary>
+        /// Indique si la propriété fait partie de la formulaire
+        /// </summary>
+        public bool isFormulaire { get; set; }
+        /// <summary>
+        /// Affichage dans un groupe Box
+        /// </summary>
+        public string GroupeBox { get; set; }
+        /// <summary>
+        /// Unité : min,h,annee, g, Kg
+        /// </summary>
+        public string Unite { get; set; }
+        /// <summary>
+        /// Width dans le formulaire
+        /// </summary>
+        public int WidthControl { get; set; }
+        /// <summary>
+        /// Indique l'ordre d'affichage dans le formulaire et dans le dataGrid 
+        /// </summary>
+        public int Ordre { set; get; }
         /// <summary>
         /// Indique si l'information est MultiLine dans la formulaire de saisie
         /// </summary>
         public bool MultiLine { get; set; }
-
         /// <summary>
-        /// Indique si la proriété fait partie du filtre de recherhe 
-        /// l'attribut doit être dans DataGrid
+        /// En cas d'un champs multi-ligne, il détermine le nombre de ligne à utiliser
         /// </summary>
-        public bool Filtre { get; set; }
-
+        public int NombreLigne { get; set; }
         /// <summary>
-        /// Si la valeur est vide dans le filtre
+        /// Orientation d'affichage du champs 
         /// </summary>
-        public bool isValeurFiltreVide { get; set; }
-
+        public Orientation OrientationField { get; set; }
+        /// <summary>
+        /// Indique si on va utiliser l'orientation de filed,
+        /// Cette configuration exisite parceque le type "Orientation" n'est pas nullable
+        /// </summary>
+        public bool UseOrientationField { get; set; }
         /// <summary>
         /// Indique si la saisie de cette information est 
         /// </summary>
         public bool isOblegatoir { get; set; }
         /// <summary>
-        /// Unité : min,h,annee, g, Kg
+        /// si l'affichage est activté ou non
+        /// La valeur par défaut est vrais
         /// </summary>
-        public string Unite { get; set; }
+        public bool Enable { get; set; }
         public List<string> CriteriaFilter { get; set; }
-
         /// <summary>
         /// Utilisation de filtre de selection pour le comboBox
         /// </summary>
         public bool FilterSelection { get; set; }
 
-        /// <summary>
-        /// si l'affichage est activté ou non
-        /// La valeur par défaut est vrais
-        /// </summary>
-        public bool Enable { get; set; }
-
+        #endregion
 
         /// <summary>
-        /// En cas d'un champs multi-ligne, il détermine le nombre de ligne à utiliser
+        /// Indique si l'affichage du champs ManyToMany se fait dans une TabPage
         /// </summary>
-        public int NombreLigne { get; set; }
-
-        /// <summary>
-        /// Affichage dans un groupe Box
-        /// </summary>
-        public string GroupeBox { get; set; }
+        public bool TabPage { get; set; }
     }
 }

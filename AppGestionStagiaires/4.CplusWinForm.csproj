@@ -169,6 +169,10 @@
       <Project>{22b15b44-4f27-4b78-83a3-8c72cf01a3fe}</Project>
       <Name>2.GenericEntityManagement</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WinFromLib\5.WinFromLib.csproj">
+      <Project>{7b89bd41-7117-4c2d-845f-45eeb252cc35}</Project>
+      <Name>5.WinFromLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="BeforeBuild">

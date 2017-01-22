@@ -3,77 +3,103 @@ using App.WinForm.Annotation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Windows.Forms;
 
 namespace App.Modules
 {
-    [AffichageDansFormGestion(Titre = "Gestion des modules",TitrePageGridView = "Modules",
+    [AffichageDansFormGestion(Titre = "Gestion des modules", TitrePageGridView = "Modules",
         TitreButtonAjouter = "Ajouter un module")]
-    [AffichageClasse(Minuscule="Module", Majuscule = "Modules",DisplayMember = "Nom")]
+    [AffichageClasse(Minuscule = "Module", Majuscule = "Modules", DisplayMember = "Nom")]
     [SelectionCriteria(new Type[] { typeof(Filiere) })]
     public class Module : BaseEntity
     {
         public override string ToString() => this.Nom;
 
-        [AffichagePropriete(Titre = "Nom du module", isGridView = true, isFormulaire = true,
-            isOblegatoir = true,   Ordre = 1, WidthColonne = 200 )]
+        // 
+        // Informations générale
+        //
+        [AffichagePropriete(Titre = "Nom du module",GroupeBox = "Informations générale",
+            isGridView = true, 
+            isFormulaire = true,WidthControl = 300,
+            isOblegatoir = true,
+            Ordre = 1,
+            WidthColonne = 200)]
         public String Nom { set; get; }
 
+        [AffichagePropriete(Titre = "Compétence à développé", GroupeBox = "Informations générale",
+           isFormulaire = true,WidthControl =300,MultiLine =true,NombreLigne =5, isOblegatoir = true, Ordre = 2,
+           WidthColonne = 200)]
+        public string Competence { set; get; }
 
 
-        [AffichagePropriete(Titre = "Code", isGridView = true, isFormulaire = true,
-           isOblegatoir = true, Ordre = 2, WidthColonne = 80)]
+        [AffichagePropriete(Titre = "Code", GroupeBox = "Informations générale",
+            isFormulaire = true, WidthControl = 50, isOblegatoir = true, Ordre = 2,
+             isGridView = true, WidthColonne = 50)]
         public String Code { set; get; }
 
+        [AffichagePropriete(Titre = "Présentation", GroupeBox = "Informations générale",
+          isFormulaire = true, Ordre = 5, MultiLine = true, NombreLigne = 5, WidthControl = 300
+            )]
+        public string Presentation { set; get; }
 
+
+        // 
+        // Planning
+        //
 
         /// <summary>
         /// La duré en Nombre d'heure
         /// </summary>
-        [AffichagePropriete(Titre = "Durée en Heure", isGridView = true, isFormulaire = true,
-          Unite ="h",  isOblegatoir = true, Ordre = 3,  WidthColonne = 40)]
-        public int Duree{ set; get; }
+        [AffichagePropriete(Titre = "Durée en Heure", GroupeBox = "Planning",
+            isGridView = true, isFormulaire = true,
+          Unite = "h", isOblegatoir = true, Ordre = 3, WidthColonne = 40)]
+        public int Duree { set; get; }
 
 
 
+        // 
         // Affectation
-        [AffichagePropriete(Titre = "Filiere", isGridView = true, isFormulaire = true,
-            isOblegatoir = true, Relation = "ManyToOne",DisplayMember = "Code",
-            Filtre=true, WidthColonne = 80, Ordre = 4)]
+        //
+        [AffichagePropriete(Titre = "Filiere", GroupeBox = "Affectation",
+            isGridView = true, isFormulaire = true,
+            isOblegatoir = true, Relation = "ManyToOne", DisplayMember = "Code",
+            Filtre = true, WidthColonne = 80, Ordre = 4)]
         public virtual Filiere Filiere { set; get; }
+ 
+        // 
+        // Description pédagogique
+        //
+        [AffichagePropriete(Titre = "Stratégie d'enseignement", GroupeBox = "Description pédagogique",
+         isFormulaire = true, Ordre = 5, MultiLine = true, NombreLigne = 5)]
+        public string StrategieEnseignement { set; get; }
 
+        [AffichagePropriete(Titre = "Apprentisage", GroupeBox = "Description pédagogique",
+         isFormulaire = true, Ordre = 5, MultiLine = true, NombreLigne = 5)]
+        public string Apprentisage { set; get; }
 
+        [AffichagePropriete(Titre = "Evaluation", GroupeBox = "Description pédagogique",
+         isFormulaire = true, Ordre = 5, MultiLine = true, NombreLigne = 5)]
+        public string Evaluation { set; get; }
 
-        [AffichagePropriete(Titre = "Présentation", 
-            isFormulaire = true, 
-            Ordre = 5 , 
-            MultiLine =true)]
-        public string Presentation { set; get; }
+        // 
+        // Description Technique
+        //
 
-
-
-        [AffichagePropriete(Titre = "Remarque", 
-            isFormulaire = true,
-            Ordre = 6, 
-            MultiLine = true)]
-        public string Description { set; get; }
-
-      
-
-      // Description pédagogique
-      public string StrategieEnseignement{ set; get; } 
-      public string Apprentisage{ set; get; } 
-      public string Evaluation{ set; get; } 
-      public string Materiel{ set; get; } 
-      public string Equipement{ set; get; } 
-      public string Competence{ set; get; }
+        [AffichagePropriete(Titre = "Materiél", GroupeBox = "Description Technique",
+        isFormulaire = true, Ordre = 5, MultiLine = true, NombreLigne = 5)]
+        public string Materiel { set; get; }
+        [AffichagePropriete(Titre = "Equipement", GroupeBox = "Description Technique",
+        isFormulaire = true, Ordre = 5, MultiLine = true, NombreLigne = 5)]
+        public string Equipement { set; get; }
+ 
 
 
 
         [AffichagePropriete(Titre = "Précisions",
-         Relation = "ManyToMany", isGridView = true, Ordre = 20)]
+         Relation = "OneToMany", isGridView = true, Ordre = 20)]
         public virtual List<Precision> Precisions { set; get; }
 
 
-     
+        public string Description { set; get; }
     }
 }

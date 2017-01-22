@@ -40,7 +40,7 @@ namespace App.WinForm.Fileds
 
         private void dateTimeControl_ValueChanged(object sender, EventArgs e)
         {
-            onFieldChanged(sender, e);
+            onFieldChanged(this, e);
         }
     }
 }

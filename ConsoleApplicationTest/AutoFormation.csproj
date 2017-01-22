@@ -55,7 +55,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Linq\DynamiqueLinq.cs" />
-    <Compile Include="Linq\LinqExtension.cs" />
     <Compile Include="ModelT4\EntityServerModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -78,6 +77,10 @@
     <ProjectReference Include="..\Services\2.Services.csproj">
       <Project>{3940f5ca-c8c0-4a72-8a1c-0ad50e5d18ca}</Project>
       <Name>2.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WinFromLib\5.WinFromLib.csproj">
+      <Project>{7b89bd41-7117-4c2d-845f-45eeb252cc35}</Project>
+      <Name>5.WinFromLib</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -61,6 +61,10 @@
     <Compile Include="Annotation\SelectionCriteriaAttribute.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="EF\Class1.cs" />
+    <Compile Include="Entity\BaseEntity.cs" />
+    <Compile Include="Entity\IBaseEntity.cs" />
+    <Compile Include="Entity\Individu.cs" />
+    <Compile Include="Entity\Utilisateur.cs" />
     <Compile Include="Exceptions\PropertyDoesNotExistException.cs" />
     <Compile Include="Linq\LinqExtension.cs" />
     <Compile Include="Message\MessageToUser.cs" />

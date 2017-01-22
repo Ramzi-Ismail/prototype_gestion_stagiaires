@@ -50,7 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseService\BaseRepository.cs" />
+    <Compile Include="BaseService\IBaseRepository.cs" />
     <Compile Include="BaseService\IService.cs" />
+    <Compile Include="Contex\Configuration.cs" />
+    <Compile Include="Contex\ModelContext.cs" />
     <Compile Include="Formations\FeriesService.cs" />
     <Compile Include="Formations\PrevisionSeancesService.cs" />
     <Compile Include="Formations\SeancesService.cs" />
@@ -104,13 +107,11 @@
     <Compile Include="Migrations\201701160915016_Geston_Jours_Féries.Designer.cs">
       <DependentUpon>201701160915016_Geston_Jours_Féries.cs</DependentUpon>
     </Compile>
+    <Compile Include="Seances\PrevisionServicesService.cs" />
     <Compile Include="Stagiaires\FilieresService.cs" />
     <Compile Include="Formations\FormateursService.cs" />
     <Compile Include="Stagiaires\GroupesService.cs" />
     <Compile Include="Stagiaires\StagiairesService.cs" />
-    <Compile Include="BaseService\IBaseRepository.cs" />
-    <Compile Include="Contex\Configuration.cs" />
-    <Compile Include="Contex\ModelContext.cs" />
     <Compile Include="Migrations\201701071548387_init.cs" />
     <Compile Include="Migrations\201701071548387_init.Designer.cs">
       <DependentUpon>201701071548387_init.cs</DependentUpon>
@@ -209,6 +210,7 @@
   <ItemGroup>
     <None Include="App.Config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

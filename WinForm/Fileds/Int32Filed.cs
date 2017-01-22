@@ -56,7 +56,7 @@ namespace App.WinFrom.Fileds
 
         private void textBoxFiled_TextChanged(object sender, EventArgs e)
         {
-            onFieldChanged(sender, e);
+            onFieldChanged(this, e);
         }
     }
 }

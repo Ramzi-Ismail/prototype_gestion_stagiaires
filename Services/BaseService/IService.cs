@@ -8,7 +8,7 @@ namespace App
 {
     interface IService
     {
-      // IService(ModelContext context);
-       
+        // IService(ModelContext context);
+        
     }
 }

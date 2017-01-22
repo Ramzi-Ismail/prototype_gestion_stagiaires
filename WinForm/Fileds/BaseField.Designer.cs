@@ -51,6 +51,7 @@
             // 
             // labelField
             // 
+            this.labelField.AutoEllipsis = true;
             this.labelField.AutoSize = true;
             this.labelField.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelField.Location = new System.Drawing.Point(0, 0);
