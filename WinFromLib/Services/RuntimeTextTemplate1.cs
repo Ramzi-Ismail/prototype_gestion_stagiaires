@@ -7,7 +7,7 @@
 //     le code est régénéré.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace App.WinFrom.Service
+namespace App.WinFrom.Services
 {
     using System.Linq;
     using System.Text;
@@ -18,7 +18,7 @@ namespace App.WinFrom.Service
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\ES-SARRAJ Fouad\Documents\GitHub\prototype_gestion_stagiaires\WinFromLib\Service\RuntimeTextTemplate1.tt"
+    #line 1 "C:\Users\ES-SARRAJ Fouad\Documents\GitHub\prototype_gestion_stagiaires\WinFromLib\Services\RuntimeTextTemplate1.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class RuntimeTextTemplate1 : RuntimeTextTemplate1Base
     {

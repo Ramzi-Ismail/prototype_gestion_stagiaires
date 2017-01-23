@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>App</RootNamespace>
-    <AssemblyName>Services</AssemblyName>
+    <AssemblyName>Cplus.DAL</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -49,20 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseService\BaseRepository.cs" />
-    <Compile Include="BaseService\IBaseRepository.cs" />
-    <Compile Include="BaseService\IService.cs" />
     <Compile Include="Contex\Configuration.cs" />
     <Compile Include="Contex\ModelContext.cs" />
-    <Compile Include="Formations\FeriesService.cs" />
-    <Compile Include="Formations\PrevisionSeancesService.cs" />
-    <Compile Include="Formations\SeancesService.cs" />
     <Compile Include="Migrations\201701191526166_GestionAbsence.cs" />
     <Compile Include="Migrations\201701191526166_GestionAbsence.Designer.cs">
       <DependentUpon>201701191526166_GestionAbsence.cs</DependentUpon>
     </Compile>
-    <Compile Include="Projets\ProjetsService.cs" />
-    <Compile Include="Projets\TachesService.cs" />
     <Compile Include="Migrations\201701121004335_AddRelationGroupeAnneeFormation.cs" />
     <Compile Include="Migrations\201701121004335_AddRelationGroupeAnneeFormation.Designer.cs">
       <DependentUpon>201701121004335_AddRelationGroupeAnneeFormation.cs</DependentUpon>
@@ -107,11 +99,6 @@
     <Compile Include="Migrations\201701160915016_Geston_Jours_Féries.Designer.cs">
       <DependentUpon>201701160915016_Geston_Jours_Féries.cs</DependentUpon>
     </Compile>
-    <Compile Include="Seances\PrevisionServicesService.cs" />
-    <Compile Include="Stagiaires\FilieresService.cs" />
-    <Compile Include="Formations\FormateursService.cs" />
-    <Compile Include="Stagiaires\GroupesService.cs" />
-    <Compile Include="Stagiaires\StagiairesService.cs" />
     <Compile Include="Migrations\201701071548387_init.cs" />
     <Compile Include="Migrations\201701071548387_init.Designer.cs">
       <DependentUpon>201701071548387_init.cs</DependentUpon>
@@ -195,13 +182,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Entites\1.Entites.csproj">
+    <ProjectReference Include="..\Entites\0.Entities.csproj">
       <Project>{5831ae07-4d1e-449a-b8f8-f49194aa6f04}</Project>
-      <Name>1.Entites</Name>
+      <Name>0.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WinFromLib\5.WinFromLib.csproj">
+    <ProjectReference Include="..\WinFromLib\0.GenericWinAppCor.csproj">
       <Project>{7b89bd41-7117-4c2d-845f-45eeb252cc35}</Project>
-      <Name>5.WinFromLib</Name>
+      <Name>0.GenericWinAppCor</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

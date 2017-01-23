@@ -1,7 +1,6 @@
 ﻿namespace App
 {
     using Formations;
-    using GestionFormations;
     using GestionProjets;
     using GestionStagiaires;
     using Livres;

@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C3CCE8BF-800C-4514-B7FB-35AF32CDB9FF}</ProjectGuid>
+    <ProjectGuid>{589EB1F4-5778-4867-A87D-20166177C952}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>_2.WinFormTests</RootNamespace>
-    <AssemblyName>2.WinFormTests</AssemblyName>
+    <RootNamespace>_6.PresentationWinFormTests</RootNamespace>
+    <AssemblyName>6.PresentationWinFormTests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -36,8 +36,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer">
@@ -59,25 +58,33 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="EntityManagement\EntityManagementFormTests.cs" />
+    <Compile Include="GestionStagiaires\Stagiaires\StagiaireEntryFormTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Entites\1.Entites.csproj">
+    <ProjectReference Include="..\AppGestionStagiaires\1.CplusWinForm.csproj">
+      <Project>{b035060e-7de1-4fb0-b4f9-ab8410bea497}</Project>
+      <Name>1.CplusWinForm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BAL\2.BAL.csproj">
+      <Project>{a31cb276-47b4-499c-bb9e-4c3c36027123}</Project>
+      <Name>2.BAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entites\0.Entities.csproj">
       <Project>{5831AE07-4D1E-449A-B8F8-F49194AA6F04}</Project>
-      <Name>1.Entites</Name>
+      <Name>0.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Services\2.Services.csproj">
-      <Project>{3940f5ca-c8c0-4a72-8a1c-0ad50e5d18ca}</Project>
-      <Name>2.Services</Name>
+    <ProjectReference Include="..\Services\3.DAL.csproj">
+      <Project>{3940F5CA-C8C0-4A72-8A1C-0AD50E5D18CA}</Project>
+      <Name>3.DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WinForm\2.GenericEntityManagement.csproj">
+    <ProjectReference Include="..\WinForm\0.GenericWinApp.csproj">
       <Project>{22B15B44-4F27-4B78-83A3-8C72CF01A3FE}</Project>
-      <Name>2.GenericEntityManagement</Name>
+      <Name>0.GenericWinApp</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WinFromLib\5.WinFromLib.csproj">
+    <ProjectReference Include="..\WinFromLib\0.GenericWinAppCor.csproj">
       <Project>{7b89bd41-7117-4c2d-845f-45eeb252cc35}</Project>
-      <Name>5.WinFromLib</Name>
+      <Name>0.GenericWinAppCor</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

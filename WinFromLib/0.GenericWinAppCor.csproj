@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>App.WinFrom</RootNamespace>
-    <AssemblyName>WinFromLib</AssemblyName>
+    <AssemblyName>GenericWinAppCor</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -65,9 +65,9 @@
     <Compile Include="Entities\Utilisateur.cs" />
     <Compile Include="Exceptions\PropertyDoesNotExistException.cs" />
     <Compile Include="Linq\LinqExtension.cs" />
-    <Compile Include="Message\MessageToUser.cs" />
+    <Compile Include="Messages\MessageToUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\RuntimeTextTemplate1.cs">
+    <Compile Include="Services\RuntimeTextTemplate1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RuntimeTextTemplate1.tt</DependentUpon>
@@ -76,7 +76,7 @@
     <Compile Include="Validation\ValidationManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Service\RuntimeTextTemplate1.tt">
+    <Content Include="Services\RuntimeTextTemplate1.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>RuntimeTextTemplate1.cs</LastGenOutput>
     </Content>
