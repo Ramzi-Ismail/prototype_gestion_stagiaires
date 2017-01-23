@@ -1,0 +1,17 @@
+C:\Users\ES-SARRAJ Fouad\Documents\GitHub\prototype_gestion_stagiaires\GestionModules\bin\Debug\GestionModules.dll
+C:\Users\ES-SARRAJ Fouad\Documents\GitHub\prototype_gestion_stagiaires\GestionModules\bin\Debug\GestionModules.pdb
+C:\Users\ES-SARRAJ Fouad\Documents\GitHub\prototype_gestion_stagiaires\GestionModules\bin\Debug\Entites.dll
+C:\Users\ES-SARRAJ Fouad\Documents\GitHub\prototype_gestion_stagiaires\GestionModules\bin\Debug\Services.dll
+C:\Users\ES-SARRAJ Fouad\Documents\GitHub\prototype_gestion_stagiaires\GestionModules\bin\Debug\WinForm.dll
+C:\Users\ES-SARRAJ Fouad\Documents\GitHub\prototype_gestion_stagiaires\GestionModules\bin\Debug\WinFromLib.dll
+C:\Users\ES-SARRAJ Fouad\Documents\GitHub\prototype_gestion_stagiaires\GestionModules\bin\Debug\EntityFramework.dll
+C:\Users\ES-SARRAJ Fouad\Documents\GitHub\prototype_gestion_stagiaires\GestionModules\bin\Debug\Entites.pdb
+C:\Users\ES-SARRAJ Fouad\Documents\GitHub\prototype_gestion_stagiaires\GestionModules\bin\Debug\Services.pdb
+C:\Users\ES-SARRAJ Fouad\Documents\GitHub\prototype_gestion_stagiaires\GestionModules\bin\Debug\WinForm.pdb
+C:\Users\ES-SARRAJ Fouad\Documents\GitHub\prototype_gestion_stagiaires\GestionModules\bin\Debug\WinFromLib.pdb
+C:\Users\ES-SARRAJ Fouad\Documents\GitHub\prototype_gestion_stagiaires\GestionModules\bin\Debug\EntityFramework.xml
+C:\Users\ES-SARRAJ Fouad\Documents\GitHub\prototype_gestion_stagiaires\GestionModules\bin\Debug\fr\EntityFramework.resources.dll
+C:\Users\ES-SARRAJ Fouad\Documents\GitHub\prototype_gestion_stagiaires\GestionModules\obj\Debug\GestionModules.csprojResolveAssemblyReference.cache
+C:\Users\ES-SARRAJ Fouad\Documents\GitHub\prototype_gestion_stagiaires\GestionModules\obj\Debug\GestionModules.dll
+C:\Users\ES-SARRAJ Fouad\Documents\GitHub\prototype_gestion_stagiaires\GestionModules\obj\Debug\GestionModules.pdb
+C:\Users\ES-SARRAJ Fouad\Documents\GitHub\prototype_gestion_stagiaires\GestionModules\bin\Debug\LinqKit.dll
