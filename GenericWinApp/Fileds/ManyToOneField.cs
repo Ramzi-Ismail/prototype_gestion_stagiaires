@@ -26,6 +26,7 @@ namespace App.WinForm.Fileds
             {
                 return comboBoxManyToOne.SelectedValue;
             }
+            /// l'affectation d'une nouvelle valeur lance l'événement ValueChanged
             set
             {
                 comboBoxManyToOne.SelectedValue = Convert.ToInt64(value);
@@ -33,9 +34,10 @@ namespace App.WinForm.Fileds
         }
 
         /// <summary>
-        /// Valeur pardéfaut de filtre
+        /// Le champs accepte une des valeurs pardéfaut pour chaque ComboBox de son filtre 
+        /// personnel
         /// </summary>
-        Dictionary<string, object> DefaultFiltreValues { set; get; }
+        Dictionary<string, object> DefaultValues { set; get; }
 
         #endregion
 
@@ -156,7 +158,7 @@ namespace App.WinForm.Fileds
             this.MainContainner = MainContainner;
 
 
-            this.DefaultFiltreValues = DefaultFiltreValues;
+            this.DefaultValues = DefaultFiltreValues;
             this.ListeValeursCritere = new Dictionary<string, BaseEntity>(); // il n'est pas utilisé
 
             this.ListeComboBox = new Dictionary<string, ManyToOneField>();
@@ -174,9 +176,11 @@ namespace App.WinForm.Fileds
         /// <summary>
         /// Initialisation du champs avec les valeurs pardéfaut
         /// </summary>
+        [Obsolete("Utiliser this.Value")]
         private void SetDefaultValue()
         {
-            foreach (var item in this.DefaultFiltreValues)
+            if (this.DefaultValues == null) return;
+            foreach (var item in this.DefaultValues)
             {
                 //foreach (var item in )
                 //{

@@ -96,25 +96,30 @@ namespace App.WinForm.EntityManagement
         #endregion
 
         #region Load
-    
+
         #endregion
 
         #region Editer une liste ManyToManu
+
+
         /// <summary>
         /// Editer la collection ManyToOne
         /// </summary>
-        /// <param name="name">Nom de la propriété</param>
+        /// <param name="item">PropertyInfo de de la collection</param>
+        /// <param name="obj">L'objet qui contient la collection</param>
         protected void EditerCollection(PropertyInfo item, BaseEntity obj)
         {
-            //IList ls = item.GetValue(obj) as IList;
-            Type type_objet = item.PropertyType.GetGenericArguments()[0];
-            AfficherFormHelper Menu = new AfficherFormHelper((Form)this.MdiParent);
-            IBaseRepository service_objet = this.Service.CreateInstance_Of_Service_From_TypeEntity(type_objet);
+            // Obient le Service de l'objet de Collection<Objet>
+            Type type_objet_of_collection = item.PropertyType.GetGenericArguments()[0];
+            IBaseRepository service_objet_of_collection = this.Service.CreateInstance_Of_Service_From_TypeEntity(type_objet_of_collection);
 
             // Valeur Initial du Filtre
             Dictionary<string, object> ValeursFiltre = new Dictionary<string, object>();
             ValeursFiltre[item.DeclaringType.Name] = obj.Id;
-            EntityManagementForm form = new EntityManagementForm(service_objet,null, ValeursFiltre, this.MdiParent);
+            EntityManagementForm form = new EntityManagementForm(service_objet_of_collection,null, ValeursFiltre, this.MdiParent);
+
+            // Affichage de Fomulaire de gestion de la collection ManytoOne
+            AfficherFormHelper Menu = new AfficherFormHelper((Form)this.MdiParent);
             Menu.Afficher(form);
         }
         #endregion

@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace App.WinForm.EntityManagement.EntityDataGrid
+namespace App
 {
-    public partial class EntityDataGridControl : App.WinForm.EntityManagement.EntityDataGrid.BaseEntityDataGrid
+    public partial class Form1 : Form
     {
-        public EntityDataGridControl()
+        public Form1()
         {
             InitializeComponent();
         }

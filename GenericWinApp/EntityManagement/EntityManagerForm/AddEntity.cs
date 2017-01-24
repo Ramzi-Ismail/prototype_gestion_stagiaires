@@ -7,17 +7,20 @@ using System.Windows.Forms;
 
 namespace App.WinForm.EntityManagement
 {
+    /// <summary>
+    /// Ajouter un nouveau Entité 
+    /// </summary>
     public partial class EntityManagerControl
     {
-        #region Ajouter un objet
+        #region Ajouter un entité
 
         /// <summary>
-        /// Boutton Ajouter
+        /// Boutton Ajouter un nouveau entité
         /// </summary>
         public void bt_Ajouter_Click(object sender, EventArgs e)
         {
 
-            // Insertion du formulaire Si la page TabAjouter n'existe pas
+            // Insertion de la page TabAjouter s'il n'existe pas
             if (tabControl.TabPages.IndexOfKey("TabAjouter") == -1)
             {
                 // 
@@ -34,7 +37,6 @@ namespace App.WinForm.EntityManagement
                 //
                 BaseEntity Entity = (BaseEntity)this.Service.CreateInstanceObjet();
                 BaseEntryForm form = Formulaire.CreateInstance(Service, Entity, this.BaseFilterControl.CritereRechercheFiltre());
-
                 form.Name = "Form";
                 form.Dock = DockStyle.Fill;
                 form.WriteEntityToField(this.BaseFilterControl.CritereRechercheFiltre());

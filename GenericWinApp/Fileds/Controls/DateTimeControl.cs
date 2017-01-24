@@ -13,7 +13,8 @@ namespace App.WinFrom.Fileds.Controls
 {
  
     /// <summary>
-    /// Représente un champs de type DateTime dans une Entity
+    /// Représente Le contôle DateTime 
+    /// il support la culture Arabe
     /// </summary>
     public partial class DateTimeControl : UserControl
     {

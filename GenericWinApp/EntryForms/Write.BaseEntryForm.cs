@@ -23,8 +23,9 @@ namespace App.WinForm
         }
  
         /// <summary>
-        /// Affiher l'objet dans le formulaire avec la valeurs initial de l'objet
-        /// avec l'affichage  des valeurs initiaux de filtre
+        /// Affiher l'entité dans le formulaire avec 
+        /// les valeurs initiaux de l'objet
+        /// et les initiaux de filtre avec la priéorité pour le filtre
         /// </summary>
         public virtual void WriteEntityToField(Dictionary<string, object> CritereRechercheFiltre)
         {

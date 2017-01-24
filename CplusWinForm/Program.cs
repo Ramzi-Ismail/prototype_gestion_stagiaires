@@ -38,7 +38,7 @@ namespace App
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 //  Application.Run(new FormAuthentification());
-                Application.Run(new FormMenu());
+                Application.Run(new Form1());
                 // Application.Run(new FormMenu());
 
             }

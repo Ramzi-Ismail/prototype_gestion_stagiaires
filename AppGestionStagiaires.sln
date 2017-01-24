@@ -19,9 +19,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "9.AutoFormation", "AutoForm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7.WinAppTests", "2.WinFormTests\7.WinAppTests.csproj", "{C3CCE8BF-800C-4514-B7FB-35AF32CDB9FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6.PresentationWinFormTests", "6.PresentationWinFormTests\6.CplusWinFormTests.csproj", "{589EB1F4-5778-4867-A87D-20166177C952}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6.CplusWinFormTests", "6.PresentationWinFormTests\6.CplusWinFormTests.csproj", "{589EB1F4-5778-4867-A87D-20166177C952}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.BAL", "BAL\2.BAL.csproj", "{A31CB276-47B4-499C-BB9E-4C3C36027123}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApplication1", "WpfApplication1\WpfApplication1.csproj", "{DB63BE0F-8203-4623-9A64-1270974C1642}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +69,10 @@ Global
 		{A31CB276-47B4-499C-BB9E-4C3C36027123}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A31CB276-47B4-499C-BB9E-4C3C36027123}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A31CB276-47B4-499C-BB9E-4C3C36027123}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB63BE0F-8203-4623-9A64-1270974C1642}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB63BE0F-8203-4623-9A64-1270974C1642}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB63BE0F-8203-4623-9A64-1270974C1642}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB63BE0F-8203-4623-9A64-1270974C1642}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

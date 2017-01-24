@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace App.WinForm.EntityManagement.EntityDataGrid
 {
-    public partial class BaseEntityDataGrid : UserControl
+    public partial class EntityDataGrid : UserControl
     {
-        public BaseEntityDataGrid()
+        public EntityDataGrid()
         {
             InitializeComponent();
         }

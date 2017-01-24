@@ -17,9 +17,6 @@ namespace App.WinForm.Fileds
     /// </summary>
     public partial class ManyToOneField
     {
-       
-
-
         #region InitInterface
         /// <summary>
         /// Affichage du filtre dans l'interface
@@ -127,45 +124,50 @@ namespace App.WinForm.Fileds
 
 
         /// <summary>
-        /// SelectedIndexChanged qui Actualise de tous les comboBoxs déscendantes
+        /// il s'exécute aprés le changement du valeur de chaque comboBox
+        /// à chaque changement d'un comboBox on charge les données de comboBox suivant
         /// </summary>
         private void Value_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // à chaque changement d'un combo on charge les donnée de comboBox suivant
-            ManyToOneField comboBox = (ManyToOneField)sender;
-            comboBox.CreateControl();
-            int index_comboBox = ListeComboBox.Values.ToList<ManyToOneField>().IndexOf(comboBox);
+            
+            ManyToOneField comboBoxChanged = (ManyToOneField)sender;
+            comboBoxChanged.CreateControl();
+            int indexComboBoxChanged = ListeComboBox.Values.ToList<ManyToOneField>().IndexOf(comboBoxChanged);
+            string keyComboBoxCanged = ListeComboBox.Keys.ElementAt(indexComboBoxChanged);
+            IBaseRepository serviceComboBoxActuel = new BaseRepository<BaseEntity>()
+                .CreateInstance_Of_Service_From_TypeEntity(LsiteTypeObjetCritere[keyComboBoxCanged]);
+            BaseEntity EntiteActuel = serviceComboBoxActuel.GetBaseEntityByID(Convert.ToInt64(comboBoxChanged.SelectedValue));
 
-            // Le Service de l'objet de ComboBox
-            string key = ListeComboBox.Keys.ElementAt(index_comboBox);
-            IBaseRepository service = new BaseRepository<BaseEntity>()
-                .CreateInstance_Of_Service_From_TypeEntity(LsiteTypeObjetCritere[key]);
-
-            // Actualisation de ComboBox suivant s'il existe, et le comboBox actual a une valeur
-            if (comboBox.SelectedValue != null && (ListeComboBox.Values.Count() - 1) >= (index_comboBox + 1))
+            /// Actualisation de ComboBox suivant s'il existe
+            /// Le ComboBox suivant prend les valeurs de l'Entite actuel de comboBox Actuel
+            /// car l'entité actuel doit avoir une prorpiété de type type Collection de l'entityé suivant
+            /// Le nom de cette propiété égale Nom d'entité suivant + "s"
+            /// si cette propiété n'existe pas la méthode lance une exception
+            if (comboBoxChanged.SelectedValue != null && (ListeComboBox.Values.Count() - 1) >= (indexComboBoxChanged + 1))
             {
-                //
-                // Actualisation de combobBox suivant
-                //
-                ManyToOneField comboBox_suivant = ListeComboBox.Values.ElementAt(index_comboBox + 1);
-                string key_suivant = ListeComboBox.Keys.ElementAt(index_comboBox + 1);
 
-                BaseEntity EntityPere = service.GetBaseEntityByID(Convert.ToInt64(comboBox.SelectedValue));
-                PropertyInfo PropertyChild = EntityPere.GetType()
+                // ComboBox suivant 
+                ManyToOneField nextComboBox = ListeComboBox.Values.ElementAt(indexComboBoxChanged + 1);
+                string keyNexComboBox = ListeComboBox.Keys.ElementAt(indexComboBoxChanged + 1);
+
+                PropertyInfo PropertyContenantValeursComboSuivant = EntiteActuel.GetType()
                                                 .GetProperties()
-                                                .Where(p => p.Name == key_suivant + "s")
-
+                                                .Where(p => p.Name == keyNexComboBox + "s")
                                                 .SingleOrDefault();
+                if (PropertyContenantValeursComboSuivant == null)
+                    throw new PropertyNotExistInEntityException();
+
+                // Affectation des valeurs au ComboBox suivant
                 IList ls_source = null;
-                if (PropertyChild != null)
+                if (PropertyContenantValeursComboSuivant != null)
                 {
-                    ls_source = PropertyChild.GetValue(EntityPere) as IList;
-                    comboBox_suivant.DataSource = ls_source;
+                    ls_source = PropertyContenantValeursComboSuivant.GetValue(EntiteActuel) as IList;
+                    nextComboBox.DataSource = ls_source;
                 }
-                // Si ce Combo n'a pas d'information 
-                // alors vider les combBobx suivant 
+
+                // Si ce Combo n'a pas d'information alors vider les combBobx suivant 
                 if (ls_source == null || ls_source.Count == 0)
-                    for (int i = (index_comboBox + 1); i < ListeComboBox.Values.Count(); i++)
+                    for (int i = (indexComboBoxChanged + 1); i < ListeComboBox.Values.Count(); i++)
                     {
                         ManyToOneField comboBox_suivant2 = ListeComboBox.Values.ElementAt(i);
                         comboBox_suivant2.DataSource = null;

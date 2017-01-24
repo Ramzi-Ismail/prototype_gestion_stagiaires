@@ -50,17 +50,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntityManagement\EntityDataGrid\BaseEntityDataGrid.cs">
+    <Compile Include="EntityManagement\EntityDataGrid.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EntityManagement\EntityDataGrid\BaseEntityDataGrid.Designer.cs">
-      <DependentUpon>BaseEntityDataGrid.cs</DependentUpon>
+    <Compile Include="EntityManagement\EntityDataGrid.Designer.cs">
+      <DependentUpon>EntityDataGrid.cs</DependentUpon>
     </Compile>
-    <Compile Include="EntityManagement\EntityDataGrid\EntityDataGridControl.cs">
+    <Compile Include="EntityManagement\EntityManagementControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EntityManagement\EntityDataGrid\EntityDataGridControl.Designer.cs">
-      <DependentUpon>EntityDataGridControl.cs</DependentUpon>
+    <Compile Include="EntityManagement\EntityManagementControl.Designer.cs">
+      <DependentUpon>EntityManagementControl.cs</DependentUpon>
     </Compile>
     <Compile Include="EntityManagement\EntityManagerForm\EditEntity.cs">
       <SubType>UserControl</SubType>
@@ -95,12 +95,6 @@
     <Compile Include="Fileds\DateTimeField.Designer.cs">
       <DependentUpon>DateTimeField.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fileds\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Fileds\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Fileds\InputCollectionControle.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -113,15 +107,16 @@
     <Compile Include="Fileds\Int32Filed.Designer.cs">
       <DependentUpon>Int32Filed.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fileds\ManyToOneField\ManyToOneField.cs">
+    <Compile Include="Fileds\ManyToOneField.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Fileds\ManyToOneField\ManyToOneField.Designer.cs">
+    <Compile Include="Fileds\ManyToOneField.Designer.cs">
       <DependentUpon>ManyToOneField.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fileds\ManyToOneField\ManyToOneField.Filter.cs">
+    <Compile Include="Fileds\ManyToOneField.Filter.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Fileds\PropertyNotExistInEntityException.cs" />
     <Compile Include="Fileds\StringFiled.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -188,6 +183,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="EntityManagement\EntityDataGrid.resx">
+      <DependentUpon>EntityDataGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EntityManagement\EntityManagementControl.resx">
+      <DependentUpon>EntityManagementControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EntityManagement\EntityManagerForm\EntityManagerControl.resx">
       <DependentUpon>EntityManagerControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -209,7 +210,7 @@
     <EmbeddedResource Include="Fileds\Int32Filed.resx">
       <DependentUpon>Int32Filed.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Fileds\ManyToOneField\ManyToOneField.resx">
+    <EmbeddedResource Include="Fileds\ManyToOneField.resx">
       <DependentUpon>ManyToOneField.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fileds\StringFiled.resx">
