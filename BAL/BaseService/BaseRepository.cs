@@ -17,14 +17,14 @@ using System.Data.Entity.Validation;
 
 namespace App
 {
-    public class BaseRepository<T> : IBaseRepository where T : BaseEntity   
+    public class BaseRepository<T> : IBaseRepository where T : BaseEntity
     {
         #region Variables
         private Type typeEntity;
         /// <summary>
         /// Obtient l'objet Type de l'entity en gestion
         /// </summary>
-        public Type TypeEntity 
+        public Type TypeEntity
         {
             get
             {
@@ -90,7 +90,7 @@ namespace App
                 // Get entry
                 DbEntityEntry entry = item.Entry;
 
-                BaseEntity entity =(BaseEntity) entry.Entity;
+                BaseEntity entity = (BaseEntity)entry.Entity;
                 string entityTypeName = entity.ToString();
 
                 // Display or log error messages
@@ -171,12 +171,12 @@ namespace App
                 this.SQLExceptionTreatment(e);
                 return 0;
             }
-            catch(DbEntityValidationException e)
+            catch (DbEntityValidationException e)
             {
                 DbEntityValidationExceptionTreatment(e);
                 return 0;
             }
-           
+
         }
         protected virtual int Insert(T item)
         {
@@ -221,22 +221,22 @@ namespace App
 
             }
 
-            catch(DbUpdateException e)
+            catch (DbUpdateException e)
             {
                 DbUpdateExceptionTreatment(e);
                 return 0;
             }
- 
+
         }
-      
-
-      
- 
-
-       
 
 
-       
+
+
+
+
+
+
+
 
         public virtual int Count(Expression<Func<T, bool>> filter = null)
         {
@@ -284,33 +284,35 @@ namespace App
             {
                 query = query.OrderByDescending(x => x.Id).Skip((startPage - 1) * itemsPerPage).Take(itemsPerPage);
             }
-           
+
             return query.ToList<T>();
         }
 
-        
+
         public List<object> Recherche(Dictionary<string, object> rechercheInfos, int startPage = 0, int itemsPerPage = 0)
         {
             IQueryable<T> query = DbSet;
 
             //ParameterExpression entity = Expression.Parameter(typeof(T), "entity");
-
-            foreach (var item in rechercheInfos)
+            if (rechercheInfos != null)
             {
+                foreach (var item in rechercheInfos)
+                {
 
-                //MemberExpression entity_string = Expression.PropertyOrField(entity, item.Key.Name);
-                //string valeur_string = (string)item.Value;
-                //valeur_string = "%" + valeur_string + "%";
-                //ConstantExpression valeur = Expression.Constant(item.Value, typeof(String));
+                    //MemberExpression entity_string = Expression.PropertyOrField(entity, item.Key.Name);
+                    //string valeur_string = (string)item.Value;
+                    //valeur_string = "%" + valeur_string + "%";
+                    //ConstantExpression valeur = Expression.Constant(item.Value, typeof(String));
 
-                //BinaryExpression EqualValeur = Expression.Equal(entity_string, valeur);
-                //var lambda = Expression.Lambda<Func<T, bool>>(EqualValeur, new ParameterExpression[] { entity });
+                    //BinaryExpression EqualValeur = Expression.Equal(entity_string, valeur);
+                    //var lambda = Expression.Lambda<Func<T, bool>>(EqualValeur, new ParameterExpression[] { entity });
 
-                var  lambda = Extensions.BuildPredicate<T>(item.Key, item.Value);
-                if(lambda != null)
-                query = query.Where(lambda);
+                    var lambda = Extensions.BuildPredicate<T>(item.Key, item.Value);
+                    if (lambda != null)
+                        query = query.Where(lambda);
+                }
             }
-            
+
 
             List<object> ls = query.ToList<object>();
             return ls;
@@ -323,14 +325,14 @@ namespace App
         }
         public List<Object> GetAllDetached()
         {
-             
+
             List<Object> ls = this.DbSet.ToList<Object>();
             foreach (var item in ls)
             {
                 this.Context.Entry(item).State = EntityState.Detached;
             }
             return ls;
-          
+
         }
 
         public virtual T GetByID(Int64 id)
@@ -355,22 +357,22 @@ namespace App
         #endregion
 
 
-  
- 
+
+
 
         #region CreateInstance
 
         public object CreateInstanceObjet()
         {
-           return  this.Context.Set<T>().Create();
+            return this.Context.Set<T>().Create();
         }
 
-       
+
         public IBaseRepository CreateInstance_Of_Service_From_TypeEntity(Type TypeEntity)
         {
-           
+
             Type TypeEntityService = typeof(BaseRepository<>).MakeGenericType(TypeEntity);
-            IBaseRepository EntityService = (IBaseRepository) Activator.CreateInstance(TypeEntityService);
+            IBaseRepository EntityService = (IBaseRepository)Activator.CreateInstance(TypeEntityService);
             return EntityService;
         }
         #endregion
@@ -392,6 +394,6 @@ namespace App
 
         #endregion
 
-      
+
     }
 }

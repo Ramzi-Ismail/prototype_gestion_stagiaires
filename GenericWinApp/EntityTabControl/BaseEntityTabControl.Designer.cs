@@ -1,6 +1,6 @@
-﻿namespace App.WinForm.EntityManagement.EntityDataGrid
+﻿namespace App.WinForm.EntityManagement
 {
-    partial class EntityDataGrid
+    partial class BaseEntityTabControl
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -30,12 +30,12 @@
         {
             this.SuspendLayout();
             // 
-            // EntityDataGrid
+            // BaseEntityManagerControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "EntityDataGrid";
-            this.Size = new System.Drawing.Size(412, 297);
+            this.Name = "BaseEntityManagerControl";
+            this.Size = new System.Drawing.Size(386, 203);
             this.ResumeLayout(false);
 
         }

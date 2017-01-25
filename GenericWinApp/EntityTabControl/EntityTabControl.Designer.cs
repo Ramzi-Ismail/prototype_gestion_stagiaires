@@ -1,6 +1,6 @@
 ﻿namespace App.WinForm.EntityManagement
 {
-    partial class EntityManagerControl
+    partial class EntityTabControl
     {
         /// <summary>
         /// Variable nécessaire au concepteur.

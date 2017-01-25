@@ -10,7 +10,7 @@ namespace App.WinForm.EntityManagement
     /// <summary>
     /// Ajouter un nouveau Entité 
     /// </summary>
-    public partial class EntityManagerControl
+    public partial class EntityTabControl
     {
         #region Ajouter un entité
 

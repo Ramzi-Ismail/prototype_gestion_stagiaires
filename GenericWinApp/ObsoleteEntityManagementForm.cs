@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace App.WinForm
 {
-    public partial class EntityManagementForm : Form
+    public partial class ObsoleteEntityManagementForm : Form
     {
         #region Propriétés
         /// <summary>
@@ -42,7 +42,7 @@ namespace App.WinForm
         /// <summary>
         /// Instance de controle DataGrid
         /// </summary>
-        EntityManagerControl EntityManagerControl { set; get; }
+        EntityTabControl EntityManagerControl { set; get; }
 
         /// <summary>
         /// Le formulaire MDI de l'application
@@ -57,7 +57,7 @@ namespace App.WinForm
         /// ce Constructeur est ajouter seuelement pour supproer le mode désigne de Visual Studio 2015
         /// </summary>
         [Obsolete]
-        public EntityManagementForm()
+        public ObsoleteEntityManagementForm()
         {
             InitializeComponent();
 
@@ -72,7 +72,7 @@ namespace App.WinForm
         /// pour ne pas utiliser le formulaire générique
         /// </param>
         /// <param name="ValeursFiltre">Les valeurs de filtre</param>
-        public EntityManagementForm(
+        public ObsoleteEntityManagementForm(
             IBaseRepository Service, 
             BaseEntryForm formulaire, 
             Dictionary<string, object> ValeursFiltre,
@@ -88,7 +88,7 @@ namespace App.WinForm
             if (this.Formulaire == null)
                 this.Formulaire = new EntryForm(this.Service);
            
-
+          
             initControls();
         }
 
@@ -98,7 +98,7 @@ namespace App.WinForm
         /// </summary>
         /// <param name="Service">Le service de gestion</param>
         /// <param name="ValeursFiltre">Les valeurs de filtre</param>
-        public EntityManagementForm(IBaseRepository Service, 
+        public ObsoleteEntityManagementForm(IBaseRepository Service, 
             Dictionary<string, object> ValeursFiltre,Form FormApplicationMdi)
             :this(Service, null, ValeursFiltre, FormApplicationMdi)
         {
@@ -110,7 +110,7 @@ namespace App.WinForm
         /// et la formulaire généique et sans valeurs de filtre
         /// </summary>
         /// <param name="Service">Le service de gestion</param>
-        public EntityManagementForm(IBaseRepository Service, Form FormApplicationMdi) :this(Service, null,null, FormApplicationMdi)
+        public ObsoleteEntityManagementForm(IBaseRepository Service, Form FormApplicationMdi) :this(Service, null,null, FormApplicationMdi)
         { 
         }
 
@@ -121,7 +121,7 @@ namespace App.WinForm
         /// <param name="Formulaire">Une instance de formulaire de saisie, il est utilisr 
         /// pour la creation des autres instance en cas d'édition des objet
         /// </param>
-        public EntityManagementForm(IBaseRepository Service, 
+        public ObsoleteEntityManagementForm(IBaseRepository Service, 
             BaseEntryForm Formulaire, Form FormApplicationMdi) :this(Service, Formulaire, null, FormApplicationMdi)
         {
         }
@@ -157,7 +157,7 @@ namespace App.WinForm
             //
             // Initialisation de DataGrid
             //
-            this.EntityManagerControl = new EntityManagerControl(
+            this.EntityManagerControl = new EntityTabControl(
                 this.Service, 
                 this.BaseFilterControl, 
                 this.FormApplicationMdi, 

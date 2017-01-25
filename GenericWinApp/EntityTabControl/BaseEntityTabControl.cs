@@ -13,7 +13,7 @@ using App.WinFrom.Menu;
 
 namespace App.WinForm.EntityManagement
 {
-    public partial class BaseEntityManagerControl : UserControl
+    public partial class BaseEntityTabControl : UserControl
     {
 
         #region Propriétés
@@ -66,12 +66,12 @@ namespace App.WinForm.EntityManagement
         #endregion
 
         #region Constructeur
-        public BaseEntityManagerControl()
+        public BaseEntityTabControl()
         {
             InitializeComponent();
             
         }
-        public BaseEntityManagerControl(IBaseRepository Service,BaseFilterControl BaseFilterControl,Form MdiParent, BaseEntryForm Formulaire)
+        public BaseEntityTabControl(IBaseRepository Service,BaseFilterControl BaseFilterControl,Form MdiParent, BaseEntryForm Formulaire)
         {
             InitializeComponent();
             this.Service = Service;
@@ -116,7 +116,7 @@ namespace App.WinForm.EntityManagement
             // Valeur Initial du Filtre
             Dictionary<string, object> ValeursFiltre = new Dictionary<string, object>();
             ValeursFiltre[item.DeclaringType.Name] = obj.Id;
-            EntityManagementForm form = new EntityManagementForm(service_objet_of_collection,null, ValeursFiltre, this.MdiParent);
+            ObsoleteEntityManagementForm form = new ObsoleteEntityManagementForm(service_objet_of_collection,null, ValeursFiltre, this.MdiParent);
 
             // Affichage de Fomulaire de gestion de la collection ManytoOne
             AfficherFormHelper Menu = new AfficherFormHelper((Form)this.MdiParent);

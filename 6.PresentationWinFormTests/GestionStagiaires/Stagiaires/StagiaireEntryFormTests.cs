@@ -25,7 +25,7 @@ namespace App.GestionStagiaires.Tests
             using (ModelContext db = new ModelContext())
             {
                AfficherFormHelper AfficherFormulaire = new AfficherFormHelper(form);
-               EntityManagementForm emform = AfficherFormulaire
+               ObsoleteEntityManagementForm emform = AfficherFormulaire
                     .AfficherUneGestion<Stagiaire>(new StagiaireEntryForm(new BaseRepository<Stagiaire>()));
                emform.bt_Ajouter_Click(new Button(), null);
             }

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace App.GestionStagiaires.Groupes
 {
-    public partial class FormGestionGroupes : App.WinForm.EntityManagementForm
+    public partial class FormGestionGroupes : App.WinForm.ObsoleteEntityManagementForm
     {
         public FormGestionGroupes():base()
         {

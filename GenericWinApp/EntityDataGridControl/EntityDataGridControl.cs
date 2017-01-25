@@ -1,76 +1,132 @@
-﻿using App.WinForm.Annotation;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
-using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection;
+using App.WinForm.Annotation;
 
-namespace App.WinForm.EntityManagement
+namespace App.WinForm
 {
-    public partial class EntityManagerControl : App.WinForm.EntityManagement.BaseEntityManagerControl
+    public partial class EntityDataGridControl : UserControl, IEntityDataGrideControl
     {
-        #region Constructeurs
-        public EntityManagerControl()
-        {
-            InitializeComponent();
-        }
 
-        public EntityManagerControl(IBaseRepository Service, 
-            BaseFilterControl BaseFilterControl, Form MdiParent, BaseEntryForm Formulaire) :base(Service, BaseFilterControl, MdiParent, Formulaire)
-        {
-            InitializeComponent();
-            InitDataGridView();
-            setTitre();
-        }
+
+        #region Propriétés
+        /// <summary>
+        /// Le service de l'entité en gestion  
+        /// </summary>
+        protected IBaseRepository Service { set; get; }
+
+
+        /// <summary>
+        /// Critère de filtre de recherche
+        /// </summary>
+        protected Dictionary<string, object> CritereRechercheFiltre { set; get; }
+
+        /// <summary>
+        /// Obient ou définire la liste des propriété de l'entity en cours de gestion
+        /// </summary>
+        protected List<PropertyInfo> ListePropriete { set; get; }
         #endregion
 
-        #region Form_Load
+
+        #region Evénement
+        /// <summary>
+        /// Lancer aprés un click sur éditer
+        /// </summary>
+        public event EventHandler EditClick;
+        protected void onEditClick(object sender, EventArgs e)
+        {
+            if (EditClick != null)
+                EditClick(sender, e);
+        }
+
+        public event EventHandler EditManyToOneCollection;
+        protected void onEditManyToOneCollection(object sender, EventArgs e)
+        {
+            
+            if (EditManyToOneCollection != null)
+                EditManyToOneCollection(sender, e);
+        }
+
+        
+        public event EventHandler EditManyToManyCollection;
+        protected void onEditManyToManyCollection(object sender, EventArgs e)
+        {
+
+            if (EditManyToManyCollection != null)
+                EditManyToManyCollection(sender, e);
+        }
+
+
+        public event EventHandler RefreshEvent;
+        
+
+        protected void onRefreshEvent(object sender, EventArgs e)
+        {
+            RefreshEvent(sender, e);
+        }
+
+
+        #endregion
+
+
+        #region Constructeurs
+
+        public EntityDataGridControl(IBaseRepository Service, Dictionary<string, object> critereRechercheFiltre = null) 
+        {
+            InitializeComponent(); if (this.DesignMode) return;
+            this.Service = Service;
+            this.CritereRechercheFiltre = critereRechercheFiltre;
+            InitDataGridView();
+        }
+        public EntityDataGridControl() : this(null) { }
+        #endregion
+
+
+        #region Actualiser
         /// <summary>
         /// Affichage des information dans DataGrid selon le filtre s'il exsiste
         /// </summary> 
         public void Actualiser()
         {
+            this.Actualiser(this.CritereRechercheFiltre);
+        }
+        public void Actualiser(Dictionary<string, object> CritereRechercheFiltre)
+        {
             ObjetBindingSource.Clear();
-            Dictionary<string, object> critereRechercheFiltre = this.BaseFilterControl.CritereRechercheFiltre();
-            var ls = Service.Recherche(critereRechercheFiltre);
+            var ls = Service.Recherche(CritereRechercheFiltre);
             ObjetBindingSource.DataSource = ls;
         }
 
-        protected void setTitre()
-        {
-            AffichageDansFormGestionAttribute AffichageDansFormGestion = this.Service.getAffichageDansFormGestionAttribute();
-            this.Text = AffichageDansFormGestion.Titre;
-            TabPage tabGrid = this.tabControl.TabPages["TabGrid"];
-            tabGrid.Text = AffichageDansFormGestion.TitrePageGridView;
-  
-        }
         #endregion
-
-
-        private void tabControl_Selected(object sender, TabControlEventArgs e)
-        {
-            IEnumerable<BaseEntryForm> ls = tabControl.SelectedTab.Controls.OfType<BaseEntryForm>();
-            if (ls.Count() == 1)
-            {
-                BaseEntryForm BaseEntryForm = ls.First();
-               this.ParentForm.AcceptButton = BaseEntryForm.btEnregistrer;
-            }
-
-        }
-
 
         #region InitDisingeDataGrid
 
+        protected void InitPropertyListDataGrid()
+        {
+            // [Bug]
+            // Ajoutez la condition filtre 
+            var requete = from i in Service.TypeEntity.GetProperties()
+                          where i.GetCustomAttribute(typeof(AffichageProprieteAttribute)) != null &&
+                          ((AffichageProprieteAttribute)i.GetCustomAttribute(typeof(AffichageProprieteAttribute))).isGridView
+                          orderby ((AffichageProprieteAttribute)i.GetCustomAttribute(typeof(AffichageProprieteAttribute))).Ordre
+                          select i;
+            this.ListePropriete = requete.ToList<PropertyInfo>();
+        }
 
         /// <summary>
         /// Insertion des colonne selon les annotation : AffichageProprieteAttribute
         /// </summary>
         private void InitDataGridView()
         {
+            InitPropertyListDataGrid();
+
             int index_colonne = 0;
             AffichageDansFormGestionAttribute AffichageDansFormGestion = this.Service.getAffichageDansFormGestionAttribute();
             foreach (PropertyInfo propertyInfo in this.ListePropriete)
@@ -151,14 +207,15 @@ namespace App.WinForm.EntityManagement
             // Editer
             if (e.ColumnIndex == dataGridView.Columns["Editer"].Index && e.RowIndex >= 0)
             {
-                EditerObjet();
+                onEditClick(this, null);
             }
 
             foreach (var item in this.ListePropriete.Where(p => p.PropertyType.Name == "List`1"))
             {
                 if (e.ColumnIndex == dataGridView.Columns[item.Name].Index && e.RowIndex >= 0)
                 {
-                    EditerCollection(item, obj);
+                    this.SelectedProperty = item;
+                    onEditManyToOneCollection(this, e);
                 }
 
             }
@@ -168,13 +225,24 @@ namespace App.WinForm.EntityManagement
         {
             if (e.KeyCode == Keys.Enter)
             {
-                EditerObjet();
+                onEditClick(this, null);
             }
         }
+
         #endregion
 
-     
 
+        public BaseEntity SelectedEntity
+        {
 
+            get
+            {
+                return this.ObjetBindingSource.Current as BaseEntity;
+            }
+        }
+       
+
+        public PropertyInfo SelectedProperty { set; get; }
+        
     }
 }

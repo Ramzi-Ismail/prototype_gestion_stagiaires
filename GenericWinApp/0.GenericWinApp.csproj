@@ -50,83 +50,96 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntityManagement\EntityDataGrid.cs">
+    <Compile Include="EntityDataGridControl\EntityDataGridControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EntityManagement\EntityDataGrid.Designer.cs">
-      <DependentUpon>EntityDataGrid.cs</DependentUpon>
+    <Compile Include="EntityDataGridControl\EntityDataGridControl.Designer.cs">
+      <DependentUpon>EntityDataGridControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="EntityManagement\EntityManagementControl.cs">
+    <Compile Include="EntityManagementControl\Add.EntityManagementControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EntityManagement\EntityManagementControl.Designer.cs">
+    <Compile Include="EntityManagementControl\Edit.EntityManagementControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EntityManagementControl\EntityManagementControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EntityManagementControl\EntityManagementControl.Designer.cs">
       <DependentUpon>EntityManagementControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="EntityManagement\EntityManagerForm\EditEntity.cs">
+    <Compile Include="EntityManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EntityManagementForm.Designer.cs">
+      <DependentUpon>EntityManagementForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityTabControl\Edit.EntityTabControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EntityManagement\EntityManagerForm\EntityManagerControl.cs">
+    <Compile Include="EntityTabControl\EntityTabControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EntityManagement\EntityManagerForm\EntityManagerControl.Designer.cs">
-      <DependentUpon>EntityManagerControl.cs</DependentUpon>
+    <Compile Include="EntityTabControl\EntityTabControl.Designer.cs">
+      <DependentUpon>EntityTabControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="EntityManagement\EntityManagerForm\Base\BaseEntityDataGridControl.cs">
+    <Compile Include="EntityTabControl\BaseEntityTabControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EntityManagement\EntityManagerForm\Base\BaseEntityDataGridControl.Designer.cs">
-      <DependentUpon>BaseEntityDataGridControl.cs</DependentUpon>
+    <Compile Include="EntityTabControl\BaseEntityTabControl.Designer.cs">
+      <DependentUpon>BaseEntityTabControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fileds\BaseField.cs">
+    <Compile Include="EntityDataGridControl\IEntityDataGrideControl.cs" />
+    <Compile Include="EntityFileds\BaseField.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Fileds\BaseField.Designer.cs">
+    <Compile Include="EntityFileds\BaseField.Designer.cs">
       <DependentUpon>BaseField.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fileds\Controls\DateTimeControl.cs">
+    <Compile Include="EntityFileds\Controls\DateTimeControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Fileds\Controls\DateTimeControl.Designer.cs">
+    <Compile Include="EntityFileds\Controls\DateTimeControl.Designer.cs">
       <DependentUpon>DateTimeControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fileds\DateTimeField.cs">
+    <Compile Include="EntityFileds\DateTimeField.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Fileds\DateTimeField.Designer.cs">
+    <Compile Include="EntityFileds\DateTimeField.Designer.cs">
       <DependentUpon>DateTimeField.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fileds\InputCollectionControle.cs">
+    <Compile Include="EntityFileds\InputCollectionControle.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Fileds\InputCollectionControle.Designer.cs">
+    <Compile Include="EntityFileds\InputCollectionControle.Designer.cs">
       <DependentUpon>InputCollectionControle.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fileds\Int32Filed.cs">
+    <Compile Include="EntityFileds\Int32Filed.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Fileds\Int32Filed.Designer.cs">
+    <Compile Include="EntityFileds\Int32Filed.Designer.cs">
       <DependentUpon>Int32Filed.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fileds\ManyToOneField.cs">
+    <Compile Include="EntityFileds\ManyToOneField.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Fileds\ManyToOneField.Designer.cs">
+    <Compile Include="EntityFileds\ManyToOneField.Designer.cs">
       <DependentUpon>ManyToOneField.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fileds\ManyToOneField.Filter.cs">
+    <Compile Include="EntityFileds\ManyToOneField.Filter.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Fileds\PropertyNotExistInEntityException.cs" />
-    <Compile Include="Fileds\StringFiled.cs">
+    <Compile Include="EntityFileds\PropertyNotExistInEntityException.cs" />
+    <Compile Include="EntityFileds\StringFiled.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Fileds\StringFiled.Designer.cs">
+    <Compile Include="EntityFileds\StringFiled.Designer.cs">
       <DependentUpon>StringFiled.cs</DependentUpon>
     </Compile>
-    <Compile Include="Filter\BaseFilterControl.cs">
+    <Compile Include="EntityFilter\BaseFilterControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Filter\BaseFilterControl.Designer.cs">
+    <Compile Include="EntityFilter\BaseFilterControl.Designer.cs">
       <DependentUpon>BaseFilterControl.cs</DependentUpon>
     </Compile>
     <Compile Include="EntryForms\Exceptions\FieldNotExistInFormException.cs" />
@@ -175,48 +188,51 @@
       <DependentUpon>BaseEntryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="EntryForms\IBaseEntryForm.cs" />
-    <Compile Include="EntityManagement\EntityManagementForm.cs">
+    <Compile Include="ObsoleteEntityManagementForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EntityManagement\EntityManagementForm.Designer.cs">
-      <DependentUpon>EntityManagementForm.cs</DependentUpon>
+    <Compile Include="ObsoleteEntityManagementForm.Designer.cs">
+      <DependentUpon>ObsoleteEntityManagementForm.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="EntityManagement\EntityDataGrid.resx">
-      <DependentUpon>EntityDataGrid.cs</DependentUpon>
+    <EmbeddedResource Include="EntityDataGridControl\EntityDataGridControl.resx">
+      <DependentUpon>EntityDataGridControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EntityManagement\EntityManagementControl.resx">
+    <EmbeddedResource Include="EntityManagementControl\EntityManagementControl.resx">
       <DependentUpon>EntityManagementControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EntityManagement\EntityManagerForm\EntityManagerControl.resx">
-      <DependentUpon>EntityManagerControl.cs</DependentUpon>
+    <EmbeddedResource Include="EntityManagementForm.resx">
+      <DependentUpon>EntityManagementForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EntityManagement\EntityManagerForm\Base\BaseEntityDataGridControl.resx">
-      <DependentUpon>BaseEntityDataGridControl.cs</DependentUpon>
+    <EmbeddedResource Include="EntityTabControl\EntityTabControl.resx">
+      <DependentUpon>EntityTabControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Fileds\BaseField.resx">
+    <EmbeddedResource Include="EntityTabControl\BaseEntityTabControl.resx">
+      <DependentUpon>BaseEntityTabControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EntityFileds\BaseField.resx">
       <DependentUpon>BaseField.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Fileds\Controls\DateTimeControl.resx">
+    <EmbeddedResource Include="EntityFileds\Controls\DateTimeControl.resx">
       <DependentUpon>DateTimeControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Fileds\DateTimeField.resx">
+    <EmbeddedResource Include="EntityFileds\DateTimeField.resx">
       <DependentUpon>DateTimeField.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Fileds\InputCollectionControle.resx">
+    <EmbeddedResource Include="EntityFileds\InputCollectionControle.resx">
       <DependentUpon>InputCollectionControle.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Fileds\Int32Filed.resx">
+    <EmbeddedResource Include="EntityFileds\Int32Filed.resx">
       <DependentUpon>Int32Filed.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Fileds\ManyToOneField.resx">
+    <EmbeddedResource Include="EntityFileds\ManyToOneField.resx">
       <DependentUpon>ManyToOneField.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Fileds\StringFiled.resx">
+    <EmbeddedResource Include="EntityFileds\StringFiled.resx">
       <DependentUpon>StringFiled.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Filter\BaseFilterControl.resx">
+    <EmbeddedResource Include="EntityFilter\BaseFilterControl.resx">
       <DependentUpon>BaseFilterControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EntryForms\InputComboBoxControle.resx">
@@ -235,12 +251,12 @@
     <EmbeddedResource Include="EntryForms\BaseEntryForm.resx">
       <DependentUpon>BaseEntryForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EntityManagement\EntityManagementForm.resx">
-      <DependentUpon>EntityManagementForm.cs</DependentUpon>
+    <EmbeddedResource Include="ObsoleteEntityManagementForm.resx">
+      <DependentUpon>ObsoleteEntityManagementForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntityManagement\EntityManagerForm\AddEntity.cs">
+    <Compile Include="EntityTabControl\AddEntity.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <None Include="Resources\delete.bmp" />

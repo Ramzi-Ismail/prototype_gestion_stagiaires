@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace App.WinForm.EntityManagement
 {
-    public partial class EntityManagerControl
+    public partial class EntityTabControl
     {
         #region Editer 
         /// <summary>
