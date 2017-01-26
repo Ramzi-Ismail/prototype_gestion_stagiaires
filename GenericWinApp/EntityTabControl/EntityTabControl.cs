@@ -20,7 +20,7 @@ namespace App.WinForm.EntityManagement
         }
 
         public EntityTabControl(IBaseRepository Service, 
-            BaseFilterControl BaseFilterControl, Form MdiParent, BaseEntryForm Formulaire) :base(Service, BaseFilterControl, MdiParent, Formulaire)
+            EntityFilterControl BaseFilterControl, Form MdiParent, BaseEntryForm Formulaire) :base(Service, BaseFilterControl, MdiParent, Formulaire)
         {
             InitializeComponent();
             InitDataGridView();

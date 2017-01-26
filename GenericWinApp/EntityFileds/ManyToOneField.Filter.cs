@@ -25,10 +25,10 @@ namespace App.WinForm.Fileds
         private void InitAndLoadData()
         {
 
-           
+
             this.DisplayMember = "";
             this.ValueMember = "Id";
-            
+
 
             if (this.PropertyInfo != null)
             {
@@ -44,14 +44,14 @@ namespace App.WinForm.Fileds
 
                 Attribute getAffichagePropriete = PropertyInfo.GetCustomAttribute(typeof(AffichageProprieteAttribute));
                 AffichageProprieteAttribute AffichagePropriete = (AffichageProprieteAttribute)getAffichagePropriete;
-               
-                    #region Annotatin
-                    // Annotation : Critère de filtre
-                    Attribute metaSelectionCriteriaAttribute = this.PropertyInfo.PropertyType
-                        .GetCustomAttribute(typeof(SelectionCriteriaAttribute));
+
+                #region Annotatin
+                // Annotation : Critère de filtre
+                Attribute metaSelectionCriteriaAttribute = this.PropertyInfo.PropertyType
+                    .GetCustomAttribute(typeof(SelectionCriteriaAttribute));
 
 
-                if (metaSelectionCriteriaAttribute!= null)
+                if (metaSelectionCriteriaAttribute != null)
                 {
 
                     SelectionCriteriaAttribute MetaSelectionCriteria =
@@ -73,7 +73,7 @@ namespace App.WinForm.Fileds
                         ManyToOneField manyToOneFilter = new ManyToOneField(item, null, null,
                             this.orientationFiled,
                              this.SizeLabel,
-                            this.SizeControl,null
+                            this.SizeControl, 0
                             );
                         manyToOneFilter.Name = item.Name;
                         //manyToOneFilter.Size = new System.Drawing.Size(this.widthField, this.HeightField);
@@ -83,7 +83,9 @@ namespace App.WinForm.Fileds
 
                         manyToOneFilter.ValueMember = "Id";
                         manyToOneFilter.DisplayMember = MetaAffichageClasseCritere.DisplayMember;
+                        // pour le chargement de comboBox Suivant
                         manyToOneFilter.FieldChanged += Value_SelectedIndexChanged;
+
                         manyToOneFilter.Visible = true;
 
                         // [bug] Le contôle ne s'affiche pas dans le formilaire ??
@@ -92,7 +94,7 @@ namespace App.WinForm.Fileds
                         //f.Show();
 
                         this.MainContainner.Controls.Add(manyToOneFilter);
-                        
+
                         ListeComboBox.Add(item.Name, manyToOneFilter);
                         LsiteTypeObjetCritere.Add(item.Name, item);
                     }
@@ -114,36 +116,104 @@ namespace App.WinForm.Fileds
                 // Insertion du ComBox Actuel pour qu'il sera remplit par les données
                 ListeComboBox.Add(this.TypeOfObject.Name, this);
                 LsiteTypeObjetCritere.Add(this.TypeOfObject.Name, this.TypeOfObject);
-               
+
             }
             this.FieldChanged += Value_SelectedIndexChanged;
-            ViewingData();
+
+          
+             
+              
+
+          
+
+          
+
+        }
+
+        /// <summary>
+        ///  Calcule des valeurs initiaux
+        /// </summary>
+        private void CalculeValeursInitiaux(Int64 Value)
+        {
+
+            if (Value == 0) return;
+
+
+            /// Le ComboBox précédent prend les valeurs de l'Entite actuel de comboBox 
+            /// car l'entité actuel doit avoir une prorpiété de type type  de l'entityé précédent
+            /// Le nom de cette propiété égale Nom d'entité 
+            /// si cette propiété n'existe pas la méthode lance une exception
+            /// 
+
+            // Initialisation de la liste des valeurs par défaux
+            if(ListeValeursInitiaux.Count() < this.LsiteTypeObjetCritere.Count())
+            for (int i = 0; i < this.LsiteTypeObjetCritere.Count() ; i++)
+            {
+                ListeValeursInitiaux.Add(ListeComboBox.Keys.ElementAt(i), 0);
+            }
+            // Init la de la vlaeur de comboBox Actuel
+            ListeValeursInitiaux[ListeValeursInitiaux.Last().Key] = Value;
+
+            IBaseRepository curentService = new BaseRepository<BaseEntity>()
+                  .CreateInstance_Of_Service_From_TypeEntity(LsiteTypeObjetCritere[ListeValeursInitiaux.Last().Key]);
+            BaseEntity curentEntity = curentService.GetBaseEntityByID(Value);
+
+            BaseEntity previousEntity = null;
+            for (int i = this.LsiteTypeObjetCritere.Count() - 1; i >= 1; i--)
+            {
+
+                string curentKey = LsiteTypeObjetCritere.Keys.ElementAt(i);
+                string Previouskey = ListeComboBox.Keys.ElementAt(i-1);
+
+                PropertyInfo PropertyPrevious = curentEntity.GetType()
+                                                .GetProperties()
+                                                .Where(p => p.Name == Previouskey)
+                                                .SingleOrDefault();
+                if (PropertyPrevious == null)
+                    throw new PropertyNotExistInEntityException();
+
+                // Affectation des valeurs au ComboBox précédent
+                previousEntity = PropertyPrevious.GetValue(curentEntity) as BaseEntity;
+                ListeValeursInitiaux[Previouskey] = previousEntity.Id;
+
+                curentEntity = previousEntity;
+            }
+
+
+
+
 
 
         }
 
 
         /// <summary>
+        /// Chargement des comboBox suivants
         /// il s'exécute aprés le changement du valeur de chaque comboBox
         /// à chaque changement d'un comboBox on charge les données de comboBox suivant
         /// </summary>
         private void Value_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            // n'exécuter pas cette événement, si nous somme à l'étape d'initialisation 
+            // des chmpas de critères
+            if (this.StopEventSelectedIndexChange) return;
+
+
+            // Initialisation de ComboBox, Service, Entite qui a ête changé
             ManyToOneField comboBoxChanged = (ManyToOneField)sender;
             comboBoxChanged.CreateControl();
             int indexComboBoxChanged = ListeComboBox.Values.ToList<ManyToOneField>().IndexOf(comboBoxChanged);
             string keyComboBoxCanged = ListeComboBox.Keys.ElementAt(indexComboBoxChanged);
             IBaseRepository serviceComboBoxActuel = new BaseRepository<BaseEntity>()
                 .CreateInstance_Of_Service_From_TypeEntity(LsiteTypeObjetCritere[keyComboBoxCanged]);
-            BaseEntity EntiteActuel = serviceComboBoxActuel.GetBaseEntityByID(Convert.ToInt64(comboBoxChanged.SelectedValue));
+            BaseEntity EntiteActuel = serviceComboBoxActuel.GetBaseEntityByID(Convert.ToInt64(comboBoxChanged.Value));
 
             /// Actualisation de ComboBox suivant s'il existe
-            /// Le ComboBox suivant prend les valeurs de l'Entite actuel de comboBox Actuel
+            /// Le ComboBox suivant prend les valeurs de l'Entite actuel de comboBox 
             /// car l'entité actuel doit avoir une prorpiété de type type Collection de l'entityé suivant
             /// Le nom de cette propiété égale Nom d'entité suivant + "s"
             /// si cette propiété n'existe pas la méthode lance une exception
-            if (comboBoxChanged.SelectedValue != null && (ListeComboBox.Values.Count() - 1) >= (indexComboBoxChanged + 1))
+            if (comboBoxChanged.Value != null && (ListeComboBox.Values.Count() - 1) >= (indexComboBoxChanged + 1))
             {
 
                 // ComboBox suivant 
@@ -162,7 +232,24 @@ namespace App.WinForm.Fileds
                 if (PropertyContenantValeursComboSuivant != null)
                 {
                     ls_source = PropertyContenantValeursComboSuivant.GetValue(EntiteActuel) as IList;
-                    nextComboBox.DataSource = ls_source;
+
+
+                    // Initalisation avec la valeur par défaux s'il existe
+                    if (this.ListeValeursInitiaux != null && this.ListeValeursInitiaux.Keys.Contains(keyNexComboBox))
+                    {
+                        this.StopEventSelectedIndexChange = true;
+                        nextComboBox.DataSource = null;
+                        nextComboBox.DataSource = ls_source;
+                        this.StopEventSelectedIndexChange = false;
+                        nextComboBox.Value = this.ListeValeursInitiaux[keyNexComboBox];
+                    }
+                    else
+                    {
+                        nextComboBox.DataSource = ls_source;
+                    }
+
+
+                   
                 }
 
                 // Si ce Combo n'a pas d'information alors vider les combBobx suivant 
@@ -190,7 +277,21 @@ namespace App.WinForm.Fileds
             string key = ListeComboBox.Keys.ElementAt(0);
             IBaseRepository service = new BaseRepository<BaseEntity>()
                 .CreateInstance_Of_Service_From_TypeEntity(LsiteTypeObjetCritere[key]);
-            comboBox.DataSource = service.GetAll();
+            
+
+            // Initalisation avec la valeur par défaux s'il existe
+            if (this.ListeValeursInitiaux != null && this.ListeValeursInitiaux.Keys.Contains(key))
+            {
+                this.StopEventSelectedIndexChange = true;
+                comboBox.DataSource = service.GetAll();
+                this.StopEventSelectedIndexChange = false;
+                comboBox.Value = this.ListeValeursInitiaux[key];
+            }
+            else
+            {
+                comboBox.DataSource = service.GetAll();
+            }
+                
         }
         #endregion
 

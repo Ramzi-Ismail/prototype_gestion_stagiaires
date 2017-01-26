@@ -29,19 +29,75 @@ namespace App.WinForm.Fileds
             /// l'affectation d'une nouvelle valeur lance l'événement ValueChanged
             set
             {
-                comboBoxManyToOne.SelectedValue = Convert.ToInt64(value);
+                comboBoxManyToOne.SelectedValue = value;
+               
+
             }
+        }
+
+        /// <summary>
+        /// Intiliaser les valeur des autre critère 
+        /// </summary>
+        /// <param name="value"></param>
+        public void setAllValuesBySelectedValue(Int64 value)
+        {
+            this.CalculeValeursInitiaux(Convert.ToInt64(value));
+            this.ViewingData();
         }
 
         /// <summary>
         /// Le champs accepte une des valeurs pardéfaut pour chaque ComboBox de son filtre 
         /// personnel
         /// </summary>
-        Dictionary<string, object> DefaultValues { set; get; }
+        Int64 DefaultValues { set; get; }
 
         #endregion
 
+        #region Propriété : ComboBox
+
+        public string ValueMember
+        {
+            get { return this.comboBoxManyToOne.ValueMember; }
+            set { this.comboBoxManyToOne.ValueMember = value; }
+        }
+        public string DisplayMember
+        {
+            get { return this.comboBoxManyToOne.DisplayMember; }
+            set { this.comboBoxManyToOne.DisplayMember = value; }
+        }
+
+        public object DataSource
+        {
+            get { return this.comboBoxManyToOne.DataSource; }
+            set { this.comboBoxManyToOne.DataSource = value; }
+        }
+
+        public int SelectedIndex
+        {
+            get { return this.comboBoxManyToOne.SelectedIndex; }
+            set { this.comboBoxManyToOne.SelectedIndex = value; }
+        }
+
+        public object SelectedItem
+        {
+            get { return this.comboBoxManyToOne.SelectedItem; }
+        }
+
+
+        public string TextCombobox
+        {
+            get { return this.comboBoxManyToOne.Text; }
+            set { this.comboBoxManyToOne.Text = value; }
+        }
+        #endregion
+
         #region Variables
+        /// <summary>
+        /// Indique si le programme en état de changement de la vlaeurs pardéfaut du champs
+        /// dans cette étape il aura l'éxécution seulement des événement d'initialisation
+        /// et les événement de changement des valeurs ne seront pas exécuter
+        /// </summary>
+        public bool StopEventSelectedIndexChange { get; private set; }
 
 
         /// <summary>
@@ -52,98 +108,30 @@ namespace App.WinForm.Fileds
 
         #endregion
 
-        #region Les critère de filtrage
+        #region Critères
         /// <summary>
         /// Lite des ComboBox 
         /// </summary>
         Dictionary<string, ManyToOneField> ListeComboBox { set; get; }
 
         /// <summary>
-        /// Lite des Valeur de critère Initial de comboBox
-        /// </summary>
-        Dictionary<string, BaseEntity> ListeValeursCritere { set; get; }
-
-        /// <summary>
         /// Liste des Types de critère 
         /// </summary>
         Dictionary<string, Type> LsiteTypeObjetCritere { set; get; }
 
-        #endregion
+        Dictionary<string, Int64> ListeValeursInitiaux { set; get; }
 
-        #region Degault Value
-        /// <summary>
-        /// Trouver les valeurs par défaut de chaque critère de filtre, 
-        /// depuis l'objet qui déclare la collection
-        /// </summary> 
-        //protected void CalculatesDefaultValues()
-        //{
-        //    if (MetaSelectionCriteria == null) return;
-        //    foreach (Type item in MetaSelectionCriteria.Criteria)
-        //    {
-        //        // Trouver si la classe de critère de filtre existe déja comme Membre 
-        //        // de la classe qui déclare la collection
-        //        Type DeclaringType = PropertyInfoOfCollection.DeclaringType;
-        //        PropertyInfo PropertyInfo_value = DeclaringType.GetProperties().Where(p => p.PropertyType.Name == item.Name).SingleOrDefault();
-        //        if (PropertyInfo_value != null && Entity != null)
-        //        {
-        //            BaseEntity BaseEntityValue = (BaseEntity)PropertyInfo_value.GetValue(Entity);
-        //            if (BaseEntityValue != null)
-        //            {
-        //                ListeValeursCritere[item.Name] = BaseEntityValue;
-
-        //                // si la critère a une valeur par défaut
-        //                // on cherche les valeurs par défaut des critère précédent 
-        //                int index = MetaSelectionCriteria.Criteria.ToList().IndexOf(item);
-        //                ValeurParen(index, BaseEntityValue);
-
-        //            }
-
-
-
-        //        }
-        //    }
-        //}
-        #endregion
-
-        #region Propriété : ComboBox
-
-        public string ValueMember {
-            get { return this.comboBoxManyToOne.ValueMember; }
-            set { this.comboBoxManyToOne.ValueMember = value; }
-        }
-        public string DisplayMember {
-            get { return this.comboBoxManyToOne.DisplayMember; }
-            set { this.comboBoxManyToOne.DisplayMember = value; }
-        }
-
-        public object DataSource {
-            get { return this.comboBoxManyToOne.DataSource; }
-            set { this.comboBoxManyToOne.DataSource = value; }
-           }
-
-        public int SelectedIndex {
-            get { return this.comboBoxManyToOne.SelectedIndex; }
-            set { this.comboBoxManyToOne.SelectedIndex = value; }
-        }
-
-        public object SelectedValue {
-            get { return this.comboBoxManyToOne.SelectedValue; }
-            set { this.comboBoxManyToOne.SelectedValue = value; }
-        }
-
-        public object SelectedItem {
-            get { return this.comboBoxManyToOne.SelectedItem; }
-            set { this.comboBoxManyToOne.SelectedItem = value; }
-        }
-
-
-        public string TextCombobox {
-            get { return this.comboBoxManyToOne.Text; }
-            set { this.comboBoxManyToOne.Text = value; }
-        }
         #endregion
 
 
+        #region evénements
+        private void comboBoxManyToOne_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            onFieldChanged(this, e);
+        }
+        #endregion
+
+        #region Constructeurs
 
         public ManyToOneField(Type TypeObjet,
             PropertyInfo propertyInfo, 
@@ -151,66 +139,46 @@ namespace App.WinForm.Fileds
             Orientation OrientationFiled, 
             Size SizeLabel, 
             Size SizeControl,
-            Dictionary<string, object> DefaultFiltreValues) 
+            Int64 DefaultValues) 
             :base(TypeObjet,propertyInfo, OrientationFiled, SizeLabel, SizeControl)
         {
             InitializeComponent();
             this.MainContainner = MainContainner;
 
 
-            this.DefaultValues = DefaultFiltreValues;
-            this.ListeValeursCritere = new Dictionary<string, BaseEntity>(); // il n'est pas utilisé
+           
 
             this.ListeComboBox = new Dictionary<string, ManyToOneField>();
-            
+            this.ListeValeursInitiaux = new Dictionary<string, long>();
             this.LsiteTypeObjetCritere = new Dictionary<string, Type>();
-
+            this.DefaultValues = DefaultValues;
+            
 
             InitAndLoadData();
-
-            // Initialisation du champs par les valeus par défaut 
-            // 
-            SetDefaultValue();
+            CalculeValeursInitiaux(DefaultValues);
+            ViewingData();
         }
 
-        /// <summary>
-        /// Initialisation du champs avec les valeurs pardéfaut
-        /// </summary>
-        [Obsolete("Utiliser this.Value")]
-        private void SetDefaultValue()
-        {
-            if (this.DefaultValues == null) return;
-            foreach (var item in this.DefaultValues)
-            {
-                //foreach (var item in )
-                //{
-
-                //}
-            }
-            
-        }
-
-        public ManyToOneField(PropertyInfo propertyInfo, Control MainContainner, Orientation OrientationFiled, Size SizeLabel, Size SizeControl, Dictionary<string, object> DefaultFiltreValues)
+      
+        public ManyToOneField(PropertyInfo propertyInfo, Control MainContainner, Orientation OrientationFiled, Size SizeLabel, Size SizeControl, Int64 DefaultFiltreValues)
           : this(null, propertyInfo, MainContainner, OrientationFiled, SizeLabel, SizeControl, DefaultFiltreValues)
         {
 
         }
 
-        public ManyToOneField() : this(null, null, Orientation.Horizontal, new Size(50, 20), new Size(50, 20), null)
+        public ManyToOneField() : this(null, null, Orientation.Horizontal, new Size(50, 20), new Size(50, 20), 0)
         {
 
         }
 
-        private ManyToOneField(Type TypeObjet) : this(TypeObjet,null,null, Orientation.Horizontal, new Size(50, 20), new Size(50, 20),null)
+        private ManyToOneField(Type TypeObjet) : this(TypeObjet,null,null, Orientation.Horizontal, new Size(50, 20), new Size(50, 20),0)
         {
             
         }
 
+        #endregion
 
-
-        private void comboBoxManyToOne_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            onFieldChanged(this, e);
-        }
+     
+     
     }
 }

@@ -56,10 +56,25 @@
     <Compile Include="EntityDataGridControl\EntityDataGridControl.Designer.cs">
       <DependentUpon>EntityDataGridControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="EntityManagementControl\Add.EntityManagementControl.cs">
+    <Compile Include="EntityManagementControl\DataGrid.EntityManagementControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EntityManagementControl\Edit.EntityManagementControl.cs">
+    <Compile Include="EntityManagementControl\Filter.EntityManagementControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EntityManagementControl\AddForm.EntityManagementControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EntityManagementControl\Init_Load.EntityManagementControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EntityManagementControl\TabControl.EntityManagementControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EntityManagementControl\UpdateForm.EntityManagementControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EntityManagementControl\Vide.EntityManagementControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="EntityManagementControl\EntityManagementControl.cs">

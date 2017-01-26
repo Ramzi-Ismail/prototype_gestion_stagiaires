@@ -37,7 +37,7 @@ namespace App.WinForm
         /// <summary>
         /// Instance de filtre
         /// </summary>
-        BaseFilterControl BaseFilterControl { set; get; }
+        EntityFilterControl BaseFilterControl { set; get; }
 
         /// <summary>
         /// Instance de controle DataGrid
@@ -149,7 +149,7 @@ namespace App.WinForm
             //
             // Initialisation de filtre
             //
-            this.BaseFilterControl = new BaseFilterControl(this.Service, this.ValeursFiltre);
+            this.BaseFilterControl = new EntityFilterControl(this.Service, this.ValeursFiltre);
             this.BaseFilterControl.Dock = DockStyle.Fill;
             this.panel_Filtre.Controls.Add(this.BaseFilterControl);
             this.BaseFilterControl.RefreshEvent += BaseFilterControl_RefreshEvent;

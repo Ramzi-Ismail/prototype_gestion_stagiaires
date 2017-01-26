@@ -148,7 +148,7 @@ namespace App.WinForm
                                 ManyToOneField manyToOneField = new ManyToOneField(item,
                                    ConteneurManyToMany, orientation_config,
                                     new Size(width_label, height_label),
-                                   new Size(width_control_config, height_control), null
+                                   new Size(width_control_config, height_control), 0
                                     );
                                 manyToOneField.Location = new System.Drawing.Point(x_field, y_field);
                                 manyToOneField.Name = item.Name;

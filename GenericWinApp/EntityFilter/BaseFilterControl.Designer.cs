@@ -1,6 +1,6 @@
 ﻿namespace App.WinForm.EntityManagement
 {
-    partial class BaseFilterControl
+    partial class EntityFilterControl
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.

@@ -14,9 +14,18 @@ using App.WinForm.Fileds;
 
 namespace App.WinForm.EntityManagement
 {
-    public partial class BaseFilterControl : UserControl, IBaseFilterControl
+    public partial class EntityFilterControl : UserControl, IBaseFilterControl
     {
+
         #region Propriétés
+        public Dictionary<string, object> Value;
+        /// <summary>
+        /// La valeur de filtre peut être de plusieur type : String, Int, DateTime
+        /// </summary>
+        protected Dictionary<string, object> ValeursFiltre { set; get; }
+        #endregion
+
+        #region Paramètres
         /// <summary>
         /// Le Service de gestion  
         /// </summary>
@@ -25,7 +34,7 @@ namespace App.WinForm.EntityManagement
         /// <summary>
         /// définir les valeurs initiaux du filtre
         /// </summary>
-        protected Dictionary<string, object> ValeursFiltre { set; get; }
+        
 
 
         /// <summary>
@@ -46,12 +55,12 @@ namespace App.WinForm.EntityManagement
 
         #region Constructeurs
         [Obsolete("N'utiliserz pas le constructeur pardéfaut, il est ajouter au programme pour supporter le mode designe de VisualStudio")]
-        public BaseFilterControl()
+        public EntityFilterControl()
         {
             InitializeComponent();
         }
 
-        public BaseFilterControl(IBaseRepository Service, Dictionary<string, object> ValeursFiltre)
+        public EntityFilterControl(IBaseRepository Service, Dictionary<string, object> ValeursFiltre)
         {
             InitializeComponent();
             this.MainContainer = this.flowLayoutPanel1;
@@ -61,7 +70,7 @@ namespace App.WinForm.EntityManagement
 
         }
 
-        public BaseFilterControl(IBaseRepository Service) : this(Service, null)
+        public EntityFilterControl(IBaseRepository Service) : this(Service, null)
         {
         }
 
@@ -86,17 +95,18 @@ namespace App.WinForm.EntityManagement
         }
 
         /// <summary>
-        /// Création et Initialisation de filtre en utilisation de la liste des propriété de la classe
-        /// et l'annotation 
+        /// Initialisation de filtre 
         /// </summary>
         protected void initFiltre()
         {
+            // Postion et Taille par défaut
             int width_label = 50;
             int height_label = 20;
             int width_control = 50;
             int height_control = 20;
-
             int TabIndex = 0;
+
+            // Insertion des critère de recherche par Type
             foreach (PropertyInfo propertyInfo in PropertyListFilter())
             {
                 // Trouver l'objet AffichagePropriete depuis l'annotation
@@ -105,7 +115,6 @@ namespace App.WinForm.EntityManagement
                 AffichageProprieteAttribute AffichagePropriete = (AffichageProprieteAttribute)getAffichagePropriete;
                 if (AffichagePropriete.Filtre == false) continue;
 
-                
                 // Utiliser le Largeur de la configuration s'il existe
                 int item_width_control = width_control;
                 if(AffichagePropriete.WidthColonne != 0)
@@ -113,8 +122,6 @@ namespace App.WinForm.EntityManagement
 
                 if (propertyInfo.PropertyType.Name == "String")
                 {
-
-
                     StringFiled stringFiled = new StringFiled(propertyInfo,
                         Orientation.Horizontal,
                         new Size(width_label, height_label),
@@ -122,13 +129,8 @@ namespace App.WinForm.EntityManagement
                     stringFiled.Name = propertyInfo.Name;
                     stringFiled.TabIndex = TabIndex++;
                     stringFiled.Text_Label = AffichagePropriete.Titre;
-                   
-
                     stringFiled.FieldChanged += Filtre_TextBox_SelectedValueChanged;
-            
                     MainContainer.Controls.Add(stringFiled);
-
-
                 }
                 if (propertyInfo.PropertyType.Name == "Int32")
                 {
@@ -140,13 +142,8 @@ namespace App.WinForm.EntityManagement
                     int32Filed.Name = propertyInfo.Name;
                     int32Filed.TabIndex = TabIndex++;
                     int32Filed.Text_Label = AffichagePropriete.Titre;
-                  
-
                     int32Filed.FieldChanged += Filtre_TextBox_SelectedValueChanged;
                     MainContainer.Controls.Add(int32Filed);
-
-
-
                 }
                 if (propertyInfo.PropertyType.Name == "DateTime")
                 {
@@ -161,7 +158,6 @@ namespace App.WinForm.EntityManagement
 
                     dateTimeField.FieldChanged += Filtre_TextBox_SelectedValueChanged;
                     MainContainer.Controls.Add(dateTimeField);
-
                 }
 
                 //
@@ -170,21 +166,24 @@ namespace App.WinForm.EntityManagement
                 if (AffichagePropriete.Relation != String.Empty &&
                  AffichagePropriete.Relation == AffichageProprieteAttribute.RELATION_MANYTOONE)
                 {
+                    // La valeurs pardéfaut
+                    Int64 default_value = 0;
+                    if(ValeursFiltre != null && ValeursFiltre.Keys.Contains(propertyInfo.Name))
+                        default_value = (Int64)ValeursFiltre[propertyInfo.Name];
 
                     ManyToOneField manyToOneField = new ManyToOneField(propertyInfo,
                         this.MainContainer,
                         Orientation.Horizontal,
                          new Size(width_label, height_label),
                          new Size(item_width_control, height_control),
-                         ValeursFiltre
+                         default_value
                         );
                     manyToOneField.Name = propertyInfo.Name;
                     manyToOneField.TabIndex = TabIndex++;
                     manyToOneField.Text_Label = AffichagePropriete.Titre;
                     manyToOneField.FieldChanged += Filtre_ComboBox_SelectedValueChanged;
-
                     MainContainer.Controls.Add(manyToOneField);
-             
+
 
                     //
                     // Remplissage de ComboBox
@@ -197,11 +196,11 @@ namespace App.WinForm.EntityManagement
                     //manyToOneField.DataSource = ls;
                     //if (AffichagePropriete.isValeurFiltreVide) manyToOneField.SelectedIndex = -1;
 
-                    // Affectation de valeur initial
+                    //// Affectation de valeur initial
                     //if (this.ValeursFiltre != null && this.ValeursFiltre.ContainsKey(propertyInfo.Name))
                     //{
                     //    manyToOneField.CreateControl();
-                    //    manyToOneField.SelectedValue = Convert.ToInt64(this.ValeursFiltre[propertyInfo.Name]);
+                    //    manyToOneField.Value = Convert.ToInt64(this.ValeursFiltre[propertyInfo.Name]);
                     //}
 
 

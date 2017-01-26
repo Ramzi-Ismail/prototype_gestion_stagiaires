@@ -17,6 +17,21 @@ namespace App.WinForm
 
 
         #region Propriétés
+        public BaseEntity SelectedEntity
+        {
+
+            get
+            {
+                return this.ObjetBindingSource.Current as BaseEntity;
+            }
+        }
+
+
+        public PropertyInfo SelectedProperty { set; get; }
+        #endregion
+
+        #region Params
+
         /// <summary>
         /// Le service de l'entité en gestion  
         /// </summary>
@@ -100,6 +115,7 @@ namespace App.WinForm
         public void Actualiser(Dictionary<string, object> CritereRechercheFiltre)
         {
             ObjetBindingSource.Clear();
+            this.CritereRechercheFiltre = CritereRechercheFiltre;
             var ls = Service.Recherche(CritereRechercheFiltre);
             ObjetBindingSource.DataSource = ls;
         }
@@ -232,17 +248,7 @@ namespace App.WinForm
         #endregion
 
 
-        public BaseEntity SelectedEntity
-        {
-
-            get
-            {
-                return this.ObjetBindingSource.Current as BaseEntity;
-            }
-        }
-       
-
-        public PropertyInfo SelectedProperty { set; get; }
+      
         
     }
 }
