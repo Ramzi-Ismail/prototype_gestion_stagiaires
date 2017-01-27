@@ -69,7 +69,7 @@ namespace App.WinForm
             Dictionary<string, object> ValeursFiltre = new Dictionary<string, object>();
             ValeursFiltre[item.DeclaringType.Name] = obj.Id;
             EntityManagementControl form = new EntityManagementControl(service_objet_of_collection, ValeursFiltre, this.MdiParent);
-           // form.ShowFilter(true);
+            form.ShowFilter(false);
             // Insertion de la gestion à l'interface
             this.AddManyToOneManager(form, item, obj);
 

@@ -206,14 +206,14 @@ namespace App.WinForm.Fileds
             string keyComboBoxCanged = ListeComboBox.Keys.ElementAt(indexComboBoxChanged);
             IBaseRepository serviceComboBoxActuel = new BaseRepository<BaseEntity>()
                 .CreateInstance_Of_Service_From_TypeEntity(LsiteTypeObjetCritere[keyComboBoxCanged]);
-            BaseEntity EntiteActuel = serviceComboBoxActuel.GetBaseEntityByID(Convert.ToInt64(comboBoxChanged.Value));
+            BaseEntity EntiteActuel = serviceComboBoxActuel.GetBaseEntityByID(Convert.ToInt64(comboBoxChanged.SelectedValue));
 
             /// Actualisation de ComboBox suivant s'il existe
             /// Le ComboBox suivant prend les valeurs de l'Entite actuel de comboBox 
             /// car l'entité actuel doit avoir une prorpiété de type type Collection de l'entityé suivant
             /// Le nom de cette propiété égale Nom d'entité suivant + "s"
             /// si cette propiété n'existe pas la méthode lance une exception
-            if (comboBoxChanged.Value != null && (ListeComboBox.Values.Count() - 1) >= (indexComboBoxChanged + 1))
+            if (comboBoxChanged.SelectedValue != null && (ListeComboBox.Values.Count() - 1) >= (indexComboBoxChanged + 1))
             {
 
                 // ComboBox suivant 
@@ -241,7 +241,7 @@ namespace App.WinForm.Fileds
                         nextComboBox.DataSource = null;
                         nextComboBox.DataSource = ls_source;
                         this.StopEventSelectedIndexChange = false;
-                        nextComboBox.Value = this.ListeValeursInitiaux[keyNexComboBox];
+                        nextComboBox.SelectedValue = this.ListeValeursInitiaux[keyNexComboBox];
                     }
                     else
                     {
@@ -285,7 +285,7 @@ namespace App.WinForm.Fileds
                 this.StopEventSelectedIndexChange = true;
                 comboBox.DataSource = service.GetAll();
                 this.StopEventSelectedIndexChange = false;
-                comboBox.Value = this.ListeValeursInitiaux[key];
+                comboBox.SelectedValue = this.ListeValeursInitiaux[key];
             }
             else
             {

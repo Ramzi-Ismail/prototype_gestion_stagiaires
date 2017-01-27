@@ -35,6 +35,8 @@
             // 
             // groupBoxFiltrage
             // 
+            this.groupBoxFiltrage.AutoSize = true;
+            this.groupBoxFiltrage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBoxFiltrage.Controls.Add(this.flowLayoutPanel1);
             this.groupBoxFiltrage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxFiltrage.Location = new System.Drawing.Point(0, 0);
@@ -53,15 +55,17 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(506, 175);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
-            // BaseFilterControl
+            // EntityFilterControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.Controls.Add(this.groupBoxFiltrage);
-            this.Name = "BaseFilterControl";
+            this.Name = "EntityFilterControl";
             this.Size = new System.Drawing.Size(512, 194);
             this.groupBoxFiltrage.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

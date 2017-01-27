@@ -65,7 +65,7 @@ namespace App.WinForm
             AffichageDansFormGestionAttribute AffichageDansFormGestion = this.Service.getAffichageDansFormGestionAttribute();
             this.Name = "Interface_Gestion_" + this.Service.TypeEntity.ToString();
             this.Text = AffichageDansFormGestion.Titre;
-            this.bt_Ajouter.Text = AffichageDansFormGestion.TitreButtonAjouter;
+            this.tabPageAdd.ToolTipText = AffichageDansFormGestion.TitreButtonAjouter;
             lbl_titre_gestion.Text = AffichageDansFormGestion.Titre;
             this.tabControl_MainManager.TabPages["TabGrid"].Text = AffichageDansFormGestion.TitrePageGridView;
         }

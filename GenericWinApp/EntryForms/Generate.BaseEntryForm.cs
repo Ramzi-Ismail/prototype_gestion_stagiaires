@@ -49,7 +49,7 @@ namespace App.WinForm
             // L'index de la touche Entrer
             int TabIndex = 0;
 
-            // Boucle sur les champs de la classe qui doive s'afficher
+            // Affichage des champs par leurs type
             foreach (PropertyInfo item in ListeChampsFormulaire())
             {
                 #region Recalcule des valeurs pardéfaut selon l'annotation de chauqe champs
@@ -140,31 +140,28 @@ namespace App.WinForm
                             if (AffichagePropriete.Relation == "ManyToOne")
                             {
 
-                                // Déterminer le contenue de Field ManyToOne
+                                // Déterminer le contenue du Field ManyToOne : GroupeBox ou Panel
                                 Control ConteneurManyToMany = this.ConteneurFormulaire;
                                 if (AffichagePropriete.GroupeBox != null && AffichagePropriete.GroupeBox != string.Empty)
                                     ConteneurManyToMany = GroupesBoxMainContainers[AffichagePropriete.GroupeBox];
 
+                                // Création de champs ManyToOneField
+                                Int64 InitValue = 0;
+                                //if (ValeursFiltre != null && ValeursFiltre.Keys.Contains(propertyInfo.Name))
+                                //    default_value = (Int64)ValeursFiltre[propertyInfo.Name];
+
                                 ManyToOneField manyToOneField = new ManyToOneField(item,
                                    ConteneurManyToMany, orientation_config,
                                     new Size(width_label, height_label),
-                                   new Size(width_control_config, height_control), 0
+                                   new Size(width_control_config, height_control), InitValue
                                     );
                                 manyToOneField.Location = new System.Drawing.Point(x_field, y_field);
                                 manyToOneField.Name = item.Name;
-
                                 manyToOneField.TabIndex = ++TabIndex;
                                 manyToOneField.Text_Label = AffichagePropriete.Titre;
-                                
-
-                                
                                 manyToOneField.FieldChanged += ControlPropriete_ValueChanged;
-
-                               
-
                                 if (AffichagePropriete.isOblegatoir)
                                     manyToOneField.Validating += ComboBox_Validating;
-
                                 this.ConteneurFormulaire.Controls.Add(manyToOneField);
                                 field_control = manyToOneField;
                             }
@@ -219,9 +216,23 @@ namespace App.WinForm
             // TabControl sur Enregistrer et Annuler
             this.btEnregistrer.TabIndex = ++TabIndex;
             this.btAnnuler.TabIndex = ++TabIndex;
+
+
+            foreach (GroupBox item in this.ConteneurFormulaire.Controls.Cast<Control>().Where(c=>c.GetType() == typeof(GroupBox)))
+            {
+                // item.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+                item.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+
+            }
+            foreach (FlowLayoutPanel item in GroupesBoxMainContainers.Values)
+            {
+                item.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+
+
+            }
         }
 
-    
+
         /// <summary>
         /// Création des groupes Box
         /// </summary>

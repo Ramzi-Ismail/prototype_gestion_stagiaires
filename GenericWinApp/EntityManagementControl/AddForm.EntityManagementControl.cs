@@ -17,17 +17,15 @@ namespace App.WinForm
         {
 
             // Insertion de la page TabAjouter s'il n'existe pas
-            if (tabControl_MainManager.TabPages.IndexOfKey("TabAjouter") == -1)
+            if (tabPageAdd.Text == "")
             {
                 // 
-                // Création de TabPage - Ajouter 
+                // Création de TabAjouter 
                 //
-                TabPage tabAjouter = new TabPage();
-                tabAjouter.Text = this.Service.getAffichageDansFormGestionAttribute().TitreButtonAjouter;
-                tabAjouter.Name = "TabAjouter";
-                tabControl_MainManager.TabPages.Add(tabAjouter);
-                tabControl_MainManager.CausesValidation = false;
 
+                tabPageAdd.Text = this.Service.getAffichageDansFormGestionAttribute().TitreButtonAjouter;
+                tabControl_MainManager.CausesValidation = false;
+                tabControl_MainManager.SelectedTab = tabPageAdd;
                 //
                 // Insertion du formulaire 
                 //
@@ -36,10 +34,7 @@ namespace App.WinForm
                 form.Name = "Form";
                 form.Dock = DockStyle.Fill;
                 form.WriteEntityToField(this.FilterControl.CritereRechercheFiltre());
-
-
-                this.tabControl_MainManager.TabPages["TabAjouter"].Controls.Add(form);
-                tabControl_MainManager.SelectedTab = tabAjouter;
+                tabPageAdd.Controls.Add(form);
                 form.EnregistrerClick += Form_EnregistrerClick;
                 form.AnnulerClick += Form_AnnulerAjouterClick;
             }
@@ -49,10 +44,10 @@ namespace App.WinForm
         /// </summary>
         private void Form_EnregistrerClick(object sender, EventArgs e)
         {
-            TabPage tabAjouter = this.tabControl_MainManager.TabPages["TabAjouter"];
-            BaseEntryForm form = (BaseEntryForm)tabAjouter.Controls
+            
+            BaseEntryForm form = (BaseEntryForm)tabPageAdd.Controls
                 .Find("Form", false).First();
-            this.tabControl_MainManager.TabPages.Remove(tabAjouter);
+            this.EndAdd();
             this.Actualiser();
         }
         /// <summary>
@@ -60,8 +55,16 @@ namespace App.WinForm
         /// </summary>
         private void Form_AnnulerAjouterClick(object sender, EventArgs e)
         {
-            TabPage tabAjouter = this.tabControl_MainManager.TabPages["TabAjouter"];
-            tabControl_MainManager.TabPages.Remove(tabAjouter);
+
+            this.EndAdd();
+        }
+
+        private void EndAdd()
+        {
+            tabPageAdd.Text = "";
+            tabPageAdd.Controls.Clear();
+            tabControl_MainManager.SelectedTab = TabGrid;
+
         }
 
 

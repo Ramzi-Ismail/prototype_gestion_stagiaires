@@ -25,7 +25,7 @@ namespace App.WinForm
         {
 
 
-
+            if (visible == true) throw new NotImplementedException("Cette méthode n'est pas implémenter pour la valeur True");
 
             this.Controls.Add(panelDataGrid);
 

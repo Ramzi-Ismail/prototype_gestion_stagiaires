@@ -13,30 +13,44 @@ namespace App.WinForm.Fileds
 {
     public partial class ManyToOneField : App.WinFrom.Fileds.BaseField
     {
-       
+
 
 
         #region Propriété
         /// <summary>
         /// Obient la valeur de ComBox du champs ManyToOne
         /// </summary>
+        /// 
+        private Int64 value_id;
         public override Object Value
         {
             get
             {
                 return comboBoxManyToOne.SelectedValue;
             }
-            /// l'affectation d'une nouvelle valeur lance l'événement ValueChanged
+            
             set
             {
-                comboBoxManyToOne.SelectedValue = value;
-               
 
+                this.setAllValuesBySelectedValue((Int64)value);
+                
+
+                //comboBoxManyToOne.SelectedValue = value; 
+
+                //// Affectation de la valeur une seul fois pour eviter l'appelle StackOverFlow
+                //if (comboBoxManyToOne.SelectedValue == null
+                //    || (Int64)comboBoxManyToOne.SelectedValue == 0
+                //    || value_id != (Int64)value)
+                //{
+                //    value_id = (Int64)value;
+                //    comboBoxManyToOne.SelectedValue = value_id;
+                //    this.setAllValuesBySelectedValue((Int64)value);
+                //}
             }
         }
 
         /// <summary>
-        /// Intiliaser les valeur des autre critère 
+        /// Intiliaser les valeur des autres critère 
         /// </summary>
         /// <param name="value"></param>
         public void setAllValuesBySelectedValue(Int64 value)
@@ -76,6 +90,12 @@ namespace App.WinForm.Fileds
         {
             get { return this.comboBoxManyToOne.SelectedIndex; }
             set { this.comboBoxManyToOne.SelectedIndex = value; }
+        }
+
+        public Object SelectedValue
+        {
+            get { return this.comboBoxManyToOne.SelectedValue; }
+            set { this.comboBoxManyToOne.SelectedValue = value; }
         }
 
         public object SelectedItem

@@ -113,7 +113,6 @@ namespace App.WinForm
                     this.InitialisationEntityParCritereRechercheFiltre();
 
                 // Conteneurs du formulaire
-               
                 this.ConteneurFormulaire = this.flowLayoutPanelForm;
 
                 // Génération du Formulaire
