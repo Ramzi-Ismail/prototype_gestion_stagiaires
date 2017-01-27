@@ -9,7 +9,9 @@ namespace App.Livres
 {
     [AffichageDansFormGestion(Titre = "Gestion des Livre", TitrePageGridView = "Livres",
        TitreButtonAjouter = "Ajouter un livre")]
-    public  class Livre : BaseEntity
+    [AffichageClasse(Minuscule = "Livre", Majuscule = "Livres", DisplayMember = "Titre")]
+
+    public class Livre : BaseEntity
     {
         public override string ToString() => this.Titre;
          

@@ -12,6 +12,7 @@ namespace App
 
         public override string ToString() =>  this.Nom + " " + this.Prenom;
 
+
         // Etat Civil
         [AffichagePropriete(Titre = "Nom", isGridView = true, isFormulaire = true, Ordre = 1, 
             Filtre = true,

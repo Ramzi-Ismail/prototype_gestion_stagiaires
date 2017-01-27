@@ -16,7 +16,7 @@ namespace App.GestionStagiaires.Tests
     public class StagiaireEntryFormTests
     {
         [TestMethod()]
-        public void StagiaireEntryFormTest()
+        public void bt_Ajouter_Click_Test()
         {
             Form form = new Form();
             form.IsMdiContainer = true;
@@ -25,9 +25,9 @@ namespace App.GestionStagiaires.Tests
             using (ModelContext db = new ModelContext())
             {
                AfficherFormHelper AfficherFormulaire = new AfficherFormHelper(form);
-               ObsoleteEntityManagementForm emform = AfficherFormulaire
+               EntityManagementForm emform = AfficherFormulaire
                     .AfficherUneGestion<Stagiaire>(new StagiaireEntryForm(new BaseRepository<Stagiaire>()));
-               emform.bt_Ajouter_Click(new Button(), null);
+                emform.EntityManagementControl.bt_Ajouter_Click(new Button(), null);
             }
         }
 

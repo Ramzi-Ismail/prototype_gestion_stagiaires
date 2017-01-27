@@ -16,6 +16,13 @@ namespace App.WinForm.Tests
     public class EntityManagementFormTests
     {
 
+
+        //[ClassInitialize()]
+        //public void m1() { }
+
+        //[ClassCleanup()]
+        //public void m2() { }
+
         /// <summary>
         /// Test : Affichage des formilaires par son type
         /// Test : bt_Ajouter_Clic de chaque formulaire
@@ -32,8 +39,8 @@ namespace App.WinForm.Tests
                 foreach (var item in db.GetTypesSets())
                 {
                     AfficherFormHelper AfficherFormulaire = new AfficherFormHelper(form);
-                    ObsoleteEntityManagementForm emform = AfficherFormulaire.AfficherUneGestion(item);
-                    emform.bt_Ajouter_Click(new Button(), null);
+                    EntityManagementForm emform = AfficherFormulaire.AfficherUneGestion(item);
+                    emform.EntityManagementControl.bt_Ajouter_Click(new Button(), null);
                 }
             }
         }
@@ -51,8 +58,8 @@ namespace App.WinForm.Tests
                 foreach (var item in db.GetTypesSets())
                 {
                     AfficherFormHelper AfficherFormulaire = new AfficherFormHelper(form);
-                    ObsoleteEntityManagementForm emform = AfficherFormulaire.AfficherUneGestion(item);
-                    emform.bt_Ajouter_Click(new Button(), null);
+                    EntityManagementForm emform = AfficherFormulaire.AfficherUneGestion(item);
+                    emform.EntityManagementControl.bt_Ajouter_Click(new Button(), null);
                 }
             }
         }

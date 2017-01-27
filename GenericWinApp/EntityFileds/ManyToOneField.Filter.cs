@@ -35,9 +35,8 @@ namespace App.WinForm.Fileds
 
                 // DisplayMember de combobox actuel
                 // Annotation : Affichage de l'objet
-                AffichageClasseAttribute MetaAffichageClasse = (AffichageClasseAttribute)this.PropertyInfo.PropertyType
-                    .GetCustomAttribute(typeof(AffichageClasseAttribute));
-
+                
+                AffichageClasseAttribute MetaAffichageClasse = BaseEntity.GetAffichageClasseAttribute(PropertyInfo.PropertyType);
 
                 this.DisplayMember = MetaAffichageClasse.DisplayMember;
                 this.Text_Label = MetaAffichageClasse.Minuscule;

@@ -14,8 +14,6 @@ namespace App.WinForm.Fileds
     public partial class ManyToOneField : App.WinFrom.Fileds.BaseField
     {
 
-
-
         #region Propriété
         /// <summary>
         /// Obient la valeur de ComBox du champs ManyToOne
@@ -143,7 +141,6 @@ namespace App.WinForm.Fileds
 
         #endregion
 
-
         #region evénements
         private void comboBoxManyToOne_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -198,7 +195,5 @@ namespace App.WinForm.Fileds
 
         #endregion
 
-     
-     
     }
 }

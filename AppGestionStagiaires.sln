@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "0.GenericWinAppCor", "Gener
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "9.AutoFormation", "AutoFormation\9.AutoFormation.csproj", "{7AEB698A-CDCD-4007-B916-7913C68AE740}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7.WinAppTests", "2.WinFormTests\7.WinAppTests.csproj", "{C3CCE8BF-800C-4514-B7FB-35AF32CDB9FF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7.GenericWinAppTests", "2.WinFormTests\7.GenericWinAppTests.csproj", "{C3CCE8BF-800C-4514-B7FB-35AF32CDB9FF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6.CplusWinFormTests", "6.PresentationWinFormTests\6.CplusWinFormTests.csproj", "{589EB1F4-5778-4867-A87D-20166177C952}"
 EndProject

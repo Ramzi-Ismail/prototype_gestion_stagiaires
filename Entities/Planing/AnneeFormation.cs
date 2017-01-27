@@ -11,6 +11,7 @@ namespace App.Formations
     [AffichageDansFormGestion(Titre = "Gestion des Années de formation",
    TitrePageGridView = "Années de formation",
    TitreButtonAjouter = "Ajouter une année de formation")]
+    [AffichageClasse(Minuscule = "Année de formation", Majuscule = "Années de formation", DisplayMember = "Titre")]
     public class AnneeFormation : BaseEntity
    {
 

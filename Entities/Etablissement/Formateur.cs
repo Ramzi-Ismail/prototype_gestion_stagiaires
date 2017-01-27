@@ -11,6 +11,7 @@ namespace App.Formations
     [AffichageDansFormGestion(Titre = "Gestion des Formateurs",
 TitrePageGridView = "Formateurs",
 TitreButtonAjouter = "Ajouter un formateur")]
+    [AffichageClasse(Minuscule = "Formateur", Majuscule = "Formateur",DisplayMember ="Nom")]
     public class Formateur: Utilisateur
     {
         public override string ToString() => base.ToString();

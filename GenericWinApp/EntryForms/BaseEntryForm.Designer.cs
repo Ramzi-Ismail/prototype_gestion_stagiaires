@@ -115,11 +115,13 @@
             this.flowLayoutPanelForm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanelForm.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanelForm.AutoScroll = true;
+            this.flowLayoutPanelForm.AutoScrollMargin = new System.Drawing.Size(10, 10);
+            this.flowLayoutPanelForm.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flowLayoutPanelForm.Location = new System.Drawing.Point(311, 29);
             this.flowLayoutPanelForm.Name = "flowLayoutPanelForm";
             this.flowLayoutPanelForm.Padding = new System.Windows.Forms.Padding(10);
-            this.flowLayoutPanelForm.Size = new System.Drawing.Size(308, 187);
+            this.flowLayoutPanelForm.Size = new System.Drawing.Size(295, 175);
             this.flowLayoutPanelForm.TabIndex = 1;
             // 
             // tabControlForm

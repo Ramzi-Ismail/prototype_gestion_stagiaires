@@ -10,10 +10,16 @@ using System.Windows.Forms;
 
 namespace App.WinForm
 {
+    /// <summary>
+    /// Interface de mise à jour d'une entity
+    /// </summary>
     public partial class EntityManagementForm : Form
     {
 
 
+        #region Contrôles
+        public EntityManagementControl EntityManagementControl;
+        #endregion
 
         #region Constructeur
         /// <summary>
@@ -32,7 +38,7 @@ namespace App.WinForm
             Form FormApplicationMdi)
         {
             InitializeComponent();
-            EntityManagementControl EntityManagementControl = new EntityManagementControl(Service,
+            EntityManagementControl = new EntityManagementControl(Service,
                 formulaire,
                 null,null,
                 ValeursFiltre, FormApplicationMdi);

@@ -20,7 +20,7 @@ namespace App.Modules
         //
         [AffichagePropriete(Titre = "Nom du module",GroupeBox = "Informations générale",
             isGridView = true, 
-            isFormulaire = true,WidthControl = 300,
+            isFormulaire = true,WidthControl = 100,
             isOblegatoir = true,
             Ordre = 1,
             WidthColonne = 200)]
@@ -28,7 +28,7 @@ namespace App.Modules
 
 
         [AffichagePropriete(Titre = "Compétence à développé", GroupeBox = "Informations générale",
-           isFormulaire = true,WidthControl =300,MultiLine =true,NombreLigne =5, isOblegatoir = true, Ordre = 2,
+           isFormulaire = true,WidthControl = 100, MultiLine =true,NombreLigne =5, isOblegatoir = true, Ordre = 2,
            WidthColonne = 200)]
         public string Competence { set; get; }
 
@@ -42,7 +42,7 @@ namespace App.Modules
 
 
         [AffichagePropriete(Titre = "Présentation", GroupeBox = "Informations générale",
-          isFormulaire = true, Ordre = 5, MultiLine = true, NombreLigne = 5, WidthControl = 300
+          isFormulaire = true, Ordre = 5, MultiLine = true, NombreLigne = 5, WidthControl = 100
             )]
         public string Presentation { set; get; }
 

@@ -93,8 +93,9 @@ namespace App.WinForm
         public BaseEntryForm(IBaseRepository service, BaseEntity entity, Dictionary<string, object> critereRechercheFiltre, bool AutoGenerateField = true)
         {
             InitializeComponent();
-            if (!DesignMode)
+            if (!DesignMode )
             {
+               
                 // Params
                 this.Service = service;
                 this.Entity = entity;

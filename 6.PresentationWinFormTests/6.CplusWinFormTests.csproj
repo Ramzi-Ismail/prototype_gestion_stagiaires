@@ -58,7 +58,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="GestionStagiaires\Stagiaires\StagiaireEntryFormTests.cs" />
+    <Compile Include="EntityManagement\EntityManagementFormTests.cs" />
+    <Compile Include="Stagiaires\StagiaireEntryFormTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -87,6 +88,7 @@
       <Name>0.GenericWinAppCor</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

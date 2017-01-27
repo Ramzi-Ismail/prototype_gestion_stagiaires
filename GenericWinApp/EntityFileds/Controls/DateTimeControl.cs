@@ -38,7 +38,7 @@ namespace App.WinFrom.Fileds.Controls
             }
             set
             {
-                this.dateTimePicker.Value = Value;
+                this.dateTimePicker.Value = value;
             }
         }
         #endregion

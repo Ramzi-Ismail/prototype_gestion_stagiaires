@@ -32,17 +32,17 @@ namespace App.WinFrom.Menu
         }
 
         #region Afficher par Type d'entity
-        public ObsoleteEntityManagementForm AfficherUneGestion(Type TypeEntity) 
+        public EntityManagementForm AfficherUneGestion(Type TypeEntity) 
         {
             IBaseRepository baseRepository = new BaseRepository<BaseEntity>()
                 .CreateInstance_Of_Service_From_TypeEntity(TypeEntity);
 
-            ObsoleteEntityManagementForm form = new ObsoleteEntityManagementForm(baseRepository, null, null, this.FormApplicationMdi);
+            EntityManagementForm form = new EntityManagementForm(baseRepository, null, null, this.FormApplicationMdi);
             this.Afficher(form);
             return form;
         }
 
-        public ObsoleteEntityManagementForm AfficherUneGestion<T>() where T : BaseEntity
+        public EntityManagementForm AfficherUneGestion<T>() where T : BaseEntity
         {
            return AfficherUneGestion(typeof(T));
         }
@@ -52,7 +52,7 @@ namespace App.WinFrom.Menu
 
         public void AfficherUneGestion<T>(IBaseRepository Service) where T : BaseEntity
         {
-            ObsoleteEntityManagementForm form = new ObsoleteEntityManagementForm(Service, null, null, this.FormApplicationMdi);
+            EntityManagementForm form = new EntityManagementForm(Service, null, null, this.FormApplicationMdi);
             this.Afficher(form);
         }
 
@@ -61,18 +61,16 @@ namespace App.WinFrom.Menu
         /// </summary>
         /// <typeparam name="T">L'objet à gérer</typeparam>
         /// <param name="formulaire">Le Formulaire spécifique</param>
-        public ObsoleteEntityManagementForm AfficherUneGestion<T>(BaseEntryForm formulaire) where T : BaseEntity
+        public EntityManagementForm AfficherUneGestion<T>(BaseEntryForm formulaire) where T : BaseEntity
         {
-           
-
-            ObsoleteEntityManagementForm form = new ObsoleteEntityManagementForm(formulaire.Service, formulaire, null, this.FormApplicationMdi);
+            EntityManagementForm form = new EntityManagementForm(formulaire.Service, formulaire, null, this.FormApplicationMdi);
             this.Afficher(form);
             return form;
         }
 
         public void AfficherUneGestion<T>(IBaseRepository Service,BaseEntryForm formulaire) where T : BaseEntity
         {
-            ObsoleteEntityManagementForm form = new ObsoleteEntityManagementForm(Service, formulaire, null, this.FormApplicationMdi);
+            EntityManagementForm form = new EntityManagementForm(Service, formulaire, null, this.FormApplicationMdi);
             this.Afficher(form);
         }
 

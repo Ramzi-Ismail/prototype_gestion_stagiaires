@@ -59,7 +59,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="EntityManagement\EntityManagementFormTests.cs" />
+    <Compile Include="EntityFileds\ManyToOneFieldTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -87,6 +87,9 @@
       <Project>{7b89bd41-7117-4c2d-845f-45eeb252cc35}</Project>
       <Name>0.GenericWinAppCor</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="EntityManagement\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

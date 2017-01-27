@@ -23,19 +23,25 @@ namespace App.WinForm
     {
 
         #region Constructeurs
-        public EntryForm(IBaseRepository service, BaseEntity entity, Dictionary<string, object> critereRechercheFiltre) 
+        public EntryForm(IBaseRepository service, BaseEntity entity, 
+            Dictionary<string, object> critereRechercheFiltre) 
             : base(service, entity, critereRechercheFiltre)
         {
-            InitializeComponent();
+             
+                 
+                InitializeComponent();
+             
+           
         }
         /// <summary>
         /// Constructeur principale
         /// </summary>
         /// <param name="service">Instance de ServerManager qui gérer l'entity en cours gestion</param>
         /// 
-        public EntryForm(IBaseRepository service) : base(service)
+        public EntryForm(IBaseRepository service) : this(service,null,null)
         {
-            InitializeComponent();
+
+            
  
         }
        

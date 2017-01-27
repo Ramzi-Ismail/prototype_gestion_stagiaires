@@ -28,7 +28,7 @@ namespace App.WinForm
             int x_field = 0;
             int width_label = 100;
             int height_label = 10;
-            int width_control = 250;
+            int width_control = 130;
             int height_control = 25;
             int width_groueBox = 100;
             int height_groueBox = 200; // il ne sera pas utilisé 

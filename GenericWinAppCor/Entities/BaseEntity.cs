@@ -2,6 +2,8 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
 
 namespace App
 {
@@ -47,6 +49,18 @@ namespace App
            
         }
 
+        /// <summary>
+        /// Trouver l'annotation AffichageClasseAttribute
+        /// </summary>
+        /// <param name="propertyType"></param>
+        /// <returns></returns>
+        public static AffichageClasseAttribute GetAffichageClasseAttribute(Type propertyType)
+        {
+            Attribute attribute = propertyType.GetCustomAttribute(typeof(AffichageClasseAttribute));
+            if (attribute == null) throw new AffichageClasseAttributeNotExitException();
+            return (AffichageClasseAttribute)attribute;
+        }
+
 
         /// <summary>
         /// Généric ToString
@@ -80,5 +94,23 @@ namespace App
         //}
     }
 
-   
+    [Serializable]
+    internal class AffichageClasseAttributeNotExitException : Exception
+    {
+        public AffichageClasseAttributeNotExitException()
+        {
+        }
+
+        public AffichageClasseAttributeNotExitException(string message) : base(message)
+        {
+        }
+
+        public AffichageClasseAttributeNotExitException(string message, Exception innerException) : base(message, innerException)
+        {
+        }
+
+        protected AffichageClasseAttributeNotExitException(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
+        }
+    }
 }
