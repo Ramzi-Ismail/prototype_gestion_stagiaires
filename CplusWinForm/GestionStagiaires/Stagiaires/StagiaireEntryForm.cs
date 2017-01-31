@@ -74,43 +74,43 @@ namespace App.GestionStagiaires
         }
 
        
-        protected override void ReadFormToEntity()
-        {
+        //protected override void ReadFormToEntity()
+        //{
          
-                Stagiaire Stagiaire = (Stagiaire)this.Entity;
-                bool validation = true;
+        //        Stagiaire Stagiaire = (Stagiaire)this.Entity;
+        //        bool validation = true;
 
-            // Création d'un stagiaire avec proxy en cas d'un nouvelle enregistrement
-            if (Stagiaire == null) Stagiaire = this.context.Stagiaires.Create();
+        //    // Création d'un stagiaire avec proxy en cas d'un nouvelle enregistrement
+        //    if (Stagiaire == null) Stagiaire = this.context.Stagiaires.Create();
 
-                // etat Civil
-                Stagiaire.Nom = nomTextBox.Text;
-                Stagiaire.Prenom = prenomTextBox.Text;
-                Stagiaire.Cin = cinTextBox.Text;
-                Stagiaire.Sexe = radioButtonHomme.Checked;
-                Stagiaire.DateNaissance = dateNaissanceDateTimePicker.Value;
+        //        // etat Civil
+        //        Stagiaire.Nom = nomTextBox.Text;
+        //        Stagiaire.Prenom = prenomTextBox.Text;
+        //        Stagiaire.Cin = cinTextBox.Text;
+        //        Stagiaire.Sexe = radioButtonHomme.Checked;
+        //        Stagiaire.DateNaissance = dateNaissanceDateTimePicker.Value;
 
 
 
-                //Coordonnées
-                Stagiaire.Telephone = telephoneTextBox.Text;
-                Stagiaire.Adress = adressTextBox.Text;
-                Stagiaire.Email = emailTextBox.Text;
+        //        //Coordonnées
+        //        Stagiaire.Telephone = telephoneTextBox.Text;
+        //        Stagiaire.Adress = adressTextBox.Text;
+        //        Stagiaire.Email = emailTextBox.Text;
 
-                //Affectation
-                if (groupeComboBox.SelectedItem != null) {
-                Groupe g    = new GroupesService(this.Service.Context()).GetByID(Convert.ToInt32(groupeComboBox.SelectedValue));
-                Stagiaire.Groupe = g;
-                 }
+        //        //Affectation
+        //        if (groupeComboBox.SelectedItem != null) {
+        //        Groupe g    = new GroupesService(this.Service.Context()).GetByID(Convert.ToInt32(groupeComboBox.SelectedValue));
+        //        Stagiaire.Groupe = g;
+        //         }
 
-            if (filiereComboBox.SelectedItem != null)
-                    Stagiaire.Filiere = new FilieresService(this.Service.Context()).GetByID(Convert.ToInt32(filiereComboBox.SelectedValue));
+        //    if (filiereComboBox.SelectedItem != null)
+        //            Stagiaire.Filiere = new FilieresService(this.Service.Context()).GetByID(Convert.ToInt32(filiereComboBox.SelectedValue));
 
-                //Identification
-                Stagiaire.Login = txt_login.Text;
-                Stagiaire.Password = txt_password.Text;
-                if (txt_password.Text != txt_password2.Text) validation = false;
-        }
+        //        //Identification
+        //        Stagiaire.Login = txt_login.Text;
+        //        Stagiaire.Password = txt_password.Text;
+        //        if (txt_password.Text != txt_password2.Text) validation = false;
+        //}
 
         private void bt_annuler_Click(object sender, EventArgs e)
         {

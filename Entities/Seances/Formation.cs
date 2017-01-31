@@ -8,6 +8,7 @@ namespace App.Formations
     [AffichageDansFormGestion(Titre = "Gestion des formations", TitrePageGridView = "Formations",
      TitreButtonAjouter = "Ajouter une formation")]
     [AffichageClasse(Minuscule = "Formation", Majuscule = "Formations")]
+    [SelectionCriteria(new Type[] { typeof(Filiere), typeof(Module) })]
     public class Formation : BaseEntity
    {
 

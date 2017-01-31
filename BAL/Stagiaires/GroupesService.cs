@@ -9,7 +9,7 @@ namespace App.GestionStagiaires
 {
     public class GroupesService : BaseRepository<Groupe>
     {
-        public GroupesService(ModelContext context) : base(context)
+        public GroupesService(DbContext context) : base(context)
         {
         }
         public GroupesService() : base()

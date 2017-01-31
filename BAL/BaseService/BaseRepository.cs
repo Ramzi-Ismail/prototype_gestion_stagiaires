@@ -52,9 +52,9 @@ namespace App
         #endregion
 
         #region construcreur
-        public BaseRepository(ModelContext context)
+        public BaseRepository(DbContext context)
         {
-            this.Context = context;
+            this.Context = (ModelContext) context;
             if (this.Context == null) this.Context = new ModelContext();
 
             this.DbSet = this.Context.Set<T>();
@@ -67,7 +67,7 @@ namespace App
 
         public ModelContext Context { get; set; }
 
-        ModelContext IBaseRepository.Context()
+        DbContext IBaseRepository.Context()
         {
             return this.Context;
         }
@@ -367,12 +367,29 @@ namespace App
             return this.Context.Set<T>().Create();
         }
 
-
+        /// <summary>
+        /// Creating an instance of the Service object from the entity type
+        /// </summary>
+        /// <param name="TypeEntity">the entity type</param>
+        /// <returns></returns>
         public IBaseRepository CreateInstance_Of_Service_From_TypeEntity(Type TypeEntity)
         {
 
             Type TypeEntityService = typeof(BaseRepository<>).MakeGenericType(TypeEntity);
             IBaseRepository EntityService = (IBaseRepository)Activator.CreateInstance(TypeEntityService);
+            return EntityService;
+        }
+        /// <summary>
+        /// Creating an instance of the Service object from the entity type and Context
+        /// </summary>
+        /// <param name="TypeEntity">the entity type</param>
+        /// <param name="context">the context</param>
+        /// <returns></returns>
+        public IBaseRepository CreateInstance_Of_Service_From_TypeEntity(Type TypeEntity,DbContext context)
+        {
+
+            Type TypeEntityService = typeof(BaseRepository<>).MakeGenericType(TypeEntity);
+            IBaseRepository EntityService = (IBaseRepository)Activator.CreateInstance(TypeEntityService, context);
             return EntityService;
         }
         #endregion

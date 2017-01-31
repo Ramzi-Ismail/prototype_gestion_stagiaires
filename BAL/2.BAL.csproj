@@ -49,7 +49,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseService\BaseRepository.cs" />
-    <Compile Include="BaseService\IBaseRepository.cs" />
     <Compile Include="BaseService\IService.cs" />
     <Compile Include="Formations\FeriesService.cs" />
     <Compile Include="Formations\FormateursService.cs" />
@@ -71,9 +70,9 @@
       <Project>{3940f5ca-c8c0-4a72-8a1c-0ad50e5d18ca}</Project>
       <Name>3.DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GenericWinAppCor\0.GenericWinAppCor.csproj">
+    <ProjectReference Include="..\GenericWinAppCor\0.GenericWinForm.csproj">
       <Project>{7b89bd41-7117-4c2d-845f-45eeb252cc35}</Project>
-      <Name>0.GenericWinAppCor</Name>
+      <Name>0.GenericWinForm</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

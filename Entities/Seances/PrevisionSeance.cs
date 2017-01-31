@@ -15,6 +15,7 @@ namespace App.Formations
     [AffichageDansFormGestion(Titre = "Gestion des prévisions des séances", TitrePageGridView = "Prévisions d'une séance",
       TitreButtonAjouter = "Ajouter une prévision d'une séance")]
     [AffichageClasse(Minuscule = "Prévision d'une séance", Majuscule = "Prévisions des séances")]
+    [SelectionCriteria(new Type[] { typeof(Filiere) ,typeof(Module)})]
     public class PrevisionSeance : BaseEntity
     {
         public override string ToString() => this.Titre;

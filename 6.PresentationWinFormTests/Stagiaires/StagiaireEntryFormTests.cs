@@ -24,7 +24,7 @@ namespace App.GestionStagiaires.Tests
             // Tester tous les bouttons ajouter 
             using (ModelContext db = new ModelContext())
             {
-               AfficherFormHelper AfficherFormulaire = new AfficherFormHelper(form);
+               ShowEntityManagementForm AfficherFormulaire = new ShowEntityManagementForm(form);
                EntityManagementForm emform = AfficherFormulaire
                     .AfficherUneGestion<Stagiaire>(new StagiaireEntryForm(new BaseRepository<Stagiaire>()));
                 emform.EntityManagementControl.bt_Ajouter_Click(new Button(), null);

@@ -25,10 +25,10 @@ namespace App.GestionStagiaires.Groupes
 
         //}
 
-        public override BaseEntity CreateObjetInstance()
-        {
-            return this.Service.Context().Groupes.Create();
-        }
+        //public override BaseEntity CreateObjetInstance()
+        //{
+        //    return this.Service.Context().Groupes.Create();
+        //}
 
         private void UserControlGroupeForm_Load(object sender, EventArgs e)
         {

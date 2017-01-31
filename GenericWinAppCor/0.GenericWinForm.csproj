@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7B89BD41-7117-4C2D-845F-45EEB252CC35}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>App.WinForm</RootNamespace>
+    <AssemblyName>GenericWinForm</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LinqKit">
+      <HintPath>..\packages\LinqKit.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BAL\IBaseRepository.cs" />
+    <Compile Include="Controls\DateTimeControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DateTimeControl.Designer.cs">
+      <DependentUpon>DateTimeControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Annotation\Affichage.cs" />
+    <Compile Include="Entities\Annotation\AffichageClasseAttribute.cs" />
+    <Compile Include="Entities\Annotation\AffichageGestionAttribute.cs" />
+    <Compile Include="Entities\Annotation\ApplicationMenuAttribute.cs" />
+    <Compile Include="Entities\Annotation\SelectionCriteriaAttribute.cs" />
+    <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\Coordonnees\Coordonnee.cs" />
+    <Compile Include="Entities\Coordonnees\Pays.cs" />
+    <Compile Include="Entities\Coordonnees\Ville.cs" />
+    <Compile Include="Entities\IBaseEntity.cs" />
+    <Compile Include="Exceptions\PropertyNotExistInEntityException.cs" />
+    <Compile Include="Fields\BaseField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fields\BaseField.Designer.cs">
+      <DependentUpon>BaseField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fields\DateTimeField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fields\DateTimeField.Designer.cs">
+      <DependentUpon>DateTimeField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fields\IBaseField.cs" />
+    <Compile Include="Fields\IInputCollectionControle.cs" />
+    <Compile Include="Fields\InputCollectionControle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fields\InputCollectionControle.Designer.cs">
+      <DependentUpon>InputCollectionControle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fields\Int32Filed.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fields\Int32Filed.Designer.cs">
+      <DependentUpon>Int32Filed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fields\ManyToOneField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fields\ManyToOneField.Designer.cs">
+      <DependentUpon>ManyToOneField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fields\ManyToOneField.Filter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fields\StringFiled.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fields\StringFiled.Designer.cs">
+      <DependentUpon>StringFiled.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\DataGridControl\EntityDataGridControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Manager\DataGridControl\EntityDataGridControl.Designer.cs">
+      <DependentUpon>EntityDataGridControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\DataGridControl\IEntityDataGrideControl.cs" />
+    <Compile Include="Manager\EntityManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager\EntityManagementForm.Designer.cs">
+      <DependentUpon>EntityManagementForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\EntryForms\BaseEntryForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Manager\EntryForms\BaseEntryForm.Designer.cs">
+      <DependentUpon>BaseEntryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\EntryForms\EntryForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Manager\EntryForms\EntryForm.Designer.cs">
+      <DependentUpon>EntryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\EntryForms\Exceptions\FieldNotExistInFormException.cs" />
+    <Compile Include="Manager\EntryForms\Generate.BaseEntryForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Manager\EntryForms\IBaseEntryForm.cs" />
+    <Compile Include="Manager\EntryForms\Read.BaseEntryForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Manager\EntryForms\Save.BaseEntyForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Manager\EntryForms\Write.BaseEntryForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Manager\Filter\BaseFilterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Manager\Filter\BaseFilterControl.Designer.cs">
+      <DependentUpon>BaseFilterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\Filter\IBaseFilterControl.cs" />
+    <Compile Include="Entities\Individu.cs" />
+    <Compile Include="Entities\Utilisateur.cs" />
+    <Compile Include="Exceptions\PropertyDoesNotExistException.cs" />
+    <Compile Include="Extensions\Linq\LinqExtension.cs" />
+    <Compile Include="Manager\ManagementControl\AddForm.EntityManagementControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Manager\ManagementControl\DataGrid.EntityManagementControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Manager\ManagementControl\EntityManagementControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Manager\ManagementControl\EntityManagementControl.Designer.cs">
+      <DependentUpon>EntityManagementControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\ManagementControl\Filter.EntityManagementControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Manager\ManagementControl\Init_Load.EntityManagementControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Manager\ManagementControl\TabControl.EntityManagementControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Manager\ManagementControl\UpdateForm.EntityManagementControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Manager\ManagementControl\Vide.EntityManagementControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Manager\ShowEntityManagementForm.cs" />
+    <Compile Include="Manager\TabControl\AddEntity.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Manager\TabControl\BaseEntityTabControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Manager\TabControl\BaseEntityTabControl.Designer.cs">
+      <DependentUpon>BaseEntityTabControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\TabControl\Edit.EntityTabControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Manager\TabControl\EntityTabControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Manager\TabControl\EntityTabControl.Designer.cs">
+      <DependentUpon>EntityTabControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Messages\MessageToUser.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Generator\RuntimeTextTemplate1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RuntimeTextTemplate1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Fields\Validation\MessageValidation.cs" />
+    <Compile Include="Fields\Validation\ValidationManager.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Security\Session.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Generator\RuntimeTextTemplate1.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>RuntimeTextTemplate1.cs</LastGenOutput>
+    </Content>
+    <None Include="Resources\save1.png" />
+    <None Include="Resources\Logo C+1.png" />
+    <None Include="Resources\fermer_vert1.png" />
+    <None Include="Resources\fermer_noir1.png" />
+    <None Include="Resources\fermer_bleu1.png" />
+    <None Include="Resources\edit_bleu1.png" />
+    <None Include="Resources\edit1.png" />
+    <None Include="Resources\delete1.png" />
+    <None Include="Resources\save.png" />
+    <None Include="Resources\Logo C+.png" />
+    <None Include="Resources\fermer_vert.png" />
+    <None Include="Resources\fermer_noir.png" />
+    <None Include="Resources\fermer_bleu.png" />
+    <None Include="Resources\edit_bleu.png" />
+    <None Include="Resources\edit.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\delete.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\DateTimeControl.resx">
+      <DependentUpon>DateTimeControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fields\BaseField.resx">
+      <DependentUpon>BaseField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fields\DateTimeField.resx">
+      <DependentUpon>DateTimeField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fields\InputCollectionControle.resx">
+      <DependentUpon>InputCollectionControle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fields\Int32Filed.resx">
+      <DependentUpon>Int32Filed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fields\ManyToOneField.resx">
+      <DependentUpon>ManyToOneField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fields\StringFiled.resx">
+      <DependentUpon>StringFiled.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager\DataGridControl\EntityDataGridControl.resx">
+      <DependentUpon>EntityDataGridControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager\EntityManagementForm.resx">
+      <DependentUpon>EntityManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager\EntryForms\BaseEntryForm.resx">
+      <DependentUpon>BaseEntryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager\EntryForms\EntryForm.resx">
+      <DependentUpon>EntryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager\Filter\BaseFilterControl.resx">
+      <DependentUpon>BaseFilterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager\ManagementControl\EntityManagementControl.resx">
+      <DependentUpon>EntityManagementControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager\TabControl\BaseEntityTabControl.resx">
+      <DependentUpon>BaseEntityTabControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager\TabControl\EntityTabControl.resx">
+      <DependentUpon>EntityTabControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

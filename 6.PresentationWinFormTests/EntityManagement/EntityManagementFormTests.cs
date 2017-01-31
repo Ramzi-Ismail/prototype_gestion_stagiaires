@@ -38,7 +38,7 @@ namespace App.WinForm.Tests
             {
                 foreach (var item in db.GetTypesSets())
                 {
-                    AfficherFormHelper AfficherFormulaire = new AfficherFormHelper(form);
+                    ShowEntityManagementForm AfficherFormulaire = new ShowEntityManagementForm(form);
                     EntityManagementForm emform = AfficherFormulaire.AfficherUneGestion(item);
                     emform.EntityManagementControl.bt_Ajouter_Click(new Button(), null);
                 }
@@ -57,7 +57,7 @@ namespace App.WinForm.Tests
             {
                 foreach (var item in db.GetTypesSets())
                 {
-                    AfficherFormHelper AfficherFormulaire = new AfficherFormHelper(form);
+                    ShowEntityManagementForm AfficherFormulaire = new ShowEntityManagementForm(form);
                     EntityManagementForm emform = AfficherFormulaire.AfficherUneGestion(item);
                     emform.EntityManagementControl.bt_Ajouter_Click(new Button(), null);
                 }

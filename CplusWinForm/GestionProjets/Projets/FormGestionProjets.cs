@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace App.GestionProjets
          
 {
-    public partial class FormGestionProjet : App.WinForm.ObsoleteEntityManagementForm
+    public partial class FormGestionProjet : App.WinForm.EntityManagementForm
     {
         public FormGestionProjet() :base()
         {

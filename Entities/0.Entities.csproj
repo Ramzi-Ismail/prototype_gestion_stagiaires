@@ -51,6 +51,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Absence.cs" />
+    <Compile Include="GuideFormation\EtablissementFormation.cs" />
+    <Compile Include="GuideFormation\Formation.cs" />
     <Compile Include="Planing\Ferier.cs" />
     <Compile Include="Seances\Activite.cs" />
     <Compile Include="Planing\AnneeFormation.cs" />
@@ -87,9 +89,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GenericWinAppCor\0.GenericWinAppCor.csproj">
+    <ProjectReference Include="..\GenericWinAppCor\0.GenericWinForm.csproj">
       <Project>{7b89bd41-7117-4c2d-845f-45eeb252cc35}</Project>
-      <Name>0.GenericWinAppCor</Name>
+      <Name>0.GenericWinForm</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -26,10 +26,10 @@ namespace App
         public FormMenu()
         {
             InitializeComponent();
-            AfficherFormulaire = new AfficherFormHelper(this);
+            AfficherFormulaire = new ShowEntityManagementForm(this);
         }
 
-        AfficherFormHelper AfficherFormulaire { set; get; }
+        ShowEntityManagementForm AfficherFormulaire { set; get; }
         private void binfingNavigatorToolStripMenuItem_Click(object sender, EventArgs e)
         {
         }

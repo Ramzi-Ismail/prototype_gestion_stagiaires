@@ -3,6 +3,7 @@
     using Formations;
     using GestionProjets;
     using GestionStagiaires;
+ 
     using Livres;
     using Modules;
     using System;
@@ -16,8 +17,8 @@
     public class ModelContext : DbContext
     {
 
-       // public ModelContext() : base(@"data source =localhost\SQLEXPRESS; initial catalog = AppGestionStagiaires.ModelStagiaires; user = sa; password = admintp4; MultipleActiveResultSets = True; App = EntityFramework")
-       public ModelContext() : base(@"data source =192.168.1.57\SQLEXPRESS; initial catalog = CplusESSARRAJ; user = sa; password = admintp4; MultipleActiveResultSets = True; App = EntityFramework")
+        public ModelContext() : base(@"data source =localhost\SQLEXPRESS; initial catalog = AppGestionStagiaires.ModelStagiaires; user = sa; password = admintp4; MultipleActiveResultSets = True; App = EntityFramework")
+      // public ModelContext() : base(@"data source =192.168.1.57\SQLEXPRESS; initial catalog = CplusESSARRAJ; user = sa; password = admintp4; MultipleActiveResultSets = True; App = EntityFramework")
 
         {
           
@@ -32,6 +33,12 @@
         {
 
         }
+
+        //
+        // Guide de formations à Tanger
+        //
+        //public virtual DbSet<EtablissementFormation> EtablissementFormations { get; set; }
+         
 
         //
         // Gestion des formations
